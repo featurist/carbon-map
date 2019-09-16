@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carbon Neutral 2030</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+  </head>
+
+  <body>
+    <section class="AppHeader">
+      <h1>Carbon Neutral 2030</h1>
+      <p>
+      <%= link_to 'Home', root_path %>
+      <%= link_to 'Sign in', new_user_session_path unless user_signed_in? %>
+      <%= link_to 'Sign out', destroy_user_session_path if user_signed_in? %>
+      </p>
+    </section>
+    <% if notice || alert %>
+      <section class="Notices">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </section>
+    <% end %>
+    <%= yield %>
+    <section class="Footer"></section>
+  </body>
+</html>

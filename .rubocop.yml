@@ -1,0 +1,53 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  Exclude:
+    - "db/schema.rb"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+
+Documentation:
+  Enabled: false
+
+Performance:
+  Exclude:
+    - "**/test/**/*"
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - config/**/*
+    - db/**
+
+Style/Documentation:
+  Exclude:
+    - db/**/*
+    - app/controllers/**/*
+    - test/**/*
+
+Rails/BulkChangeTable:
+  Exclude:
+    - db/migrate/*
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*
+
+Metrics/BlockLength:
+  Exclude:
+    - db/migrate/*
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/*
+
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - app/models/metric.rb
+    - app/models/product_variant.rb
+
+Metrics/ClassLength:
+  Exclude:
+    - test/controllers/**/*

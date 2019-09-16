@@ -1,0 +1,15 @@
+$blue: rgba(38, 84, 124, 1);
+$red: rgba(239, 71, 111, 1);
+$yellow: rgba(231, 185, 77, 1);
+$green: rgba(6, 214, 160, 1);
+$snow: rgba(255, 252, 249, 1);
+
+$bp-mobile-width: 504px;
+$bp-tablet-width: 756px;
+$bp-tablet-landscape-width: 1008px;
+$bp-desktop-width: 1260px;
+
+@custom-media --bp-mobile (min-width: $bp-mobile-width);
+@custom-media --bp-tablet (min-width: $bp-tablet-width);
+@custom-media --bp-tablet-landscape (min-width: $bp-tablet-landscape-width);
+@custom-media --bp-desktop (min-width: $bp-desktop-width);
