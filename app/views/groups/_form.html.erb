@@ -1,0 +1,59 @@
+<%= form_with(model: group, local: true) do |form| %>
+  <% if group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+        <% group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :abbreviation %>
+    <%= form.text_field :abbreviation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :opening_hours %>
+    <%= form.text_field :opening_hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_name %>
+    <%= form.text_field :contact_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_email %>
+    <%= form.text_field :contact_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_phone %>
+    <%= form.text_field :contact_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gdpr %>
+    <%= form.check_box :gdpr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gdpr_email_verified %>
+    <%= form.check_box :gdpr_email_verified %>
+  </div>
+
+  insert group type check boxes here
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

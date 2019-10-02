@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  abbreviation: MyString
+  opening_hours: MyString
+  contact_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  gdpr: false
+  gdpr_email_verified: false
+  owner: georgie
+
+two:
+  name: MyString
+  abbreviation: MyString
+  opening_hours: MyString
+  contact_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  gdpr: false
+  gdpr_email_verified: false
+  owner: georgie

@@ -7,6 +7,7 @@ AllCops:
     - "db/schema.rb"
     - "node_modules/**/*"
     - "vendor/**/*"
+    - "bin/bundle"
 
 Documentation:
   Enabled: false

@@ -8,14 +8,5 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable
-  has_many :subscriptions, dependent: :nullify
-  has_many :addresses, dependent: :nullify
-
-  def address
-    addresses.last
-  end
-
-  def active_subscriptions
-    subscriptions.where(ended: nil)
-  end
+  has_many :groups, dependent: :nullify, foreign_key: 'owner_id', inverse_of: :owner
 end

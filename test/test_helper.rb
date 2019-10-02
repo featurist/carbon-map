@@ -16,10 +16,10 @@ module ActiveSupport
     def sign_in_as(key, with_password: 'password')
       user = users key
       post user_session_url params: {
-                              user: {
-                                email: user.email, password: with_password
-                              }
-                            }
+        user: {
+          email: user.email, password: with_password
+        }
+      }
     end
   end
 end
