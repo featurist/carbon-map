@@ -21,3 +21,14 @@ two:
   gdpr: false
   gdpr_email_verified: false
   owner: georgie
+
+unused:
+  name: unused
+  abbreviation: nouse
+  opening_hours: MyString
+  contact_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  gdpr: false
+  gdpr_email_verified: false
+  owner: georgie

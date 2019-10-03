@@ -7,3 +7,7 @@ one:
 two:
   name: MyString
   description: MyString
+
+unused:
+  name: not used
+  description: do not use

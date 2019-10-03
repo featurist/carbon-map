@@ -16,6 +16,7 @@
       <%= link_to 'Home', root_path %>
       <%= link_to 'Sign in', new_user_session_path unless user_signed_in? %>
       <%= link_to 'Sign out', destroy_user_session_path if user_signed_in? %>
+      <%= link_to 'Initiatives', initiatives_path if user_signed_in? %>
       <%= link_to 'Groups', groups_path if user_signed_in? %>
       <%= link_to 'Group Types', group_types_path if user_signed_in? %>
       <%= link_to 'Iniative Statuses', initiative_statuses_path if user_signed_in? %>

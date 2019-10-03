@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @initiative.name %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @initiative.summary %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @initiative.image_url %>
+</p>
+
+<p>
+  <strong>Anticipated carbon saving:</strong>
+  <%= @initiative.anticipated_carbon_saving %>
+</p>
+
+<p>
+  <strong>Locality:</strong>
+  <%= @initiative.locality %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @initiative.location %>
+</p>
+
+<p>
+  <strong>Alternative solution name:</strong>
+  <%= @initiative.alternative_solution_name %>
+</p>
+
+<p>
+  <strong>Lead group:</strong>
+  <%= @initiative.lead_group_id %>
+</p>
+
+<p>
+  <strong>Contact name:</strong>
+  <%= @initiative.contact_name %>
+</p>
+
+<p>
+  <strong>Contact email:</strong>
+  <%= @initiative.contact_email %>
+</p>
+
+<p>
+  <strong>Contact phone:</strong>
+  <%= @initiative.contact_phone %>
+</p>
+
+<p>
+  <strong>Partner groups role:</strong>
+  <%= @initiative.partner_groups_role %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @initiative.status_id %>
+</p>
+
+<p>
+  <strong>Gdpr:</strong>
+  <%= @initiative.gdpr %>
+</p>
+
+<p>
+  <strong>Gdpr email verified:</strong>
+  <%= @initiative.gdpr_email_verified %>
+</p>
+
+<%= link_to 'Edit', edit_initiative_path(@initiative) %> |
+<%= link_to 'Back', initiatives_path %>

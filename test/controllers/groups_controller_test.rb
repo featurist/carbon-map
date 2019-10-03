@@ -70,8 +70,9 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy group' do
     sign_in_as :georgie
+    group = groups(:unused)
     assert_difference('Group.count', -1) do
-      delete group_url(@group)
+      delete group_url(group)
     end
 
     assert_redirected_to groups_url

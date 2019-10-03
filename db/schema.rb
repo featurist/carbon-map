@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_200104) do
+ActiveRecord::Schema.define(version: 2019_10_02_075400) do
 
   create_table "group_group_types", force: :cascade do |t|
     t.integer "group_id", null: false
@@ -57,6 +57,28 @@ ActiveRecord::Schema.define(version: 2019_10_01_200104) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "initiatives", force: :cascade do |t|
+    t.string "name"
+    t.string "summary"
+    t.string "image_url"
+    t.integer "anticipated_carbon_saving"
+    t.string "locality"
+    t.string "location"
+    t.string "alternative_solution_name"
+    t.integer "lead_group_id", null: false
+    t.string "contact_name"
+    t.string "contact_email"
+    t.string "contact_phone"
+    t.string "partner_groups_role"
+    t.integer "status_id", null: false
+    t.boolean "gdpr"
+    t.boolean "gdpr_email_verified"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lead_group_id"], name: "index_initiatives_on_lead_group_id"
+    t.index ["status_id"], name: "index_initiatives_on_status_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -78,4 +100,6 @@ ActiveRecord::Schema.define(version: 2019_10_01_200104) do
   add_foreign_key "group_group_types", "group_types"
   add_foreign_key "group_group_types", "groups"
   add_foreign_key "group_websites", "groups"
+  add_foreign_key "initiatives", "groups", column: "lead_group_id"
+  add_foreign_key "initiatives", "initiative_statuses", column: "status_id"
 end

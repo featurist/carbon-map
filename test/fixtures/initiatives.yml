@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  summary: MyString
+  image_url: MyString
+  anticipated_carbon_saving: 1
+  locality: MyString
+  location: MyString
+  alternative_solution_name: MyString
+  lead_group: one
+  contact_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  partner_groups_role: MyString
+  status: one
+  gdpr: false
+  gdpr_email_verified: false
+
+two:
+  name: MyString
+  summary: MyString
+  image_url: MyString
+  anticipated_carbon_saving: 1
+  locality: MyString
+  location: MyString
+  alternative_solution_name: MyString
+  lead_group: two
+  contact_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  partner_groups_role: MyString
+  status: two
+  gdpr: false
+  gdpr_email_verified: false

@@ -52,8 +52,9 @@ class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy initiative_status' do
     sign_in_as :georgie
+    initiative_status = initiative_statuses(:unused)
     assert_difference('InitiativeStatus.count', -1) do
-      delete initiative_status_url(@initiative_status)
+      delete initiative_status_url(initiative_status)
     end
 
     assert_redirected_to initiative_statuses_url

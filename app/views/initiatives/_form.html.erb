@@ -1,0 +1,92 @@
+<%= form_with(model: initiative, local: true) do |form| %>
+  <% if initiative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(initiative.errors.count, "error") %> prohibited this initiative from being saved:</h2>
+
+      <ul>
+        <% initiative.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :summary %>
+    <%= form.text_field :summary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :anticipated_carbon_saving %>
+    <%= form.number_field :anticipated_carbon_saving %>
+  </div>
+
+  <div class="field">
+    <%= form.label :locality %>
+    <%= form.text_field :locality %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alternative_solution_name %>
+    <%= form.text_field :alternative_solution_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lead_group_id %>
+    <%= form.select :lead_group_id, @groups %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_name %>
+    <%= form.text_field :contact_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_email %>
+    <%= form.text_field :contact_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_phone %>
+    <%= form.text_field :contact_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :partner_groups_role %>
+    <%= form.text_field :partner_groups_role %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status_id %>
+    <%= form.select :status_id, @initiative_statuses %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gdpr %>
+    <%= form.check_box :gdpr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gdpr_email_verified %>
+    <%= form.check_box :gdpr_email_verified %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
