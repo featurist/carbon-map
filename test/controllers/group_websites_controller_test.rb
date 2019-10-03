@@ -28,7 +28,7 @@ class GroupWebsitesControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to group_group_website_url(@group, GroupWebsite.last)
+    assert_redirected_to group_group_websites_path(@group)
   end
 
   test 'should show group_website' do

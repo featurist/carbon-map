@@ -25,7 +25,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
       post tags_url, params: { tag: { name: @tag.name } }
     end
 
-    assert_redirected_to tag_url(Tag.last)
+    assert_redirected_to tags_url
   end
 
   test 'should show tag' do

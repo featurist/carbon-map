@@ -25,7 +25,7 @@ class GroupTypesControllerTest < ActionDispatch::IntegrationTest
       post group_types_url, params: { group_type: { name: @group_type.name } }
     end
 
-    assert_redirected_to group_type_url(GroupType.last)
+    assert_redirected_to group_types_url
   end
 
   test 'should show group_type' do

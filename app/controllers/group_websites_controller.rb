@@ -21,7 +21,7 @@ class GroupWebsitesController < ApplicationController
     @group_website = @group.websites.new(group_website_params)
 
     if @group_website.save
-      redirect_to [@group, @group_website], notice: 'Group website was successfully created.'
+      redirect_to group_group_websites_url(@group), notice: 'Group website was successfully created.'
     else
       render :new
     end

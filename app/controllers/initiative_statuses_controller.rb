@@ -19,7 +19,7 @@ class InitiativeStatusesController < ApplicationController
     @initiative_status = InitiativeStatus.new(initiative_status_params)
 
     if @initiative_status.save
-      redirect_to @initiative_status, notice: 'Initiative status was successfully created.'
+      redirect_to initiative_statuses_path, notice: 'Initiative status was successfully created.'
     else
       render :new
     end

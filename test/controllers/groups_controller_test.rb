@@ -36,7 +36,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to group_url(Group.last)
+    assert_redirected_to groups_path
   end
 
   test 'should show group' do

@@ -41,7 +41,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to initiative_url(Initiative.last)
+    assert_redirected_to initiatives_path
   end
 
   test "should show initiative" do

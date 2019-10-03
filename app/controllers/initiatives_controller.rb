@@ -20,7 +20,7 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.new(initiative_params)
 
     if @initiative.save
-      redirect_to @initiative, notice: 'Initiative was successfully created.'
+      redirect_to initiatives_path, notice: 'Initiative was successfully created.'
     else
       render :new
     end
