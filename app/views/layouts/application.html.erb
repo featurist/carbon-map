@@ -10,7 +10,8 @@
   </head>
 
   <body>
-    <section class="AppHeader">
+    <section class="Header">
+      <%=image_tag asset_pack_path("media/images/logo.png"), width: 100, class: 'Header-logo' %>
       <h1>Carbon Neutral 2030</h1>
       <p>
       <%= link_to 'Home', root_path %>
@@ -28,7 +29,9 @@
         <p class="alert"><%= alert %></p>
       </section>
     <% end %>
-    <%= yield %>
+    <section class="Content">
+      <%= yield %>
+    </section>
     <section class="Footer"></section>
   </body>
 </html>

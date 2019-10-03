@@ -2,6 +2,8 @@
 /* @import "normalize.css"; */
 
 @import "./base/variables";
+@import "./components/header";
+@import "./components/content";
 
 @font-face {
   font-family: "fira_sansregular";
@@ -14,7 +16,7 @@
 }
 
 body {
-  color: #000;
+  color: #4c4c4c;
   font-family: "fira_sansregular";
   font-size: 1em;
   line-height: 1.5;

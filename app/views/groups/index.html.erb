@@ -5,12 +5,9 @@
     <tr>
       <th>Name</th>
       <th>Abbreviation</th>
-      <th>Opening hours</th>
       <th>Contact name</th>
       <th>Contact email</th>
       <th>Contact phone</th>
-      <th>Gdpr</th>
-      <th>Gdpr email verified</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,12 +17,9 @@
       <tr>
         <td><%= group.name %></td>
         <td><%= group.abbreviation %></td>
-        <td><%= group.opening_hours %></td>
         <td><%= group.contact_name %></td>
         <td><%= group.contact_email %></td>
         <td><%= group.contact_phone %></td>
-        <td><%= group.gdpr %></td>
-        <td><%= group.gdpr_email_verified %></td>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
