@@ -41,6 +41,16 @@
     <%= f.text_field :location %>
   <% end %>
 
+  <%= f.form_field :latitude do %>
+    <%= f.label :latitude %>
+    <%= f.number_field :latitude %>
+  <% end %>
+
+  <%= f.form_field :longitude do %>
+    <%= f.label :longitude %>
+    <%= f.number_field :longitude %>
+  <% end %>
+
   <%= f.form_field :alternative_solution_name do %>
     <%= f.label :alternative_solution_name %>
     <%= f.text_field :alternative_solution_name %>

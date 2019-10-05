@@ -1,0 +1,62 @@
+TODO
+Add LatxLatY to Initiative
+Populate map with initiatives from db
+Add admin UI to approve initiatives 
+
+
+Create Solutions -> Sectors
+solution
+name:string
+
+solution_solution_classes
+solution:references
+solution_class:references
+
+solution_classes
+name:string
+theme:references
+
+themes
+name:string
+sector:references
+
+sector
+name:string
+
+
+
+Lower priority
+
+
+Initiative
+Display list of websites add/edit/destroy
+Add multiple partner group picker to group
+Add hashtag picker
+
+
+iniative_websites
+initiative:references
+website:string
+
+
+initiative_partners
+initiative:references
+group:references
+
+initiative_solutions
+initiative:references
+solution:references
+
+initiative_tags
+initiative:references
+tag:references
+
+initative_related
+initiative:references
+related_initative:references
+
+
+Group
+Make fields mandatory
+Add multiple group type picker to group
+Display list of websites add/edit/destroy
