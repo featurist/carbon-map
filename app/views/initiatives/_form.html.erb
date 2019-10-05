@@ -1,4 +1,4 @@
-<%= form_with(model: initiative, local: true) do |form| %>
+<%= form_with(model: initiative, local: true, html: {class: 'FormField-form'}) do |f| %>
   <% if initiative.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(initiative.errors.count, "error") %> prohibited this initiative from being saved:</h2>
@@ -11,82 +11,82 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <%= f.form_field :name do %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :summary %>
-    <%= form.text_field :summary %>
-  </div>
+  <%= f.form_field :summary do %>
+    <%= f.label :summary %>
+    <%= f.text_field :summary %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :image_url %>
-    <%= form.text_field :image_url %>
-  </div>
+  <%= f.form_field :image_url do %>
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :anticipated_carbon_saving %>
-    <%= form.number_field :anticipated_carbon_saving %>
-  </div>
+  <%= f.form_field :anticipated_carbon_saving do %>
+    <%= f.label :anticipated_carbon_saving %>
+    <%= f.number_field :anticipated_carbon_saving %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :locality %>
-    <%= form.text_field :locality %>
-  </div>
+  <%= f.form_field :locality do %>
+    <%= f.label :locality %>
+    <%= f.text_field :locality %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
+  <%= f.form_field :location do %>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :alternative_solution_name %>
-    <%= form.text_field :alternative_solution_name %>
-  </div>
+  <%= f.form_field :alternative_solution_name do %>
+    <%= f.label :alternative_solution_name %>
+    <%= f.text_field :alternative_solution_name %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :lead_group_id %>
-    <%= form.select :lead_group_id, @groups %>
-  </div>
+  <%= f.form_field :lead_group_id do %>
+    <%= f.label :lead_group_id %>
+    <%= f.select :lead_group_id, groups %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :contact_name %>
-    <%= form.text_field :contact_name %>
-  </div>
+  <%= f.form_field :contact_name do %>
+    <%= f.label :contact_name %>
+    <%= f.text_field :contact_name %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :contact_email %>
-    <%= form.text_field :contact_email %>
-  </div>
+  <%= f.form_field :contact_email do %>
+    <%= f.label :contact_email %>
+    <%= f.text_field :contact_email %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :contact_phone %>
-    <%= form.text_field :contact_phone %>
-  </div>
+  <%= f.form_field :contact_phone do %>
+    <%= f.label :contact_phone %>
+    <%= f.text_field :contact_phone %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :partner_groups_role %>
-    <%= form.text_field :partner_groups_role %>
-  </div>
+  <%= f.form_field :partner_groups_role do %>
+    <%= f.label :partner_groups_role %>
+    <%= f.text_field :partner_groups_role %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :status_id %>
-    <%= form.select :status_id, @initiative_statuses %>
-  </div>
+  <%= f.form_field :status do %>
+    <%= f.label :status %>
+    <%= f.select :status_id, initiative_statuses %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :gdpr %>
-    <%= form.check_box :gdpr %>
-  </div>
+  <%= f.form_field :gdpr do %>
+    <%= f.label :gdpr %>
+    <%= f.check_box :gdpr %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :gdpr_email_verified %>
-    <%= form.check_box :gdpr_email_verified %>
-  </div>
+  <%= f.form_field :gdpr_email_verified do %>
+    <%= f.label :gdpr_email_verified %>
+    <%= f.check_box :gdpr_email_verified %>
+  <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="FormField-actions">
+    <%= f.submit %>
   </div>
 <% end %>

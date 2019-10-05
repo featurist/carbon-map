@@ -13,7 +13,7 @@
     <% @group_websites.each do |group_website| %>
       <tr>
         <td><%= group_website.website %></td>
-        <td><%= group_website.group.name %></td>
+        <td><%= group_website.group_name %></td>
         <td><%= link_to 'Show', group_group_website_path(@group, group_website) %></td>
         <td><%= link_to 'Edit', edit_group_group_website_path(@group, group_website) %></td>
         <td><%= link_to 'Destroy', group_group_website_path(@group, group_website), method: :delete, data: { confirm: 'Are you sure?' } %></td>

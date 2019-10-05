@@ -1,4 +1,4 @@
-<%= form_with(model: group_website, url: [group, group_website], local: true) do |form| %>
+<%= form_with(model: group_website, url: [group, group_website], local: true, html: {class: 'FormField-form'}) do |f| %>
   <% if group_website.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(group_website.errors.count, "error") %> prohibited this group_website from being saved:</h2>
@@ -11,12 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :website %>
-    <%= form.text_field :website %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <%= f.form_field :website do %>
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+  <% end %>
+  <div class="FormField-actions">
+    <%= f.submit %>
   </div>
 <% end %>

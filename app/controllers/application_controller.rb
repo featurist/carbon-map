@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  default_form_builder SuitFormBuilder
   before_action :store_user_location!, if: :storable_location?
   before_action :authenticate_user!, if: :requires_authentication
 
