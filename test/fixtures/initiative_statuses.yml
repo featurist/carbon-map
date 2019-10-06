@@ -11,3 +11,7 @@ two:
 unused:
   name: not used
   description: do not use
+
+operational:
+  name: Operational
+  description: Currently running

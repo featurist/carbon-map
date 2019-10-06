@@ -1,1 +1,3 @@
-json.array! @initiatives, partial: "initiatives/initiative", as: :initiative
+# frozen_string_literal: true
+
+json.array! @initiatives, partial: 'initiatives/initiative', as: :initiative

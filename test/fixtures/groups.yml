@@ -22,6 +22,17 @@ two:
   gdpr_email_verified: false
   owner: georgie
 
+down_to_earth_stroud:
+  name: Down to Earth Stroud
+  abbreviation: NA
+  opening_hours: NA
+  contact_name: No name
+  contact_phone: 01453 700011
+  contact_email: info@downtoearthstroud.co.uk
+  gdpr: false
+  gdpr_email_verified: false
+  owner: georgie
+
 unused:
   name: unused
   abbreviation: nouse

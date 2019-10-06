@@ -2,6 +2,9 @@ require:
   - rubocop-rails
   - rubocop-performance
 
+Rails:
+  Enabled: true
+
 AllCops:
   Exclude:
     - "db/schema.rb"
@@ -15,6 +18,10 @@ Documentation:
 Performance:
   Exclude:
     - "**/test/**/*"
+
+Lint/UnneededCopDisableDirective:
+  Exclude:
+    - "**/*.*"
 
 Metrics/LineLength:
   Max: 120
@@ -43,11 +50,6 @@ Metrics/BlockLength:
 Metrics/AbcSize:
   Exclude:
     - db/migrate/*
-
-Rails/HasAndBelongsToMany:
-  Exclude:
-    - app/models/metric.rb
-    - app/models/product_variant.rb
 
 Metrics/ClassLength:
   Exclude:

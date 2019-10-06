@@ -1,35 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  summary: MyString
-  image_url: MyString
-  anticipated_carbon_saving: 1
-  locality: MyString
-  location: MyString
-  alternative_solution_name: MyString
-  lead_group: one
-  contact_name: MyString
-  contact_email: MyString
-  contact_phone: MyString
-  partner_groups_role: MyString
-  status: one
-  gdpr: false
-  gdpr_email_verified: false
-
-two:
-  name: MyString
-  summary: MyString
-  image_url: MyString
-  anticipated_carbon_saving: 1
-  locality: MyString
-  location: MyString
-  alternative_solution_name: MyString
-  lead_group: two
-  contact_name: MyString
-  contact_email: MyString
-  contact_phone: MyString
-  partner_groups_role: MyString
-  status: two
-  gdpr: false
-  gdpr_email_verified: false
+fruit_exchange:
+  locality: Stonehouse
+  location: GL6 1JG
+  # address:Down to Earth Stroud, PO Box 427, Stonehouse, Gloucestershire, GL6 1JG
+  latitude: 51.749252
+  longitude: -2.283587
+  name: The Fruit Exchange
+  summary: The Fruit Exchange connects food outlets with people who have surplus fruit or veg.
+  #"group": "Down to Earth Stroud",
+  lead_group: down_to_earth_stroud
+  contact_name: No name
+  contact_phone: 01453 700011
+  contact_email: info@downtoearthstroud.co.uk
+  status: operational
+  #"website": "http://www.downtoearthstroud.co.uk/the-fruit-exchange1/",
+  #"status": "implementation",
+  #"sector": "Food",
+  #"theme": "Community food production and Food Waste",
+  #"solution": "Produce sharing",
+  #"notes": "They've mapped companies taking part in sharing the produce!",

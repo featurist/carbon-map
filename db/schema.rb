@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2019_10_05_213108) do
     t.boolean 'gdpr_email_verified'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
-    t.integer 'latitude'
-    t.integer 'longitude'
+    t.float 'latitude'
+    t.float 'longitude'
     t.index %w[lead_group_id], name: 'index_initiatives_on_lead_group_id'
     t.index %w[status_id], name: 'index_initiatives_on_status_id'
   end

@@ -1,4 +1,5 @@
 <% content_for :page_javascript do %>
+ <script type="text/json" id="initiatives_json"><%=@initiatives_json.html_safe%></script>
   <%= javascript_packs_with_chunks_tag 'initiatives_map', 'data-turbolinks-track': 'reload' %>
 <% end %>
 

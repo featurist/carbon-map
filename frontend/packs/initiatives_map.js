@@ -1,4 +1,3 @@
-import initiatives from "./initiatives_data.json";
 import L from "leaflet";
 import "leaflet.markercluster";
 import { GestureHandling } from "leaflet-gesture-handling";
@@ -6,7 +5,7 @@ import mobileCheck from "./mobileCheck";
 
 let carbonExplorer, mappedInitiatives, markers;
 
-function initialiseMap() {
+function initialiseMap(initiatives) {
   const isMobile = mobileCheck();
   L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
   carbonExplorer = L.map("explore", {
@@ -29,6 +28,7 @@ function initialiseMap() {
   markers = L.markerClusterGroup();
 
   mappedInitiatives = initiatives.map(initiative => {
+    console.log(initiative);
     var marker = L.marker(initiative.location.latlng);
     const initiativeHtml = `<h1>${initiative.name}</h1>
           <p>${initiative.summary}</p>
@@ -108,5 +108,8 @@ window.exploreMap = {
 };
 
 window.addEventListener("load", function() {
-  initialiseMap();
+  const initiatives = JSON.parse(
+    document.getElementById("initiatives_json").innerText
+  );
+  initialiseMap(initiatives);
 });
