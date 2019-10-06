@@ -34,3 +34,6 @@
 yarn-debug.log*
 .yarn-integrity
 *.sw?
+
+# these images are copied in at install time
+frontend/styles/images

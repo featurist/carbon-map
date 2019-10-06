@@ -1,0 +1,324 @@
+[
+  {
+    "location": {
+      "name": "Stonehouse",
+      "address": "Down to Earth Stroud, PO Box 427, Stonehouse, Gloucestershire, GL6 1JG",
+      "latlng": {
+        "lat": "51.749252",
+        "lng": "-2.283587"
+      }
+    },
+    "name": "The Fruit Exchange",
+    "group": "Down to Earth Stroud",
+    "contactName": "No name: 01453 700011",
+    "email": "info@downtoearthstroud.co.uk",
+    "website": "http://www.downtoearthstroud.co.uk/the-fruit-exchange1/",
+    "summary": "The Fruit Exchange connects food outlets with people who have surplus fruit or veg. It brings communities together and ensures fresh, locally grown produce is not wasted.",
+    "status": "implementation",
+    "sector": "Food",
+    "theme": "Community food production and Food Waste",
+    "solution": "Produce sharing",
+    "addedBy": "Jill",
+    "notes": "They've mapped companies taking part in sharing the produce!",
+    "timestamp": "6/9/2019 21:04:29"
+  },
+  {
+    "location": {
+      "name": "",
+      "address": "Severn Wye Energy Agency Ltd, Unit 15 Highnam Business Centre, Highnam, Gloucester GL2 8DN",
+      "latlng": {
+        "lat": "51.878471",
+        "lng": "-2.29931"
+      }
+    },
+    "name": "Warm and Well",
+    "group": "Severn Wye Energy Agency",
+    "contactName": "",
+    "email": "Tel: 0800 500 3076 ",
+    "website": "http://warmandwell.co.uk//",
+    "summary": "Free energy efficiency advice.",
+    "status": "implementation",
+    "sector": "Buildings and their environment",
+    "theme": "Buidling Performance",
+    "solution": "All",
+    "addedBy": "Jill",
+    "notes": "",
+    "timestamp": "6/11/2019 20:46:42"
+  },
+  {
+    "location": {
+      "name": "Stroud",
+      "address": "Stroud District Furniture Bank CIC Unit 2A, Brimscombe Port, Brimscombe, Stroud, GL52QQ",
+      "latlng": {
+        "lat": "51.719727",
+        "lng": "-2.191638"
+      }
+    },
+    "name": "Stroud District Furniture Bank",
+    "group": "",
+    "contactName": "",
+    "email": "info@strouddistrictfurniturebank.org.uk",
+    "website": "http://strouddistrictfurniturebank.org.uk/",
+    "summary": "",
+    "status": "implementation",
+    "sector": "Waste",
+    "theme": "Waste Avoidance",
+    "solution": "",
+    "addedBy": "Jill",
+    "notes": "Is this borderline? I was thinking it could potentially reduce carbon by encouraging people to reuse rather than buy new.",
+    "timestamp": "6/11/2019 20:52:38"
+  },
+  {
+    "location": {
+      "name": "Stroud D",
+      "address": "",
+      "latlng": {
+        "lat": "51.747581",
+        "lng": "-2.21558"
+      }
+    },
+    "name": "LIftshare",
+    "group": "TS",
+    "contactName": "Beki Aldam",
+    "email": "liftshare@transitionstroud.org",
+    "website": "https://www.facebook.com/groups/511543142661870/",
+    "summary": "This is a group for anyone who has to travel in and out of Stroud. Meet people, share lifts, save money, reduce air pollution, reduce congestion and traffic delays ??\" there are so many benefits!",
+    "status": "implementation",
+    "sector": "Transport",
+    "theme": "Reduced Vehicle Use",
+    "solution": "Lift Sharing",
+    "addedBy": "Nick T",
+    "notes": "",
+    "timestamp": "6/12/2019 21:26:07"
+  },
+  {
+    "location": {
+      "name": "Stroud D",
+      "address": "",
+      "latlng": {
+        "lat": "51.747581",
+        "lng": "-2.21558"
+      }
+    },
+    "name": "Eco Open Homes",
+    "group": "TS",
+    "contactName": "Tim Martel",
+    "email": "",
+    "website": "https://www.transitionstroud.org/stroud-eco-open-homes/",
+    "summary": "Biennial event showcasing local homes on the 3rd and 10th November 2018. Home owners are at the heart of this event, and have a great deal of enthusiasm in talking about their projects. Various local experts are involved, and a contact list of local people is available on the day. Check out this map for details on the house locations and this leaflet for more in depth information. There is even a cycle tour between the houses if that???s your bag!",
+    "status": "implementation",
+    "sector": "Buildings and their environment",
+    "theme": "Building Performance",
+    "solution": "Retrofitting Service",
+    "addedBy": "Nick T",
+    "notes": "",
+    "timestamp": "6/12/2019 21:29:29"
+  },
+  {
+    "location": {
+      "name": "Stroud",
+      "address": "",
+      "latlng": {
+        "lat": "51.747581",
+        "lng": "-2.21558"
+      }
+    },
+    "name": "Edible Stroud",
+    "group": "TS",
+    "contactName": "Josie Cowgill ",
+    "email": "ediblestroud@transitionstroud.org",
+    "website": "http://ediblestroud.org.uk/",
+    "summary": "The motivation behind the project is to increase the amount of fresh, organic, locally grown food available thus reducing food miles and dependency on carbon whilst benefiting the environment and building community spirit.",
+    "status": "implementation",
+    "sector": "Food",
+    "theme": "Community Food Production",
+    "solution": "Edible Open Garden",
+    "addedBy": "Nick T",
+    "notes": "",
+    "timestamp": "6/12/2019 21:34:36"
+  },
+  {
+    "location": {
+      "name": "Stroud",
+      "address": "",
+      "latlng": {
+        "lat": "51.747581",
+        "lng": "-2.21558"
+      }
+    },
+    "name": "Festival of Nature",
+    "group": "Stroud Nature",
+    "contactName": "",
+    "email": "admin@stroudnature.org",
+    "website": "https://stroudnature.org/stroud-festival-of-nature-2019/",
+    "summary": "",
+    "status": "implementation",
+    "sector": "Knowledge",
+    "theme": "Community Engagement",
+    "solution": "",
+    "addedBy": "Nick T",
+    "notes": "Not sure about this Sector.  Does Education fit into Knowledge or should it be a sub section of each Sector?",
+    "timestamp": "6/12/2019 21:38:17"
+  },
+  {
+    "location": {
+      "name": "",
+      "address": "Bisley Rd, Stroud GL6 7NH",
+      "latlng": {
+        "lat": "51.756163",
+        "lng": "-2.143827"
+      }
+    },
+    "name": "Bisley Community Composting Scheme",
+    "group": "",
+    "contactName": "",
+    "email": "info@bisleycommunitycompostscheme.org.uk",
+    "website": "https://www.bisleycommunitycompostscheme.org.uk/",
+    "summary": "The community has led this scheme for fourteen years for the benefit of the community. It transforms unwanted garden waste from the community into compost. This excellent, independently analysed ???soil conditioner???, will then feed the gardens of Bisley, increase local soil fertility, help wildlife, and help produce fine crops.",
+    "status": "implementation",
+    "sector": "Waste",
+    "theme": "Waste Processing",
+    "solution": "Community Composting",
+    "addedBy": "Nick T",
+    "notes": "",
+    "timestamp": "6/12/2019 21:45:54"
+  },
+  {
+    "location": {
+      "name": "",
+      "address": "",
+      "latlng": {
+        "lat": "51.747581",
+        "lng": "-2.21558"
+      }
+    },
+    "name": "Stroud Lime",
+    "group": "",
+    "contactName": "Stephen",
+    "email": "stephen@stroudlime.co.uk",
+    "website": "http://stroudlime.co.uk/",
+    "summary": "An experienced lime plasterer serving Gloucestershire and all the surrounding areas.",
+    "status": "implementation",
+    "sector": "Materials",
+    "theme": "Low Carbon Materials",
+    "solution": "Lime Mortar",
+    "addedBy": "Nick T",
+    "notes": "",
+    "timestamp": "6/12/2019 21:47:48"
+  },
+  {
+    "location": {
+      "name": "Rodborough",
+      "address": "",
+      "latlng": {
+        "lat": "51.729817",
+        "lng": "-2.21682"
+      }
+    },
+    "name": "Conservation Project on Rodborough Common",
+    "group": "SVP",
+    "contactName": "Clare",
+    "email": "01453 753358",
+    "website": "http://www.stroudvalleysproject.org/index.php/svp-projects/current-projects/717-caring-for-the-cows-and-the-commons",
+    "summary": "Rodborough Common is a Special Area of Conservation, supporting a wide diversity of species including rare insects and wild flowers.",
+    "status": "implementation",
+    "sector": "Nature, conservation & environment",
+    "theme": "Species Conservation",
+    "solution": "Plant Habitats",
+    "addedBy": "Nick T",
+    "notes": "",
+    "timestamp": "6/12/2019 21:50:43"
+  },
+  {
+    "location": {
+      "name": "Bisley",
+      "address": "Calfway, Bisley, GL6 7BX",
+      "latlng": {
+        "lat": "51.765165",
+        "lng": "-2.138661"
+      }
+    },
+    "name": "Greenshop Solar",
+    "group": "Greenshop",
+    "contactName": "",
+    "email": "",
+    "website": "https://www.greenshopsolar.co.uk/",
+    "summary": "We are experienced in the installation of domestic and commercial renewable energy systems including Solar Photovoltaic (PV), Solar Thermal (Hot Water), Wind, and for domestic applications - Heat Pumps and Biomass heating systems. ",
+    "status": "implementation",
+    "sector": "Energy",
+    "theme": "Electricity Generation",
+    "solution": "Rooftop Solar PV",
+    "addedBy": "Nick T",
+    "notes": "",
+    "timestamp": "6/12/2019 21:54:08"
+  },
+  {
+    "location": {
+      "name": "Stroud",
+      "address": "1st Floor 19A Lower Street, Stroud Gloucestershire GL5 2HT",
+      "latlng": {
+        "lat": "51.743459",
+        "lng": "-2.210204"
+      }
+    },
+    "name": "Repair Cafe Stroud",
+    "group": "Atelier",
+    "contactName": "Tel: 01453765248",
+    "email": "mail@atelierstroud.com",
+    "website": "http://www.atelierstroud.co.uk/repair-cafe/",
+    "summary": "Repair Caf??s are free meeting places and they???re all about repairing things (together). In the place where a Repair Caf?? is located, you???ll find tools and materials to help you make any repairs you need. You???ll also find expert volunteers, with repair skills in all kinds of fields.",
+    "status": "implementation",
+    "sector": "Materials",
+    "theme": "Extending life of product",
+    "solution": "",
+    "addedBy": "Jill",
+    "notes": "Perhaps this requires an addition to the Taxonomy?",
+    "timestamp": "6/13/2019 20:51:12"
+  },
+  {
+    "location": {
+      "name": "Stroud",
+      "address": "8 Threadneedle Street, Stroud, Gloucestershire, GL5 1AF",
+      "latlng": {
+        "lat": "51.744671",
+        "lng": "-2.21612"
+      }
+    },
+    "name": "Nature Conservation",
+    "group": "Stroud Valleys Project",
+    "contactName": "Tel: 01453 753358",
+    "email": "info@stroudvalleysproject.org",
+    "website": "http://stroudvalleysproject.org/",
+    "summary": "",
+    "status": "implementation",
+    "sector": "Nature, conservation & environment",
+    "theme": "Species Conservation",
+    "solution": "Plant Habitates, Insect Habitats, Vertebrate Habitats",
+    "addedBy": "Jill",
+    "notes": "",
+    "timestamp": "6/13/2019 20:55:34"
+  },
+  {
+    "location": {
+      "name": "Minchinhampton",
+      "address": "",
+      "latlng": {
+        "lat": "51.706751",
+        "lng": "-2.188129"
+      }
+    },
+    "name": "Solar PV Minchinhampton Primary School",
+    "group": "Minchinhampton Primary School",
+    "contactName": "Matt Partridge",
+    "email": "",
+    "website": "",
+    "summary": "Installing solar pv panels on Minchinhampton Primary School roof",
+    "status": "implementation",
+    "sector": "Energy",
+    "theme": "Electricty Generation",
+    "solution": "Rooftop Solar PV",
+    "addedBy": "Jill",
+    "notes": "Is this an appropriate initiative to map? It isn't public knowledge I don't think...",
+    "timestamp": "6/20/2019 20:51:34"
+  }
+]

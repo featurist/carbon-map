@@ -13,14 +13,15 @@
     <section class="Header">
       <%=image_tag asset_pack_path("media/images/logo.png"), width: 100, class: 'Header-logo' %>
       <h1>Carbon Neutral 2030</h1>
+      <p>Connecting people with initiatives</p>
       <p>
-      <%= link_to 'Home', root_path %>
+      <%= link_to 'Home', root_path %> |
+      <%= link_to('Initiatives', initiatives_path) + ' |' if user_signed_in? %>
+      <%= link_to('Groups', groups_path) + ' |' if user_signed_in? %>
+      <%= link_to('Group Types', group_types_path) + ' |' if user_signed_in? %>
+      <%= link_to('Iniative Statuses', initiative_statuses_path) + ' |' if user_signed_in? %>
       <%= link_to 'Sign in', new_user_session_path unless user_signed_in? %>
       <%= link_to 'Sign out', destroy_user_session_path if user_signed_in? %>
-      <%= link_to 'Initiatives', initiatives_path if user_signed_in? %>
-      <%= link_to 'Groups', groups_path if user_signed_in? %>
-      <%= link_to 'Group Types', group_types_path if user_signed_in? %>
-      <%= link_to 'Iniative Statuses', initiative_statuses_path if user_signed_in? %>
       </p>
     </section>
     <% if notice || alert %>
@@ -33,5 +34,6 @@
       <%= yield %>
     </section>
     <section class="Footer"></section>
+    <%= yield :page_javascript %>
   </body>
 </html>

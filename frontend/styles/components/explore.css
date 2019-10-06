@@ -1,0 +1,41 @@
+.Explore {
+  background-color: $snow;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.Explore-navigation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Explore-navigation a {
+  background-color: $red;
+  color: white;
+  cursor: pointer;
+  flex: 1;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  padding: 3px;
+  text-align: center;
+}
+
+.Explore-navigation a:last-of-type {
+  margin-right: 0;
+}
+
+.Explore-map {
+  height: 250px;
+}
+
+@media (--bp-mobile) {
+
+  .Explore-navigation {
+    flex-wrap: nowrap;
+  }
+
+  .Explore-map {
+    height: 450px;
+  }
+}

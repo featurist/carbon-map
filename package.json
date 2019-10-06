@@ -4,13 +4,17 @@
   "scripts": {
     "build": "./bin/webpack",
     "dev": "./bin/webpack-dev-server",
-    "lint": "prettier '**/*.{rb,js,json,md,yml}' --write; eslint '**/*.js' --fix; stylelint 'frontend/styles/**/*.css' --fix; bundle exec rubocop -a -r ./config/exclude_corrected_formatter -f ExcludeCorrectedFormatter; bundle exec rails_best_practices . --silent"
+    "lint": "prettier '**/*.{rb,js,json,md,yml}' --write; eslint '**/*.js' --fix; stylelint 'frontend/styles/**/*.css' --fix; bundle exec rubocop -a -r ./config/exclude_corrected_formatter -f ExcludeCorrectedFormatter; bundle exec rails_best_practices . --silent",
+    "postinstall": "cp node_modules/leaflet/dist/images frontend/styles -r"
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
+    "leaflet": "^1.5.1",
+    "leaflet-gesture-handling": "^1.1.8",
+    "leaflet.markercluster": "^1.4.1",
     "postcss-custom-media": "^7.0.8",
     "postcss-inherit": "^4.1.0",
     "postcss-nested": "^4.1.2",
