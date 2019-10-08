@@ -15,9 +15,4 @@ test:
   password:
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: carbon_map_production
-  pool: 5
-  username:
-  password:
+  url: <%= ENV['DATABASE_URL'] %>
