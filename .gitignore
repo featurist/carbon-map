@@ -36,4 +36,4 @@ yarn-debug.log*
 *.sw?
 
 # these images are copied in at install time
-frontend/styles/images
+/public/leaflet

@@ -5,7 +5,7 @@
     "build": "./bin/webpack",
     "dev": "./bin/webpack-dev-server",
     "lint": "prettier '**/*.{rb,js,json,md,yml}' --write; eslint '**/*.js' --fix; stylelint 'frontend/styles/**/*.css' --fix; bundle exec rubocop -a -r ./config/exclude_corrected_formatter -f ExcludeCorrectedFormatter; bundle exec rails_best_practices . --silent",
-    "postinstall": "cp node_modules/leaflet/dist/images frontend/styles -r"
+    "postinstall": "cp node_modules/leaflet/dist public/leaflet -r"
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
