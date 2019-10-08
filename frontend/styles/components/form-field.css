@@ -6,6 +6,10 @@
   flex-wrap: wrap;
 }
 
+.FormField-form h2 {
+  flex-basis: 100%;
+}
+
 .FormField {
   display: flex;
   flex-basis: 100%;

@@ -1,0 +1,10 @@
+.InitiativeLocationPicker {
+  height: 200px;
+}
+
+@media (--bp-tablet) {
+
+  .InitiativeLocationPicker {
+    height: 350px;
+  }
+}

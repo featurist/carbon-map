@@ -10,6 +10,7 @@
 @import "./components/header";
 @import "./components/content";
 @import "./components/form-field";
+@import "./components/initiative-location-picker";
 
 @font-face {
   font-family: "fira_sansregular";

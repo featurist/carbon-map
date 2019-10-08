@@ -5,6 +5,14 @@ class Initiative < ApplicationRecord
   belongs_to :status, class_name: 'InitiativeStatus'
   delegate :name, prefix: true, to: :status
   delegate :name, prefix: true, to: :lead_group
+  after_initialize :set_default_location
+
+  def set_default_location
+    return if persisted?
+
+    self.latitude = 51.742
+    self.longitude = -2.222
+  end
 
   # rubocop:disable Metrics/MethodLength
   def self.approved

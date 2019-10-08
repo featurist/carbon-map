@@ -28,7 +28,6 @@ function initialiseMap(initiatives) {
   markers = L.markerClusterGroup();
 
   mappedInitiatives = initiatives.map(initiative => {
-    console.log(initiative);
     var marker = L.marker(initiative.location.latlng);
     const initiativeHtml = `<h1>${initiative.name}</h1>
           <p>${initiative.summary}</p>
@@ -100,10 +99,6 @@ window.exploreMap = {
     mappedInitiatives.forEach(init => {
       markers.addLayer(init.marker);
     });
-  },
-
-  getCenter: function() {
-    console.log(carbonExplorer.getCenter());
   }
 };
 
