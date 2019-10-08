@@ -11,9 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_10_05_213108) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension 'plpgsql'
+
   create_table 'group_group_types', force: :cascade do |t|
-    t.integer 'group_id', null: false
-    t.integer 'group_type_id', null: false
+    t.bigint 'group_id', null: false
+    t.bigint 'group_type_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.index %w[group_id], name: 'index_group_group_types_on_group_id'
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_10_05_213108) do
 
   create_table 'group_websites', force: :cascade do |t|
     t.string 'website'
-    t.integer 'group_id', null: false
+    t.bigint 'group_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.index %w[group_id], name: 'index_group_websites_on_group_id'
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_10_05_213108) do
     t.string 'contact_phone'
     t.boolean 'gdpr'
     t.boolean 'gdpr_email_verified'
-    t.integer 'owner_id'
+    t.bigint 'owner_id'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.index %w[owner_id], name: 'index_groups_on_owner_id'
@@ -64,12 +67,12 @@ ActiveRecord::Schema.define(version: 2019_10_05_213108) do
     t.string 'locality'
     t.string 'location'
     t.string 'alternative_solution_name'
-    t.integer 'lead_group_id', null: false
+    t.bigint 'lead_group_id', null: false
     t.string 'contact_name'
     t.string 'contact_email'
     t.string 'contact_phone'
     t.string 'partner_groups_role'
-    t.integer 'status_id', null: false
+    t.bigint 'status_id', null: false
     t.boolean 'gdpr'
     t.boolean 'gdpr_email_verified'
     t.datetime 'created_at', precision: 6, null: false

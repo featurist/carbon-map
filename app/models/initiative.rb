@@ -8,10 +8,8 @@ class Initiative < ApplicationRecord
   after_initialize :set_default_location
 
   def set_default_location
-    return if persisted?
-
-    self.latitude = 51.742
-    self.longitude = -2.222
+    self.latitude ||= 51.742
+    self.longitude ||= -2.222
   end
 
   # rubocop:disable Metrics/MethodLength
