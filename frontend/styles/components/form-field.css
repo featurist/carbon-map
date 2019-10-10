@@ -29,14 +29,3 @@
   flex-grow: 1;
   margin: 2px;
 }
-
-@media (--bp-tablet) {
-
-  .FormField-actions * {
-    max-width: 50%;
-  }
-
-  .FormField {
-    flex-basis: 48%;
-  }
-}
