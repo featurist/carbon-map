@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_213108) do
+ActiveRecord::Schema.define(version: 2019_10_21_195951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -83,10 +83,49 @@ ActiveRecord::Schema.define(version: 2019_10_05_213108) do
     t.index %w[status_id], name: 'index_initiatives_on_status_id'
   end
 
+  create_table 'sectors', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'solution_classes', force: :cascade do |t|
+    t.string 'name'
+    t.bigint 'theme_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[theme_id], name: 'index_solution_classes_on_theme_id'
+  end
+
+  create_table 'solution_solution_classes', force: :cascade do |t|
+    t.bigint 'solution_id', null: false
+    t.bigint 'solution_class_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[solution_class_id],
+            name: 'index_solution_solution_classes_on_solution_class_id'
+    t.index %w[solution_id],
+            name: 'index_solution_solution_classes_on_solution_id'
+  end
+
+  create_table 'solutions', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
   create_table 'tags', force: :cascade do |t|
     t.string 'name'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'themes', force: :cascade do |t|
+    t.string 'name'
+    t.bigint 'sector_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[sector_id], name: 'index_themes_on_sector_id'
   end
 
   create_table 'users', force: :cascade do |t|
@@ -107,4 +146,8 @@ ActiveRecord::Schema.define(version: 2019_10_05_213108) do
   add_foreign_key 'group_websites', 'groups'
   add_foreign_key 'initiatives', 'groups', column: 'lead_group_id'
   add_foreign_key 'initiatives', 'initiative_statuses', column: 'status_id'
+  add_foreign_key 'solution_classes', 'themes'
+  add_foreign_key 'solution_solution_classes', 'solution_classes'
+  add_foreign_key 'solution_solution_classes', 'solutions'
+  add_foreign_key 'themes', 'sectors'
 end
