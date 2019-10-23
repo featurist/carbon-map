@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/leaflet/leaflet.css" />
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= yield :page_head %>
   </head>
 
   <body>
@@ -17,7 +18,7 @@
       <h1>Carbon Neutral 2030</h1>
       <p>Connecting people with initiatives</p>
       <p>
-      <%= link_to 'Home', root_path, "data-turbolinks": false %> |
+      <%= link_to 'Home', root_path %> |
       <%= link_to('Initiatives', initiatives_path) + ' |' if user_signed_in? %>
       <%= link_to('Groups', groups_path) + ' |' if user_signed_in? %>
       <%= link_to('Group Types', group_types_path) + ' |' if user_signed_in? %>

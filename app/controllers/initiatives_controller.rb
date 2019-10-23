@@ -28,6 +28,7 @@ class InitiativesController < ApplicationController
   end
 
   def update
+    @initiative.solutions.clear
     if @initiative.update(initiative_params)
       redirect_to @initiative, notice: 'Initiative was successfully updated.'
     else

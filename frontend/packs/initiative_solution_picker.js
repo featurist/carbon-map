@@ -1,13 +1,37 @@
 import hyperdom from "hyperdom";
 
 class SolutionPicker {
-  constructor({ taxonomy_hierarchy }) {
+  constructor({ taxonomy_hierarchy, initial_solutions }) {
     this.isValid = false;
     this.solutions = [];
     this.value = "";
     this.results = [];
     this.navigation = {};
     this.taxonomy_hierarchy = taxonomy_hierarchy;
+
+    this.solution_map = {};
+    taxonomy_hierarchy.forEach(sector => {
+      sector.themes.forEach(theme => {
+        theme.classes.forEach(solution_class => {
+          solution_class.solutions.forEach(solution => {
+            const key = `${solution.solution_id}-${solution.solution_class_id}`;
+            this.solution_map[key] = {
+              sector: sector.name,
+              theme: theme.name,
+              class: solution_class.name,
+              solution: solution.name,
+              solution_id: solution.solution_id,
+              solution_class_id: solution.solution_class_id
+            };
+          });
+        });
+      });
+    });
+    this.solutions = initial_solutions.map(sol => {
+      const key = `${sol.solution_id}-${sol.solution_class_id}`;
+      return this.solution_map[key];
+    });
+    console.log("solution init");
   }
 
   render() {
@@ -276,12 +300,24 @@ class SolutionPicker {
   }
 }
 
-window.addEventListener("load", function() {
+function load() {
+  const solution_picker = document.querySelector("#solution_picker");
+  const initial_solutions = JSON.parse(
+    document.getElementById("initial_solutions").value
+  );
   const taxonomy_hierarchy = JSON.parse(
     document.getElementById("taxonomy_hierarchy_json").innerText
   );
   hyperdom.append(
-    document.querySelector("#solution_picker"),
-    new SolutionPicker({ taxonomy_hierarchy })
+    solution_picker,
+    new SolutionPicker({ taxonomy_hierarchy, initial_solutions })
   );
-});
+}
+
+function unload() {
+  document.removeEventListener("turbolinks:load", load);
+  document.removeEventListener("turbolinks:click", unload);
+}
+
+document.addEventListener("turbolinks:load", load);
+document.addEventListener("turbolinks:click", unload);

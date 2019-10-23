@@ -3,6 +3,10 @@
   <%= javascript_packs_with_chunks_tag 'initiatives_map', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
+<% content_for :page_head do %>
+  <meta name="turbolinks-visit-control" content="reload">
+<% end %>
+
 <% content_for :raw do %>
   <section class="Explore">
     <a name="explore"></a>

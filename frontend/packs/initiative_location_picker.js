@@ -50,8 +50,17 @@ function initialiseMap(id, location) {
     }
   };
 }
-window.addEventListener("load", function() {
+
+function load() {
   const lat = document.querySelector('[name="initiative[latitude]"]').value;
   const lng = document.querySelector('[name="initiative[longitude]"]').value;
   initialiseMap("location", { lat, lng });
-});
+}
+
+function unload() {
+  document.removeEventListener("turbolinks:load", load);
+  document.removeEventListener("turbolinks:click", unload);
+}
+
+document.addEventListener("turbolinks:load", load);
+document.addEventListener("turbolinks:click", unload);
