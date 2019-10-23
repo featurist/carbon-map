@@ -44,9 +44,14 @@ function initialiseMap(initiatives) {
               ? `<p>Email: <a href="mailto:${initiative.email}">${initiative.email}</a></p>`
               : ""
           }
-          <p>Sector: ${initiative.sector}</p>
-          <p>Theme: ${initiative.theme}</p>
-          <p>Solution: ${initiative.solution}</p>
+          ${initiative.solutions
+            .map(item => {
+              return `<p>Sector: ${item.sector}</p>
+              <p>Theme: ${item.theme}</p>
+              <p>Class: ${item.class}</p>
+              <p>Solution: ${item.solution}</p>`;
+            })
+            .join("")}
           <p>Notes: ${initiative.notes}</p>
           <p>Added By: ${initiative.addedBy}</p>
           <p>Added On: ${initiative.timestamp}</p>
@@ -88,7 +93,9 @@ window.exploreMap = {
 
     mappedInitiatives
       .filter(init => {
-        return init.initiative[attribute] === value;
+        return init.initiative.solutions.find(
+          solution => solution[attribute] === value
+        );
       })
       .forEach(init => {
         markers.addLayer(init.marker);

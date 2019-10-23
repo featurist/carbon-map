@@ -28,15 +28,24 @@ class Initiative < ApplicationRecord
         # "website": "http://www.downtoearthstroud.co.uk/the-fruit-exchange1/",
         summary: initiative.summary,
         status: initiative.status_name,
-        "sector": 'Food',
-        "theme": 'Community food production and Food Waste',
-        "solution": 'Produce sharing',
-        # "notes": "They've mapped companies taking part in sharing the produce!",
+        solutions:
+          initiative.solutions.map do |mapped_solution|
+            create_solution(mapped_solution)
+          end,
         timestamp: initiative.updated_at
       }
     end
   end
   # rubocop:enable Metrics/MethodLength
+
+  def self.create_solution(mapped_solution)
+    {
+      sector: mapped_solution.solution_class.theme.sector.name,
+      theme: mapped_solution.solution_class.theme.name,
+      class: mapped_solution.solution_class.name,
+      solution: mapped_solution.solution.name
+    }
+  end
 
   def location_attributes
     {
