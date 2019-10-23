@@ -3,9 +3,7 @@
 require 'application_system_test_case'
 
 class TagsTest < ApplicationSystemTestCase
-  setup do
-    @tag = tags(:one)
-  end
+  setup { @tag = tags(:one) }
 
   test 'visiting the index' do
     visit tags_url
@@ -36,9 +34,7 @@ class TagsTest < ApplicationSystemTestCase
 
   test 'destroying a Tag' do
     visit tags_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
+    page.accept_confirm { click_on 'Destroy', match: :first }
 
     assert_text 'Tag was successfully destroyed'
   end

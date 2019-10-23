@@ -3,9 +3,7 @@
 require 'test_helper'
 
 class GroupTypesControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @group_type = group_types(:one)
-  end
+  setup { @group_type = group_types(:one) }
 
   test 'should get index' do
     sign_in_as :georgie
@@ -42,7 +40,8 @@ class GroupTypesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update group_type' do
     sign_in_as :georgie
-    patch group_type_url(@group_type), params: { group_type: { name: @group_type.name } }
+    patch group_type_url(@group_type),
+          params: { group_type: { name: @group_type.name } }
     assert_redirected_to group_type_url(@group_type)
   end
 

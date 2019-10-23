@@ -54,6 +54,8 @@ class InitiativesController < ApplicationController
       InitiativeStatus.all.map do |initiative_status|
         [initiative_status.name, initiative_status.id]
       end
+
+    @taxonomy_hierarchy_json = Solution.hierarchy.to_json
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -75,7 +77,8 @@ class InitiativesController < ApplicationController
       :partner_groups_role,
       :status_id,
       :gdpr,
-      :gdpr_email_verified
+      :gdpr_email_verified,
+      solutions_attributes: %i[solution_id solution_class_id]
     )
   end
   # rubocop:enable Metrics/MethodLength

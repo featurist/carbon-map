@@ -8,5 +8,6 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable
-  has_many :groups, dependent: :nullify, foreign_key: 'owner_id', inverse_of: :owner
+  has_many :groups,
+           dependent: :nullify, foreign_key: 'owner_id', inverse_of: :owner
 end

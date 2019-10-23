@@ -19,7 +19,8 @@ class GroupTypesController < ApplicationController
     @group_type = GroupType.new(group_type_params)
 
     if @group_type.save
-      redirect_to group_types_path, notice: 'Group type was successfully created.'
+      redirect_to group_types_path,
+                  notice: 'Group type was successfully created.'
     else
       render :new
     end
@@ -35,7 +36,8 @@ class GroupTypesController < ApplicationController
 
   def destroy
     @group_type.destroy!
-    redirect_to group_types_url, notice: 'Group type was successfully destroyed.'
+    redirect_to group_types_url,
+                notice: 'Group type was successfully destroyed.'
   end
 
   private

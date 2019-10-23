@@ -1,0 +1,68 @@
+
+.AddInitiativeSolution-lookup div {
+  display: flex;
+}
+
+.AddInitiativeSolution-lookup input {
+  width: 100%;
+}
+
+.AddInitiativeSolution-breadcrumb {
+}
+
+.AddInitiativeSolution-breadcrumb span {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.AddInitiativeSolution-groupResults {
+  flex-direction: column;
+}
+
+.AddInitiativeSolution-groupContainer {
+  overflow: hidden;
+}
+
+.AddInitiativeSolution-clear {
+}
+
+.AddInitiativeSolution-removeSolution {
+  float: right;
+}
+
+.AddInitiativeSolution-group {
+  flex: 10 0 auto;
+  padding: 2px;
+}
+
+.AddInitiativeSolution-group li,
+.AddInitiativeSolution-solutions li {
+  list-style-type: none;
+  padding: 3px;
+}
+
+.AddInitiativeSolution-group li:nth-child(even),
+.AddInitiativeSolution-solutions li:nth-child(even) {
+  background-color: #e5e5e5;
+}
+
+.AddInitiativeSolution-solutionSelector li {
+  cursor: default !important;
+}
+
+.AddInitiativeSolution-addSolution,
+.AddInitiativeSolution-removeSolution,
+.AddInitiativeSolution-group li {
+  cursor: pointer;
+}
+
+.AddInitiativeSolution-solutions,
+.AddInitiativeSolution-group {
+  background-color: white;
+  border: 1px solid;
+  padding: 2px;
+}
+
+.AddInitiativeSolution-groupSelected {
+  display: none;
+}

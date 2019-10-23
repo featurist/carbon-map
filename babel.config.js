@@ -34,8 +34,10 @@ module.exports = function(api) {
           modules: false,
           exclude: ["transform-typeof-symbol"]
         }
-      ]
+      ],
+      "babel-preset-hyperdom"
     ].filter(Boolean),
+
     plugins: [
       require("babel-plugin-macros"),
       require("@babel/plugin-syntax-dynamic-import").default,

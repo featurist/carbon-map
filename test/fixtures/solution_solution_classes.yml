@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  solution: one
-  solution_class: one
+  solution: ashp
+  solution_class: heat_pumps
 
 two:
-  solution: two
-  solution_class: two
+  solution: lift_share_app
+  solution_class: apps

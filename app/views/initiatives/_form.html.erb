@@ -1,5 +1,7 @@
 <% content_for :page_javascript do %>
   <%= javascript_packs_with_chunks_tag 'initiative_location_picker', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_packs_with_chunks_tag 'initiative_solution_picker', 'data-turbolinks-track': 'reload' %>
+  <script type="text/json" id="taxonomy_hierarchy_json"><%=taxonomy_hierarchy_json.html_safe%></script>
 <% end %>
 
 <%= form_with(model: initiative, local: true, html: {class: 'FormField-form'}) do |f| %>
@@ -18,11 +20,6 @@
   <%= f.form_field :name do %>
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true %>
-  <% end %>
-
-  <%= f.form_field :alternative_solution_name do %>
-    <%= f.label :alternative_solution_name %>
-    <%= f.text_field :alternative_solution_name %>
   <% end %>
 
   <%= f.form_field :summary do %>
@@ -90,6 +87,18 @@
   <%= f.form_field :status do %>
     <%= f.label :status %>
     <%= f.select :status_id, initiative_statuses %>
+  <% end %>
+
+  <h2>Solutions</h2>
+
+  <%= f.form_field :choose_solution do %>
+    <%= f.label :choose_solution %>
+    <div id="solution_picker"></div>
+  <% end %>
+
+  <%= f.form_field :alternative_solution_name do %>
+    <%= f.label :alternative_solution_name %>
+    <%= f.text_field :alternative_solution_name %>
   <% end %>
 
   <%= f.form_field :gdpr do %>

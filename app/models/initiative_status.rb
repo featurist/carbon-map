@@ -1,4 +1,3 @@
 # frozen_string_literal: true
 
-class InitiativeStatus < ApplicationRecord
-end
+class InitiativeStatus < ApplicationRecord; end

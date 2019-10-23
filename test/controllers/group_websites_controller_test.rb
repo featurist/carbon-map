@@ -23,9 +23,8 @@ class GroupWebsitesControllerTest < ActionDispatch::IntegrationTest
   test 'should create group_website' do
     sign_in_as :georgie
     assert_difference('@group.websites.count') do
-      post group_group_websites_url(@group), params: {
-        group_website: { website: 'http://new.website' }
-      }
+      post group_group_websites_url(@group),
+           params: { group_website: { website: 'http://new.website' } }
     end
 
     assert_redirected_to group_group_websites_path(@group)
@@ -45,9 +44,12 @@ class GroupWebsitesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update group_website' do
     sign_in_as :georgie
-    patch group_group_website_url(@group, @group_website), params: {
-      group_website: { group: @group_website.group, website: @group_website.website }
-    }
+    patch group_group_website_url(@group, @group_website),
+          params: {
+            group_website: {
+              group: @group_website.group, website: @group_website.website
+            }
+          }
     assert_redirected_to group_group_website_url(@group, @group_website)
   end
 

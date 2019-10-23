@@ -3,9 +3,7 @@
 require 'application_system_test_case'
 
 class InitiativeStatusesTest < ApplicationSystemTestCase
-  setup do
-    @initiative_status = initiative_statuses(:one)
-  end
+  setup { @initiative_status = initiative_statuses(:one) }
 
   test 'visiting the index' do
     visit initiative_statuses_url
@@ -38,9 +36,7 @@ class InitiativeStatusesTest < ApplicationSystemTestCase
 
   test 'destroying a Initiative status' do
     visit initiative_statuses_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
+    page.accept_confirm { click_on 'Destroy', match: :first }
 
     assert_text 'Initiative status was successfully destroyed'
   end

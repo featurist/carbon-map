@@ -6,6 +6,8 @@ class Initiative < ApplicationRecord
   delegate :name, prefix: true, to: :status
   delegate :name, prefix: true, to: :lead_group
   after_initialize :set_default_location
+  has_many :solutions, class_name: 'InitiativeSolution', dependent: :destroy
+  accepts_nested_attributes_for :solutions
 
   def set_default_location
     self.latitude ||= 51.742

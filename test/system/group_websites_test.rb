@@ -3,9 +3,7 @@
 require 'application_system_test_case'
 
 class GroupWebsitesTest < ApplicationSystemTestCase
-  setup do
-    @group_website = group_websites(:one)
-  end
+  setup { @group_website = group_websites(:one) }
 
   test 'visiting the index' do
     visit group_websites_url
@@ -38,9 +36,7 @@ class GroupWebsitesTest < ApplicationSystemTestCase
 
   test 'destroying a Group website' do
     visit group_websites_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
+    page.accept_confirm { click_on 'Destroy', match: :first }
 
     assert_text 'Group website was successfully destroyed'
   end

@@ -21,7 +21,8 @@ class GroupWebsitesController < ApplicationController
     @group_website = @group.websites.new(group_website_params)
 
     if @group_website.save
-      redirect_to group_group_websites_url(@group), notice: 'Group website was successfully created.'
+      redirect_to group_group_websites_url(@group),
+                  notice: 'Group website was successfully created.'
     else
       render :new
     end
@@ -29,7 +30,8 @@ class GroupWebsitesController < ApplicationController
 
   def update
     if @group_website.update(group_website_params)
-      redirect_to [@group, @group_website], notice: 'Group website was successfully updated.'
+      redirect_to [@group, @group_website],
+                  notice: 'Group website was successfully updated.'
     else
       render :edit
     end
@@ -37,7 +39,8 @@ class GroupWebsitesController < ApplicationController
 
   def destroy
     @group_website.destroy
-    redirect_to group_group_websites_url(@group), notice: 'Group website was successfully destroyed.'
+    redirect_to group_group_websites_url(@group),
+                notice: 'Group website was successfully destroyed.'
   end
 
   private

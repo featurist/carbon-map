@@ -3,9 +3,7 @@
 require 'test_helper'
 
 class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @initiative_status = initiative_statuses(:one)
-  end
+  setup { @initiative_status = initiative_statuses(:one) }
 
   test 'should get index' do
     sign_in_as :georgie
@@ -22,9 +20,13 @@ class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
   test 'should create initiative_status' do
     sign_in_as :georgie
     assert_difference('InitiativeStatus.count') do
-      post initiative_statuses_url, params: {
-        initiative_status: { description: @initiative_status.description, name: @initiative_status.name }
-      }
+      post initiative_statuses_url,
+           params: {
+             initiative_status: {
+               description: @initiative_status.description,
+               name: @initiative_status.name
+             }
+           }
     end
 
     assert_redirected_to initiative_statuses_path
@@ -44,9 +46,13 @@ class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update initiative_status' do
     sign_in_as :georgie
-    patch initiative_status_url(@initiative_status), params: {
-      initiative_status: { description: @initiative_status.description, name: @initiative_status.name }
-    }
+    patch initiative_status_url(@initiative_status),
+          params: {
+            initiative_status: {
+              description: @initiative_status.description,
+              name: @initiative_status.name
+            }
+          }
     assert_redirected_to initiative_status_url(@initiative_status)
   end
 

@@ -19,7 +19,8 @@ class InitiativeStatusesController < ApplicationController
     @initiative_status = InitiativeStatus.new(initiative_status_params)
 
     if @initiative_status.save
-      redirect_to initiative_statuses_path, notice: 'Initiative status was successfully created.'
+      redirect_to initiative_statuses_path,
+                  notice: 'Initiative status was successfully created.'
     else
       render :new
     end
@@ -27,7 +28,8 @@ class InitiativeStatusesController < ApplicationController
 
   def update
     if @initiative_status.update(initiative_status_params)
-      redirect_to @initiative_status, notice: 'Initiative status was successfully updated.'
+      redirect_to @initiative_status,
+                  notice: 'Initiative status was successfully updated.'
     else
       render :edit
     end
@@ -35,7 +37,8 @@ class InitiativeStatusesController < ApplicationController
 
   def destroy
     @initiative_status.destroy
-    redirect_to initiative_statuses_url, notice: 'Initiative status was successfully destroyed.'
+    redirect_to initiative_statuses_url,
+                notice: 'Initiative status was successfully destroyed.'
   end
 
   private

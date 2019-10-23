@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_21_195951) do
+ActiveRecord::Schema.define(version: 2019_10_22_214904) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -50,6 +50,19 @@ ActiveRecord::Schema.define(version: 2019_10_21_195951) do
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.index %w[owner_id], name: 'index_groups_on_owner_id'
+  end
+
+  create_table 'initiative_solutions', force: :cascade do |t|
+    t.bigint 'solution_id', null: false
+    t.bigint 'solution_class_id', null: false
+    t.bigint 'initiative_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[initiative_id],
+            name: 'index_initiative_solutions_on_initiative_id'
+    t.index %w[solution_class_id],
+            name: 'index_initiative_solutions_on_solution_class_id'
+    t.index %w[solution_id], name: 'index_initiative_solutions_on_solution_id'
   end
 
   create_table 'initiative_statuses', force: :cascade do |t|
@@ -144,6 +157,9 @@ ActiveRecord::Schema.define(version: 2019_10_21_195951) do
   add_foreign_key 'group_group_types', 'group_types'
   add_foreign_key 'group_group_types', 'groups'
   add_foreign_key 'group_websites', 'groups'
+  add_foreign_key 'initiative_solutions', 'initiatives'
+  add_foreign_key 'initiative_solutions', 'solution_classes'
+  add_foreign_key 'initiative_solutions', 'solutions'
   add_foreign_key 'initiatives', 'groups', column: 'lead_group_id'
   add_foreign_key 'initiatives', 'initiative_statuses', column: 'status_id'
   add_foreign_key 'solution_classes', 'themes'

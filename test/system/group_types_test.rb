@@ -3,9 +3,7 @@
 require 'application_system_test_case'
 
 class GroupTypesTest < ApplicationSystemTestCase
-  setup do
-    @group_type = group_types(:one)
-  end
+  setup { @group_type = group_types(:one) }
 
   test 'visiting the index' do
     visit group_types_url
@@ -36,9 +34,7 @@ class GroupTypesTest < ApplicationSystemTestCase
 
   test 'destroying a Group type' do
     visit group_types_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
+    page.accept_confirm { click_on 'Destroy', match: :first }
 
     assert_text 'Group type was successfully destroyed'
   end

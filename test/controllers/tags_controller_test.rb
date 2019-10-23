@@ -3,9 +3,7 @@
 require 'test_helper'
 
 class TagsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @tag = tags(:one)
-  end
+  setup { @tag = tags(:one) }
 
   test 'should get index' do
     sign_in_as :georgie
@@ -48,9 +46,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy tag' do
     sign_in_as :georgie
-    assert_difference('Tag.count', -1) do
-      delete tag_url(@tag)
-    end
+    assert_difference('Tag.count', -1) { delete tag_url(@tag) }
 
     assert_redirected_to tags_url
   end
