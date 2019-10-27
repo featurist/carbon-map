@@ -2,10 +2,10 @@
 
 class InitiativesController < ApplicationController
   before_action :set_initiative, only: %i[show edit update destroy]
-  before_action :set_edit_data, only: %i[edit new]
+  before_action :set_edit_data, only: %i[edit new create update]
 
   def index
-    @initiatives = Initiative.all
+    @initiatives = current_user.initiatives.all
   end
 
   def show; end
@@ -19,7 +19,7 @@ class InitiativesController < ApplicationController
   def create
     @initiative = Initiative.new(initiative_params)
 
-    if @initiative.save
+    if check_user_belongs_to_group && @initiative.save
       redirect_to initiatives_path,
                   notice: 'Initiative was successfully created.'
     else
@@ -29,7 +29,7 @@ class InitiativesController < ApplicationController
 
   def update
     @initiative.solutions.clear
-    if @initiative.update(initiative_params)
+    if check_user_belongs_to_group && @initiative.update(initiative_params)
       redirect_to @initiative, notice: 'Initiative was successfully updated.'
     else
       render :edit
@@ -49,7 +49,7 @@ class InitiativesController < ApplicationController
   end
 
   def set_edit_data
-    @groups = Group.all.map { |group| [group.name, group.id] }
+    @groups = current_user.groups.all.map { |group| [group.name, group.id] }
 
     @initiative_statuses =
       InitiativeStatus.all.map do |initiative_status|
@@ -57,6 +57,14 @@ class InitiativesController < ApplicationController
       end
 
     @taxonomy_hierarchy_json = Solution.hierarchy.to_json
+  end
+
+  def check_user_belongs_to_group
+    unless current_user.groups.include?(@initiative.lead_group)
+      @initiative.errors.add(:base, 'Invalid group')
+      return false
+    end
+    true
   end
 
   # rubocop:disable Metrics/MethodLength

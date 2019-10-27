@@ -4,13 +4,13 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups.all
   end
 
   def show; end
 
   def new
-    @group = Group.new
+    @group = current_user.groups.new
   end
 
   def edit; end
