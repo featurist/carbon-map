@@ -4,24 +4,6 @@ require 'test_helper'
 
 # rubocop:disable all
 class SolutionTest < ActiveSupport::TestCase
-  test 'generates a flat list of solutions' do
-    solutions = Solution.all_flattened
-    assert_equal 2, solutions.size
-    expected_solution1 = {
-      solution: 'ASHP', class: 'Heat pumps', theme: 'Heating', sector: 'Energy'
-    }
-    expected_solution2 = {
-      solution: 'Lift Share App',
-      class: 'Apps',
-      theme: 'Lift Share',
-      sector: 'Transport'
-    }
-    assert_equal expected_solution1,
-                 solutions[0].except(:solution_id, :class_id)
-    assert_equal expected_solution2,
-                 solutions[1].except(:solution_id, :class_id)
-  end
-
   test 'generates a hierarchy of solutions' do
     solution_hierarchy = Solution.hierarchy
     expected = [

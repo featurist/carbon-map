@@ -33,3 +33,6 @@ GroupType.create! name: 'Limited Company'
 GroupType.create! name: 'Partnership'
 GroupType.create! name: 'Public Body'
 GroupType.create! name: 'Trust'
+
+User.create! email: 'admin@test.com', password: 'password', role: 'admin'
+User.create! email: 'dev@test.com', password: 'password', role: 'consumer'

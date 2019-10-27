@@ -10,4 +10,6 @@ class User < ApplicationRecord
          :validatable
   has_many :groups,
            dependent: :nullify, foreign_key: 'owner_id', inverse_of: :owner
+
+  attribute :role, :string, default: 'consumer'
 end

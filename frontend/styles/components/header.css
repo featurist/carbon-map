@@ -5,5 +5,9 @@
 }
 
 .Header-logo {
-  float: left;
+  vertical-align: top;
+}
+
+.Header-content {
+  display: inline-block;
 }

@@ -28,9 +28,7 @@ class InitiativeTest < ActiveSupport::TestCase
         summary:
           'The Fruit Exchange connects food outlets with people who have surplus fruit or veg.',
         status: 'Operational',
-        sector: 'Food',
-        theme: 'Community food production and Food Waste',
-        solution: 'Produce sharing'
+        solutions: []
       }
     ]
   end
