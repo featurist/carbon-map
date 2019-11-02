@@ -31,9 +31,14 @@
     <%= f.text_field :summary %>
   <% end %>
 
-  <%= f.form_field :image_url do %>
-    <%= f.label :image_url %>
-    <%= f.text_field :image_url %>
+  <%= f.form_field :images do %>
+    <%= f.label :images %>
+    <div>
+    <% initiative.images.each do |image|%>
+      <%= image_tag image.variant(resize_to_limit: [200, 200]) %>
+    <% end %>
+    </div>
+    <%= f.file_field :images, multiple: true, direct_upload: true %>
   <% end %>
 
   <%= f.form_field :anticipated_carbon_saving do %>
