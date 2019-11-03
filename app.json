@@ -9,6 +9,9 @@
     "STAGING_DATABASE_URL": {
       "required": true
     },
+    "GOOGLE_APPLICATION_CREDENTIALS": {
+      "required": true
+    },
     "LANG": {
       "required": true
     },

@@ -24,7 +24,7 @@ class Solution < ApplicationRecord
 
   def self.populate_sector(hierarchy, solution_class)
     name = solution_class.theme.sector.name
-    sector = hierarchy.select { |s| s[:name] == name }.first
+    sector = hierarchy.find { |s| s[:name] == name }
     if sector.nil?
       sector = { name: name, themes: [] }
       hierarchy << sector
@@ -35,7 +35,7 @@ class Solution < ApplicationRecord
   def self.populate_theme(sector, solution_class)
     name = solution_class.theme_name
     themes = sector[:themes]
-    theme = themes.select { |t| t[:name] == name }.first
+    theme = themes.find { |t| t[:name] == name }
     if theme.nil?
       theme = { name: name, classes: [] }
       sector[:themes] << theme
@@ -44,7 +44,7 @@ class Solution < ApplicationRecord
   end
 
   def self.populate_solution_class(theme, name)
-    solution_class = theme[:classes].select { |t| t[:name] == name }.first
+    solution_class = theme[:classes].find { |t| t[:name] == name }
     if solution_class.nil?
       solution_class = { name: name, solutions: [] }
       theme[:classes] << solution_class

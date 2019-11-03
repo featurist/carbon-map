@@ -5,6 +5,14 @@ require 'test_helper'
 class InitiativesControllerTest < ActionDispatch::IntegrationTest
   setup { @initiative = initiatives(:fruit_exchange) }
 
+  def avenue_image
+    Rack::Test::UploadedFile.new('test/fixtures/files/avenue.jpg', 'image/jpeg')
+  end
+
+  def header_image
+    Rack::Test::UploadedFile.new('test/fixtures/files/header.jpg', 'image/jpeg')
+  end
+
   test 'should get index' do
     sign_in_as :georgie
     get initiatives_url
@@ -20,6 +28,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   test 'should create initiative' do
     sign_in_as :georgie
     assert_difference('Initiative.count') do
+      images = [header_image]
       post initiatives_url,
            params: {
              initiative: {
@@ -28,18 +37,17 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
                contact_email: @initiative.contact_email,
                contact_name: @initiative.contact_name,
                contact_phone: @initiative.contact_phone,
-               gdpr: @initiative.gdpr,
-               gdpr_email_verified: @initiative.gdpr_email_verified,
-               image_url: @initiative.image_url,
                lead_group_id: @initiative.lead_group_id,
                locality: @initiative.locality,
                location: @initiative.location,
                name: @initiative.name,
                partner_groups_role: @initiative.partner_groups_role,
                status_id: @initiative.status_id,
-               summary: @initiative.summary
+               summary: @initiative.summary,
+               images: images
              }
            }
+      assert_equal 1, Initiative.last.images.size
     end
 
     assert_redirected_to initiatives_path
@@ -59,6 +67,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update initiative' do
     sign_in_as :georgie
+    @initiative.images.attach(header_image)
+    images = [avenue_image]
     patch initiative_url(@initiative),
           params: {
             initiative: {
@@ -67,18 +77,17 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
               contact_email: @initiative.contact_email,
               contact_name: @initiative.contact_name,
               contact_phone: @initiative.contact_phone,
-              gdpr: @initiative.gdpr,
-              gdpr_email_verified: @initiative.gdpr_email_verified,
-              image_url: @initiative.image_url,
               lead_group_id: @initiative.lead_group_id,
               locality: @initiative.locality,
               location: @initiative.location,
               name: @initiative.name,
               partner_groups_role: @initiative.partner_groups_role,
               status_id: @initiative.status_id,
-              summary: @initiative.summary
+              summary: @initiative.summary,
+              images: images
             }
           }
+    assert_equal 2, @initiative.reload.images.size
     assert_redirected_to initiative_url(@initiative)
   end
 
