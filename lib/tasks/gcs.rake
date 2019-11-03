@@ -4,8 +4,8 @@ def cors(host)
   [
     {
       "origin": [host],
-      "responseHeader": ["Content-Type", "Content-Md5"],
-      "method": ["PUT", "GET", "HEAD", "DELETE"],
+      "responseHeader": %w[Content-Type Content-Md5],
+      "method": %w[PUT GET HEAD DELETE],
       "maxAgeSeconds": 3600
     }
   ]
@@ -25,7 +25,9 @@ namespace :gcs do
   end
 
   task :staging do
+    # rubocop:disable Metrics/LineLength
     `heroku config:set GOOGLE_APPLICATION_CREDENTIALS="$(< config/secrets/google-carbon-map-staging.json)" -a carbon-map`
+    # rubocop:enable Metrics/LineLength
     update_cors('https://carbon-map.herokuapp.com', 'carbon-map-staging')
   end
 
