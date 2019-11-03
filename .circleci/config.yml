@@ -1,0 +1,160 @@
+version: 2
+
+references:
+  default_docker_ruby_executor: &default_docker_ruby_executor
+    image: circleci/ruby:2.6.5-node-browsers
+    environment:
+      PGHOST: 127.0.0.1
+      PGUSER: carbon_map_test
+      RAILS_ENV: test
+  postgres: &postgres
+    image: circleci/postgres:11.1
+    environment:
+      POSTGRES_USER: carbon_map_test
+  install_bundler: &install_bundler
+    run:
+      name: Install Bundler
+      command: |
+        echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+        source $BASH_ENV
+        gem install bundler
+  restore_repo: &restore_repo
+    restore_cache:
+      key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+  restore_bundler_cache: &restore_bundler_cache
+    restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "Gemfile.lock" }}
+        - v1-dependencies-
+  restore_yarn_cache: &restore_yarn_cache
+    restore_cache:
+      keys:
+        - v1-dependencies-yarn-{{ checksum "yarn.lock" }}
+        - v1-dependencies-yarn-
+  prepare_database: &prepare_database
+    run:
+      name: Prepare Database
+      command: |
+        dockerize -wait tcp://localhost:5432 -timeout 1m
+        bundle exec rake db:create db:schema:load
+  bundle_install: &bundle_install
+    run:
+      name: Bundle Install
+      command: bundle install --path vendor/bundle
+  yarn_install: &yarn_install
+    run:
+      name: Yarn Install
+      command: yarn install --cache-folder ~/.cache/yarn
+
+jobs:
+  checkout_code:
+    docker:
+      - *default_docker_ruby_executor
+    working_directory: ~/carbon_map
+    steps:
+      - checkout
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/carbon_map
+
+  install_dependencies:
+    docker:
+      - *default_docker_ruby_executor
+    working_directory: ~/carbon_map
+    steps:
+      - *restore_repo
+      - *install_bundler
+      - *restore_bundler_cache
+      - *bundle_install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/carbon_map/vendor/bundle
+      - *restore_yarn_cache
+      - *yarn_install
+      - save_cache:
+          key: v1-dependencies-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+  lint:
+    docker:
+      - *default_docker_ruby_executor
+    working_directory: ~/carbon_map
+    steps:
+      - *restore_repo
+      - *install_bundler
+      - *restore_bundler_cache
+      - *bundle_install
+      - run: bundle exec rubocop
+      - run: bundle exec rails_best_practices .
+
+  unit_tests:
+    docker:
+      - *default_docker_ruby_executor
+      - *postgres
+    working_directory: ~/carbon_map
+    steps:
+      - *restore_repo
+      - *install_bundler
+      - *restore_bundler_cache
+      - *bundle_install
+      - *restore_yarn_cache
+      - *yarn_install
+      - *prepare_database
+      - run: bundle exec rails test
+
+  rack_system_tests:
+    docker:
+      - *default_docker_ruby_executor
+      - *postgres
+    working_directory: ~/carbon_map
+    steps:
+      - *restore_repo
+      - *install_bundler
+      - *restore_bundler_cache
+      - *bundle_install
+      - *restore_yarn_cache
+      - *yarn_install
+      - *prepare_database
+      - run: bundle exec rails test:system
+
+  js_system_tests:
+    docker:
+      - *default_docker_ruby_executor
+      - *postgres
+    working_directory: ~/carbon_map
+    steps:
+      - *restore_repo
+      - *install_bundler
+      - *restore_bundler_cache
+      - *bundle_install
+      - *restore_yarn_cache
+      - *yarn_install
+      - *prepare_database
+      - run: JS=1 bundle exec rails test:system
+      - store_artifacts:
+          path: tmp/screenshots
+          destination: test-screenshots
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - checkout_code
+      - install_dependencies:
+          requires:
+            - checkout_code
+      - lint:
+          requires:
+            - install_dependencies
+      - unit_tests:
+          requires:
+            - install_dependencies
+      - rack_system_tests:
+          requires:
+            - install_dependencies
+      - js_system_tests:
+          requires:
+            - install_dependencies
