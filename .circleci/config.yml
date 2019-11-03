@@ -105,38 +105,38 @@ jobs:
       - *prepare_database
       - run: bundle exec rails test
 
-  rack_system_tests:
-    docker:
-      - *default_docker_ruby_executor
-      - *postgres
-    working_directory: ~/carbon_map
-    steps:
-      - *restore_repo
-      - *install_bundler
-      - *restore_bundler_cache
-      - *bundle_install
-      - *restore_yarn_cache
-      - *yarn_install
-      - *prepare_database
-      - run: bundle exec rails test:system
-
-  js_system_tests:
-    docker:
-      - *default_docker_ruby_executor
-      - *postgres
-    working_directory: ~/carbon_map
-    steps:
-      - *restore_repo
-      - *install_bundler
-      - *restore_bundler_cache
-      - *bundle_install
-      - *restore_yarn_cache
-      - *yarn_install
-      - *prepare_database
-      - run: JS=1 bundle exec rails test:system
-      - store_artifacts:
-          path: tmp/screenshots
-          destination: test-screenshots
+  #rack_system_tests:
+  #docker:
+  #- *default_docker_ruby_executor
+  #- *postgres
+  #working_directory: ~/carbon_map
+  #steps:
+  #- *restore_repo
+  #- *install_bundler
+  #- *restore_bundler_cache
+  #- *bundle_install
+  #- *restore_yarn_cache
+  #- *yarn_install
+  #- *prepare_database
+  #- run: bundle exec rails test:system
+#
+#js_system_tests:
+#docker:
+#- *default_docker_ruby_executor
+#- *postgres
+#working_directory: ~/carbon_map
+#steps:
+#- *restore_repo
+#- *install_bundler
+#- *restore_bundler_cache
+#- *bundle_install
+#- *restore_yarn_cache
+#- *yarn_install
+#- *prepare_database
+#- run: JS=1 bundle exec rails test:system
+#- store_artifacts:
+#path: tmp/screenshots
+#destination: test-screenshots
 
 workflows:
   version: 2
