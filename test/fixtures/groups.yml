@@ -7,8 +7,7 @@ one:
   contact_name: MyString
   contact_email: MyString
   contact_phone: MyString
-  gdpr: false
-  gdpr_email_verified: false
+  consent_to_share: true
   owner: georgie
 
 two:
@@ -18,8 +17,7 @@ two:
   contact_name: MyString
   contact_email: MyString
   contact_phone: MyString
-  gdpr: false
-  gdpr_email_verified: false
+  consent_to_share: true
   owner: georgie
 
 down_to_earth_stroud:
@@ -29,8 +27,7 @@ down_to_earth_stroud:
   contact_name: No name
   contact_phone: 01453 700011
   contact_email: info@downtoearthstroud.co.uk
-  gdpr: false
-  gdpr_email_verified: false
+  consent_to_share: true
   owner: georgie
 
 unused:
@@ -40,6 +37,5 @@ unused:
   contact_name: MyString
   contact_email: MyString
   contact_phone: MyString
-  gdpr: false
-  gdpr_email_verified: false
+  consent_to_share: true
   owner: georgie

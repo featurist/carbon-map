@@ -14,6 +14,7 @@ fruit_exchange:
   contact_phone: 01453 700011
   contact_email: info@downtoearthstroud.co.uk
   status: operational
+  consent_to_share: true
   #"website": "http://www.downtoearthstroud.co.uk/the-fruit-exchange1/",
   #"status": "implementation",
   #"sector": "Food",

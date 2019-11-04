@@ -44,7 +44,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
                partner_groups_role: @initiative.partner_groups_role,
                status_id: @initiative.status_id,
                summary: @initiative.summary,
-               images: images
+               images: images,
+               consent_to_share: true
              }
            }
       assert_equal 1, Initiative.last.images.size
@@ -84,7 +85,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
               partner_groups_role: @initiative.partner_groups_role,
               status_id: @initiative.status_id,
               summary: @initiative.summary,
-              images: images
+              images: images,
+              consent_to_share: true
             }
           }
     assert_equal 2, @initiative.reload.images.size

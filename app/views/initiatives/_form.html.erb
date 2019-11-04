@@ -111,14 +111,9 @@
     <%= f.text_field :alternative_solution_name %>
   <% end %>
 
-  <%= f.form_field :gdpr do %>
-    <%= f.label :gdpr %>
-    <%= f.check_box :gdpr %>
-  <% end %>
-
-  <%= f.form_field :gdpr_email_verified do %>
-    <%= f.label :gdpr_email_verified %>
-    <%= f.check_box :gdpr_email_verified %>
+  <%= f.form_field :consent_to_share do %>
+    <%= f.label :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced? ' %>
+    <%= f.check_box :consent_to_share %>
   <% end %>
 
   <div class="FormField-actions">
