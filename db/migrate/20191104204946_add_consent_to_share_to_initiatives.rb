@@ -5,7 +5,7 @@ class AddConsentToShareToInitiatives < ActiveRecord::Migration[6.0]
     add_column :initiatives,
                :consent_to_share,
                :bool,
-               default: true, null: false
+               default: false, null: false
     remove_column :initiatives, :gdpr, :bool
     remove_column :initiatives, :gdpr_email_verified, :bool
   end

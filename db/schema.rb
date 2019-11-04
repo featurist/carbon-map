@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_204946) do
+ActiveRecord::Schema.define(version: 2019_11_04_205843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -66,11 +66,10 @@ ActiveRecord::Schema.define(version: 2019_11_04_204946) do
     t.string 'contact_name'
     t.string 'contact_email'
     t.string 'contact_phone'
-    t.boolean 'gdpr'
-    t.boolean 'gdpr_email_verified'
     t.bigint 'owner_id'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.boolean 'consent_to_share', default: false, null: false
     t.index %w[owner_id], name: 'index_groups_on_owner_id'
   end
 
@@ -111,7 +110,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_204946) do
     t.datetime 'updated_at', precision: 6, null: false
     t.float 'latitude'
     t.float 'longitude'
-    t.boolean 'consent_to_share', default: true, null: false
+    t.boolean 'consent_to_share', default: false, null: false
     t.index %w[lead_group_id], name: 'index_initiatives_on_lead_group_id'
     t.index %w[status_id], name: 'index_initiatives_on_status_id'
   end

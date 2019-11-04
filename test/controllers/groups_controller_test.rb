@@ -27,10 +27,9 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
                contact_email: @group.contact_email,
                contact_name: @group.contact_name,
                contact_phone: @group.contact_phone,
-               gdpr: @group.gdpr,
-               gdpr_email_verified: @group.gdpr_email_verified,
                name: @group.name,
-               opening_hours: @group.opening_hours
+               opening_hours: @group.opening_hours,
+               consent_to_share: true
              }
            }
     end
@@ -59,8 +58,6 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
               contact_email: @group.contact_email,
               contact_name: @group.contact_name,
               contact_phone: @group.contact_phone,
-              gdpr: @group.gdpr,
-              gdpr_email_verified: @group.gdpr_email_verified,
               name: @group.name,
               opening_hours: @group.opening_hours
             }

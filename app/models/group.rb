@@ -8,4 +8,5 @@ class Group < ApplicationRecord
            foreign_key: 'lead_group_id',
            dependent: :destroy,
            inverse_of: :lead_group
+  validates :consent_to_share, acceptance: true
 end

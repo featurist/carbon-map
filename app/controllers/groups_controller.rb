@@ -52,8 +52,7 @@ class GroupsController < ApplicationController
       :contact_name,
       :contact_email,
       :contact_phone,
-      :gdpr,
-      :gdpr_email_verified
+      :consent_to_share
     )
   end
 end
