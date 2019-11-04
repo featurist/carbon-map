@@ -1,0 +1,12 @@
+<% if resource.errors.any? %>
+  <%= content_tag :div, class: "Alert Alert--danger", role: 'alert' do %>
+    <p class="u-mb">
+      <%= 'Error'.pluralize(resource.errors.count) %>:
+    </p>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
