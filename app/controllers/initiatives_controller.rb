@@ -31,8 +31,9 @@ class InitiativesController < ApplicationController
     @initiative.solutions.clear
     params = initiative_params
     images = params.delete 'images'
+
     if check_user_belongs_to_group && @initiative.update(params)
-      @initiative.images.attach images
+      @initiative.images.attach images if images
       redirect_to @initiative, notice: 'Initiative was successfully updated.'
     else
       render :edit
@@ -87,8 +88,7 @@ class InitiativesController < ApplicationController
       :contact_phone,
       :partner_groups_role,
       :status_id,
-      :gdpr,
-      :gdpr_email_verified,
+      :consent_to_share,
       solutions_attributes: %i[solution_id solution_class_id], images: []
     )
   end

@@ -9,6 +9,7 @@ class Initiative < ApplicationRecord
   has_many :solutions, class_name: 'InitiativeSolution', dependent: :destroy
   has_many_attached :images
   accepts_nested_attributes_for :solutions
+  validates :consent_to_share, acceptance: true
 
   def set_default_location
     self.latitude ||= 51.742
