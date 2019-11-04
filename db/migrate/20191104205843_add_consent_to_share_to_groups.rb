@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddConsentToShareToGroups < ActiveRecord::Migration[6.0]
   def change
     add_column :groups, :consent_to_share, :bool, default: false, null: false
