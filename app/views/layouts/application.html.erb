@@ -36,9 +36,13 @@
       </div>
     </section>
     <% if notice || alert %>
-      <section class="Notices">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+      <section class="Alerts">
+        <% if notice %>
+        <p class="Alert Alert--info"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="Alert Alert--danger"><%= alert %></p>
+        <% end %>
       </section>
     <% end %>
     <section class="Content">
