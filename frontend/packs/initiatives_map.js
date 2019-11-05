@@ -1,12 +1,10 @@
 import L from "leaflet";
 import "leaflet.markercluster";
 import { GestureHandling } from "leaflet-gesture-handling";
-import mobileCheck from "./mobileCheck";
 
 let carbonExplorer, mappedInitiatives, markers;
 
 function initialiseMap(initiatives) {
-  const isMobile = mobileCheck();
   L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
   carbonExplorer = L.map("explore", {
     gestureHandling: true,
@@ -26,6 +24,7 @@ function initialiseMap(initiatives) {
   ).addTo(carbonExplorer);
 
   markers = L.markerClusterGroup();
+  const explorePanel = document.querySelector(".Explore-panel");
 
   mappedInitiatives = initiatives.map(initiative => {
     var marker = L.marker(initiative.location.latlng);
@@ -56,29 +55,34 @@ function initialiseMap(initiatives) {
           <p>Added By: ${initiative.addedBy}</p>
           <p>Added On: ${initiative.timestamp}</p>
            `;
-    if (isMobile) {
-      marker.on("click", () => {
-        const initiative = document.createElement("section");
-        initiative.className = "InitiativeView";
-        initiative.innerHTML = `
+
+    marker.on("click", e => {
+      const initiative = document.createElement("section");
+      initiative.className = "InitiativeView";
+      initiative.innerHTML = `
           <button class="InitiativeView-close">X</button>
           ${initiativeHtml}
         `;
-        document.body.appendChild(initiative);
-        document.body.classList.add("InitiativeView-disableScrolling");
-        initiative
-          .querySelector(".InitiativeView-close")
-          .addEventListener("click", () => {
-            document.body.removeChild(initiative);
-            document.body.classList.remove("InitiativeView-disableScrolling");
-          });
-      });
-    } else {
-      marker.bindPopup(
-        `<div class="InitiativeView-scroll">${initiativeHtml}</div>`
-      );
-    }
+      const initiativeContainer = document.querySelector(".Explore-initiative");
+      while (initiativeContainer.firstChild) {
+        initiativeContainer.removeChild(initiativeContainer.firstChild);
+      }
+      explorePanel.classList.add("Explore-panel_initiative_visible");
+      initiativeContainer.appendChild(initiative);
+      initiative
+        .querySelector(".InitiativeView-close")
+        .addEventListener("click", () => {
+          initiativeContainer.removeChild(initiative);
+          explorePanel.classList.remove("Explore-panel_initiative_visible");
+          carbonExplorer.invalidateSize();
+        });
+
+      carbonExplorer.invalidateSize();
+      carbonExplorer.panTo(e.latlng);
+    });
+
     markers.addLayer(marker);
+
     return {
       initiative,
       marker

@@ -26,7 +26,25 @@
 }
 
 .Explore-map {
+  flex: 1;
   height: 250px;
+}
+
+.Explore-panel {
+  display: flex;
+}
+
+.Explore-initiative {
+  display: none;
+  flex: 1;
+}
+
+.Explore-panel_initiative_visible .Explore-map {
+  display: none;
+}
+
+.Explore-panel_initiative_visible .Explore-initiative {
+  display: block;
 }
 
 @media (--bp-mobile) {
@@ -38,16 +56,17 @@
   .Explore-map {
     height: 450px;
   }
+
+  .Explore-panel_initiative_visible .Explore-map {
+    display: block;
+  }
+
+  .Explore-panel_initiative_visible .Explore-initiative {
+    display: block;
+  }
 }
 
 .InitiativeView {
-  background-color: white;
-  height: 100%;
-  left: 0;
-  overflow-y: scroll;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
 }
 
 .InitiativeView-scroll p {
@@ -55,7 +74,6 @@
 }
 
 .InitiativeView-disableScrolling {
-  overflow: hidden;
 }
 
 .InitiativeView-scroll {
