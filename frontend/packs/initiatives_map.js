@@ -29,6 +29,18 @@ function initialiseMap(initiatives) {
   mappedInitiatives = initiatives.map(initiative => {
     var marker = L.marker(initiative.location.latlng);
     const initiativeHtml = `<h1>${initiative.name}</h1>
+          ${
+            initiative.images.length
+              ? `
+          <div class="Initiative-images_scroller">
+            <div class="Initiative-images">
+            ${initiative.images.map(imageUrl => {
+              return `<img src=${imageUrl}" />`;
+            })}
+            </div>
+          </div>`
+              : ""
+          }
           <p>${initiative.summary}</p>
           <p>Group: ${initiative.group}</p>
           <p>Contact Name: ${initiative.contactName}</p>
@@ -51,8 +63,6 @@ function initialiseMap(initiatives) {
               <p>Solution: ${item.solution}</p>`;
             })
             .join("")}
-          <p>Notes: ${initiative.notes}</p>
-          <p>Added By: ${initiative.addedBy}</p>
           <p>Added On: ${initiative.timestamp}</p>
            `;
 

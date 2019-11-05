@@ -47,6 +47,12 @@
   display: block;
 }
 
+.Initiative-images_scroller {
+  overflow-x: auto;
+  white-space: nowrap;
+  width: calc(100vw - 30px);
+}
+
 @media (--bp-mobile) {
 
   .Explore-navigation {
@@ -57,12 +63,21 @@
     height: 450px;
   }
 
+  .Explore-initiative {
+    height: 450px;
+    overflow-y: auto;
+  }
+
   .Explore-panel_initiative_visible .Explore-map {
     display: block;
   }
 
   .Explore-panel_initiative_visible .Explore-initiative {
     display: block;
+  }
+
+  .Initiative-images_scroller {
+    width: calc(50vw - 35px);
   }
 }
 

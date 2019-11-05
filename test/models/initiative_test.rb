@@ -28,7 +28,8 @@ class InitiativeTest < ActiveSupport::TestCase
         summary:
           'The Fruit Exchange connects food outlets with people who have surplus fruit or veg.',
         status: 'Operational',
-        solutions: []
+        solutions: [],
+        images: []
       }
     ]
   end
