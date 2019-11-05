@@ -18,17 +18,15 @@ class Initiative < ApplicationRecord
 
   # rubocop:disable Metrics/MethodLength
   def self.approved
-    initiatives = Initiative.all
-
-    initiatives.map do |initiative|
+    Initiative.all.map do |initiative|
       {
         location: initiative.location_attributes,
         name: initiative.name,
         group: initiative.lead_group_name,
         contactName: initiative.contact_name,
         email: initiative.contact_email,
-        # "website": "http://www.downtoearthstroud.co.uk/the-fruit-exchange1/",
         summary: initiative.summary,
+        images: image_urls(initiative.images),
         status: initiative.status_name,
         solutions:
           initiative.solutions.map do |mapped_solution|
@@ -39,6 +37,15 @@ class Initiative < ApplicationRecord
     end
   end
   # rubocop:enable Metrics/MethodLength
+
+  def self.image_urls(images)
+    images.map do |image|
+      Rails.application.routes.url_helpers.rails_representation_path(
+        image.variant(resize_to_limit: [200, 200]),
+        only_path: true
+      )
+    end
+  end
 
   def self.create_solution(mapped_solution)
     {
