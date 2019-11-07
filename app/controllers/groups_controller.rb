@@ -52,7 +52,8 @@ class GroupsController < ApplicationController
       :contact_name,
       :contact_email,
       :contact_phone,
-      :consent_to_share
+      :consent_to_share,
+      websites_attributes: %i[website id _destroy]
     )
   end
 end

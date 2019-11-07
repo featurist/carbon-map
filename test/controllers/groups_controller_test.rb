@@ -29,10 +29,19 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
                contact_phone: @group.contact_phone,
                name: @group.name,
                opening_hours: @group.opening_hours,
-               consent_to_share: true
+               consent_to_share: true,
+               websites_attributes: [
+                 { website: 'http://one' },
+                 { website: 'http://two' }
+               ]
              }
            }
     end
+
+    websites = Group.last.websites
+    assert_equal 2, websites.size
+    assert_equal 'http://one', websites[0].website
+    assert_equal 'http://two', websites[1].website
 
     assert_redirected_to groups_path
   end
@@ -51,6 +60,8 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update group' do
     sign_in_as :georgie
+    @group.websites.delete_all
+    @group.websites.create! website: 'http://one'
     patch group_url(@group),
           params: {
             group: {
@@ -59,9 +70,17 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
               contact_name: @group.contact_name,
               contact_phone: @group.contact_phone,
               name: @group.name,
-              opening_hours: @group.opening_hours
+              opening_hours: @group.opening_hours,
+              websites_attributes: [
+                { website: 'http://one', id: @group.websites[0].id },
+                { website: 'http://two' }
+              ]
             }
           }
+    websites = Group.last.websites
+    assert_equal 2, websites.size
+    assert_equal 'http://one', websites[0].website
+    assert_equal 'http://two', websites[1].website
     assert_redirected_to group_url(@group)
   end
 
