@@ -19,7 +19,8 @@ class GroupsController < ApplicationController
     @group = current_user.groups.new(group_params)
 
     if @group.save
-      redirect_to groups_path, notice: 'Group was successfully created.'
+      redirect_to edit_group_path(@group),
+                  notice: 'Group was successfully created.'
     else
       render :new
     end
@@ -27,7 +28,8 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to @group, notice: 'Group was successfully updated.'
+      redirect_to edit_group_path(@group),
+                  notice: 'Group was successfully updated.'
     else
       render :edit
     end

@@ -43,7 +43,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
 
-    assert_redirected_to groups_path
+    assert_redirected_to edit_group_path(Group.last)
   end
 
   test 'should show group' do
@@ -81,7 +81,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
-    assert_redirected_to group_url(@group)
+    assert_redirected_to edit_group_path(@group)
   end
 
   test 'should destroy group' do

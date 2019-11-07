@@ -59,7 +59,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
 
-    assert_redirected_to initiatives_path
+    assert_redirected_to edit_initiative_path(Initiative.last)
   end
 
   test 'should show initiative' do
@@ -106,7 +106,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
-    assert_redirected_to initiative_url(@initiative)
+    assert_redirected_to edit_initiative_path(@initiative)
   end
 
   test 'should destroy initiative' do
