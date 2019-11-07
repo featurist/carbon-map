@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_205843) do
+ActiveRecord::Schema.define(version: 2019_11_07_233921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -91,6 +91,15 @@ ActiveRecord::Schema.define(version: 2019_11_04_205843) do
     t.string 'description'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'initiative_websites', force: :cascade do |t|
+    t.string 'website'
+    t.bigint 'initiative_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[initiative_id],
+            name: 'index_initiative_websites_on_initiative_id'
   end
 
   create_table 'initiatives', force: :cascade do |t|
@@ -183,6 +192,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_205843) do
   add_foreign_key 'initiative_solutions', 'initiatives'
   add_foreign_key 'initiative_solutions', 'solution_classes'
   add_foreign_key 'initiative_solutions', 'solutions'
+  add_foreign_key 'initiative_websites', 'initiatives'
   add_foreign_key 'initiatives', 'groups', column: 'lead_group_id'
   add_foreign_key 'initiatives', 'initiative_statuses', column: 'status_id'
   add_foreign_key 'solution_classes', 'themes'

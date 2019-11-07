@@ -45,11 +45,19 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
                status_id: @initiative.status_id,
                summary: @initiative.summary,
                images: images,
-               consent_to_share: true
+               consent_to_share: true,
+               websites_attributes: [
+                 { website: 'http://one' },
+                 { website: 'http://two' }
+               ]
              }
            }
       assert_equal 1, Initiative.last.images.size
     end
+    websites = Initiative.last.websites
+    assert_equal 2, websites.size
+    assert_equal 'http://one', websites[0].website
+    assert_equal 'http://two', websites[1].website
 
     assert_redirected_to initiatives_path
   end
@@ -86,10 +94,18 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
               status_id: @initiative.status_id,
               summary: @initiative.summary,
               images: images,
-              consent_to_share: true
+              consent_to_share: true,
+              websites_attributes: [
+                { website: 'http://one' },
+                { website: 'http://two' }
+              ]
             }
           }
     assert_equal 2, @initiative.reload.images.size
+    websites = @initiative.websites
+    assert_equal 2, websites.size
+    assert_equal 'http://one', websites[0].website
+    assert_equal 'http://two', websites[1].website
     assert_redirected_to initiative_url(@initiative)
   end
 

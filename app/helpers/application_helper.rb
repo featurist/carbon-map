@@ -15,7 +15,7 @@ module ApplicationHelper
 
   def add_object_link_js(where, html)
     "
-      const index = document.querySelectorAll('.GroupWebsite-partial').length
+      const index = document.querySelectorAll('.CollectionItem-partial').length
 document.getElementById('#{
       where
     }').insertAdjacentHTML('beforeend', `#{

@@ -89,7 +89,9 @@ class InitiativesController < ApplicationController
       :partner_groups_role,
       :status_id,
       :consent_to_share,
-      solutions_attributes: %i[solution_id solution_class_id], images: []
+      solutions_attributes: %i[solution_id solution_class_id],
+      images: [],
+      websites_attributes: %i[website id _destroy]
     )
   end
   # rubocop:enable Metrics/MethodLength
