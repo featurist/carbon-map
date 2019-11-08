@@ -19,7 +19,7 @@ Performance:
   Exclude:
     - "**/test/**/*"
 
-Lint/UnneededCopDisableDirective:
+Lint/RedundantCopDisableDirective:
   Exclude:
     - "**/*.*"
 
