@@ -29,29 +29,15 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :georgie
     assert_difference('Initiative.count') do
       images = [header_image]
-      post initiatives_url,
-           params: {
-             initiative: {
-               alternative_solution_name: @initiative.alternative_solution_name,
-               anticipated_carbon_saving: @initiative.anticipated_carbon_saving,
-               contact_email: @initiative.contact_email,
-               contact_name: @initiative.contact_name,
-               contact_phone: @initiative.contact_phone,
-               lead_group_id: @initiative.lead_group_id,
-               locality: @initiative.locality,
-               location: @initiative.location,
-               name: @initiative.name,
-               partner_groups_role: @initiative.partner_groups_role,
-               status_id: @initiative.status_id,
-               summary: @initiative.summary,
-               images: images,
-               consent_to_share: true
-             }
-           }
+      post initiatives_url, params: create_params(@initiative, images)
       assert_equal 1, Initiative.last.images.size
     end
+    websites = Initiative.last.websites
+    assert_equal 2, websites.size
+    assert_equal 'http://one', websites[0].website
+    assert_equal 'http://two', websites[1].website
 
-    assert_redirected_to initiatives_path
+    assert_redirected_to edit_initiative_path(Initiative.last)
   end
 
   test 'should show initiative' do
@@ -71,26 +57,13 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     @initiative.images.attach(header_image)
     images = [avenue_image]
     patch initiative_url(@initiative),
-          params: {
-            initiative: {
-              alternative_solution_name: @initiative.alternative_solution_name,
-              anticipated_carbon_saving: @initiative.anticipated_carbon_saving,
-              contact_email: @initiative.contact_email,
-              contact_name: @initiative.contact_name,
-              contact_phone: @initiative.contact_phone,
-              lead_group_id: @initiative.lead_group_id,
-              locality: @initiative.locality,
-              location: @initiative.location,
-              name: @initiative.name,
-              partner_groups_role: @initiative.partner_groups_role,
-              status_id: @initiative.status_id,
-              summary: @initiative.summary,
-              images: images,
-              consent_to_share: true
-            }
-          }
+          params: update_params(@initiative, images)
     assert_equal 2, @initiative.reload.images.size
-    assert_redirected_to initiative_url(@initiative)
+    websites = @initiative.websites
+    assert_equal 2, websites.size
+    assert_equal 'http://one', websites[0].website
+    assert_equal 'http://two', websites[1].website
+    assert_redirected_to edit_initiative_path(@initiative)
   end
 
   test 'should destroy initiative' do
@@ -101,4 +74,58 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to initiatives_url
   end
+
+  private
+
+  # rubocop:disable Metrics/MethodLength
+  def create_params(initiative, images)
+    {
+      initiative: {
+        alternative_solution_name: initiative.alternative_solution_name,
+        anticipated_carbon_saving: initiative.anticipated_carbon_saving,
+        contact_email: initiative.contact_email,
+        contact_name: initiative.contact_name,
+        contact_phone: initiative.contact_phone,
+        lead_group_id: initiative.lead_group_id,
+        locality: initiative.locality,
+        location: initiative.location,
+        name: initiative.name,
+        partner_groups_role: initiative.partner_groups_role,
+        status_id: initiative.status_id,
+        summary: initiative.summary,
+        images: images,
+        consent_to_share: true,
+        websites_attributes: [
+          { website: 'http://one' },
+          { website: 'http://two' }
+        ]
+      }
+    }
+  end
+
+  def update_params(initiative, images)
+    {
+      initiative: {
+        alternative_solution_name: initiative.alternative_solution_name,
+        anticipated_carbon_saving: initiative.anticipated_carbon_saving,
+        contact_email: initiative.contact_email,
+        contact_name: initiative.contact_name,
+        contact_phone: initiative.contact_phone,
+        lead_group_id: initiative.lead_group_id,
+        locality: initiative.locality,
+        location: initiative.location,
+        name: initiative.name,
+        partner_groups_role: initiative.partner_groups_role,
+        status_id: initiative.status_id,
+        summary: initiative.summary,
+        images: images,
+        consent_to_share: true,
+        websites_attributes: [
+          { website: 'http://one' },
+          { website: 'http://two' }
+        ]
+      }
+    }
+  end
+  # rubocop:enable Metrics/MethodLength
 end

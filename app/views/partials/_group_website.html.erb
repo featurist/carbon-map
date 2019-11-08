@@ -1,0 +1,10 @@
+<div class="CollectionItem-partial">
+  <%= f.form_field :website do %>
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+  <% end %>
+  <%= f.form_field :_destroy do %>
+    <%= f.label :_destroy, 'Delete' %>
+    <%= f.check_box :_destroy, {}, true, false %>
+  <% end %>
+</div>

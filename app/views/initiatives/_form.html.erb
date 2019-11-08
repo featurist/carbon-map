@@ -56,6 +56,18 @@
     </div>
   </label>
 
+  <h2>Websites</h2>
+  <div id="websites">
+    <%= f.fields_for :websites do |website_form| %>
+      <%= render 'partials/initiative_website', f: website_form %>
+    <% end %>
+  </div>
+  <div class="FormField">
+    <%= f.fields_for :websites, InitiativeWebsite.new do |website_form| %>
+    <%= add_object_link 'Add website', 'websites', :partial => 'partials/initiative_website', :locals => { :f => website_form } %>
+    <% end %>
+  </div>
+
   <h2>Contact</h2>
 
   <%= f.form_field :contact_name do %>

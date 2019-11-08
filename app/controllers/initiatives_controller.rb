@@ -20,7 +20,7 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.new(initiative_params)
 
     if check_user_belongs_to_group && @initiative.save
-      redirect_to initiatives_path,
+      redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully created.'
     else
       render :new
@@ -34,7 +34,8 @@ class InitiativesController < ApplicationController
 
     if check_user_belongs_to_group && @initiative.update(params)
       @initiative.images.attach images if images
-      redirect_to @initiative, notice: 'Initiative was successfully updated.'
+      redirect_to edit_initiative_path(@initiative),
+                  notice: 'Initiative was successfully updated.'
     else
       render :edit
     end
@@ -89,7 +90,9 @@ class InitiativesController < ApplicationController
       :partner_groups_role,
       :status_id,
       :consent_to_share,
-      solutions_attributes: %i[solution_id solution_class_id], images: []
+      solutions_attributes: %i[solution_id solution_class_id],
+      images: [],
+      websites_attributes: %i[website id _destroy]
     )
   end
   # rubocop:enable Metrics/MethodLength

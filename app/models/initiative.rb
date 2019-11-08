@@ -8,7 +8,9 @@ class Initiative < ApplicationRecord
   after_initialize :set_default_location
   has_many :solutions, class_name: 'InitiativeSolution', dependent: :destroy
   has_many_attached :images
+  has_many :websites, class_name: 'InitiativeWebsite', dependent: :destroy
   accepts_nested_attributes_for :solutions
+  accepts_nested_attributes_for :websites, allow_destroy: true
   validates :consent_to_share, acceptance: true
 
   def set_default_location
