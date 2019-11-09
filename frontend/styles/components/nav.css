@@ -1,0 +1,44 @@
+.Nav {
+  background-color: #ff9700;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 7px;
+}
+
+.Nav a {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.Nav a::before {
+  font-size: 3em;
+  font-weight: 900;
+  line-height: 0.55em;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.Nav a::active {
+  color: #ff9700;
+}
+
+.Nav-main {
+  display: inline-block;
+}
+
+.Nav-main a::before {
+  content: "\22c5";
+}
+
+.Nav-supplementary {
+  display: inline-block;
+}
+
+.Nav-supplementary a::before {
+  content: " ";
+}

@@ -14,27 +14,24 @@
 
   <body>
     <section class="Header">
-      <%=image_tag asset_pack_path("media/images/logo.png"), width: 100, class: 'Header-logo' %>
-      <div class="Header-content">
-        <h1>Carbon Neutral 2030</h1>
-        <p>Connecting people with initiatives</p>
-        <p>
-        <%= link_to 'Home', root_path %> |
-        <%= link_to('Initiatives', initiatives_path) + ' |' if user_signed_in? %>
-        <%= link_to('Groups', groups_path) + ' |' if user_signed_in? %>
-        <%= link_to 'Sign in', new_user_session_path unless user_signed_in? %>
-        <%= link_to 'Sign up', new_user_registration_path unless user_signed_in? %>
-        <%= link_to 'Sign out', destroy_user_session_path if user_signed_in? %>
-
-        </p>
-        <% if user_is_admin? %>
-          <p>
-          <%= link_to('Group Types', group_types_path) + ' |'  %>
-          <%= link_to('Initiative Statuses', initiative_statuses_path) %>
-          </p>
-        <% end %>
+      <div class="Header-main">
+        <%=link_to image_tag(asset_pack_path("media/images/logo.png"), width: 100, class: 'Header-logo'), root_path %>
+        <div class="Header-content">
+          <nav class="Nav">
+            <span class="Nav-main">
+              <%=link_to 'Add a project', new_initiative_path %>
+              <a>Explore projects</a>
+            </span>
+            <span class="Nav-supplementary">
+              <a>About</a>
+              <a>Contact</a>
+            </span>
+          </nav>
+        </div>
       </div>
+      <p>Connecting low carbon initiatives across Stroud District</p>
     </section>
+
     <% if notice || alert %>
       <section class="Alerts">
         <% if notice %>
@@ -49,6 +46,26 @@
       <%= yield %>
     </section>
     <%= yield :raw %>
+    <section>
+        <p>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to('Initiatives', initiatives_path) + ' |' if user_signed_in? %>
+        <%= link_to('Groups', groups_path) + ' |' if user_signed_in? %>
+        <% unless user_signed_in? %>
+          <%= link_to 'Sign in', new_user_session_path %> |
+          <%= link_to 'Sign up', new_user_registration_path %>
+        <% end %>
+        <%= link_to 'Sign out', destroy_user_session_path if user_signed_in? %>
+
+        </p>
+        <% if user_is_admin? %>
+          <p>
+          <%= link_to('Group Types', group_types_path) + ' |'  %>
+          <%= link_to('Initiative Statuses', initiative_statuses_path) %>
+          </p>
+        <% end %>
+      </div>
+    </section>
     <section class="Footer"></section>
     <%= yield :page_javascript %>
   </body>

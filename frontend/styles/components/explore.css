@@ -11,7 +11,7 @@
 }
 
 .Explore-navigation a {
-  background-color: $red;
+  background-color: #00dfe9;
   color: white;
   cursor: pointer;
   flex: 1;
@@ -19,10 +19,24 @@
   margin-right: 2px;
   padding: 3px;
   text-align: center;
+  text-decoration: none;
+}
+
+.Explore-navigation a::before {
+  content: "\22c5";
+  font-size: 3em;
+  font-weight: 900;
+  line-height: 0.55em;
+  margin: 0;
+  vertical-align: middle;
 }
 
 .Explore-navigation a:last-of-type {
   margin-right: 0;
+}
+
+.Explore-navigation a.Explore-navigation-selected {
+  background-color: #ff9700;
 }
 
 .Explore-map {
