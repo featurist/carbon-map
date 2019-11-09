@@ -12,4 +12,9 @@
 .Header-content {
   display: inline-block;
   flex: max-content;
+  margin-left: 15px;
+}
+
+.Header-strapline {
+  margin: 0 5px;
 }

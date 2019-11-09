@@ -15,7 +15,7 @@
   <body>
     <section class="Header">
       <div class="Header-main">
-        <%=link_to image_tag(asset_pack_path("media/images/logo.png"), width: 100, class: 'Header-logo'), root_path %>
+        <%=link_to image_tag(asset_pack_path("media/images/logo.svg"), width: 100, class: 'Header-logo'), root_path %>
         <div class="Header-content">
           <nav class="Nav">
             <span class="Nav-main">
@@ -29,7 +29,7 @@
           </nav>
         </div>
       </div>
-      <p>Connecting low carbon initiatives across Stroud District</p>
+      <p class="Header-strapline">Connecting low carbon initiatives across Stroud District</p>
     </section>
 
     <% if notice || alert %>
