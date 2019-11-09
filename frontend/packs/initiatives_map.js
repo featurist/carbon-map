@@ -102,6 +102,12 @@ function initialiseMap(initiatives) {
 }
 
 window.exploreMap = {
+  select: function(el) {
+    document.querySelectorAll(".Explore-navigation-selected").forEach(a => {
+      a.classList.remove("Explore-navigation-selected");
+    });
+    el.classList.add("Explore-navigation-selected");
+  },
   filter: function(attribute, value) {
     mappedInitiatives.forEach(init => markers.removeLayer(init.marker));
 

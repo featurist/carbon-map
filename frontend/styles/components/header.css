@@ -1,13 +1,15 @@
 .Header {}
 
-.Header {
-  border-bottom: 5px solid #4c4c4c;
-}
-
 .Header-logo {
   vertical-align: top;
 }
 
+.Header-main {
+  align-items: center;
+  display: flex;
+}
+
 .Header-content {
   display: inline-block;
+  flex: max-content;
 }
