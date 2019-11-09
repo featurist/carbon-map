@@ -32,6 +32,20 @@
       <p>Connecting low carbon initiatives across Stroud District</p>
     </section>
 
+    <% if notice || alert %>
+      <section class="Alerts">
+        <% if notice %>
+        <p class="Alert Alert--info"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="Alert Alert--danger"><%= alert %></p>
+        <% end %>
+      </section>
+    <% end %>
+    <section class="Content">
+      <%= yield %>
+    </section>
+    <%= yield :raw %>
     <section>
         <p>
         <%= link_to 'Home', root_path %> |
@@ -52,20 +66,6 @@
         <% end %>
       </div>
     </section>
-    <% if notice || alert %>
-      <section class="Alerts">
-        <% if notice %>
-        <p class="Alert Alert--info"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="Alert Alert--danger"><%= alert %></p>
-        <% end %>
-      </section>
-    <% end %>
-    <section class="Content">
-      <%= yield %>
-    </section>
-    <%= yield :raw %>
     <section class="Footer"></section>
     <%= yield :page_javascript %>
   </body>
