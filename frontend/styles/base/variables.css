@@ -6,7 +6,7 @@ $snow: rgba(255, 252, 249, 1);
 
 $bp-mobile-width: 504px;
 $bp-tablet-width: 756px;
-$bp-tablet-landscape-width: 1008px;
+$bp-tablet-landscape-width: 1024px;
 $bp-desktop-width: 1260px;
 
 @custom-media --bp-mobile (min-width: $bp-mobile-width);

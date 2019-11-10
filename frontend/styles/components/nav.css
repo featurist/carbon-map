@@ -2,18 +2,18 @@
   background-color: #ff9700;
   color: #fff;
   display: flex;
-  justify-content: space-between;
+  height: 29px;
   padding: 7px;
 }
 
 .Nav a {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
+  line-height: 1.8em;
   margin-left: 5px;
   margin-right: 5px;
   text-align: center;
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .Nav a::before {
@@ -28,26 +28,49 @@
   color: #ff9700;
 }
 
-.Nav-main {
-  display: inline-block;
-}
-
 .Nav-main a::before {
   content: "\22c5";
 }
 
+.Nav-main,
 .Nav-supplementary {
+  display: none;
+  flex: 1;
+}
+
+.Nav-supplementary {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Nav-supplementary a {
+  margin: 0 10px;
+}
+
+.Nav-flyover {
   display: none;
 }
 
-.Nav-burger {
-
+.Nav.Nav-open .Nav-flyover {
+  background-color: #ff9700;
+  display: block;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 34px;
+  z-index: 600;
 }
 
-@media (--bp-mobile) {
+.Nav-flyover a {
+  display: block;
+  text-align: left;
+}
 
-  .Nav-supplementary {
-    display: inline-block;
+@media (--bp-tablet-landscape) {
+
+  .Nav-supplementary,
+  .Nav-main {
+    display: flex;
   }
 
   .Nav-supplementary a::before {

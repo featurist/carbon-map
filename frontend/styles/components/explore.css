@@ -69,10 +69,6 @@
 
 @media (--bp-mobile) {
 
-  .Explore-navigation {
-    flex-wrap: nowrap;
-  }
-
   .Explore-map {
     height: 450px;
   }
