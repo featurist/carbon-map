@@ -42,20 +42,22 @@
               <a>About</a>
               <a>Contact</a>
               <hr />
-              <% if user_signed_in? %>
-                <%= link_to('Initiatives', initiatives_path) %>
-                <%= link_to('Groups', groups_path) %>
-                <hr />
-                <%= link_to 'Sign out', destroy_user_session_path %>
-              <% end %>
               <% unless user_signed_in? %>
                 <%= link_to 'Sign in', new_user_session_path %>
                 <%= link_to 'Sign up', new_user_registration_path %>
               <% end %>
+              <% if user_signed_in? %>
+                <%= link_to('Initiatives', initiatives_path) %>
+                <%= link_to('Groups', groups_path) %>
+              <% end %>
               <% if user_is_admin? %>
                 <hr />
-                <%= link_to('Group Types', group_types_path) %> |
+                <%= link_to('Group Types', group_types_path) %>
                 <%= link_to('Initiative Statuses', initiative_statuses_path) %>
+              <% end %>
+              <% if user_signed_in? %>
+                <hr />
+                <%= link_to 'Sign out', destroy_user_session_path %>
               <% end %>
             </span>
             </nav>
