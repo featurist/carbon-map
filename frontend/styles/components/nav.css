@@ -58,7 +58,7 @@
   position: absolute;
   right: 0;
   top: 34px;
-  z-index: 600;
+  z-index: 10000;
 }
 
 .Nav-flyover a {
