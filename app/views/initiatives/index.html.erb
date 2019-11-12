@@ -3,9 +3,11 @@
   'Initiatives'
 ] %>
 
-<h1>Initiatives</h1>
 
-<%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false %>
+<div class="PageHeader">
+  <h1 class="PageHeader-heading">Initiatives</h1>
+  <%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false, class: 'PageHeader-action' %>
+</div>
 
 <table>
   <thead>
@@ -25,7 +27,7 @@
         <td><%= initiative.summary %></td>
         <td><%= initiative.location %></td>
         <td><%= initiative.status_name %></td>
-        <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false %></td>
+        <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false, class: 'Button' %></td>
       </tr>
     <% end %>
   </tbody>

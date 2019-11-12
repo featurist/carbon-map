@@ -7,6 +7,7 @@
 @import "./base/variables";
 @import "./components/alert";
 @import "./components/breadcrumb";
+@import "./components/button";
 @import "./components/explore";
 @import "./components/header";
 @import "./components/content";
@@ -14,6 +15,7 @@
 @import "./components/initiative-location-picker";
 @import "./components/initiative-solution-picker";
 @import "./components/nav";
+@import "./components/page_header";
 
 @font-face {
   font-family: "fira_sansregular";

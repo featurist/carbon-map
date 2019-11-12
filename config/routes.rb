@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :groups, only: %i[index new edit create update]
   resources :tags
   scope '/admin' do
-    resources :initiative_statuses
+    resources :initiative_statuses, only: %i[index new edit create update]
     resources :group_types, only: %i[index new edit create update]
   end
   devise_for :users

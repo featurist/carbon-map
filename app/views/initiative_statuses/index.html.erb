@@ -1,4 +1,12 @@
-<h1>Initiative Statuses</h1>
+<%= render 'partials/breadcrumb', items: [
+  link_to('Admin', admin_path),
+  'Initiative Statuses'
+] %>
+
+<div class="PageHeader">
+  <h1 class="PageHeader-heading">Initiative Statuses</h1>
+  <%= link_to 'New Initiative Status', new_initiative_status_path , class: 'PageHeader-action'%>
+</div>
 
 <table>
   <thead>
@@ -14,14 +22,8 @@
       <tr>
         <td><%= initiative_status.name %></td>
         <td><%= initiative_status.description %></td>
-        <td><%= link_to 'Show', initiative_status %></td>
         <td><%= link_to 'Edit', edit_initiative_status_path(initiative_status) %></td>
-        <td><%= link_to 'Destroy', initiative_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Initiative Status', new_initiative_status_path %>

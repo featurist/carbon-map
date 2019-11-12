@@ -3,9 +3,10 @@
   'Groups'
 ] %>
 
-<h1>Groups</h1>
-
-<%= link_to 'New Group', new_group_path %>
+<div class="PageHeader">
+  <h1 class="PageHeader-heading">Groups</h1>
+  <%= link_to 'New Group', new_group_path, class: 'PageHeader-action' %>
+</div>
 
 <table>
   <thead>
@@ -27,7 +28,7 @@
         <td><%= group.contact_name %></td>
         <td><%= group.contact_email %></td>
         <td><%= group.contact_phone %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td><%= link_to 'Edit', edit_group_path(group), class: 'Button' %></td>
       </tr>
     <% end %>
   </tbody>

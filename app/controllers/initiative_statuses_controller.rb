@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class InitiativeStatusesController < ApplicationController
-  before_action :set_initiative_status, only: %i[show edit update destroy]
+  before_action :set_initiative_status, only: %i[edit update]
 
   def index
     @initiative_statuses = InitiativeStatus.all
   end
-
-  def show; end
 
   def new
     @initiative_status = InitiativeStatus.new
@@ -19,7 +17,7 @@ class InitiativeStatusesController < ApplicationController
     @initiative_status = InitiativeStatus.new(initiative_status_params)
 
     if @initiative_status.save
-      redirect_to initiative_statuses_path,
+      redirect_to [:edit, @initiative_status],
                   notice: 'Initiative status was successfully created.'
     else
       render :new
@@ -28,17 +26,11 @@ class InitiativeStatusesController < ApplicationController
 
   def update
     if @initiative_status.update(initiative_status_params)
-      redirect_to @initiative_status,
+      redirect_to [:edit, @initiative_status],
                   notice: 'Initiative status was successfully updated.'
     else
       render :edit
     end
-  end
-
-  def destroy
-    @initiative_status.destroy
-    redirect_to initiative_statuses_url,
-                notice: 'Initiative status was successfully destroyed.'
   end
 
   private
