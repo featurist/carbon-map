@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resource :about, only: %i[show]
+  resource :contact, only: %i[show]
   resources :initiatives
   resources :groups do
     resources :group_websites
