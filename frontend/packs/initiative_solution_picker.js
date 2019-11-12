@@ -31,7 +31,10 @@ class SolutionPicker {
       const key = `${sol.solution_id}-${sol.solution_class_id}`;
       return this.solution_map[key];
     });
-    console.log("solution init");
+  }
+
+  resetProposedSolution(solution_class_id) {
+    this.proposedSolution = { proposed: true, solution_class_id };
   }
 
   render() {
@@ -207,7 +210,12 @@ class SolutionPicker {
         >
           {this.navigation.theme.classes.map(solutionClass => {
             return (
-              <li onclick={() => this.navigate({ solutionClass })}>
+              <li
+                onclick={() => {
+                  this.resetProposedSolution(solutionClass.solution_class_id);
+                  this.navigate({ solutionClass });
+                }}
+              >
                 {solutionClass.name}
               </li>
             );
@@ -222,30 +230,53 @@ class SolutionPicker {
       return (
         <ul class="AddInitiativeSolution-group AddInitiativeSolution-solutionSelector">
           {this.navigation.solutionClass.solutions.map(solution => {
-            return (
-              <li>
-                {solution.name}{" "}
-                <span
-                  class="AddInitiativeSolution-addSolution"
-                  onclick={() =>
-                    this.addSolution({
-                      sector: this.navigation.sector.name,
-                      theme: this.navigation.theme.name,
-                      class: this.navigation.solutionClass.name,
-                      solution: solution.name,
-                      solution_id: solution.solution_id,
-                      solution_class_id: solution.solution_class_id
-                    })
-                  }
-                >
-                  [ add ]
-                </span>
-              </li>
-            );
+            return this.renderSolution(solution);
           })}
+
+          {this.renderSolution(this.proposedSolution)}
         </ul>
       );
     }
+  }
+
+  renderSolutionInput(solution) {
+    if (solution.name && !solution.proposed) {
+      return solution.name;
+    }
+
+    return (
+      <div>
+        <label>
+          Can't find the solution you are after? Suggest a new one:
+          <input type="text" binding="solution.name" />
+        </label>
+      </div>
+    );
+  }
+
+  renderSolution(solution) {
+    return (
+      <li>
+        {this.renderSolutionInput(solution)}{" "}
+        <span
+          class="AddInitiativeSolution-addSolution"
+          onclick={() => {
+            console.log("to add", solution);
+            this.addSolution({
+              sector: this.navigation.sector.name,
+              theme: this.navigation.theme.name,
+              class: this.navigation.solutionClass.name,
+              solution: solution.name,
+              solution_id: solution.solution_id,
+              solution_class_id: solution.solution_class_id,
+              proposed: solution.proposed
+            });
+          }}
+        >
+          [ add ]
+        </span>
+      </li>
+    );
   }
 
   renderChosenSolutions() {
@@ -270,11 +301,7 @@ class SolutionPicker {
                 >
                   X
                 </span>
-                <input
-                  type="hidden"
-                  name={`initiative[solutions_attributes][${index}][solution_id]`}
-                  value={solution.solution_id}
-                />
+                {this.renderSolutionField(solution, index)}
                 <input
                   type="hidden"
                   name={`initiative[solutions_attributes][${index}][solution_class_id]`}
@@ -288,10 +315,31 @@ class SolutionPicker {
     }
   }
 
+  renderSolutionField(solution, index) {
+    if (solution.proposed) {
+      return (
+        <input
+          type="hidden"
+          name={`initiative[solutions_attributes][${index}][proposed_solution]`}
+          value={solution.solution}
+        />
+      );
+    }
+    return (
+      <input
+        type="hidden"
+        name={`initiative[solutions_attributes][${index}][solution_id]`}
+        value={solution.solution_id}
+      />
+    );
+  }
+
   addSolution(solution) {
+    console.log(solution);
     this.solutions.push(solution);
     this.value = "";
     this.results = [];
+    this.resetProposedSolution(solution.solution_class_id);
   }
 
   removeSolution(solution) {

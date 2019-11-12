@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_233921) do
+ActiveRecord::Schema.define(version: 2019_11_10_215537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -108,7 +108,6 @@ ActiveRecord::Schema.define(version: 2019_11_07_233921) do
     t.integer 'anticipated_carbon_saving'
     t.string 'locality'
     t.string 'location'
-    t.string 'alternative_solution_name'
     t.bigint 'lead_group_id', null: false
     t.string 'contact_name'
     t.string 'contact_email'
@@ -153,6 +152,11 @@ ActiveRecord::Schema.define(version: 2019_11_07_233921) do
     t.string 'name'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'status', default: 100, null: false
+    t.bigint 'created_by_id'
+    t.bigint 'approved_by_id'
+    t.index %w[approved_by_id], name: 'index_solutions_on_approved_by_id'
+    t.index %w[created_by_id], name: 'index_solutions_on_created_by_id'
   end
 
   create_table 'tags', force: :cascade do |t|
