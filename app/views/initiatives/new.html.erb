@@ -1,5 +1,9 @@
+<%= render 'partials/breadcrumb', items: [
+  link_to('Admin', admin_path),
+  link_to('Initiatives', initiatives_path),
+  'New Initiative'
+] %>
+
 <h1>New Initiative</h1>
 
 <%= render 'form', initiative: @initiative, groups: @groups, initiative_statuses: @initiative_statuses, taxonomy_hierarchy_json: @taxonomy_hierarchy_json %>
-
-<%= link_to 'Back', initiatives_path %>

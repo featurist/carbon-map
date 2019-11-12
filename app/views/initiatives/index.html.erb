@@ -1,4 +1,11 @@
+<%= render 'partials/breadcrumb', items: [
+  link_to('Admin', admin_path),
+  'Initiatives'
+] %>
+
 <h1>Initiatives</h1>
+
+<%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false %>
 
 <table>
   <thead>
@@ -6,11 +13,8 @@
       <th>Name</th>
       <th>Summary</th>
       <th>Location</th>
-      <th>Contact name</th>
-      <th>Contact email</th>
-      <th>Contact phone</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -20,18 +24,9 @@
         <td><%= initiative.name %></td>
         <td><%= initiative.summary %></td>
         <td><%= initiative.location %></td>
-        <td><%= initiative.contact_name %></td>
-        <td><%= initiative.contact_email %></td>
-        <td><%= initiative.contact_phone %></td>
         <td><%= initiative.status_name %></td>
-        <td><%= link_to 'Show', initiative %></td>
         <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false %></td>
-        <td><%= link_to 'Destroy', initiative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false %>

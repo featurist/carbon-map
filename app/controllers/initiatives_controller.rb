@@ -2,14 +2,12 @@
 
 # rubocop:disable Metrics/ClassLength
 class InitiativesController < ApplicationController
-  before_action :set_initiative, only: %i[show edit update destroy]
+  before_action :set_initiative, only: %i[edit update]
   before_action :set_edit_data, only: %i[edit new create update]
 
   def index
     @initiatives = current_user.initiatives.all
   end
-
-  def show; end
 
   def new
     @initiative = Initiative.new
@@ -41,12 +39,6 @@ class InitiativesController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @initiative.destroy
-    redirect_to initiatives_url,
-                notice: 'Initiative was successfully destroyed.'
   end
 
   private
