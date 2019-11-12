@@ -1,0 +1,9 @@
+.Breadcrumb {}
+
+.Breadcrumb-list {
+  padding: 0;
+}
+
+.Breadcrumb-listItem {
+  display: inline;
+}

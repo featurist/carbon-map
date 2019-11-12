@@ -1,10 +1,17 @@
-<h1>Group Types</h1>
+<%= render 'partials/breadcrumb', items: [
+  link_to('Admin', admin_path),
+  'Group Types'
+] %>
+
+<h2>Group Types</h2>
+
+<%= link_to 'New Group Type', new_group_type_path %>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -12,14 +19,8 @@
     <% @group_types.each do |group_type| %>
       <tr>
         <td><%= group_type.name %></td>
-        <td><%= link_to 'Show', group_type %></td>
         <td><%= link_to 'Edit', edit_group_type_path(group_type) %></td>
-        <td><%= link_to 'Destroy', group_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Group Type', new_group_type_path %>

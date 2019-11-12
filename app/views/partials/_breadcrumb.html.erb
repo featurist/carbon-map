@@ -1,0 +1,12 @@
+<nav class="Breadcrumb">
+  <ol class="Breadcrumb-list">
+    <% items.each do |item| %>
+      <li class="Breadcrumb-listItem">
+        <%= item %>
+        <% if item != items.last %>
+          >
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+</nav>

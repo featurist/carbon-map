@@ -11,6 +11,10 @@ module ApplicationHelper
     link_to name, '#', onclick: add_object_link_js(where, html)
   end
 
+  def admin_path
+    '/admin'
+  end
+
   private
 
   def add_object_link_js(where, html)
