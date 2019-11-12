@@ -21,11 +21,11 @@
             &nbsp;
             <span class="Nav-main">
               <%=link_to 'Add a project', new_initiative_path %>
-              <a>Explore projects</a>
+              <%=link_to 'Explore projects', root_path(anchor: 'explore') %>
             </span>
             <span class="Nav-supplementary">
-              <a>About</a>
-              <a>Contact</a>
+              <%= link_to('About', about_path)%>
+              <%= link_to('Contact', contact_path)%>
 
               <a class="Nav-burger" onclick="document.querySelector('.Nav').classList.add('Nav-open')"><svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
                   <g>
@@ -34,13 +34,13 @@
                 </svg></a>
             </span>
             <nav class="Nav-flyover">
-              <a onclick="document.querySelector('.Nav').classList.remove('Nav-open')">Close</a>
+              <a href="#" onclick="document.querySelector('.Nav').classList.remove('Nav-open');return false;">Close</a>
               <hr />
               <%=link_to 'Add a project', new_initiative_path %>
-              <a>Explore projects</a>
+              <%=link_to 'Explore projects', root_path(anchor: 'explore') %>
               <hr />
-              <a>About</a>
-              <a>Contact</a>
+              <%= link_to('About', about_path)%>
+              <%= link_to('Contact', contact_path)%>
               <hr />
               <% unless user_signed_in? %>
                 <%= link_to 'Sign in', new_user_session_path %>
