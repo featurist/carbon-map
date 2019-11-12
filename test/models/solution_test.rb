@@ -15,6 +15,8 @@ class SolutionTest < ActiveSupport::TestCase
             classes: [
               {
                 name: 'Heat pumps',
+                solution_class_id:
+                  ActiveRecord::FixtureSet.identify('heat_pumps'),
                 solutions: [
                   {
                     name: 'ASHP',
@@ -36,6 +38,7 @@ class SolutionTest < ActiveSupport::TestCase
             classes: [
               {
                 name: 'Apps',
+                solution_class_id: ActiveRecord::FixtureSet.identify('apps'),
                 solutions: [
                   {
                     name: 'Lift Share App',

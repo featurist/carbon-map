@@ -14,8 +14,6 @@ class InitiativesTest < ApplicationSystemTestCase
     visit initiatives_url
     click_on 'New Initiative'
 
-    fill_in 'Alternative solution name',
-            with: @initiative.alternative_solution_name
     fill_in 'Anticipated carbon saving',
             with: @initiative.anticipated_carbon_saving
     fill_in 'Contact email', with: @initiative.contact_email
@@ -41,8 +39,6 @@ class InitiativesTest < ApplicationSystemTestCase
     visit initiatives_url
     click_on 'Edit', match: :first
 
-    fill_in 'Alternative solution name',
-            with: @initiative.alternative_solution_name
     fill_in 'Anticipated carbon saving',
             with: @initiative.anticipated_carbon_saving
     fill_in 'Contact email', with: @initiative.contact_email

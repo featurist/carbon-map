@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class InitiativesController < ApplicationController
   before_action :set_initiative, only: %i[show edit update destroy]
   before_action :set_edit_data, only: %i[edit new create update]
@@ -17,6 +18,7 @@ class InitiativesController < ApplicationController
   def edit; end
 
   def create
+    create_proposed_solutions
     @initiative = Initiative.new(initiative_params)
 
     if check_user_belongs_to_group && @initiative.save
@@ -29,10 +31,10 @@ class InitiativesController < ApplicationController
 
   def update
     @initiative.solutions.clear
-    params = initiative_params
-    images = params.delete 'images'
+    create_proposed_solutions
+    images = initiative_params.delete 'images'
 
-    if check_user_belongs_to_group && @initiative.update(params)
+    if check_user_belongs_to_group && @initiative.update(initiative_params)
       @initiative.images.attach images if images
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully updated.'
@@ -73,27 +75,76 @@ class InitiativesController < ApplicationController
   end
 
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
+  def create_proposed_solutions
+    return unless initiative_params['solutions_attributes']
+
+    initiative_params['solutions_attributes'] =
+      initiative_params['solutions_attributes'].values
+    proposed_solutions =
+      initiative_params['solutions_attributes'].filter do |solution|
+        solution['proposed_solution'].present?
+      end
+    initiative_params['solutions_attributes'].reject! do |solution|
+      solution['proposed_solution'].present?
+    end
+    proposed_solutions.each do |proposed_solution|
+      solution_solution_class = create_proposed_solution(proposed_solution)
+      append_solution(
+        solution_solution_class.solution,
+        solution_solution_class.solution_class
+      )
+    end
+  end
+  # rubocop:enable Metrics/AbcSize
+
+  def append_solution(solution, solution_class)
+    initiative_params['solutions_attributes'] <<
+      { 'solution_id': solution.id, 'solution_class_id': solution_class.id }
+  end
+
+  def create_proposed_solution(proposed_solution)
+    solution_class = SolutionClass.find(proposed_solution['solution_class_id'])
+    solution =
+      Solution.new(
+        name: proposed_solution['proposed_solution'], created_by: current_user
+      )
+    solution_solution_class =
+      SolutionSolutionClass.new(
+        solution: solution, solution_class: solution_class
+      )
+    solution.solution_solution_classes << solution_solution_class
+    solution.save!
+
+    solution_solution_class
+  end
+
   def initiative_params
-    params.require(:initiative).permit(
-      :name,
-      :summary,
-      :anticipated_carbon_saving,
-      :locality,
-      :location,
-      :latitude,
-      :longitude,
-      :alternative_solution_name,
-      :lead_group_id,
-      :contact_name,
-      :contact_email,
-      :contact_phone,
-      :partner_groups_role,
-      :status_id,
-      :consent_to_share,
-      solutions_attributes: %i[solution_id solution_class_id],
-      images: [],
-      websites_attributes: %i[website id _destroy]
-    )
+    @initiative_params ||=
+      params.require(:initiative).permit(
+        :name,
+        :summary,
+        :anticipated_carbon_saving,
+        :locality,
+        :location,
+        :latitude,
+        :longitude,
+        :lead_group_id,
+        :contact_name,
+        :contact_email,
+        :contact_phone,
+        :partner_groups_role,
+        :status_id,
+        :consent_to_share,
+        solutions_attributes: %i[
+          solution_id
+          solution_class_id
+          proposed_solution
+        ],
+        images: [],
+        websites_attributes: %i[website id _destroy]
+      )
   end
   # rubocop:enable Metrics/MethodLength
 end
+# rubocop:enable Metrics/ClassLength

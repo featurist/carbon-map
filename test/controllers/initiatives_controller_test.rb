@@ -29,7 +29,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :georgie
     assert_difference('Initiative.count') do
       images = [header_image]
-      post initiatives_url, params: create_params(@initiative, images)
+      post initiatives_url, params: create_params(@initiative, images: images)
       assert_equal 1, Initiative.last.images.size
     end
     websites = Initiative.last.websites
@@ -38,6 +38,44 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'http://two', websites[1].website
 
     assert_redirected_to edit_initiative_path(Initiative.last)
+  end
+
+  test 'create initiative with solution' do
+    sign_in_as :georgie
+    solution_class = SolutionSolutionClass.last.solution_class
+    solution = SolutionSolutionClass.last.solution
+
+    assert_difference('Initiative.count') do
+      solutions = {
+        '0': { solution_class_id: solution_class.id, solution_id: solution.id }
+      }
+      post initiatives_url,
+           params: create_params(@initiative, solutions: solutions)
+    end
+
+    initiative_solution = Initiative.last.solutions.last
+    assert_equal solution, initiative_solution.solution
+    assert_equal solution_class, initiative_solution.solution_class
+  end
+
+  test 'create initiative with alternative solution' do
+    sign_in_as :georgie
+    assert_difference('Initiative.count') do
+      solutions = {
+        '0': {
+          solution_class_id: SolutionClass.last.id,
+          proposed_solution: 'An amazing new thing'
+        }
+      }
+      post initiatives_url,
+           params: create_params(@initiative, solutions: solutions)
+    end
+
+    proposed_solution = Solution.last
+    assert_equal 'An amazing new thing', proposed_solution.name
+    assert proposed_solution.proposed?
+    assert_equal users(:georgie), proposed_solution.created_by
+    assert_nil proposed_solution.approved_by
   end
 
   test 'should show initiative' do
@@ -78,10 +116,9 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   private
 
   # rubocop:disable Metrics/MethodLength
-  def create_params(initiative, images)
+  def create_params(initiative, images: nil, solutions: [])
     {
       initiative: {
-        alternative_solution_name: initiative.alternative_solution_name,
         anticipated_carbon_saving: initiative.anticipated_carbon_saving,
         contact_email: initiative.contact_email,
         contact_name: initiative.contact_name,
@@ -95,6 +132,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         summary: initiative.summary,
         images: images,
         consent_to_share: true,
+        solutions_attributes: solutions,
         websites_attributes: [
           { website: 'http://one' },
           { website: 'http://two' }
@@ -106,7 +144,6 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   def update_params(initiative, images)
     {
       initiative: {
-        alternative_solution_name: initiative.alternative_solution_name,
         anticipated_carbon_saving: initiative.anticipated_carbon_saving,
         contact_email: initiative.contact_email,
         contact_name: initiative.contact_name,
