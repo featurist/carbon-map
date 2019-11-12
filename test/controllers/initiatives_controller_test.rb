@@ -78,12 +78,6 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_nil proposed_solution.approved_by
   end
 
-  test 'should show initiative' do
-    sign_in_as :georgie
-    get initiative_url(@initiative)
-    assert_response :success
-  end
-
   test 'should get edit' do
     sign_in_as :georgie
     get edit_initiative_url(@initiative)
@@ -102,15 +96,6 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
     assert_redirected_to edit_initiative_path(@initiative)
-  end
-
-  test 'should destroy initiative' do
-    sign_in_as :georgie
-    assert_difference('Initiative.count', -1) do
-      delete initiative_url(@initiative)
-    end
-
-    assert_redirected_to initiatives_url
   end
 
   private

@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[show edit update destroy]
+  before_action :set_group, only: %i[edit update]
 
   def index
     @groups = current_user.groups.all
   end
-
-  def show; end
 
   def new
     @group = current_user.groups.new
@@ -33,11 +31,6 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @group.destroy
-    redirect_to groups_url, notice: 'Group was successfully destroyed.'
   end
 
   private

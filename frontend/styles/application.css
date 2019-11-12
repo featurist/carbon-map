@@ -6,6 +6,8 @@
 @import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
 @import "./base/variables";
 @import "./components/alert";
+@import "./components/breadcrumb";
+@import "./components/button";
 @import "./components/explore";
 @import "./components/header";
 @import "./components/content";
@@ -13,6 +15,7 @@
 @import "./components/initiative-location-picker";
 @import "./components/initiative-solution-picker";
 @import "./components/nav";
+@import "./components/page_header";
 
 @font-face {
   font-family: "fira_sansregular";
@@ -49,4 +52,19 @@ a {
 
 p {
   margin: 0;
+}
+
+input[type=text],
+input[type=url],
+input[type=email],
+input[type=password],
+input[type=tel] {
+  font-size: 17px;
+  height: 40px;
+  line-height: 40px;
+}
+
+input[type=checkbox] {
+  height: 44px;
+  width: 44px;
 }

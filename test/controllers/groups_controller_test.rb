@@ -46,12 +46,6 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_group_path(Group.last)
   end
 
-  test 'should show group' do
-    sign_in_as :georgie
-    get group_url(@group)
-    assert_response :success
-  end
-
   test 'should get edit' do
     sign_in_as :georgie
     get edit_group_url(@group)
@@ -82,13 +76,5 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
     assert_redirected_to edit_group_path(@group)
-  end
-
-  test 'should destroy group' do
-    sign_in_as :georgie
-    group = groups(:unused)
-    assert_difference('Group.count', -1) { delete group_url(group) }
-
-    assert_redirected_to groups_url
   end
 end

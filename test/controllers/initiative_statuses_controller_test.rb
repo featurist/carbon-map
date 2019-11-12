@@ -29,13 +29,7 @@ class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_redirected_to initiative_statuses_path
-  end
-
-  test 'should show initiative_status' do
-    sign_in_as :georgie
-    get initiative_status_url(@initiative_status)
-    assert_response :success
+    assert_redirected_to edit_initiative_status_path(InitiativeStatus.last)
   end
 
   test 'should get edit' do
@@ -53,16 +47,6 @@ class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
               name: @initiative_status.name
             }
           }
-    assert_redirected_to initiative_status_url(@initiative_status)
-  end
-
-  test 'should destroy initiative_status' do
-    sign_in_as :georgie
-    initiative_status = initiative_statuses(:unused)
-    assert_difference('InitiativeStatus.count', -1) do
-      delete initiative_status_url(initiative_status)
-    end
-
-    assert_redirected_to initiative_statuses_url
+    assert_redirected_to edit_initiative_status_url(@initiative_status)
   end
 end

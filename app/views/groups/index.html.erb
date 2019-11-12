@@ -1,4 +1,12 @@
-<h1>Groups</h1>
+<%= render 'partials/breadcrumb', items: [
+  link_to('Home', root_path),
+  'Groups'
+] %>
+
+<div class="PageHeader">
+  <h1 class="PageHeader-heading">Groups</h1>
+  <%= link_to 'New Group', new_group_path, class: 'PageHeader-action' %>
+</div>
 
 <table>
   <thead>
@@ -8,7 +16,7 @@
       <th>Contact name</th>
       <th>Contact email</th>
       <th>Contact phone</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -20,14 +28,8 @@
         <td><%= group.contact_name %></td>
         <td><%= group.contact_email %></td>
         <td><%= group.contact_phone %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_group_path(group), class: 'Button' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>

@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class GroupTypesController < ApplicationController
-  before_action :set_group_type, only: %i[show edit update destroy]
+  before_action :set_group_type, only: %i[edit update]
 
   def index
     @group_types = GroupType.all
   end
-
-  def show; end
 
   def new
     @group_type = GroupType.new
@@ -19,7 +17,7 @@ class GroupTypesController < ApplicationController
     @group_type = GroupType.new(group_type_params)
 
     if @group_type.save
-      redirect_to group_types_path,
+      redirect_to [:edit, @group_type],
                   notice: 'Group type was successfully created.'
     else
       render :new
@@ -28,19 +26,12 @@ class GroupTypesController < ApplicationController
 
   def update
     if @group_type.update(group_type_params)
-      redirect_to @group_type, notice: 'Group type was successfully updated.'
+      redirect_to [:edit, @group_type],
+                  notice: 'Group type was successfully updated.'
     else
       render :edit
     end
   end
-
-  def destroy
-    @group_type.destroy!
-    redirect_to group_types_url,
-                notice: 'Group type was successfully destroyed.'
-  end
-
-  private
 
   def set_group_type
     @group_type = GroupType.find(params[:id])

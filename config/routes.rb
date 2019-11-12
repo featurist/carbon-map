@@ -3,14 +3,12 @@
 Rails.application.routes.draw do
   resource :about, only: %i[show]
   resource :contact, only: %i[show]
-  resources :initiatives
-  resources :groups do
-    resources :group_websites
-  end
+  resources :initiatives, only: %i[index new edit create update]
+  resources :groups, only: %i[index new edit create update]
   resources :tags
   scope '/admin' do
-    resources :initiative_statuses
-    resources :group_types
+    resources :initiative_statuses, only: %i[index new edit create update]
+    resources :group_types, only: %i[index new edit create update]
   end
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

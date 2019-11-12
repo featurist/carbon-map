@@ -1,6 +1,9 @@
-<h1>Editing Group Type</h1>
+<%= render 'partials/breadcrumb', items: [
+  link_to('Admin', admin_path),
+  link_to('Group Types', group_types_path),
+  @group_type.name
+] %>
+
+<h2><%=@group_type.name%></h2>
 
 <%= render 'form', group_type: @group_type %>
-
-<%= link_to 'Show', @group_type %> |
-<%= link_to 'Back', group_types_path %>
