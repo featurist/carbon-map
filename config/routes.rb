@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   resource :about, only: %i[show]
   resource :contact, only: %i[show]
   resources :initiatives, only: %i[index new edit create update]
-  resources :groups do
-    resources :group_websites
-  end
+  resources :groups, only: %i[index new edit create update]
   resources :tags
   scope '/admin' do
     resources :initiative_statuses

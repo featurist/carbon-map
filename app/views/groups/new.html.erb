@@ -1,5 +1,9 @@
+<%= render 'partials/breadcrumb', items: [
+  link_to('Home', root_path),
+  link_to('Groups', groups_path),
+  'New Group'
+] %>
+
 <h1>New Group</h1>
 
 <%= render 'form', group: @group %>
-
-<%= link_to 'Back', groups_path %>
