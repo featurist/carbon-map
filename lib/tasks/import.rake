@@ -10,7 +10,7 @@ namespace :import do
       sector = Sector.find_or_create_by(name: line['sector'])
       theme = Theme.find_or_create_by(name: line['theme'], sector: sector)
       solution_class = SolutionClass.find_or_create_by(name: line['class'], theme: theme)
-      solution = Solution.find_or_create_by(name: line['solution'])
+      solution = Solution.find_or_create_by(name: line['solution'], created_by: User.first, status: 200)
       SolutionSolutionClass.create(solution: solution, solution_class: solution_class)
     end
   end
