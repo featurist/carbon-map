@@ -77,7 +77,8 @@
         <% end %>
       </section>
     <% end %>
-    <section class="<%= (yield :content_class) || 'Content'%>">
+    <% content_class = yield :content_class %>
+    <section class="<%= (content_class.size > 0) ? content_class : 'Content'%>">
       <%= yield %>
     </section>
     <section class="Footer"></section>
