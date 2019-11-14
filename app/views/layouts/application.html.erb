@@ -77,10 +77,9 @@
         <% end %>
       </section>
     <% end %>
-    <section class="Content">
+    <section class="<%= (yield :content_class) || 'Content'%>">
       <%= yield %>
     </section>
-    <%= yield :raw %>
     <section class="Footer"></section>
     <%= yield :page_javascript %>
   </body>

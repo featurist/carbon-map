@@ -7,18 +7,18 @@
   <meta name="turbolinks-visit-control" content="reload">
 <% end %>
 
-<% content_for :raw do %>
-  <section class="Explore">
-    <a name="explore"></a>
-    <div class="Explore-panel">
-      <div class="Explore-map" id="explore"></div>
-      <div class="Explore-initiative"></div>
-    </div>
-    <nav class="Explore-navigation">
-      <a class="Explore-navigation-selected" onclick="exploreMap.select(this); exploreMap.showAll()">All</a>
-      <% @sectors.each do |sector| %>
-        <a onclick="exploreMap.select(this); exploreMap.filter('sector', '<%=sector.name%>')"><%=sector.name%></a>
-      <% end %>
-    </nav>
-  </section>
-<% end %>
+<% content_for :content_class do
+  'Explore'
+end %>
+
+<a name="explore"></a>
+<div class="Explore-panel">
+  <div class="Explore-map" id="explore"></div>
+  <div class="Explore-initiative"></div>
+</div>
+<nav class="Explore-navigation">
+  <a class="Explore-navigation-selected" onclick="exploreMap.select(this); exploreMap.showAll()">All</a>
+  <% @sectors.each do |sector| %>
+    <a onclick="exploreMap.select(this); exploreMap.filter('sector', '<%=sector.name%>')"><%=sector.name%></a>
+  <% end %>
+</nav>
