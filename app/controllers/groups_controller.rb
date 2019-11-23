@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = current_user.groups.new
+    @group.websites << GroupWebsite.new
   end
 
   def edit; end

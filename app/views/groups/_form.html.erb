@@ -16,8 +16,8 @@
     <%= f.text_field :opening_hours %>
   <% end %>
 
-  <h2>Websites</h2>
-  <div id="websites">
+  <h2>Websites & Social Media</h2>
+  <div id="websites" class="CollectionItem-container">
     <%= f.fields_for :websites do |website_form| %>
       <%= render 'partials/group_website', f: website_form%>
     <% end %>

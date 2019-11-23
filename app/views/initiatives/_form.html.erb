@@ -56,8 +56,8 @@
     </div>
   </label>
 
-  <h2>Websites</h2>
-  <div id="websites">
+  <h2>Website & Social Media</h2>
+  <div id="websites" class="CollectionItem-container">
     <%= f.fields_for :websites do |website_form| %>
       <%= render 'partials/initiative_website', f: website_form %>
     <% end %>
