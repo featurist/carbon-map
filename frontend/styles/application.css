@@ -8,6 +8,7 @@
 @import "./components/alert";
 @import "./components/breadcrumb";
 @import "./components/button";
+@import "./components/collection-item";
 @import "./components/explore";
 @import "./components/header";
 @import "./components/content";

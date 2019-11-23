@@ -1,0 +1,11 @@
+.CollectionItem-container {
+  flex: 1;
+}
+
+.CollectionItem-partial {
+  display: flex;
+}
+
+.CollectionItem-destroy {
+  flex: auto !important;
+}

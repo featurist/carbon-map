@@ -11,6 +11,7 @@ class InitiativesController < ApplicationController
 
   def new
     @initiative = Initiative.new
+    @initiative.websites << InitiativeWebsite.new
   end
 
   def edit; end
