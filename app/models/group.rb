@@ -10,4 +10,9 @@ class Group < ApplicationRecord
            inverse_of: :lead_group
   validates :consent_to_share, acceptance: true
   accepts_nested_attributes_for :websites, allow_destroy: true
+
+  def empty?
+    attributes.each { |_, value| return false if value.present? }
+    true
+  end
 end

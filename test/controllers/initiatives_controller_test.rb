@@ -126,7 +126,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         contact_email: initiative.contact_email,
         contact_name: initiative.contact_name,
         contact_phone: initiative.contact_phone,
-        lead_group_id: lead_group ? nil : initiative.lead_group_id,
+        lead_group_id: lead_group ? 'new' : initiative.lead_group_id,
         lead_group_attributes: lead_group,
         locality: initiative.locality,
         location: initiative.location,

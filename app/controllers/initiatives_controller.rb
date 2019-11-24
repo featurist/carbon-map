@@ -61,18 +61,27 @@ class InitiativesController < ApplicationController
     @taxonomy_hierarchy_json = Solution.hierarchy.to_json
   end
 
-  def lead_group
-    if initiative_params[:lead_group_id] &&
-       initiative_params[:lead_group_id] != 'new'
-      current_user.groups.find(initiative_params[:lead_group_id])
-    else
+  def new_group
+    @initiative.lead_group =
       current_user.groups.new(initiative_params[:lead_group_attributes])
+    true
+  end
+
+  def select_group
+    lead_group_id = initiative_params[:lead_group_id]
+    if lead_group_id.blank?
+      @initiative.lead_group = Group.new
+      @initiative.errors.add(:base, 'Please select or create a group')
+      return false
     end
+    @initiative.lead_group = current_user.groups.find(lead_group_id)
+    true
   end
 
   def find_or_create_group
-    @initiative.lead_group = lead_group
-    true
+    return new_group if initiative_params[:lead_group_id] == 'new'
+
+    select_group
   end
 
   # rubocop:disable Metrics/MethodLength
