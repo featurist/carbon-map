@@ -1,6 +1,7 @@
 <% content_for :page_javascript do %>
   <%= javascript_packs_with_chunks_tag 'initiative_location_picker', 'data-turbolinks-track': 'reload' %>
   <%= javascript_packs_with_chunks_tag 'initiative_solution_picker', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_packs_with_chunks_tag 'initiative_toggle_group', 'data-turbolinks-track': 'reload' %>
   <script type="text/json" id="taxonomy_hierarchy_json"><%=taxonomy_hierarchy_json.html_safe%></script>
 <% end %>
 
@@ -34,6 +35,11 @@
   <%= f.form_field :anticipated_carbon_saving do %>
     <%= f.label :anticipated_carbon_saving %>
     <%= f.number_field :anticipated_carbon_saving %>
+  <% end %>
+
+  <%= f.form_field :status do %>
+    <%= f.label :status %>
+    <%= f.select :status_id, initiative_statuses %>
   <% end %>
 
   <h2>Location</h2>
@@ -85,19 +91,28 @@
     <%= f.text_field :contact_phone %>
   <% end %>
 
-  <%= f.form_field :lead_group_id do %>
-    <%= f.label :lead_group_id %>
-    <%= f.select :lead_group_id, groups %>
+  <h2>Groups</h2>
+
+  <% if groups.any? %>
+    <%= f.form_field :lead_group_id do %>
+      <%= f.label :lead_group_id %>
+      <%= f.select :lead_group_id do %>
+        <option>Please select a group</option>
+        <%=options_for_select(groups, initiative.lead_group.id) %>
+        <option value="new" <%=new_group_selected?(initiative) ? 'selected' : '' %>>Create New</option>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= f.fields_for :lead_group do |group_fields| %>
+    <div id="initiative_lead_group_new" class="<%=new_group_selected?(initiative) ? '' : 'u-hidden' %> Initiative-lead_group">
+      <%=render 'groups/form_fields', group: Group.new, f: group_fields %>
+    </div>
   <% end %>
 
   <%= f.form_field :partner_groups_role do %>
     <%= f.label :partner_groups_role %>
     <%= f.text_field :partner_groups_role %>
-  <% end %>
-
-  <%= f.form_field :status do %>
-    <%= f.label :status %>
-    <%= f.select :status_id, initiative_statuses %>
   <% end %>
 
   <h2>Solutions</h2>

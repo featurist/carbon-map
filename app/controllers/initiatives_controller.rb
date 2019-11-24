@@ -11,6 +11,8 @@ class InitiativesController < ApplicationController
 
   def new
     @initiative = Initiative.new
+    @initiative.lead_group = Group.new
+    @initiative.lead_group.websites << GroupWebsite.new
     @initiative.websites << InitiativeWebsite.new
   end
 
@@ -20,7 +22,7 @@ class InitiativesController < ApplicationController
     create_proposed_solutions
     @initiative = Initiative.new(initiative_params)
 
-    if check_user_belongs_to_group && @initiative.save
+    if find_or_create_group && @initiative.save
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully created.'
     else
@@ -33,7 +35,7 @@ class InitiativesController < ApplicationController
     create_proposed_solutions
     images = initiative_params.delete 'images'
 
-    if check_user_belongs_to_group && @initiative.update(initiative_params)
+    if find_or_create_group && @initiative.update(initiative_params)
       @initiative.images.attach images if images
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully updated.'
@@ -59,11 +61,17 @@ class InitiativesController < ApplicationController
     @taxonomy_hierarchy_json = Solution.hierarchy.to_json
   end
 
-  def check_user_belongs_to_group
-    unless current_user.groups.include?(@initiative.lead_group)
-      @initiative.errors.add(:base, 'Invalid group')
-      return false
+  def lead_group
+    if initiative_params[:lead_group_id] &&
+       initiative_params[:lead_group_id] != 'new'
+      current_user.groups.find(initiative_params[:lead_group_id])
+    else
+      current_user.groups.new(initiative_params[:lead_group_attributes])
     end
+  end
+
+  def find_or_create_group
+    @initiative.lead_group = lead_group
     true
   end
 
@@ -135,7 +143,17 @@ class InitiativesController < ApplicationController
           proposed_solution
         ],
         images: [],
-        websites_attributes: %i[website id _destroy]
+        websites_attributes: %i[website id _destroy],
+        lead_group_attributes: %i[
+          name
+          abbreviation
+          opening_hours
+          contact_name
+          contact_email
+          contact_phone
+          consent_to_share
+          websites_attributes
+        ]
       )
   end
   # rubocop:enable Metrics/MethodLength

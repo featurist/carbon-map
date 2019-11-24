@@ -1,50 +1,7 @@
 <%= form_with(model: group, local: true, html: {class: 'FormField-form'}) do |f| %>
   <%= render 'partials/form_errors', resource: group %>
 
-  <%= f.form_field :name do %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  <% end %>
-
-  <%= f.form_field :abbreviation do %>
-    <%= f.label :abbreviation %>
-    <%= f.text_field :abbreviation %>
-  <% end %>
-
-  <%= f.form_field :opening_hours do %>
-    <%= f.label :opening_hours %>
-    <%= f.text_field :opening_hours %>
-  <% end %>
-
-  <h2>Websites & Social Media</h2>
-  <div id="websites" class="CollectionItem-container">
-    <%= f.fields_for :websites do |website_form| %>
-      <%= render 'partials/group_website', f: website_form%>
-    <% end %>
-  </div>
-  <div class="FormField">
-    <%= f.fields_for :websites, GroupWebsite.new do |website_form| %>
-    <%= add_object_link 'Add website', 'websites', :partial => 'partials/group_website', :locals => { :f => website_form } %>
-    <% end %>
-  </div>
-
-  <h2>Contact</h2>
-  <%= f.form_field :contact_email do %>
-    <%= f.label :contact_email %>
-    <%= f.text_field :contact_email %>
-  <% end %>
-
-  <%= f.form_field :contact_phone do %>
-    <%= f.label :contact_phone %>
-    <%= f.text_field :contact_phone %>
-  <% end %>
-
-  <%= f.form_field :consent_to_share do %>
-    <%= f.label :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced? ' %>
-    <%= f.check_box :consent_to_share %>
-  <% end %>
-
-  insert group type check boxes here
+  <%= render 'groups/form_fields', f: f %>
 
   <div class="FormField-actions">
     <%= f.submit %>
