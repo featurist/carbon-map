@@ -27,6 +27,13 @@ function initialiseMap(initiatives) {
 
   mappedInitiatives = initiatives.map(initiative => {
     var marker = L.marker(initiative.location.latlng);
+    function item(title, value) {
+      if (value) {
+        return `<p>${title}: ${value}</p>`;
+      }
+
+      return "";
+    }
     const initiativeHtml = `<h1>${initiative.name}</h1>
           ${
             initiative.images.length
@@ -41,14 +48,17 @@ function initialiseMap(initiatives) {
               : ""
           }
           <p>${initiative.summary}</p>
-          <p>Group: ${initiative.group}</p>
-          <p>Contact Name: ${initiative.contactName}</p>
-          <p>Status: ${initiative.status}</p>
-          ${
-            initiative.website
-              ? `<p>Website: <a target="_blank" href="${initiative.website}">${initiative.website}</a></p>`
-              : ""
-          }
+          ${item("Group", initiative.group)}
+          ${item("Contact Name", initiative.contactName)}
+          ${item("Contact Email", initiative.contactEmail)}
+          ${item("Contact Phone", initiative.contactPhone)}
+          ${item("Status", initiative.status)}
+          ${initiative.websites
+            .map(
+              website =>
+                `<p>Website: <a target="_blank" href="${website}">${website}</a></p>`
+            )
+            .join("")}
           ${
             initiative.email
               ? `<p>Email: <a href="mailto:${initiative.email}">${initiative.email}</a></p>`

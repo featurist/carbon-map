@@ -81,6 +81,7 @@ class InitiativesController < ApplicationController
   def find_or_create_group
     return new_group if initiative_params[:lead_group_id] == 'new'
 
+    initiative_params.delete('lead_group_attributes')
     select_group
   end
 

@@ -27,6 +27,7 @@ class Initiative < ApplicationRecord
   end
 
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def self.approved
     Initiative.all.map do |initiative|
       attributes = initiative.public_attributes
@@ -35,15 +36,18 @@ class Initiative < ApplicationRecord
         name: initiative.name,
         group: initiative.lead_group_name,
         contactName: attributes['contact_name'],
-        email: attributes['contact_email'],
+        contactEmail: attributes['contact_email'],
+        contactPhone: attributes['contact_phone'],
         summary: initiative.summary,
         images: image_urls(initiative.images),
+        websites: website_urls(initiative.websites),
         status: initiative.status_name,
         solutions: map_solutions(initiative),
         timestamp: initiative.updated_at
       }
     end
   end
+  # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
 
   def self.map_solutions(initiative)
@@ -59,6 +63,10 @@ class Initiative < ApplicationRecord
         only_path: true
       )
     end
+  end
+
+  def self.website_urls(websites)
+    websites.map(&:website)
   end
 
   def self.create_solution(mapped_solution)
