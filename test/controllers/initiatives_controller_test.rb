@@ -40,6 +40,24 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_initiative_path(Initiative.last)
   end
 
+  test 'create initiative and lead group' do
+    sign_in_as :georgie
+    lead_group = {
+      contact_name: 'group contact', name: 'my group', consent_to_share: true
+    }
+
+    assert_difference('Initiative.count') do
+      assert_difference('Group.count') do
+        post initiatives_url,
+             params: create_params(@initiative, lead_group: lead_group)
+      end
+    end
+
+    assert_redirected_to edit_initiative_path(Initiative.last)
+    assert_equal 'group contact', Group.last.contact_name
+    assert_equal 'my group', Group.last.name
+  end
+
   test 'create initiative with solution' do
     sign_in_as :georgie
     solution_class = SolutionSolutionClass.last.solution_class
@@ -101,14 +119,15 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   private
 
   # rubocop:disable Metrics/MethodLength
-  def create_params(initiative, images: nil, solutions: [])
+  def create_params(initiative, lead_group: nil, images: nil, solutions: nil)
     {
       initiative: {
         anticipated_carbon_saving: initiative.anticipated_carbon_saving,
         contact_email: initiative.contact_email,
         contact_name: initiative.contact_name,
         contact_phone: initiative.contact_phone,
-        lead_group_id: initiative.lead_group_id,
+        lead_group_id: lead_group ? 'new' : initiative.lead_group_id,
+        lead_group_attributes: lead_group,
         locality: initiative.locality,
         location: initiative.location,
         name: initiative.name,

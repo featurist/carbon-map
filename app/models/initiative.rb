@@ -10,6 +10,7 @@ class Initiative < ApplicationRecord
   has_many_attached :images
   has_many :websites, class_name: 'InitiativeWebsite', dependent: :destroy
   accepts_nested_attributes_for :solutions
+  accepts_nested_attributes_for :lead_group
   accepts_nested_attributes_for :websites, allow_destroy: true
   validates :consent_to_share, acceptance: true
 
