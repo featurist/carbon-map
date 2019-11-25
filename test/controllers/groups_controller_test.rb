@@ -38,7 +38,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    websites = Group.last.websites
+    websites = Group.last.websites.sort_by(&:website)
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
@@ -71,7 +71,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
               ]
             }
           }
-    websites = Group.last.websites
+    websites = Group.last.websites.sort_by(&:website)
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
