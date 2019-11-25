@@ -54,11 +54,13 @@ class InitiativeTest < ActiveSupport::TestCase
         name: 'The Fruit Exchange',
         group: 'Down to Earth Stroud',
         contactName: 'No name',
-        email: 'info@downtoearthstroud.co.uk',
+        contactEmail: 'info@downtoearthstroud.co.uk',
+        contactPhone: '01453 700011',
         summary:
           'The Fruit Exchange connects food outlets with people who have surplus fruit or veg.',
         status: 'Operational',
         solutions: [],
+        websites: [],
         images: []
       }
     ]
