@@ -3,8 +3,6 @@
 require 'test_helper'
 
 class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
-  setup { @initiative_status = initiative_statuses(:one) }
-
   test 'should get index' do
     sign_in_as :georgie
     get initiative_statuses_url
@@ -23,8 +21,7 @@ class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
       post initiative_statuses_url,
            params: {
              initiative_status: {
-               description: @initiative_status.description,
-               name: @initiative_status.name
+               description: 'status description', name: 'status name'
              }
            }
     end
@@ -34,19 +31,19 @@ class InitiativeStatusesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get edit' do
     sign_in_as :georgie
-    get edit_initiative_status_url(@initiative_status)
+    get edit_initiative_status_url(initiative_statuses(:unused))
     assert_response :success
   end
 
   test 'should update initiative_status' do
+    initiative = initiative_statuses(:unused)
     sign_in_as :georgie
-    patch initiative_status_url(@initiative_status),
+    patch initiative_status_url(initiative),
           params: {
             initiative_status: {
-              description: @initiative_status.description,
-              name: @initiative_status.name
+              description: 'status description', name: 'status name'
             }
           }
-    assert_redirected_to edit_initiative_status_url(@initiative_status)
+    assert_redirected_to edit_initiative_status_url(initiative)
   end
 end

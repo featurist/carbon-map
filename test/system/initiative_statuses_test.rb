@@ -3,41 +3,33 @@
 require 'application_system_test_case'
 
 class InitiativeStatusesTest < ApplicationSystemTestCase
-  setup { @initiative_status = initiative_statuses(:one) }
-
   test 'visiting the index' do
     visit initiative_statuses_url
+    sign_in_as :al_pacino
     assert_selector 'h1', text: 'Initiative Statuses'
   end
 
   test 'creating a Initiative status' do
     visit initiative_statuses_url
+    sign_in_as :al_pacino
     click_on 'New Initiative Status'
 
-    fill_in 'Description', with: @initiative_status.description
-    fill_in 'Name', with: @initiative_status.name
+    fill_in 'Description', with: 'description of status'
+    fill_in 'Name', with: 'name of status'
     click_on 'Create Initiative status'
 
     assert_text 'Initiative status was successfully created'
-    click_on 'Back'
   end
 
   test 'updating a Initiative status' do
     visit initiative_statuses_url
+    sign_in_as :al_pacino
     click_on 'Edit', match: :first
 
-    fill_in 'Description', with: @initiative_status.description
-    fill_in 'Name', with: @initiative_status.name
+    fill_in 'Description', with: 'description of status'
+    fill_in 'Name', with: 'name of status'
     click_on 'Update Initiative status'
 
     assert_text 'Initiative status was successfully updated'
-    click_on 'Back'
-  end
-
-  test 'destroying a Initiative status' do
-    visit initiative_statuses_url
-    page.accept_confirm { click_on 'Destroy', match: :first }
-
-    assert_text 'Initiative status was successfully destroyed'
   end
 end
