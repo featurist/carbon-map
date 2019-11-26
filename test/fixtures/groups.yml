@@ -1,25 +1,5 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  abbreviation: MyString
-  opening_hours: MyString
-  contact_name: MyString
-  contact_email: MyString
-  contact_phone: MyString
-  consent_to_share: true
-  owner: georgie
-
-two:
-  name: MyString
-  abbreviation: MyString
-  opening_hours: MyString
-  contact_name: MyString
-  contact_email: MyString
-  contact_phone: MyString
-  consent_to_share: true
-  owner: georgie
-
 down_to_earth_stroud:
   name: Down to Earth Stroud
   abbreviation: NA

@@ -3,8 +3,6 @@
 require 'test_helper'
 
 class GroupsControllerTest < ActionDispatch::IntegrationTest
-  setup { @group = groups(:one) }
-
   test 'should get index' do
     sign_in_as :georgie
     get groups_url
@@ -23,12 +21,11 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
       post groups_url,
            params: {
              group: {
-               abbreviation: @group.abbreviation,
-               contact_email: @group.contact_email,
-               contact_name: @group.contact_name,
-               contact_phone: @group.contact_phone,
-               name: @group.name,
-               opening_hours: @group.opening_hours,
+               abbreviation: 'abb',
+               name: 'test group',
+               contact_email: 'contact@test.com',
+               contact_name: 'test contact',
+               contact_phone: 'test phone',
                consent_to_share: true,
                websites_attributes: [
                  { website: 'http://one' },
@@ -48,33 +45,34 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get edit' do
     sign_in_as :georgie
-    get edit_group_url(@group)
+    get edit_group_url(groups(:down_to_earth_stroud))
     assert_response :success
   end
 
   test 'should update group' do
     sign_in_as :georgie
-    @group.websites.delete_all
-    @group.websites.create! website: 'http://one'
-    patch group_url(@group),
+    group = groups(:down_to_earth_stroud)
+    group.websites.delete_all
+    group.websites.create! website: 'http://one'
+
+    patch group_url(group),
           params: {
             group: {
-              abbreviation: @group.abbreviation,
-              contact_email: @group.contact_email,
-              contact_name: @group.contact_name,
-              contact_phone: @group.contact_phone,
-              name: @group.name,
-              opening_hours: @group.opening_hours,
+              abbreviation: 'app update',
+              name: 'update group name',
+              contact_email: 'update contact',
+              contact_name: 'update name',
+              contact_phone: 'update phone',
               websites_attributes: [
-                { website: 'http://one', id: @group.websites[0].id },
+                { website: 'http://one', id: group.websites[0].id },
                 { website: 'http://two' }
               ]
             }
           }
-    websites = Group.last.websites.sort_by(&:website)
+    websites = group.reload.websites.sort_by(&:website)
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
-    assert_redirected_to edit_group_path(@group)
+    assert_redirected_to edit_group_path(group)
   end
 end

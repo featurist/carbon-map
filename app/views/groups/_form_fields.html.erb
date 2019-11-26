@@ -26,6 +26,11 @@
 </div>
 
 <h2>Contact</h2>
+<%= f.form_field :contact_name do %>
+  <%= f.label :contact_name %>
+  <%= f.text_field :contact_name %>
+<% end %>
+
 <%= f.form_field :contact_email do %>
   <%= f.label :contact_email %>
   <%= f.text_field :contact_email %>
