@@ -331,6 +331,13 @@ class SolutionPicker {
             return (
               <li>
                 {theme.sector} > {theme.name}
+                &nbsp;
+                <span
+                  class="AddInitiativeSolution-removeSolution"
+                  onclick={() => this.removeTheme(theme)}
+                >
+                  X
+                </span>
                 <input
                   type="hidden"
                   name={`initiative[themes_attributes][${index}][theme_id]`}
@@ -393,6 +400,11 @@ class SolutionPicker {
     this.value = "";
     this.results = [];
     this.resetProposedSolution(solution.solution_class_id);
+  }
+
+  removeTheme(theme) {
+    const themeIndex = this.themes.indexOf(theme);
+    this.themes.splice(themeIndex, 1);
   }
 
   removeSolution(solution) {
