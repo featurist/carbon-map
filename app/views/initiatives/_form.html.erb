@@ -37,8 +37,8 @@
     <%= f.number_field :anticipated_carbon_saving %>
   <% end %>
 
-  <%= f.form_field :status do %>
-    <%= f.label :status %>
+  <%= f.form_field :status_id do %>
+    <%= f.label :status_id, 'Status' %>
     <%= f.select :status_id, initiative_statuses %>
   <% end %>
 
