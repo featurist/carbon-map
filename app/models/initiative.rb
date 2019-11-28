@@ -45,6 +45,7 @@ class Initiative < ApplicationRecord
         websites: website_urls(initiative.websites),
         status: initiative.status_name,
         solutions: map_solutions(initiative),
+        themes: map_themes(initiative),
         timestamp: initiative.updated_at
       }
     end
@@ -55,6 +56,15 @@ class Initiative < ApplicationRecord
   def self.map_solutions(initiative)
     initiative.solutions.map do |mapped_solution|
       create_solution(mapped_solution)
+    end
+  end
+
+  def self.map_themes(initiative)
+    initiative.themes.map do |mapped_solution|
+      {
+        sector: mapped_solution.theme.sector.name,
+        theme: mapped_solution.theme.name
+      }
     end
   end
 
