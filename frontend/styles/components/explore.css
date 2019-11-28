@@ -1,7 +1,6 @@
 .Explore {
   background-color: $snow;
   display: flex;
-  flex: 1;
   flex-direction: column;
 }
 
@@ -41,11 +40,11 @@
 
 .Explore-map {
   flex: 1;
-  height: 250px;
 }
 
 .Explore-panel {
   display: flex;
+  flex: 1 0 auto;
 }
 
 .Explore-initiative {
@@ -68,10 +67,6 @@
 }
 
 @media (--bp-mobile) {
-
-  .Explore-map {
-    height: 450px;
-  }
 
   .Explore-initiative {
     height: 450px;

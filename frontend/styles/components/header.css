@@ -1,4 +1,6 @@
-.Header {}
+.Header {
+  flex: none;
+}
 
 .Header-logo {
   vertical-align: top;
