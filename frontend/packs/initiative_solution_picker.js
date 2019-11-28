@@ -1,8 +1,9 @@
 import hyperdom from "hyperdom";
 
 class SolutionPicker {
-  constructor({ taxonomy_hierarchy, initial_solutions }) {
+  constructor({ taxonomy_hierarchy, initial_themes, initial_solutions }) {
     this.isValid = false;
+    this.themes = [];
     this.solutions = [];
     this.value = "";
     this.results = [];
@@ -25,6 +26,18 @@ class SolutionPicker {
             };
           });
         });
+      });
+    });
+    initial_themes.forEach(theme => {
+      taxonomy_hierarchy.forEach(sector => {
+        const taxonomy_theme = sector.themes.find(t => t.id === theme.theme_id);
+        if (taxonomy_theme) {
+          this.themes.push({
+            theme_id: theme.theme_id,
+            sector: sector.name,
+            name: taxonomy_theme.name
+          });
+        }
       });
     });
     this.solutions = initial_solutions.map(sol => {
@@ -191,7 +204,26 @@ class SolutionPicker {
         >
           {this.navigation.sector.themes.map(theme => {
             return (
-              <li onclick={() => this.navigate({ theme })}>{theme.name}</li>
+              <li class="Taxonomy-item">
+                <span
+                  class="Taxonomy-itemName"
+                  onclick={() => this.navigate({ theme })}
+                >
+                  {theme.name}
+                </span>
+                <span
+                  class="AddInitiativeSolution-addSolution Taxonomy-itemAction"
+                  onclick={() => {
+                    this.addTheme({
+                      sector: this.navigation.sector.name,
+                      name: theme.name,
+                      theme_id: theme.id
+                    });
+                  }}
+                >
+                  [ add ]
+                </span>
+              </li>
             );
           })}
         </ul>
@@ -245,23 +277,29 @@ class SolutionPicker {
     }
 
     return (
-      <div>
-        <label>
-          Can't find the solution you are after? Suggest a new one:
-          <input type="text" binding="solution.name" />
-        </label>
-      </div>
+      <label class="AddInitiativeSolution-proposedSolutionLabel">
+        <span class="AddInitiativeSolution-proposedSolutionTitle">
+          Can't find the solution you are after?
+        </span>
+        <input
+          class="AddInitiativeSolution-proposedSolutionInput"
+          type="text"
+          binding="solution.name"
+          placeholder="Enter your suggestion here"
+        />
+      </label>
     );
   }
 
   renderSolution(solution) {
     return (
-      <li>
-        {this.renderSolutionInput(solution)}{" "}
+      <li class="Taxonomy-item">
+        <span class="Taxonomy-itemName">
+          {this.renderSolutionInput(solution)}{" "}
+        </span>
         <span
-          class="AddInitiativeSolution-addSolution"
+          class="AddInitiativeSolution-addSolution Taxonomy-itemAction"
           onclick={() => {
-            console.log("to add", solution);
             this.addSolution({
               sector: this.navigation.sector.name,
               theme: this.navigation.theme.name,
@@ -280,7 +318,7 @@ class SolutionPicker {
   }
 
   renderChosenSolutions() {
-    if (this.solutions.length === 0) {
+    if (this.themes.length + this.solutions.length === 0) {
       return (
         <ul class="AddInitiativeSolution-solutions">
           <li>Please select a solution</li>
@@ -289,6 +327,18 @@ class SolutionPicker {
     } else {
       return (
         <ul class="AddInitiativeSolution-solutions">
+          {this.themes.map((theme, index) => {
+            return (
+              <li>
+                {theme.sector} > {theme.name}
+                <input
+                  type="hidden"
+                  name={`initiative[themes_attributes][${index}][theme_id]`}
+                  value={theme.theme_id}
+                />
+              </li>
+            );
+          })}
           {this.solutions.map((solution, index) => {
             return (
               <li>
@@ -334,8 +384,11 @@ class SolutionPicker {
     );
   }
 
+  addTheme(theme) {
+    this.themes.push(theme);
+  }
+
   addSolution(solution) {
-    console.log(solution);
     this.solutions.push(solution);
     this.value = "";
     this.results = [];
@@ -350,6 +403,9 @@ class SolutionPicker {
 
 function load() {
   const solution_picker = document.querySelector("#solution_picker");
+  const initial_themes = JSON.parse(
+    document.getElementById("initial_themes").value
+  );
   const initial_solutions = JSON.parse(
     document.getElementById("initial_solutions").value
   );
@@ -358,7 +414,11 @@ function load() {
   );
   hyperdom.append(
     solution_picker,
-    new SolutionPicker({ taxonomy_hierarchy, initial_solutions })
+    new SolutionPicker({
+      taxonomy_hierarchy,
+      initial_themes,
+      initial_solutions
+    })
   );
 }
 

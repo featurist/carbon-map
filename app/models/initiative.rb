@@ -7,9 +7,11 @@ class Initiative < ApplicationRecord
   delegate :name, prefix: true, to: :lead_group
   after_initialize :set_default_location
   has_many :solutions, class_name: 'InitiativeSolution', dependent: :destroy
+  has_many :themes, class_name: 'InitiativeTheme', dependent: :destroy
   has_many_attached :images
   has_many :websites, class_name: 'InitiativeWebsite', dependent: :destroy
   accepts_nested_attributes_for :solutions
+  accepts_nested_attributes_for :themes
   accepts_nested_attributes_for :lead_group
   accepts_nested_attributes_for :websites, allow_destroy: true
 

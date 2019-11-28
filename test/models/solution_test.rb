@@ -12,6 +12,7 @@ class SolutionTest < ActiveSupport::TestCase
         themes: [
           {
             name: 'Heating',
+            id: ActiveRecord::FixtureSet.identify('heating'),
             classes: [
               {
                 name: 'Heat pumps',
@@ -35,6 +36,7 @@ class SolutionTest < ActiveSupport::TestCase
         themes: [
           {
             name: 'Lift Share',
+            id: ActiveRecord::FixtureSet.identify('lift_share'),
             classes: [
               {
                 name: 'Apps',

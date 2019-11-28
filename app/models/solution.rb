@@ -49,7 +49,7 @@ class Solution < ApplicationRecord
     themes = sector[:themes]
     theme = themes.find { |t| t[:name] == name }
     if theme.nil?
-      theme = { name: name, classes: [] }
+      theme = { name: name, id: solution_class.theme.id, classes: [] }
       sector[:themes] << theme
     end
     theme

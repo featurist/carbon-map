@@ -147,6 +147,7 @@ class InitiativesController < ApplicationController
         :partner_groups_role,
         :status_id,
         :consent_to_share,
+        themes_attributes: %i[theme_id],
         solutions_attributes: %i[
           solution_id
           solution_class_id

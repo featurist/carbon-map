@@ -1,10 +1,9 @@
 
-.AddInitiativeSolution-lookup div {
-  display: flex;
+.AddInitiativeSolution-lookup {
 }
 
-.AddInitiativeSolution-lookup input {
-  width: 100%;
+.AddInitiativeSolution-lookup div {
+  display: flex;
 }
 
 .AddInitiativeSolution-breadcrumb {
@@ -65,4 +64,29 @@
 
 .AddInitiativeSolution-groupSelected {
   display: none;
+}
+
+.Taxonomy-item {
+  display: flex;
+}
+
+.Taxonomy-itemName {
+  flex: auto;
+}
+
+.Taxonomy-itemAction {
+}
+
+.AddInitiativeSolution-proposedSolutionLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.AddInitiativeSolution-proposedSolutionTitle {
+  flex: 1;
+}
+
+.AddInitiativeSolution-proposedSolutionInput {
+  flex: 1;
+  width: auto;
 }
