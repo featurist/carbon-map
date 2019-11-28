@@ -93,14 +93,12 @@
 
   <h2>Groups</h2>
 
-  <% if groups.any? %>
-    <%= f.form_field :lead_group_id do %>
-      <%= f.label :lead_group_id %>
-      <%= f.select :lead_group_id do %>
-        <option value="">Please select a group</option>
-        <%=options_for_select(groups, initiative.lead_group.id) %>
-        <option value="new" <%=new_group_selected?(initiative) ? 'selected' : '' %>>Create New</option>
-      <% end %>
+  <%= f.form_field :lead_group_id do %>
+    <%= f.label :lead_group_id %>
+    <%= f.select :lead_group_id do %>
+      <option value="">Please select a group</option>
+      <%=options_for_select(groups, initiative.lead_group.id) %>
+      <option value="new" <%=new_group_selected?(initiative) ? 'selected' : '' %>>Create New</option>
     <% end %>
   <% end %>
 
