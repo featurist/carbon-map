@@ -116,7 +116,6 @@
   <h2>Solutions</h2>
 
   <%= f.form_field :choose_solution do %>
-    <%= f.label :choose_solution %>
     <input type="hidden" id="initial_themes" value="<%=themes_as_json(initiative)%>">
     <input type="hidden" id="initial_solutions" value="<%=solutions_as_json(initiative)%>">
     <div id="solution_picker"></div>

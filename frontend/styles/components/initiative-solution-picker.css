@@ -22,7 +22,15 @@
 }
 
 .AddInitiativeSolution-removeSolution {
-  float: right;
+  font-size: 0;
+}
+
+.Solution-item {
+  display: flex;
+}
+
+.Solution-itemDescription {
+  flex: auto;
 }
 
 .AddInitiativeSolution-group {
@@ -31,13 +39,26 @@
 }
 
 .AddInitiativeSolution-group ul {
+  margin: 0;
   padding: 0;
 }
 
-.AddInitiativeSolution-group li,
+.AddInitiativeSolution-group h2 {
+  margin: 5px;
+  padding-left: 5px;
+}
+
+.AddInitiativeSolution-group li {
+  line-height: 25px;
+  list-style-type: none;
+  padding: 3px;
+  padding-left: 5px;
+}
+
 .AddInitiativeSolution-solutions li {
   list-style-type: none;
   padding: 3px;
+  padding-left: 5px;
 }
 
 .AddInitiativeSolution-group li:nth-child(even),
@@ -64,7 +85,7 @@
 .AddInitiativeSolution-group {
   background-color: white;
   border: 1px solid;
-  padding: 2px;
+  padding: 0;
 }
 
 .AddInitiativeSolution-groupSelected {
@@ -80,6 +101,7 @@
 }
 
 .Taxonomy-itemAction {
+  display: flex;
 }
 
 .AddInitiativeSolution-proposedSolutionLabel {
@@ -93,5 +115,10 @@
 
 .AddInitiativeSolution-proposedSolutionInput {
   flex: 1;
+  margin-right: 5px;
   width: auto;
+}
+
+button.AddInitiativeSolution-addSolution {
+  align-self: flex-end;
 }

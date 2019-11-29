@@ -1,4 +1,5 @@
 import hyperdom from "hyperdom";
+import closeCircle from "../images/close-circle.svg";
 
 class SolutionPicker {
   constructor({ taxonomy_hierarchy, initial_themes, initial_solutions }) {
@@ -216,7 +217,7 @@ class SolutionPicker {
                   >
                     {theme.name}
                   </span>
-                  <span
+                  <button
                     class="AddInitiativeSolution-addSolution Taxonomy-itemAction"
                     onclick={() => {
                       this.addTheme({
@@ -224,10 +225,11 @@ class SolutionPicker {
                         name: theme.name,
                         theme_id: theme.id
                       });
+                      return false;
                     }}
                   >
-                    [ add ]
-                  </span>
+                    Add
+                  </button>
                 </li>
               );
             })}
@@ -309,21 +311,24 @@ class SolutionPicker {
         <span class="Taxonomy-itemName">
           {this.renderSolutionInput(solution)}{" "}
         </span>
-        <span
-          class="AddInitiativeSolution-addSolution Taxonomy-itemAction"
-          onclick={() => {
-            this.addSolution({
-              sector: this.navigation.sector.name,
-              theme: this.navigation.theme.name,
-              class: this.navigation.solutionClass.name,
-              solution: solution.name,
-              solution_id: solution.solution_id,
-              solution_class_id: solution.solution_class_id,
-              proposed: solution.proposed
-            });
-          }}
-        >
-          [ add ]
+        <span class="Taxonomy-itemAction">
+          <button
+            class="AddInitiativeSolution-addSolution"
+            onclick={() => {
+              this.addSolution({
+                sector: this.navigation.sector.name,
+                theme: this.navigation.theme.name,
+                class: this.navigation.solutionClass.name,
+                solution: solution.name,
+                solution_id: solution.solution_id,
+                solution_class_id: solution.solution_class_id,
+                proposed: solution.proposed
+              });
+              return false;
+            }}
+          >
+            Add
+          </button>
         </span>
       </li>
     );
@@ -341,14 +346,15 @@ class SolutionPicker {
         <ul class="AddInitiativeSolution-solutions">
           {this.themes.map((theme, index) => {
             return (
-              <li>
-                {theme.sector} > {theme.name}
-                &nbsp;
+              <li class="Solution-item">
+                <span class="Solution-itemDescription">
+                  {theme.sector} > {theme.name}
+                </span>
                 <span
-                  class="AddInitiativeSolution-removeSolution"
+                  class="AddInitiativeSolution-removeSolution Solution-itemRemove"
                   onclick={() => this.removeTheme(theme)}
                 >
-                  X
+                  <img src={closeCircle} />
                 </span>
                 <input
                   type="hidden"
@@ -360,15 +366,16 @@ class SolutionPicker {
           })}
           {this.solutions.map((solution, index) => {
             return (
-              <li>
-                {solution.sector} > {solution.theme} > {solution.class} >{" "}
-                {solution.solution}
-                &nbsp;
+              <li class="Solution-item">
+                <span class="Solution-itemDescription">
+                  {solution.sector} > {solution.theme} > {solution.class} >{" "}
+                  {solution.solution}
+                </span>
                 <span
-                  class="AddInitiativeSolution-removeSolution"
+                  class="AddInitiativeSolution-removeSolution Solution-itemRemove"
                   onclick={() => this.removeSolution(solution)}
                 >
-                  X
+                  <img src={closeCircle} />
                 </span>
                 {this.renderSolutionField(solution, index)}
                 <input
