@@ -178,55 +178,61 @@ class SolutionPicker {
 
   renderSectors() {
     return (
-      <ul
+      <div
         class={{
           "AddInitiativeSolution-group": true,
           "AddInitiativeSolution-groupSelected": this.navigation.sector
         }}
       >
-        {this.taxonomy_hierarchy.map(sector => {
-          return (
-            <li onclick={() => this.navigate({ sector })}>{sector.name}</li>
-          );
-        })}
-      </ul>
+        <h2>Sectors</h2>
+        <ul>
+          {this.taxonomy_hierarchy.map(sector => {
+            return (
+              <li onclick={() => this.navigate({ sector })}>{sector.name}</li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 
   renderThemes() {
     if (this.navigation.sector) {
       return (
-        <ul
+        <div
           class={{
             "AddInitiativeSolution-group": true,
             "AddInitiativeSolution-groupSelected": this.navigation.theme
           }}
         >
-          {this.navigation.sector.themes.map(theme => {
-            return (
-              <li class="Taxonomy-item">
-                <span
-                  class="Taxonomy-itemName"
-                  onclick={() => this.navigate({ theme })}
-                >
-                  {theme.name}
-                </span>
-                <span
-                  class="AddInitiativeSolution-addSolution Taxonomy-itemAction"
-                  onclick={() => {
-                    this.addTheme({
-                      sector: this.navigation.sector.name,
-                      name: theme.name,
-                      theme_id: theme.id
-                    });
-                  }}
-                >
-                  [ add ]
-                </span>
-              </li>
-            );
-          })}
-        </ul>
+          <h2>Themes</h2>
+          <ul>
+            {this.navigation.sector.themes.map(theme => {
+              return (
+                <li class="Taxonomy-item">
+                  <span
+                    class="Taxonomy-itemName"
+                    onclick={() => this.navigate({ theme })}
+                  >
+                    {theme.name}
+                  </span>
+                  <span
+                    class="AddInitiativeSolution-addSolution Taxonomy-itemAction"
+                    onclick={() => {
+                      this.addTheme({
+                        sector: this.navigation.sector.name,
+                        name: theme.name,
+                        theme_id: theme.id
+                      });
+                    }}
+                  >
+                    [ add ]
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       );
     }
   }
@@ -234,25 +240,28 @@ class SolutionPicker {
   renderClasses() {
     if (this.navigation.theme) {
       return (
-        <ul
+        <div
           class={{
             "AddInitiativeSolution-group": true,
             "AddInitiativeSolution-groupSelected": this.navigation.solutionClass
           }}
         >
-          {this.navigation.theme.classes.map(solutionClass => {
-            return (
-              <li
-                onclick={() => {
-                  this.resetProposedSolution(solutionClass.solution_class_id);
-                  this.navigate({ solutionClass });
-                }}
-              >
-                {solutionClass.name}
-              </li>
-            );
-          })}
-        </ul>
+          <h2>Solution Class</h2>
+          <ul>
+            {this.navigation.theme.classes.map(solutionClass => {
+              return (
+                <li
+                  onclick={() => {
+                    this.resetProposedSolution(solutionClass.solution_class_id);
+                    this.navigate({ solutionClass });
+                  }}
+                >
+                  {solutionClass.name}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       );
     }
   }
@@ -260,13 +269,16 @@ class SolutionPicker {
   renderSolutions() {
     if (this.navigation.solutionClass) {
       return (
-        <ul class="AddInitiativeSolution-group AddInitiativeSolution-solutionSelector">
-          {this.navigation.solutionClass.solutions.map(solution => {
-            return this.renderSolution(solution);
-          })}
+        <div class="AddInitiativeSolution-group AddInitiativeSolution-solutionSelector">
+          <h2>Solutions</h2>
+          <ul>
+            {this.navigation.solutionClass.solutions.map(solution => {
+              return this.renderSolution(solution);
+            })}
 
-          {this.renderSolution(this.proposedSolution)}
-        </ul>
+            {this.renderSolution(this.proposedSolution)}
+          </ul>
+        </div>
       );
     }
   }

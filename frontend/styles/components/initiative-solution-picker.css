@@ -2,10 +2,6 @@
 .AddInitiativeSolution-lookup {
 }
 
-.AddInitiativeSolution-lookup div {
-  display: flex;
-}
-
 .AddInitiativeSolution-breadcrumb {
 }
 
@@ -32,6 +28,10 @@
 .AddInitiativeSolution-group {
   flex: 10 0 auto;
   padding: 2px;
+}
+
+.AddInitiativeSolution-group ul {
+  padding: 0;
 }
 
 .AddInitiativeSolution-group li,
