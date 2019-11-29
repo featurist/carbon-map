@@ -122,3 +122,10 @@
 button.AddInitiativeSolution-addSolution {
   align-self: flex-end;
 }
+
+.AddInitiativeSolution-add,
+.AddInitiativeSolution-remove {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+}

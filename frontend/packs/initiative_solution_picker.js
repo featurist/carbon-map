@@ -1,5 +1,6 @@
 import hyperdom from "hyperdom";
 import closeCircle from "../images/close-circle.svg";
+import plusCircle from "../images/plus-circle.svg";
 
 class SolutionPicker {
   constructor({ taxonomy_hierarchy, initial_themes, initial_solutions }) {
@@ -217,8 +218,9 @@ class SolutionPicker {
                   >
                     {theme.name}
                   </span>
-                  <button
-                    class="AddInitiativeSolution-addSolution Taxonomy-itemAction"
+                  <img
+                    src={plusCircle}
+                    class="AddInitiativeSolution-add Taxonomy-itemAction"
                     onclick={() => {
                       this.addTheme({
                         sector: this.navigation.sector.name,
@@ -227,9 +229,7 @@ class SolutionPicker {
                       });
                       return false;
                     }}
-                  >
-                    Add
-                  </button>
+                  />
                 </li>
               );
             })}
@@ -311,25 +311,22 @@ class SolutionPicker {
         <span class="Taxonomy-itemName">
           {this.renderSolutionInput(solution)}{" "}
         </span>
-        <span class="Taxonomy-itemAction">
-          <button
-            class="AddInitiativeSolution-addSolution"
-            onclick={() => {
-              this.addSolution({
-                sector: this.navigation.sector.name,
-                theme: this.navigation.theme.name,
-                class: this.navigation.solutionClass.name,
-                solution: solution.name,
-                solution_id: solution.solution_id,
-                solution_class_id: solution.solution_class_id,
-                proposed: solution.proposed
-              });
-              return false;
-            }}
-          >
-            Add
-          </button>
-        </span>
+        <img
+          src={plusCircle}
+          class="AddInitiativeSolution-add"
+          onclick={() => {
+            this.addSolution({
+              sector: this.navigation.sector.name,
+              theme: this.navigation.theme.name,
+              class: this.navigation.solutionClass.name,
+              solution: solution.name,
+              solution_id: solution.solution_id,
+              solution_class_id: solution.solution_class_id,
+              proposed: solution.proposed
+            });
+            return false;
+          }}
+        />
       </li>
     );
   }
@@ -350,12 +347,11 @@ class SolutionPicker {
                 <span class="Solution-itemDescription">
                   {theme.sector} > {theme.name}
                 </span>
-                <span
-                  class="AddInitiativeSolution-removeSolution Solution-itemRemove"
+                <img
+                  src={closeCircle}
                   onclick={() => this.removeTheme(theme)}
-                >
-                  <img src={closeCircle} />
-                </span>
+                  class="AddInitiativeSolution-remove"
+                />
                 <input
                   type="hidden"
                   name={`initiative[themes_attributes][${index}][theme_id]`}
@@ -371,12 +367,11 @@ class SolutionPicker {
                   {solution.sector} > {solution.theme} > {solution.class} >{" "}
                   {solution.solution}
                 </span>
-                <span
-                  class="AddInitiativeSolution-removeSolution Solution-itemRemove"
+                <img
+                  src={closeCircle}
+                  class="AddInitiativeSolution-remove"
                   onclick={() => this.removeSolution(solution)}
-                >
-                  <img src={closeCircle} />
-                </span>
+                />
                 {this.renderSolutionField(solution, index)}
                 <input
                   type="hidden"
