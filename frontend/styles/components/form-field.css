@@ -8,6 +8,7 @@
 
 .FormField-form h2 {
   flex-basis: 100%;
+  margin-bottom: 5px;
 }
 
 .FormField {
