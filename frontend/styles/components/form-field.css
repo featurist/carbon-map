@@ -22,6 +22,11 @@
   width: 20px;
 }
 
+.FormField-checkbox {
+  align-items: baseline;
+  display: flex;
+}
+
 .FormField-actions {
   display: flex;
   flex-basis: 100%;

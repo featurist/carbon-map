@@ -91,6 +91,14 @@
     <%= f.text_field :contact_phone %>
   <% end %>
 
+  <%= f.form_field :consent_to_share do %>
+    <%= f.label :consent_to_share, class_name: 'FormField-checkbox' do %>
+      <%= f.check_box :consent_to_share %>
+      <span>Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?</span>
+    <%end%>
+  <% end %>
+
+
   <h2>Groups</h2>
 
   <%= f.form_field :lead_group_id do %>
@@ -119,11 +127,6 @@
     <input type="hidden" id="initial_themes" value="<%=themes_as_json(initiative)%>">
     <input type="hidden" id="initial_solutions" value="<%=solutions_as_json(initiative)%>">
     <div id="solution_picker"></div>
-  <% end %>
-
-  <%= f.form_field :consent_to_share do %>
-    <%= f.label :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced? ' %>
-    <%= f.check_box :consent_to_share %>
   <% end %>
 
   <div class="FormField-actions">

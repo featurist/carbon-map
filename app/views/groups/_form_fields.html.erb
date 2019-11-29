@@ -42,8 +42,10 @@
 <% end %>
 
 <%= f.form_field :consent_to_share do %>
-  <%= f.label :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced? ' %>
-  <%= f.check_box :consent_to_share %>
+  <%= f.label :consent_to_share, class_name: 'FormField-checkbox' do %>
+    <%= f.check_box :consent_to_share %>
+    <span>Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?</span>
+  <%end%>
 <% end %>
 
 insert group type check boxes here

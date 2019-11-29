@@ -77,6 +77,5 @@ input[type=tel] {
 }
 
 input[type=checkbox] {
-  height: 44px;
-  width: 44px;
+  margin: 5px;
 }
