@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module InitiativesHelper
+  def themes_as_json(initiative)
+    theme_map = initiative.themes.map { |theme| { theme_id: theme.id } }
+
+    theme_map.to_json
+  end
+
   def solutions_as_json(initiative)
     solution_map =
       initiative.solutions.map do |solution_mapping|

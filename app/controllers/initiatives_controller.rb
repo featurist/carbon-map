@@ -31,7 +31,7 @@ class InitiativesController < ApplicationController
   end
 
   def update
-    @initiative.solutions.clear
+    clear_solutions_and_themes
     create_proposed_solutions
     images = initiative_params.delete 'images'
 
@@ -45,6 +45,11 @@ class InitiativesController < ApplicationController
   end
 
   private
+
+  def clear_solutions_and_themes
+    @initiative.themes.clear
+    @initiative.solutions.clear
+  end
 
   def set_initiative
     @initiative = Initiative.find(params[:id])
@@ -147,6 +152,7 @@ class InitiativesController < ApplicationController
         :partner_groups_role,
         :status_id,
         :consent_to_share,
+        themes_attributes: %i[theme_id],
         solutions_attributes: %i[
           solution_id
           solution_class_id

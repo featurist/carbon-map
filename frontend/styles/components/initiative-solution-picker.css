@@ -1,10 +1,5 @@
 
-.AddInitiativeSolution-lookup div {
-  display: flex;
-}
-
-.AddInitiativeSolution-lookup input {
-  width: 100%;
+.AddInitiativeSolution-lookup {
 }
 
 .AddInitiativeSolution-breadcrumb {
@@ -27,7 +22,15 @@
 }
 
 .AddInitiativeSolution-removeSolution {
-  float: right;
+  font-size: 0;
+}
+
+.Solution-item {
+  display: flex;
+}
+
+.Solution-itemDescription {
+  flex: auto;
 }
 
 .AddInitiativeSolution-group {
@@ -35,15 +38,37 @@
   padding: 2px;
 }
 
-.AddInitiativeSolution-group li,
+.AddInitiativeSolution-group ul {
+  margin: 0;
+  padding: 0;
+}
+
+.AddInitiativeSolution-group h2 {
+  margin: 5px;
+  padding-left: 5px;
+}
+
+.AddInitiativeSolution-group li {
+  line-height: 25px;
+  list-style-type: none;
+  padding: 3px;
+  padding-left: 5px;
+}
+
 .AddInitiativeSolution-solutions li {
   list-style-type: none;
   padding: 3px;
+  padding-left: 5px;
 }
 
 .AddInitiativeSolution-group li:nth-child(even),
 .AddInitiativeSolution-solutions li:nth-child(even) {
-  background-color: #e5e5e5;
+  background-color: #fbfafa;
+}
+
+.AddInitiativeSolution-group li:nth-child(odd),
+.AddInitiativeSolution-solutions li:nth-child(odd) {
+  background-color: #f5f5f5;
 }
 
 .AddInitiativeSolution-solutionSelector li {
@@ -60,9 +85,47 @@
 .AddInitiativeSolution-group {
   background-color: white;
   border: 1px solid;
-  padding: 2px;
+  padding: 0;
 }
 
 .AddInitiativeSolution-groupSelected {
   display: none;
+}
+
+.Taxonomy-item {
+  display: flex;
+}
+
+.Taxonomy-itemName {
+  flex: auto;
+}
+
+.Taxonomy-itemAction {
+  display: flex;
+}
+
+.AddInitiativeSolution-proposedSolutionLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.AddInitiativeSolution-proposedSolutionTitle {
+  flex: 1;
+}
+
+.AddInitiativeSolution-proposedSolutionInput {
+  flex: 1;
+  margin-right: 5px;
+  width: auto;
+}
+
+button.AddInitiativeSolution-addSolution {
+  align-self: flex-end;
+}
+
+.AddInitiativeSolution-add,
+.AddInitiativeSolution-remove {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
 }

@@ -1,8 +1,11 @@
 import hyperdom from "hyperdom";
+import closeCircle from "../images/close-circle.svg";
+import plusCircle from "../images/plus-circle.svg";
 
 class SolutionPicker {
-  constructor({ taxonomy_hierarchy, initial_solutions }) {
+  constructor({ taxonomy_hierarchy, initial_themes, initial_solutions }) {
     this.isValid = false;
+    this.themes = [];
     this.solutions = [];
     this.value = "";
     this.results = [];
@@ -25,6 +28,18 @@ class SolutionPicker {
             };
           });
         });
+      });
+    });
+    initial_themes.forEach(theme => {
+      taxonomy_hierarchy.forEach(sector => {
+        const taxonomy_theme = sector.themes.find(t => t.id === theme.theme_id);
+        if (taxonomy_theme) {
+          this.themes.push({
+            theme_id: theme.theme_id,
+            sector: sector.name,
+            name: taxonomy_theme.name
+          });
+        }
       });
     });
     this.solutions = initial_solutions.map(sol => {
@@ -165,36 +180,61 @@ class SolutionPicker {
 
   renderSectors() {
     return (
-      <ul
+      <div
         class={{
           "AddInitiativeSolution-group": true,
           "AddInitiativeSolution-groupSelected": this.navigation.sector
         }}
       >
-        {this.taxonomy_hierarchy.map(sector => {
-          return (
-            <li onclick={() => this.navigate({ sector })}>{sector.name}</li>
-          );
-        })}
-      </ul>
+        <h2>Sectors</h2>
+        <ul>
+          {this.taxonomy_hierarchy.map(sector => {
+            return (
+              <li onclick={() => this.navigate({ sector })}>{sector.name}</li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 
   renderThemes() {
     if (this.navigation.sector) {
       return (
-        <ul
+        <div
           class={{
             "AddInitiativeSolution-group": true,
             "AddInitiativeSolution-groupSelected": this.navigation.theme
           }}
         >
-          {this.navigation.sector.themes.map(theme => {
-            return (
-              <li onclick={() => this.navigate({ theme })}>{theme.name}</li>
-            );
-          })}
-        </ul>
+          <h2>Themes</h2>
+          <ul>
+            {this.navigation.sector.themes.map(theme => {
+              return (
+                <li class="Taxonomy-item">
+                  <span
+                    class="Taxonomy-itemName"
+                    onclick={() => this.navigate({ theme })}
+                  >
+                    {theme.name}
+                  </span>
+                  <img
+                    src={plusCircle}
+                    class="AddInitiativeSolution-add Taxonomy-itemAction"
+                    onclick={() => {
+                      this.addTheme({
+                        sector: this.navigation.sector.name,
+                        name: theme.name,
+                        theme_id: theme.id
+                      });
+                      return false;
+                    }}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       );
     }
   }
@@ -202,25 +242,28 @@ class SolutionPicker {
   renderClasses() {
     if (this.navigation.theme) {
       return (
-        <ul
+        <div
           class={{
             "AddInitiativeSolution-group": true,
             "AddInitiativeSolution-groupSelected": this.navigation.solutionClass
           }}
         >
-          {this.navigation.theme.classes.map(solutionClass => {
-            return (
-              <li
-                onclick={() => {
-                  this.resetProposedSolution(solutionClass.solution_class_id);
-                  this.navigate({ solutionClass });
-                }}
-              >
-                {solutionClass.name}
-              </li>
-            );
-          })}
-        </ul>
+          <h2>Solution Class</h2>
+          <ul>
+            {this.navigation.theme.classes.map(solutionClass => {
+              return (
+                <li
+                  onclick={() => {
+                    this.resetProposedSolution(solutionClass.solution_class_id);
+                    this.navigate({ solutionClass });
+                  }}
+                >
+                  {solutionClass.name}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       );
     }
   }
@@ -228,13 +271,16 @@ class SolutionPicker {
   renderSolutions() {
     if (this.navigation.solutionClass) {
       return (
-        <ul class="AddInitiativeSolution-group AddInitiativeSolution-solutionSelector">
-          {this.navigation.solutionClass.solutions.map(solution => {
-            return this.renderSolution(solution);
-          })}
+        <div class="AddInitiativeSolution-group AddInitiativeSolution-solutionSelector">
+          <h2>Solutions</h2>
+          <ul>
+            {this.navigation.solutionClass.solutions.map(solution => {
+              return this.renderSolution(solution);
+            })}
 
-          {this.renderSolution(this.proposedSolution)}
-        </ul>
+            {this.renderSolution(this.proposedSolution)}
+          </ul>
+        </div>
       );
     }
   }
@@ -245,23 +291,30 @@ class SolutionPicker {
     }
 
     return (
-      <div>
-        <label>
-          Can't find the solution you are after? Suggest a new one:
-          <input type="text" binding="solution.name" />
-        </label>
-      </div>
+      <label class="AddInitiativeSolution-proposedSolutionLabel">
+        <span class="AddInitiativeSolution-proposedSolutionTitle">
+          Can't find the solution you are after?
+        </span>
+        <input
+          class="AddInitiativeSolution-proposedSolutionInput"
+          type="text"
+          binding="solution.name"
+          placeholder="Enter your suggestion here"
+        />
+      </label>
     );
   }
 
   renderSolution(solution) {
     return (
-      <li>
-        {this.renderSolutionInput(solution)}{" "}
-        <span
-          class="AddInitiativeSolution-addSolution"
+      <li class="Taxonomy-item">
+        <span class="Taxonomy-itemName">
+          {this.renderSolutionInput(solution)}{" "}
+        </span>
+        <img
+          src={plusCircle}
+          class="AddInitiativeSolution-add"
           onclick={() => {
-            console.log("to add", solution);
             this.addSolution({
               sector: this.navigation.sector.name,
               theme: this.navigation.theme.name,
@@ -271,16 +324,15 @@ class SolutionPicker {
               solution_class_id: solution.solution_class_id,
               proposed: solution.proposed
             });
+            return false;
           }}
-        >
-          [ add ]
-        </span>
+        />
       </li>
     );
   }
 
   renderChosenSolutions() {
-    if (this.solutions.length === 0) {
+    if (this.themes.length + this.solutions.length === 0) {
       return (
         <ul class="AddInitiativeSolution-solutions">
           <li>Please select a solution</li>
@@ -289,18 +341,37 @@ class SolutionPicker {
     } else {
       return (
         <ul class="AddInitiativeSolution-solutions">
+          {this.themes.map((theme, index) => {
+            return (
+              <li class="Solution-item">
+                <span class="Solution-itemDescription">
+                  {theme.sector} > {theme.name}
+                </span>
+                <img
+                  src={closeCircle}
+                  onclick={() => this.removeTheme(theme)}
+                  class="AddInitiativeSolution-remove"
+                />
+                <input
+                  type="hidden"
+                  name={`initiative[themes_attributes][${index}][theme_id]`}
+                  value={theme.theme_id}
+                />
+              </li>
+            );
+          })}
           {this.solutions.map((solution, index) => {
             return (
-              <li>
-                {solution.sector} > {solution.theme} > {solution.class} >{" "}
-                {solution.solution}
-                &nbsp;
-                <span
-                  class="AddInitiativeSolution-removeSolution"
-                  onclick={() => this.removeSolution(solution)}
-                >
-                  X
+              <li class="Solution-item">
+                <span class="Solution-itemDescription">
+                  {solution.sector} > {solution.theme} > {solution.class} >{" "}
+                  {solution.solution}
                 </span>
+                <img
+                  src={closeCircle}
+                  class="AddInitiativeSolution-remove"
+                  onclick={() => this.removeSolution(solution)}
+                />
                 {this.renderSolutionField(solution, index)}
                 <input
                   type="hidden"
@@ -334,12 +405,20 @@ class SolutionPicker {
     );
   }
 
+  addTheme(theme) {
+    this.themes.push(theme);
+  }
+
   addSolution(solution) {
-    console.log(solution);
     this.solutions.push(solution);
     this.value = "";
     this.results = [];
     this.resetProposedSolution(solution.solution_class_id);
+  }
+
+  removeTheme(theme) {
+    const themeIndex = this.themes.indexOf(theme);
+    this.themes.splice(themeIndex, 1);
   }
 
   removeSolution(solution) {
@@ -350,6 +429,9 @@ class SolutionPicker {
 
 function load() {
   const solution_picker = document.querySelector("#solution_picker");
+  const initial_themes = JSON.parse(
+    document.getElementById("initial_themes").value
+  );
   const initial_solutions = JSON.parse(
     document.getElementById("initial_solutions").value
   );
@@ -358,7 +440,11 @@ function load() {
   );
   hyperdom.append(
     solution_picker,
-    new SolutionPicker({ taxonomy_hierarchy, initial_solutions })
+    new SolutionPicker({
+      taxonomy_hierarchy,
+      initial_themes,
+      initial_solutions
+    })
   );
 }
 
