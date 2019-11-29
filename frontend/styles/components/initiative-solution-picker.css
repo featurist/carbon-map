@@ -42,7 +42,12 @@
 
 .AddInitiativeSolution-group li:nth-child(even),
 .AddInitiativeSolution-solutions li:nth-child(even) {
-  background-color: #e5e5e5;
+  background-color: #fbfafa;
+}
+
+.AddInitiativeSolution-group li:nth-child(odd),
+.AddInitiativeSolution-solutions li:nth-child(odd) {
+  background-color: #f5f5f5;
 }
 
 .AddInitiativeSolution-solutionSelector li {
