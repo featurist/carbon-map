@@ -19,6 +19,22 @@
   margin: 2px;
 }
 
+.field_with_errors {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.field_with_errors {
+  color: rgb(146, 40, 48);
+}
+
+.field_with_errors input {
+  border: 2px solid rgb(246, 220, 222);
+  border-radius: 5px;
+}
+
 .FormField [type=checkbox] {
   width: 20px;
 }
@@ -34,4 +50,9 @@
   flex-direction: column;
   flex-grow: 1;
   margin: 2px;
+}
+
+.FormField--required label::after {
+  color: rgb(146, 40, 48);
+  content: " *";
 }

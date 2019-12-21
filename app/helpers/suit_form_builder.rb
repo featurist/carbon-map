@@ -29,7 +29,9 @@ class SuitFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def text_field(attribute, options = {})
-    super(attribute, options.reverse_merge(class: 'FormField-input'))
+    class_names = %w[FormField-input]
+    class_names << options.delete(:class_names) if options[:class_names]
+    super(attribute, options.reverse_merge(class: class_names))
   end
 
   def text_area(attribute, options = {})
