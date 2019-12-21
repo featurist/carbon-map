@@ -3,7 +3,6 @@
 down_to_earth_stroud:
   name: Down to Earth Stroud
   abbreviation: NA
-  opening_hours: NA
   contact_name: No name
   contact_phone: 01453 700011
   contact_email: info@downtoearthstroud.co.uk
@@ -13,7 +12,6 @@ down_to_earth_stroud:
 unused:
   name: unused
   abbreviation: nouse
-  opening_hours: MyString
   contact_name: MyString
   contact_email: MyString
   contact_phone: MyString

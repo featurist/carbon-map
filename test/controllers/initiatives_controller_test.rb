@@ -43,7 +43,11 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   test 'create initiative and lead group' do
     sign_in_as :georgie
     lead_group = {
-      contact_name: 'group contact', name: 'my group', consent_to_share: true
+      name: 'my group',
+      abbreviation: 'mg',
+      contact_name: 'group contact',
+      contact_email: 'test@test.com',
+      contact_phone: '123'
     }
 
     assert_difference('Initiative.count') do
