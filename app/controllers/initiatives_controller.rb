@@ -75,7 +75,7 @@ class InitiativesController < ApplicationController
 
   def select_group
     lead_group_id = initiative_params[:lead_group_id]
-    @initiative.lead_group = current_user.groups.find(lead_group_id) if lead_group_id.blank?
+    @initiative.lead_group = current_user.groups.find(lead_group_id) if lead_group_id.present?
   end
 
   def find_or_create_group
