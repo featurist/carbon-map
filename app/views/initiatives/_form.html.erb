@@ -12,12 +12,12 @@
 <%= form_with(model: initiative, local: true, html: {class: 'FormField-form'}) do |f| %>
   <%= render 'partials/form_errors', resource: initiative %>
 
-  <%= f.form_field :name do %>
+  <%= f.form_field :name, required: true do %>
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true %>
   <% end %>
 
-  <%= f.form_field :summary do %>
+  <%= f.form_field :summary, required: true do %>
     <%= f.label :summary %>
     <%= f.text_field :summary %>
   <% end %>
@@ -37,7 +37,7 @@
     <%= f.number_field :anticipated_carbon_saving %>
   <% end %>
 
-  <%= f.form_field :status_id do %>
+  <%= f.form_field :status_id, required: true do %>
     <%= f.label :status_id, 'Status' %>
     <%= f.select :status_id, initiative_statuses %>
   <% end %>
@@ -76,17 +76,17 @@
 
   <h2>Contact</h2>
 
-  <%= f.form_field :contact_name do %>
+  <%= f.form_field :contact_name, required: true do %>
     <%= f.label :contact_name %>
     <%= f.text_field :contact_name %>
   <% end %>
 
-  <%= f.form_field :contact_email do %>
+  <%= f.form_field :contact_email, required: true do %>
     <%= f.label :contact_email %>
     <%= f.text_field :contact_email %>
   <% end %>
 
-  <%= f.form_field :contact_phone do %>
+  <%= f.form_field :contact_phone, required: true do %>
     <%= f.label :contact_phone %>
     <%= f.text_field :contact_phone %>
   <% end %>
@@ -123,7 +123,7 @@
 
   <h2>Solutions</h2>
 
-  <%= f.form_field :choose_solution do %>
+  <%= f.form_field :choose_solution, required: true do %>
     <input type="hidden" id="initial_themes" value="<%=themes_as_json(initiative)%>">
     <input type="hidden" id="initial_solutions" value="<%=solutions_as_json(initiative)%>">
     <div id="solution_picker"></div>

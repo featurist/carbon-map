@@ -9,6 +9,12 @@ class Group < ApplicationRecord
            dependent: :destroy,
            inverse_of: :lead_group
   accepts_nested_attributes_for :websites, allow_destroy: true
+  validates :name,
+            :abbreviation,
+            :contact_name,
+            :contact_email,
+            :contact_phone,
+            presence: true
 
   def empty?
     attributes.each { |_, value| return false if value.present? }

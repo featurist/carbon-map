@@ -1,16 +1,11 @@
-<%= f.form_field :name do %>
+<%= f.form_field :name, required: true do %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 <% end %>
 
-<%= f.form_field :abbreviation do %>
+<%= f.form_field :abbreviation, required: true do %>
   <%= f.label :abbreviation %>
   <%= f.text_field :abbreviation %>
-<% end %>
-
-<%= f.form_field :opening_hours do %>
-  <%= f.label :opening_hours %>
-  <%= f.text_field :opening_hours %>
 <% end %>
 
 <h2>Websites & Social Media</h2>
@@ -26,17 +21,17 @@
 </div>
 
 <h2>Contact</h2>
-<%= f.form_field :contact_name do %>
+<%= f.form_field :contact_name, required: true do %>
   <%= f.label :contact_name %>
   <%= f.text_field :contact_name %>
 <% end %>
 
-<%= f.form_field :contact_email do %>
+<%= f.form_field :contact_email, required: true do %>
   <%= f.label :contact_email %>
   <%= f.text_field :contact_email %>
 <% end %>
 
-<%= f.form_field :contact_phone do %>
+<%= f.form_field :contact_phone, required: true do %>
   <%= f.label :contact_phone %>
   <%= f.text_field :contact_phone %>
 <% end %>
