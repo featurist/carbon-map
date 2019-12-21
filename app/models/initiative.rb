@@ -14,6 +14,14 @@ class Initiative < ApplicationRecord
   accepts_nested_attributes_for :themes
   accepts_nested_attributes_for :lead_group
   accepts_nested_attributes_for :websites, allow_destroy: true
+  validates :name,
+            :summary,
+            :status,
+            :contact_name,
+            :contact_email,
+            :contact_phone,
+            :lead_group,
+            presence: true
 
   def set_default_location
     self.latitude ||= 51.742

@@ -21,8 +21,9 @@ class InitiativesController < ApplicationController
   def create
     create_proposed_solutions
     @initiative = Initiative.new(initiative_params)
+    find_or_create_group
 
-    if find_or_create_group && @initiative.save
+    if @initiative.save
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully created.'
     else
@@ -31,11 +32,11 @@ class InitiativesController < ApplicationController
   end
 
   def update
-    clear_solutions_and_themes
-    create_proposed_solutions
+    clear_solutions_and_themes && create_proposed_solutions
     images = initiative_params.delete 'images'
+    find_or_create_group
 
-    if find_or_create_group && @initiative.update(initiative_params)
+    if @initiative.update(initiative_params)
       @initiative.images.attach images if images
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully updated.'
@@ -74,13 +75,7 @@ class InitiativesController < ApplicationController
 
   def select_group
     lead_group_id = initiative_params[:lead_group_id]
-    if lead_group_id.blank?
-      @initiative.lead_group = Group.new
-      @initiative.errors.add(:base, 'Please select or create a group')
-      return false
-    end
-    @initiative.lead_group = current_user.groups.find(lead_group_id)
-    true
+    @initiative.lead_group = current_user.groups.find(lead_group_id) if lead_group_id.blank?
   end
 
   def find_or_create_group
