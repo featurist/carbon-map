@@ -111,7 +111,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     @initiative.images.attach(header_image)
     images = [avenue_image]
     patch initiative_url(@initiative),
-          params: update_params(@initiative, images)
+          params: update_params(@initiative, images: images)
     assert_equal 2, @initiative.reload.images.size
     websites = @initiative.websites
     assert_equal 2, websites.size
@@ -124,6 +124,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
 
   # rubocop:disable Metrics/MethodLength
   def create_params(initiative, lead_group: nil, images: nil, solutions: nil)
+    solutions ||= default_solutions
     {
       initiative: {
         anticipated_carbon_saving: initiative.anticipated_carbon_saving,
@@ -149,7 +150,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
-  def update_params(initiative, images)
+  def update_params(initiative, images: nil, solutions: nil)
+    solutions ||= default_solutions
     {
       initiative: {
         anticipated_carbon_saving: initiative.anticipated_carbon_saving,
@@ -165,6 +167,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         summary: initiative.summary,
         images: images,
         consent_to_share: true,
+        solutions_attributes: solutions,
         websites_attributes: [
           { website: 'http://one' },
           { website: 'http://two' }
@@ -173,4 +176,11 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     }
   end
   # rubocop:enable Metrics/MethodLength
+
+  def default_solutions
+    solution_class = SolutionSolutionClass.last.solution_class
+    solution = SolutionSolutionClass.last.solution
+
+    { '0': { solution_class_id: solution_class.id, solution_id: solution.id } }
+  end
 end

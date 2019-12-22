@@ -1,11 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  solution: one
-  solution_class: one
-  initiative: one
-
-two:
-  solution: two
-  solution_class: two
-  initiative: two
+fruit_exchange_ashp:
+  solution: ashp
+  solution_class: heat_pumps
+  initiative: fruit_exchange

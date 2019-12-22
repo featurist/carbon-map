@@ -23,6 +23,12 @@ class Initiative < ApplicationRecord
             :lead_group,
             presence: true
 
+  validate :at_least_one_solution_or_theme
+
+  def at_least_one_solution_or_theme
+    errors.add(:solution, 'at least one equired') if solutions.empty? && themes.empty?
+  end
+
   def set_default_location
     self.latitude ||= 51.742
     self.longitude ||= -2.222

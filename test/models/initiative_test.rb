@@ -59,7 +59,14 @@ class InitiativeTest < ActiveSupport::TestCase
         summary:
           'The Fruit Exchange connects food outlets with people who have surplus fruit or veg.',
         status: 'Operational',
-        solutions: [],
+        solutions: [
+          {
+            sector: 'Energy',
+            theme: 'Heating',
+            class: 'Heat pumps',
+            solution: 'ASHP'
+          }
+        ],
         themes: [],
         websites: [],
         images: []
