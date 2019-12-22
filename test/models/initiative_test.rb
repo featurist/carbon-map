@@ -47,8 +47,12 @@ class InitiativeTest < ActiveSupport::TestCase
     [
       {
         location: {
-          name: 'Stonehouse',
-          address: 'GL6 1JG',
+          parish: 'Stroud',
+          ward: 'Stroud Uplands',
+          district: 'Stroud',
+          county: 'Gloucestershire',
+          region: 'South West',
+          postcode: 'GL6 1JG',
           latlng: { lat: 51.749252, lng: -2.283587 }
         },
         name: 'The Fruit Exchange',

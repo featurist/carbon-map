@@ -1,9 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 fruit_exchange:
-  locality: Stonehouse
-  location: GL6 1JG
-  # address:Down to Earth Stroud, PO Box 427, Stonehouse, Gloucestershire, GL6 1JG
+  postcode: GL6 1JG
+  parish: Stroud
+  ward: Stroud Uplands
+  district: Stroud
+  county: Gloucestershire
+  region: South West
   latitude: 51.749252
   longitude: -2.283587
   name: The Fruit Exchange

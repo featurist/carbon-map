@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class Initiative < ApplicationRecord
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
@@ -104,10 +105,19 @@ class Initiative < ApplicationRecord
     }
   end
 
+  def location
+    [parish, ward, district, county, region].join(', ')
+  end
+
+  # rubocop:disable Metrics/MethodLength
   def location_attributes
     {
-      name: locality,
-      address: location,
+      parish: parish,
+      ward: ward,
+      district: district,
+      county: county,
+      region: region,
+      postcode: postcode,
       latlng: {
         # "Down to Earth Stroud, PO Box 427, Stonehouse, Gloucestershire, GL6 1JG",
         lat: latitude,
@@ -115,4 +125,6 @@ class Initiative < ApplicationRecord
       }
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end
+# rubocop:enable Metrics/ClassLength
