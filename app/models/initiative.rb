@@ -43,6 +43,19 @@ class Initiative < ApplicationRecord
     end
   end
 
+  def update_location_from_postcode
+    postcodes_url = "https://api.postcodes.io/postcodes/#{postcode}"
+    json_response = Net::HTTP.get(URI(postcodes_url))
+    location = JSON.parse(json_response)['result']
+    assign_attributes(
+      parish: location['parish'],
+      ward: location['admin_ward'],
+      district: location['admin_district'],
+      county: location['admin_county'],
+      region: location['region']
+    )
+  end
+
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def self.approved

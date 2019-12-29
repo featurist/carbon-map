@@ -29,7 +29,9 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :georgie
     assert_difference('Initiative.count') do
       images = [header_image]
-      post initiatives_url, params: create_params(@initiative, images: images)
+      VCR.use_cassette('valid_postcode') do
+        post initiatives_url, params: create_params(@initiative, images: images)
+      end
       assert_equal 1, Initiative.last.images.size
     end
     websites = Initiative.last.websites
@@ -52,8 +54,10 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
 
     assert_difference('Initiative.count') do
       assert_difference('Group.count') do
-        post initiatives_url,
-             params: create_params(@initiative, lead_group: lead_group)
+        VCR.use_cassette('valid_postcode') do
+          post initiatives_url,
+               params: create_params(@initiative, lead_group: lead_group)
+        end
       end
     end
 
@@ -71,8 +75,10 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
       solutions = {
         '0': { solution_class_id: solution_class.id, solution_id: solution.id }
       }
-      post initiatives_url,
-           params: create_params(@initiative, solutions: solutions)
+      VCR.use_cassette('valid_postcode') do
+        post initiatives_url,
+             params: create_params(@initiative, solutions: solutions)
+      end
     end
 
     initiative_solution = Initiative.last.solutions.last
@@ -89,8 +95,10 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
           proposed_solution: 'An amazing new thing'
         }
       }
-      post initiatives_url,
-           params: create_params(@initiative, solutions: solutions)
+      VCR.use_cassette('valid_postcode') do
+        post initiatives_url,
+             params: create_params(@initiative, solutions: solutions)
+      end
     end
 
     proposed_solution = Solution.last
@@ -110,8 +118,10 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :georgie
     @initiative.images.attach(header_image)
     images = [avenue_image]
-    patch initiative_url(@initiative),
-          params: update_params(@initiative, images: images)
+    VCR.use_cassette('valid_postcode') do
+      patch initiative_url(@initiative),
+            params: update_params(@initiative, images: images)
+    end
     assert_equal 2, @initiative.reload.images.size
     websites = @initiative.websites
     assert_equal 2, websites.size
@@ -138,6 +148,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         status_id: initiative.status_id,
         summary: initiative.summary,
         images: images,
+        postcode: 'GL54UB',
         consent_to_share: true,
         solutions_attributes: solutions,
         websites_attributes: [
