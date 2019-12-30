@@ -21,6 +21,11 @@
   overflow: hidden;
 }
 
+.AddInitiativeSolution-group a {
+  display: block;
+  text-decoration: none;
+}
+
 .AddInitiativeSolution-clear {
 }
 

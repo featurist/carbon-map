@@ -13,6 +13,7 @@
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
     "babel-preset-hyperdom": "^2.0.0",
+    "httpism": "^3.26.0",
     "hyperdom": "^2.1.0",
     "leaflet": "^1.5.1",
     "leaflet-gesture-handling": "^1.1.8",

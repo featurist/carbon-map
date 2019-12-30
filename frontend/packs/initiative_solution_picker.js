@@ -190,7 +190,17 @@ class SolutionPicker {
         <ul>
           {this.taxonomy_hierarchy.map(sector => {
             return (
-              <li onclick={() => this.navigate({ sector })}>{sector.name}</li>
+              <li>
+                <a
+                  href="#"
+                  onclick={() => {
+                    this.navigate({ sector });
+                    return false;
+                  }}
+                >
+                  {sector.name}
+                </a>
+              </li>
             );
           })}
         </ul>
@@ -212,15 +222,19 @@ class SolutionPicker {
             {this.navigation.sector.themes.map(theme => {
               return (
                 <li class="Taxonomy-item">
-                  <span
+                  <a
                     class="Taxonomy-itemName"
-                    onclick={() => this.navigate({ theme })}
+                    href="#"
+                    onclick={() => {
+                      this.navigate({ theme });
+                      return false;
+                    }}
                   >
                     {theme.name}
-                  </span>
-                  <img
-                    src={plusCircle}
+                  </a>
+                  <a
                     class="AddInitiativeSolution-add Taxonomy-itemAction"
+                    title={`Add ${theme.name}`}
                     onclick={() => {
                       this.addTheme({
                         sector: this.navigation.sector.name,
@@ -229,7 +243,9 @@ class SolutionPicker {
                       });
                       return false;
                     }}
-                  />
+                  >
+                    <img src={plusCircle} />
+                  </a>
                 </li>
               );
             })}
@@ -252,13 +268,19 @@ class SolutionPicker {
           <ul>
             {this.navigation.theme.classes.map(solutionClass => {
               return (
-                <li
-                  onclick={() => {
-                    this.resetProposedSolution(solutionClass.solution_class_id);
-                    this.navigate({ solutionClass });
-                  }}
-                >
-                  {solutionClass.name}
+                <li>
+                  <a
+                    href="#"
+                    onclick={() => {
+                      this.resetProposedSolution(
+                        solutionClass.solution_class_id
+                      );
+                      this.navigate({ solutionClass });
+                      return false;
+                    }}
+                  >
+                    {solutionClass.name}
+                  </a>
                 </li>
               );
             })}
@@ -311,9 +333,9 @@ class SolutionPicker {
         <span class="Taxonomy-itemName">
           {this.renderSolutionInput(solution)}{" "}
         </span>
-        <img
-          src={plusCircle}
+        <a
           class="AddInitiativeSolution-add"
+          title={`Add ${solution.name}`}
           onclick={() => {
             this.addSolution({
               sector: this.navigation.sector.name,
@@ -326,7 +348,9 @@ class SolutionPicker {
             });
             return false;
           }}
-        />
+        >
+          <img src={plusCircle} />
+        </a>
       </li>
     );
   }

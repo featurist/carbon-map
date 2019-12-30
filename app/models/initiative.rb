@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'uk_postcode'
+
+# rubocop:disable Metrics/ClassLength
 class Initiative < ApplicationRecord
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
@@ -24,6 +27,16 @@ class Initiative < ApplicationRecord
             presence: true
 
   validate :at_least_one_solution_or_theme
+  validate :validate_postcode
+
+  def validate_postcode
+    ukpc = UKPostcode.parse(postcode)
+    errors['postcode'] << 'not recognised as a UK postcode' unless ukpc.full_valid?
+  end
+
+  def postcode=(str)
+    super UKPostcode.parse(str).to_s
+  end
 
   def at_least_one_solution_or_theme
     errors.add(:solution, 'at least one equired') if solutions.empty? && themes.empty?
@@ -40,6 +53,25 @@ class Initiative < ApplicationRecord
     else
       attributes.except('contact_name', 'contact_email', 'contact_phone')
     end
+  end
+
+  def fetch_location
+    postcodes_url = "https://api.postcodes.io/postcodes/#{postcode.delete(' ')}"
+    json_response = Net::HTTP.get(URI(postcodes_url))
+    JSON.parse(json_response)['result']
+  end
+
+  def update_location_from_postcode
+    location = fetch_location
+    return unless location
+
+    assign_attributes(
+      parish: location['parish'],
+      ward: location['admin_ward'],
+      district: location['admin_district'],
+      county: location['admin_county'],
+      region: location['region']
+    )
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -104,10 +136,19 @@ class Initiative < ApplicationRecord
     }
   end
 
+  def location
+    [parish, ward, district, county, region].join(', ')
+  end
+
+  # rubocop:disable Metrics/MethodLength
   def location_attributes
     {
-      name: locality,
-      address: location,
+      parish: parish,
+      ward: ward,
+      district: district,
+      county: county,
+      region: region,
+      postcode: postcode,
       latlng: {
         # "Down to Earth Stroud, PO Box 427, Stonehouse, Gloucestershire, GL6 1JG",
         lat: latitude,
@@ -115,4 +156,6 @@ class Initiative < ApplicationRecord
       }
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end
+# rubocop:enable Metrics/ClassLength

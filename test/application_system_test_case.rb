@@ -17,6 +17,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
             using: ENV['GUI'] ? :chrome : :headless_chrome,
             screen_size: [1_400, 1_400]
 
+  Capybara.enable_aria_label = true
+
   def sign_in_as(user_fixture_name)
     user = users user_fixture_name
     fill_in 'Email', with: user.email

@@ -42,13 +42,25 @@ class InitiativeTest < ActiveSupport::TestCase
     assert_nil public_attributes['contact_phone']
   end
 
+  test 'postcode is valid' do
+    initiative = initiatives :fruit_exchange
+    assert initiative.valid?
+
+    initiative.postcode = 'invalid'
+    assert_not initiative.valid?
+  end
+
   # rubocop:disable Metrics/MethodLength
   def expected_initiative_attributes
     [
       {
         location: {
-          name: 'Stonehouse',
-          address: 'GL6 1JG',
+          parish: 'Stroud',
+          ward: 'Stroud Uplands',
+          district: 'Stroud',
+          county: 'Gloucestershire',
+          region: 'South West',
+          postcode: 'GL54UB',
           latlng: { lat: 51.749252, lng: -2.283587 }
         },
         name: 'The Fruit Exchange',

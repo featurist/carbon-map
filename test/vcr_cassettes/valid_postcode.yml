@@ -1,0 +1,49 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://api.postcodes.io/postcodes/GL54UB
+      body:
+        encoding: US-ASCII
+        string: ""
+      headers:
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+        User-Agent:
+          - Ruby
+        Host:
+          - api.postcodes.io
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Server:
+          - nginx/1.14.0
+        Date:
+          - Sun, 29 Dec 2019 23:24:10 GMT
+        Content-Type:
+          - application/json; charset=utf-8
+        Content-Length:
+          - "775"
+        Connection:
+          - keep-alive
+        X-Gnu:
+          - Michael J Blanchard
+        Access-Control-Allow-Origin:
+          - "*"
+        Etag:
+          - W/"307-h/wXYv3KyQkROvF4mK+KbyGgXQQ"
+      body:
+        encoding: UTF-8
+        string:
+          '{"status":200,"result":{"postcode":"GL5 4UB","quality":1,"eastings":382946,"northings":204536,"country":"England","nhs_ha":"South
+          West","longitude":-2.248379,"latitude":51.739267,"european_electoral_region":"South
+          West","primary_care_trust":"Gloucestershire","region":"South West","lsoa":"Stroud
+          004B","msoa":"Stroud 004","incode":"4UB","outcode":"GL5","parliamentary_constituency":"Stroud","admin_district":"Stroud","parish":"Cainscross","admin_county":"Gloucestershire","admin_ward":"Cainscross","ced":"Stonehouse","ccg":"NHS
+          Gloucestershire","nuts":"Gloucestershire","codes":{"admin_district":"E07000082","admin_county":"E10000013","admin_ward":"E05010971","parish":"E04004342","parliamentary_constituency":"E14000980","ccg":"E38000062","ced":"E58000516","nuts":"UKK13"}}}'
+      http_version:
+    recorded_at: Sun, 29 Dec 2019 23:24:10 GMT
+recorded_with: VCR 5.0.0
