@@ -42,6 +42,14 @@ class InitiativeTest < ActiveSupport::TestCase
     assert_nil public_attributes['contact_phone']
   end
 
+  test 'postcode is valid' do
+    initiative = initiatives :fruit_exchange
+    assert initiative.valid?
+
+    initiative.postcode = 'invalid'
+    assert_not initiative.valid?
+  end
+
   # rubocop:disable Metrics/MethodLength
   def expected_initiative_attributes
     [

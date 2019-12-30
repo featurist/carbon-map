@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'uk_postcode'
+
 # rubocop:disable Metrics/ClassLength
 class Initiative < ApplicationRecord
   belongs_to :lead_group, class_name: 'Group'
@@ -25,6 +27,16 @@ class Initiative < ApplicationRecord
             presence: true
 
   validate :at_least_one_solution_or_theme
+  validate :validate_postcode
+
+  def validate_postcode
+    ukpc = UKPostcode.parse(postcode)
+    errors['postcode'] << 'not recognised as a UK postcode' unless ukpc.full_valid?
+  end
+
+  def postcode=(str)
+    super UKPostcode.parse(str).to_s
+  end
 
   def at_least_one_solution_or_theme
     errors.add(:solution, 'at least one equired') if solutions.empty? && themes.empty?
@@ -43,10 +55,16 @@ class Initiative < ApplicationRecord
     end
   end
 
-  def update_location_from_postcode
-    postcodes_url = "https://api.postcodes.io/postcodes/#{postcode}"
+  def fetch_location
+    postcodes_url = "https://api.postcodes.io/postcodes/#{postcode.delete(' ')}"
     json_response = Net::HTTP.get(URI(postcodes_url))
-    location = JSON.parse(json_response)['result']
+    JSON.parse(json_response)['result']
+  end
+
+  def update_location_from_postcode
+    location = fetch_location
+    return unless location
+
     assign_attributes(
       parish: location['parish'],
       ward: location['admin_ward'],

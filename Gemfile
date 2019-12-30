@@ -26,6 +26,7 @@ gem 'devise'
 gem 'google-cloud-storage', '~> 1.11', require: false
 gem 'image_processing', '~> 1.2'
 gem 'pg'
+gem 'uk_postcode', '~> 2.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
