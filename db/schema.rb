@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_211340) do
+ActiveRecord::Schema.define(version: 2019_12_31_215243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -34,6 +34,22 @@ ActiveRecord::Schema.define(version: 2019_12_22_211340) do
     t.string 'checksum', null: false
     t.datetime 'created_at', null: false
     t.index %w[key], name: 'index_active_storage_blobs_on_key', unique: true
+  end
+
+  create_table 'counties', force: :cascade do |t|
+    t.string 'name'
+    t.bigint 'region_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[region_id], name: 'index_counties_on_region_id'
+  end
+
+  create_table 'districts', force: :cascade do |t|
+    t.string 'name'
+    t.bigint 'county_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[county_id], name: 'index_districts_on_county_id'
   end
 
   create_table 'group_group_types', force: :cascade do |t|
@@ -126,13 +142,24 @@ ActiveRecord::Schema.define(version: 2019_12_22_211340) do
     t.float 'longitude'
     t.boolean 'consent_to_share', default: false, null: false
     t.string 'postcode'
-    t.string 'parish'
-    t.string 'ward'
-    t.string 'district'
-    t.string 'county'
-    t.string 'region'
+    t.bigint 'parish_id'
     t.index %w[lead_group_id], name: 'index_initiatives_on_lead_group_id'
+    t.index %w[parish_id], name: 'index_initiatives_on_parish_id'
     t.index %w[status_id], name: 'index_initiatives_on_status_id'
+  end
+
+  create_table 'parishes', force: :cascade do |t|
+    t.string 'name'
+    t.bigint 'ward_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[ward_id], name: 'index_parishes_on_ward_id'
+  end
+
+  create_table 'regions', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
   create_table 'sectors', force: :cascade do |t|
@@ -197,6 +224,14 @@ ActiveRecord::Schema.define(version: 2019_12_22_211340) do
     t.index %w[email], name: 'index_users_on_email', unique: true
     t.index %w[reset_password_token],
             name: 'index_users_on_reset_password_token', unique: true
+  end
+
+  create_table 'wards', force: :cascade do |t|
+    t.string 'name'
+    t.bigint 'district_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[district_id], name: 'index_wards_on_district_id'
   end
 
   add_foreign_key 'active_storage_attachments',

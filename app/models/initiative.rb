@@ -5,6 +5,7 @@ require 'uk_postcode'
 class Initiative < ApplicationRecord
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
+  belongs_to :parish
   delegate :name, prefix: true, to: :status
   delegate :name, prefix: true, to: :lead_group
   after_initialize :set_default_location
@@ -64,13 +65,20 @@ class Initiative < ApplicationRecord
     location = fetch_location
     return unless location
 
-    assign_attributes(
-      parish: location['parish'],
-      ward: location['admin_ward'],
-      district: location['admin_district'],
-      county: location['admin_county'],
-      region: location['region']
-    )
+    create_location(location)
+  end
+
+  def create_location(location)
+    region = Region.find_or_create_by(name: location['region'])
+    county =
+      County.find_or_create_by(name: location['admin_county'], region: region)
+    district =
+      District.find_or_create_by(
+        name: location['admin_district'], county: county
+      )
+    ward =
+      Ward.find_or_create_by(name: location['admin_ward'], district: district)
+    self.parish = Parish.find_or_create_by(name: location['parish'], ward: ward)
   end
 
   def self.approved
@@ -81,18 +89,28 @@ class Initiative < ApplicationRecord
     PublicInitiative.new(self)
   end
 
+  delegate :ward, to: :parish
+
+  delegate :district, to: :ward
+
+  delegate :county, to: :district
+
+  delegate :region, to: :county
+
   def location
-    [parish, ward, district, county, region].join(', ')
+    return unless parish
+
+    [parish.name, ward.name, district.name, county.name, region.name].join(', ')
   end
 
   # rubocop:disable Metrics/MethodLength
   def location_attributes
     {
-      parish: parish,
-      ward: ward,
-      district: district,
-      county: county,
-      region: region,
+      parish: parish.name,
+      ward: ward.name,
+      district: district.name,
+      county: county.name,
+      region: region.name,
       postcode: postcode,
       latlng: {
         # "Down to Earth Stroud, PO Box 427, Stonehouse, Gloucestershire, GL6 1JG",
