@@ -6,8 +6,9 @@ class InitiativeTest < ActiveSupport::TestCase
   test 'approved json' do
     initiatives =
       Initiative.approved.map do |initiative|
-        initiative.extract!(:timestamp)
-        initiative
+        res = JSON.parse(initiative.to_json)
+        res.delete('timestamp')
+        res.deep_symbolize_keys!
       end
     assert_equal expected_initiative_attributes, initiatives
   end
@@ -54,6 +55,10 @@ class InitiativeTest < ActiveSupport::TestCase
   def expected_initiative_attributes
     [
       {
+        name: 'The Fruit Exchange',
+        summary:
+          'The Fruit Exchange connects food outlets with people who have surplus fruit or veg.',
+        group: 'Down to Earth Stroud',
         location: {
           parish: 'Stroud',
           ward: 'Stroud Uplands',
@@ -63,13 +68,9 @@ class InitiativeTest < ActiveSupport::TestCase
           postcode: 'GL54UB',
           latlng: { lat: 51.749252, lng: -2.283587 }
         },
-        name: 'The Fruit Exchange',
-        group: 'Down to Earth Stroud',
         contactName: 'No name',
         contactEmail: 'info@downtoearthstroud.co.uk',
         contactPhone: '01453 700011',
-        summary:
-          'The Fruit Exchange connects food outlets with people who have surplus fruit or veg.',
         status: 'Operational',
         solutions: [
           {

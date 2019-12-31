@@ -2,7 +2,6 @@
 
 require 'uk_postcode'
 
-# rubocop:disable Metrics/ClassLength
 class Initiative < ApplicationRecord
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
@@ -74,66 +73,12 @@ class Initiative < ApplicationRecord
     )
   end
 
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def self.approved
-    Initiative.all.map do |initiative|
-      attributes = initiative.public_attributes
-      {
-        location: initiative.location_attributes,
-        name: initiative.name,
-        group: initiative.lead_group_name,
-        contactName: attributes['contact_name'],
-        contactEmail: attributes['contact_email'],
-        contactPhone: attributes['contact_phone'],
-        summary: initiative.summary,
-        images: image_urls(initiative.images),
-        websites: website_urls(initiative.websites),
-        status: initiative.status_name,
-        solutions: map_solutions(initiative),
-        themes: map_themes(initiative),
-        timestamp: initiative.updated_at
-      }
-    end
-  end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
-
-  def self.map_solutions(initiative)
-    initiative.solutions.map do |mapped_solution|
-      create_solution(mapped_solution)
-    end
+    Initiative.all.map(&:to_public_initiative)
   end
 
-  def self.map_themes(initiative)
-    initiative.themes.map do |mapped_solution|
-      {
-        sector: mapped_solution.theme.sector.name,
-        theme: mapped_solution.theme.name
-      }
-    end
-  end
-
-  def self.image_urls(images)
-    images.map do |image|
-      Rails.application.routes.url_helpers.rails_representation_path(
-        image.variant(resize_to_limit: [200, 200]),
-        only_path: true
-      )
-    end
-  end
-
-  def self.website_urls(websites)
-    websites.map(&:website)
-  end
-
-  def self.create_solution(mapped_solution)
-    {
-      sector: mapped_solution.solution_class.theme.sector.name,
-      theme: mapped_solution.solution_class.theme.name,
-      class: mapped_solution.solution_class.name,
-      solution: mapped_solution.solution.name
-    }
+  def to_public_initiative
+    PublicInitiative.new(self)
   end
 
   def location
@@ -158,4 +103,3 @@ class Initiative < ApplicationRecord
   end
   # rubocop:enable Metrics/MethodLength
 end
-# rubocop:enable Metrics/ClassLength
