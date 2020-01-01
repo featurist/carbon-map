@@ -4,11 +4,11 @@ import { GestureHandling } from "leaflet-gesture-handling";
 
 let carbonExplorer, mappedInitiatives, markers;
 
-function initialiseMap(initiatives) {
+function initialiseMap({ initiatives, center }) {
   L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
   carbonExplorer = L.map("explore", {
     gestureHandling: true,
-    center: [51.742, -2.222],
+    center: center,
     zoom: 13
   });
   L.tileLayer(
@@ -114,6 +114,9 @@ function initialiseMap(initiatives) {
     };
   });
   carbonExplorer.addLayer(markers);
+  const group = new L.featureGroup(mappedInitiatives.map(x => x.marker));
+
+  carbonExplorer.fitBounds(group.getBounds());
 }
 
 window.exploreMap = {
@@ -147,8 +150,8 @@ window.exploreMap = {
 };
 
 window.addEventListener("load", function() {
-  const initiatives = JSON.parse(
-    document.getElementById("initiatives_json").innerText
+  const map_data = JSON.parse(
+    document.getElementById("map_data_json").innerText
   );
-  initialiseMap(initiatives);
+  initialiseMap(map_data);
 });

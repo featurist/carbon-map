@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   private
 
   def requires_authentication
-    ![root_path, about_path, contact_path].include?(request.path)
+    ![root_path, about_path, contact_path].include?(request.path) &&
+      !request.path.start_with?(districts_path)
   end
 
   def storable_location?

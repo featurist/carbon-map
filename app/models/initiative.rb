@@ -2,10 +2,10 @@
 
 require 'uk_postcode'
 
-# rubocop:disable Metrics/ClassLength
 class Initiative < ApplicationRecord
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
+  belongs_to :parish
   delegate :name, prefix: true, to: :status
   delegate :name, prefix: true, to: :lead_group
   after_initialize :set_default_location
@@ -65,89 +65,52 @@ class Initiative < ApplicationRecord
     location = fetch_location
     return unless location
 
-    assign_attributes(
-      parish: location['parish'],
-      ward: location['admin_ward'],
-      district: location['admin_district'],
-      county: location['admin_county'],
-      region: location['region']
-    )
+    create_location(location)
   end
 
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
-  def self.approved
-    Initiative.all.map do |initiative|
-      attributes = initiative.public_attributes
-      {
-        location: initiative.location_attributes,
-        name: initiative.name,
-        group: initiative.lead_group_name,
-        contactName: attributes['contact_name'],
-        contactEmail: attributes['contact_email'],
-        contactPhone: attributes['contact_phone'],
-        summary: initiative.summary,
-        images: image_urls(initiative.images),
-        websites: website_urls(initiative.websites),
-        status: initiative.status_name,
-        solutions: map_solutions(initiative),
-        themes: map_themes(initiative),
-        timestamp: initiative.updated_at
-      }
-    end
-  end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
-
-  def self.map_solutions(initiative)
-    initiative.solutions.map do |mapped_solution|
-      create_solution(mapped_solution)
-    end
-  end
-
-  def self.map_themes(initiative)
-    initiative.themes.map do |mapped_solution|
-      {
-        sector: mapped_solution.theme.sector.name,
-        theme: mapped_solution.theme.name
-      }
-    end
-  end
-
-  def self.image_urls(images)
-    images.map do |image|
-      Rails.application.routes.url_helpers.rails_representation_path(
-        image.variant(resize_to_limit: [200, 200]),
-        only_path: true
+  def create_location(location)
+    region = Region.find_or_create_by(name: location['region'])
+    county =
+      County.find_or_create_by(name: location['admin_county'], region: region)
+    district =
+      District.find_or_create_by(
+        name: location['admin_district'], county: county
       )
-    end
+    ward =
+      Ward.find_or_create_by(name: location['admin_ward'], district: district)
+    self.parish = Parish.find_or_create_by(name: location['parish'], ward: ward)
   end
 
-  def self.website_urls(websites)
-    websites.map(&:website)
+  def self.approved
+    Initiative.all.map(&:to_public_initiative)
   end
 
-  def self.create_solution(mapped_solution)
-    {
-      sector: mapped_solution.solution_class.theme.sector.name,
-      theme: mapped_solution.solution_class.theme.name,
-      class: mapped_solution.solution_class.name,
-      solution: mapped_solution.solution.name
-    }
+  def to_public_initiative
+    PublicInitiative.new(self)
   end
+
+  delegate :ward, to: :parish
+
+  delegate :district, to: :ward
+
+  delegate :county, to: :district
+
+  delegate :region, to: :county
 
   def location
-    [parish, ward, district, county, region].join(', ')
+    return unless parish
+
+    [parish.name, ward.name, district.name, county.name, region.name].join(', ')
   end
 
   # rubocop:disable Metrics/MethodLength
   def location_attributes
     {
-      parish: parish,
-      ward: ward,
-      district: district,
-      county: county,
-      region: region,
+      parish: parish.name,
+      ward: ward.name,
+      district: district.name,
+      county: county.name,
+      region: region.name,
       postcode: postcode,
       latlng: {
         # "Down to Earth Stroud, PO Box 427, Stonehouse, Gloucestershire, GL6 1JG",
@@ -158,4 +121,3 @@ class Initiative < ApplicationRecord
   end
   # rubocop:enable Metrics/MethodLength
 end
-# rubocop:enable Metrics/ClassLength

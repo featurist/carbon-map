@@ -11,6 +11,16 @@
   'Explore'
 end %>
 
+<%= render 'partials/breadcrumb', items: [
+  link_to('Home', root_path),
+  link_to('Districts', districts_path),
+  @district.name
+] %>
+
+<div class="PageHeader">
+  <h1 class="PageHeader-heading"><%=@district.name%></h1>
+</div>
+
 <a name="explore"></a>
 <div class="Explore-panel">
   <div class="Explore-map" id="explore"></div>

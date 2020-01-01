@@ -2,11 +2,7 @@
 
 fruit_exchange:
   postcode: GL54UB
-  parish: Stroud
-  ward: Stroud Uplands
-  district: Stroud
-  county: Gloucestershire
-  region: South West
+  parish: stroud_uplands
   latitude: 51.749252
   longitude: -2.283587
   name: The Fruit Exchange

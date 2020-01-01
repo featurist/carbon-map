@@ -22,7 +22,7 @@
               &nbsp;
               <span class="Nav-main">
                 <%=link_to 'Add a project', new_initiative_path %>
-                <%=link_to 'Explore projects', root_path(anchor: 'explore') %>
+                <%=link_to 'Explore districts', districts_path %>
               </span>
               <span class="Nav-supplementary">
                 <%= link_to('About', about_path)%>
@@ -38,7 +38,7 @@
                 <a href="#" onclick="document.querySelector('.Nav').classList.remove('Nav-open');return false;">Close</a>
                 <hr />
                 <%=link_to 'Add a project', new_initiative_path %>
-                <%=link_to 'Explore projects', root_path(anchor: 'explore') %>
+                <%=link_to 'Explore districts', districts_path %>
                 <hr />
                 <%= link_to('About', about_path)%>
                 <%= link_to('Contact', contact_path)%>

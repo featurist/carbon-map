@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   resource :about, only: %i[show]
   resource :contact, only: %i[show]
+  resources :districts, only: %i[index show]
   resources :initiatives, only: %i[index new edit create update]
   resources :groups, only: %i[index new edit create update]
   resources :tags

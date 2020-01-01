@@ -25,4 +25,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     fill_in 'Password', with: 'password'
     click_on 'Log in'
   end
+
+  def assert_heading(text)
+    assert_selector '.PageHeader-heading', text: text
+  end
 end
