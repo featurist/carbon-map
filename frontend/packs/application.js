@@ -9,4 +9,5 @@ require("@rails/activestorage").start();
 require("../styles/application.css");
 
 require.context("../images", true);
+require.context("../logos", true);
 require.context("../fonts", true);

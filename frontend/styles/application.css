@@ -19,6 +19,7 @@
 @import "./components/initiative-solution-picker";
 @import "./components/nav";
 @import "./components/page_header";
+@import "./components/sponsors";
 
 @font-face {
   font-family: "fira_sansregular";

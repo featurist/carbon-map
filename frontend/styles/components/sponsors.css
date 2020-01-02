@@ -1,0 +1,25 @@
+.sponsors-logos {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sponsors-logo {
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  height: 75px;
+  margin: 10px;
+  width: 200px;
+}
+
+@media (--bp-mobile) {
+
+  .sponsors-logos {
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .sponsors-logo {
+    max-width: 200px;
+  }
+}
