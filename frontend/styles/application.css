@@ -66,6 +66,14 @@ p {
   display: none;
 }
 
+ul {
+  padding-left: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
 input[type=text],
 input[type=url],
 input[type=email],

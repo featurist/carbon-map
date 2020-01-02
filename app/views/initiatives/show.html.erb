@@ -1,0 +1,11 @@
+<%= render 'partials/breadcrumb', items: [
+  link_to('Home', root_path),
+  link_to('Districts', districts_path),
+  link_to(@ward.name, @ward),
+  link_to(@parish.name, @parish),
+  @initiative.name
+] %>
+
+<div class="PageHeader">
+  <h1 class="PageHeader-heading"><%=@initiative.name%></h1>
+</div>

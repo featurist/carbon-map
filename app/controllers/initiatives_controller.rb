@@ -9,6 +9,12 @@ class InitiativesController < ApplicationController
     @initiatives = current_user.initiatives.all
   end
 
+  def show
+    @initiative = Initiative.find(params['id'])
+    @parish = @initiative.parish
+    @ward = @parish.ward
+  end
+
   def new
     @initiative = Initiative.new
     @initiative.lead_group = Group.new
