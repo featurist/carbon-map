@@ -9,3 +9,35 @@
 <div class="PageHeader">
   <h1 class="PageHeader-heading"><%=@initiative.name%></h1>
 </div>
+
+<div class="Initiative">
+  <p>Status: <%=@initiative.status_name%></p>
+  <p>Summary: <%=@initiative.summary%></p>
+  <p>Anticipated Carbon Saving: <%=@initiative.anticipated_carbon_saving%></p>
+  <p>Images:
+  <div>
+    <% @initiative.images.each do |image|%>
+      <%= image_tag image.variant(resize_to_limit: [200, 200]) %>
+    <% end %>
+  </div>
+  </p>
+  <p>Lead Group: <%=@initiative.lead_group_name%></p>
+  <% if @initiative.consent_to_share? %>
+    <p>Contact Name: <%=@initiative.contact_name%></p>
+    <p>Contact Email: <%=@initiative.contact_email%></p>
+    <p>Contact Phone: <%=@initiative.contact_phone%></p>
+  <% end %>
+  <p>Partner Groups Role: <%=@initiative.partner_groups_role%></p>
+  <% @initiative.themes.each do |theme| %>
+    <p>Theme: <%=theme.name%></p>
+  <% end %>
+  <% @initiative.solutions.each do |solution| %>
+    <p>Solution: <%=solution.name%></p>
+  <% end %>
+  <p>Postcode: <%=@initiative.postcode%></p>
+  <p>Location: <%=@initiative.location%></p>
+  <p>Latitude: <%=@initiative.latitude%></p>
+  <p>Longitude: <%=@initiative.longitude%></p>
+  <p>Created: <%=time_tag @initiative.created_at%></p>
+  <p>Updated: <%=time_tag @initiative.updated_at%></p>
+</div>
