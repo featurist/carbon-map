@@ -1,18 +1,18 @@
 <%= render 'partials/breadcrumb', items: [
   link_to('Home', root_path),
   link_to('Districts', districts_path),
-  @district.name
+  @ward.name
 ] %>
 
 <div class="PageHeader">
-  <h1 class="PageHeader-heading"><%=@district.name%></h1>
+  <h1 class="PageHeader-heading"><%=@ward.name%></h1>
 </div>
 
 <%= render 'partials/map', map_data: @map_data, sectors: @sectors %>
 
-<h2>Wards</h2>
+<h2>Parishes</h2>
 <ul>
-  <% @district.wards.each do |ward| %>
-    <li><%=link_to ward.name, ward%></li>
+  <% @ward.parishes.each do |parish| %>
+    <li><%=link_to parish.name, parish%></li>
   <% end %>
 </ul>

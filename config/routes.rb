@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resource :about, only: %i[show]
   resource :contact, only: %i[show]
   resources :districts, only: %i[index show]
-  resources :initiatives, only: %i[index new edit create update]
+  resources :wards, only: %i[show]
+  resources :parishes, only: %i[show]
+  resources :initiatives, only: %i[index show new edit create update]
   resources :groups, only: %i[index new edit create update]
   resources :tags
   scope '/admin' do
