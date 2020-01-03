@@ -34,9 +34,12 @@ function initialiseMap({ initiatives, center }) {
 
       return "";
     }
-    const initiativeHtml = `<h1><a href="${initiative.href}">${
+    const initiativeHtml = `<div class="InitiativeView-title">
+            <h1 class="InitiativeView-titleText"><a href="${initiative.href}">${
       initiative.name
     }</a></h1>
+            <button class="InitiativeView-close">X</button>
+          </div>
           ${
             initiative.images.length
               ? `
@@ -83,10 +86,7 @@ function initialiseMap({ initiatives, center }) {
     marker.on("click", e => {
       const initiative = document.createElement("section");
       initiative.className = "InitiativeView";
-      initiative.innerHTML = `
-          <button class="InitiativeView-close">X</button>
-          ${initiativeHtml}
-        `;
+      initiative.innerHTML = initiativeHtml;
       const initiativeContainer = document.querySelector(".Explore-initiative");
       while (initiativeContainer.firstChild) {
         initiativeContainer.removeChild(initiativeContainer.firstChild);
