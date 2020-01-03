@@ -34,7 +34,9 @@ function initialiseMap({ initiatives, center }) {
 
       return "";
     }
-    const initiativeHtml = `<h1>${initiative.name}</h1>
+    const initiativeHtml = `<h1><a href="${initiative.href}">${
+      initiative.name
+    }</a></h1>
           ${
             initiative.images.length
               ? `
@@ -66,19 +68,16 @@ function initialiseMap({ initiatives, center }) {
           }
           ${initiative.themes
             .map(item => {
-              return `<p>Sector: ${item.sector}</p>
-              <p>Theme: ${item.theme}</p>`;
+              return `<p>Theme: ${item.sector}, ${item.theme}</p>`;
             })
             .join("")}
           ${initiative.solutions
             .map(item => {
-              return `<p>Sector: ${item.sector}</p>
-              <p>Theme: ${item.theme}</p>
-              <p>Class: ${item.class}</p>
-              <p>Solution: ${item.solution}</p>`;
+              return `<p>Solution: ${item.sector}, ${item.theme}, ${item.class}, ${item.solution}</p>`;
             })
             .join("")}
-          <p>Added On: ${initiative.timestamp}</p>
+          <p>Last updated: ${initiative.lastUpdated}</p>
+          <p><a href="${initiative.href}">View full details</a></p>
            `;
 
     marker.on("click", e => {

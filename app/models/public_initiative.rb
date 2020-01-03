@@ -2,6 +2,7 @@
 
 # The publicly available data of an initiative
 class PublicInitiative
+  include ActionView::Helpers::DateHelper
   delegate :name, :summary, to: :@initiative
 
   def initialize(initiative)
@@ -64,6 +65,14 @@ class PublicInitiative
     @initiative.websites.map(&:website)
   end
 
+  def last_updated
+    time_ago_in_words(timestamp) + ' ago'
+  end
+
+  def href
+    Rails.application.routes.url_helpers.initiative_path(@initiative)
+  end
+
   # rubocop:disable Metrics/MethodLength
   def as_json(_options = {})
     {
@@ -79,7 +88,9 @@ class PublicInitiative
       'themes': themes,
       'websites': websites,
       'images': images,
-      'timestamp': timestamp
+      'timestamp': timestamp,
+      'lastUpdated': last_updated,
+      'href': href
     }
   end
   # rubocop:enable Metrics/MethodLength

@@ -46,6 +46,7 @@
 .Explore-panel {
   display: flex;
   height: 100%;
+  overflow: hidden;
 }
 
 .Explore-initiative {
@@ -70,7 +71,6 @@
 @media (--bp-mobile) {
 
   .Explore-initiative {
-    height: 450px;
     overflow-y: auto;
   }
 

@@ -8,6 +8,8 @@ class InitiativeTest < ActiveSupport::TestCase
       Initiative.approved.map do |initiative|
         res = JSON.parse(initiative.to_json)
         res.delete('timestamp')
+        res.delete('lastUpdated')
+        res.delete('href')
         res.deep_symbolize_keys!
       end
     assert_equal expected_initiative_attributes, initiatives
