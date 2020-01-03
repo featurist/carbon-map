@@ -13,6 +13,7 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.find(params['id'])
     @parish = @initiative.parish
     @ward = @parish.ward
+    @district = @ward.district
   end
 
   def new
