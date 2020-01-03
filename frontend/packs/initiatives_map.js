@@ -45,9 +45,11 @@ function initialiseMap({ initiatives, center }) {
               ? `
           <div class="Initiative-images_scroller">
             <div class="Initiative-images">
-            ${initiative.images.map(imageUrl => {
-              return `<img src=${imageUrl}" />`;
-            })}
+            ${initiative.images
+              .map(imageUrl => {
+                return `<img src=${imageUrl}" />`;
+              })
+              .join("")}
             </div>
           </div>`
               : ""
