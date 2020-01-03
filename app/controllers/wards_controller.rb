@@ -7,6 +7,7 @@ class WardsController < ApplicationController
       Initiative.includes(parish: %i[ward]).where(
         parishes: { ward_id: @ward.id }
       )
+    @district = @ward.district
     @map_data = MapData.new(initiatives)
     @sectors = Sector.all
   end

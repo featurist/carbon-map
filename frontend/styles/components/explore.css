@@ -46,6 +46,7 @@
 .Explore-panel {
   display: flex;
   height: 100%;
+  overflow: hidden;
 }
 
 .Explore-initiative {
@@ -70,7 +71,6 @@
 @media (--bp-mobile) {
 
   .Explore-initiative {
-    height: 450px;
     overflow-y: auto;
   }
 
@@ -88,6 +88,20 @@
 }
 
 .InitiativeView {
+}
+
+.InitiativeView-title {
+  display: flex;
+  flex-basis: auto;
+}
+
+.InitiativeView-titleText {
+  flex: 1;
+}
+
+.InitiativeView-close {
+  align-self: center;
+  margin-left: 10px;
 }
 
 .InitiativeView-scroll p {

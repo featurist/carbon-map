@@ -1,6 +1,7 @@
 <%= render 'partials/breadcrumb', items: [
   link_to('Home', root_path),
   link_to('Districts', districts_path),
+  link_to(@district.name, @district),
   link_to(@ward.name, @ward),
   link_to(@parish.name, @parish),
   @initiative.name

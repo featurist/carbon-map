@@ -34,15 +34,22 @@ function initialiseMap({ initiatives, center }) {
 
       return "";
     }
-    const initiativeHtml = `<h1>${initiative.name}</h1>
+    const initiativeHtml = `<div class="InitiativeView-title">
+            <h1 class="InitiativeView-titleText"><a href="${initiative.href}">${
+      initiative.name
+    }</a></h1>
+            <button class="InitiativeView-close">X</button>
+          </div>
           ${
             initiative.images.length
               ? `
           <div class="Initiative-images_scroller">
             <div class="Initiative-images">
-            ${initiative.images.map(imageUrl => {
-              return `<img src=${imageUrl}" />`;
-            })}
+            ${initiative.images
+              .map(imageUrl => {
+                return `<img src=${imageUrl}" />`;
+              })
+              .join("")}
             </div>
           </div>`
               : ""
@@ -66,28 +73,22 @@ function initialiseMap({ initiatives, center }) {
           }
           ${initiative.themes
             .map(item => {
-              return `<p>Sector: ${item.sector}</p>
-              <p>Theme: ${item.theme}</p>`;
+              return `<p>Theme: ${item.sector}, ${item.theme}</p>`;
             })
             .join("")}
           ${initiative.solutions
             .map(item => {
-              return `<p>Sector: ${item.sector}</p>
-              <p>Theme: ${item.theme}</p>
-              <p>Class: ${item.class}</p>
-              <p>Solution: ${item.solution}</p>`;
+              return `<p>Solution: ${item.sector}, ${item.theme}, ${item.class}, ${item.solution}</p>`;
             })
             .join("")}
-          <p>Added On: ${initiative.timestamp}</p>
+          <p>Last updated: ${initiative.lastUpdated}</p>
+          <p><a href="${initiative.href}">View full details</a></p>
            `;
 
     marker.on("click", e => {
       const initiative = document.createElement("section");
       initiative.className = "InitiativeView";
-      initiative.innerHTML = `
-          <button class="InitiativeView-close">X</button>
-          ${initiativeHtml}
-        `;
+      initiative.innerHTML = initiativeHtml;
       const initiativeContainer = document.querySelector(".Explore-initiative");
       while (initiativeContainer.firstChild) {
         initiativeContainer.removeChild(initiativeContainer.firstChild);
