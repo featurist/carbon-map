@@ -56,7 +56,10 @@ function initialiseMap({ initiatives, center }) {
           }
           ${item("What?", initiative.description_what)}
           ${item("How?", initiative.description_how)}
-          ${item("Further Information", initiative.description)}
+          ${item(
+            "Further Information",
+            initiative.description_further_information
+          )}
           ${item("Group", initiative.group)}
           ${item("Contact Name", initiative.contactName)}
           ${item("Contact Email", initiative.contactEmail)}

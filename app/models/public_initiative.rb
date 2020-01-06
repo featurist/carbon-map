@@ -6,7 +6,7 @@ class PublicInitiative
   delegate :name,
            :description_what,
            :description_how,
-           :description,
+           :description_further_information,
            to: :@initiative
 
   def initialize(initiative)
@@ -84,7 +84,7 @@ class PublicInitiative
       'name': name,
       'description_what': description_what,
       'description_how': description_how,
-      'description': description,
+      'description_further_information': description_further_information,
       'group': group,
       'location': location,
       'contactName': contact_name,

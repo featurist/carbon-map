@@ -60,7 +60,7 @@ class InitiativeTest < ActiveSupport::TestCase
         name: 'The Fruit Exchange',
         description_what: 'Connecting people with surplus food',
         description_how: 'Bringing food to the people',
-        description:
+        description_further_information:
           'The Fruit Exchange connects food outlets with people who have surplus fruit or veg.',
         group: 'Down to Earth Stroud',
         location: {

@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2020_01_06_201833) do
 
   create_table 'initiatives', force: :cascade do |t|
     t.string 'name'
-    t.string 'description'
+    t.string 'description_further_information'
     t.integer 'anticipated_carbon_saving'
     t.bigint 'lead_group_id', null: false
     t.string 'contact_name'

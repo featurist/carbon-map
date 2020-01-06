@@ -20,7 +20,7 @@ class Initiative < ApplicationRecord
   validates :name,
             :description_what,
             :description_how,
-            :description,
+            :description_further_information,
             :status,
             :contact_name,
             :contact_email,
