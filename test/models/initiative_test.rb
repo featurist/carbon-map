@@ -8,7 +8,7 @@ class InitiativeTest < ActiveSupport::TestCase
       Initiative.approved.map do |initiative|
         res = JSON.parse(initiative.to_json)
         res.delete('timestamp')
-        res.delete('lastUpdated')
+        res.delete('last_updated')
         res.delete('href')
         res.deep_symbolize_keys!
       end
@@ -58,7 +58,9 @@ class InitiativeTest < ActiveSupport::TestCase
     [
       {
         name: 'The Fruit Exchange',
-        summary:
+        description_what: 'Connecting people with surplus food',
+        description_how: 'Bringing food to the people',
+        description_further_information:
           'The Fruit Exchange connects food outlets with people who have surplus fruit or veg.',
         group: 'Down to Earth Stroud',
         location: {
@@ -70,9 +72,9 @@ class InitiativeTest < ActiveSupport::TestCase
           postcode: 'GL54UB',
           latlng: { lat: 51.749252, lng: -2.283587 }
         },
-        contactName: 'No name',
-        contactEmail: 'info@downtoearthstroud.co.uk',
-        contactPhone: '01453 700011',
+        contact_name: 'No name',
+        contact_email: 'info@downtoearthstroud.co.uk',
+        contact_phone: '01453 700011',
         status: 'Operational',
         solutions: [
           {

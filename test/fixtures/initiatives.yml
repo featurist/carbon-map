@@ -6,8 +6,9 @@ fruit_exchange:
   latitude: 51.749252
   longitude: -2.283587
   name: The Fruit Exchange
-  summary: The Fruit Exchange connects food outlets with people who have surplus fruit or veg.
-  #"group": "Down to Earth Stroud",
+  description_what: Connecting people with surplus food
+  description_how: Bringing food to the people
+  description_further_information: The Fruit Exchange connects food outlets with people who have surplus fruit or veg.
   lead_group: down_to_earth_stroud
   contact_name: No name
   contact_phone: 01453 700011

@@ -146,7 +146,10 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         name: initiative.name,
         partner_groups_role: initiative.partner_groups_role,
         status_id: initiative.status_id,
-        summary: initiative.summary,
+        description_further_information:
+          initiative.description_further_information,
+        description_what: initiative.description_what,
+        description_how: initiative.description_how,
         images: images,
         postcode: 'GL54UB',
         consent_to_share: true,
@@ -171,7 +174,10 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         name: initiative.name,
         partner_groups_role: initiative.partner_groups_role,
         status_id: initiative.status_id,
-        summary: initiative.summary,
+        description_further_information:
+          initiative.description_further_information,
+        description_what: initiative.description_what,
+        description_how: initiative.description_how,
         images: images,
         consent_to_share: true,
         solutions_attributes: solutions,

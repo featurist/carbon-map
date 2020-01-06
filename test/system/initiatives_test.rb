@@ -16,7 +16,9 @@ class InitiativesTest < ApplicationSystemTestCase
       click_on 'New Initiative'
 
       fill_in 'Name', with: 'Initiative name', match: :first
-      fill_in 'Summary', with: 'Summary'
+      fill_in 'What', with: 'What'
+      fill_in 'How', with: 'How'
+      fill_in 'Further Information', with: 'Further Information'
       fill_in 'Anticipated carbon saving', with: '200'
       fill_in 'Contact email', with: 'contact@test.com', match: :first
       fill_in 'Contact name', with: 'contact name', match: :first
@@ -38,7 +40,9 @@ class InitiativesTest < ApplicationSystemTestCase
       click_on 'Edit', match: :first
 
       fill_in 'Name', with: 'Initiative name', match: :first
-      fill_in 'Summary', with: 'Summary'
+      fill_in 'What', with: 'What'
+      fill_in 'How', with: 'How'
+      fill_in 'Further Information', with: 'Further Information'
       fill_in 'Anticipated carbon saving', with: '200'
       fill_in 'Contact email', with: 'contact@test.com', match: :first
       fill_in 'Contact name', with: 'contact name', match: :first
