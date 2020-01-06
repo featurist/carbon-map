@@ -13,7 +13,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Summary</th>
       <th>Location</th>
       <th>Status</th>
       <th></th>
@@ -24,7 +23,6 @@
     <% @initiatives.each do |initiative| %>
       <tr>
         <td><%= initiative.name %></td>
-        <td><%= initiative.summary %></td>
         <td><%= initiative.location %></td>
         <td><%= initiative.status_name %></td>
         <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false, class: 'Button' %></td>

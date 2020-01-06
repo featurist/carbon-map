@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_31_215243) do
+ActiveRecord::Schema.define(version: 2020_01_06_201833) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_215243) do
 
   create_table 'initiatives', force: :cascade do |t|
     t.string 'name'
-    t.string 'summary'
+    t.string 'description'
     t.integer 'anticipated_carbon_saving'
     t.bigint 'lead_group_id', null: false
     t.string 'contact_name'
@@ -143,6 +143,8 @@ ActiveRecord::Schema.define(version: 2019_12_31_215243) do
     t.boolean 'consent_to_share', default: false, null: false
     t.string 'postcode'
     t.bigint 'parish_id'
+    t.string 'description_what'
+    t.string 'description_how'
     t.index %w[lead_group_id], name: 'index_initiatives_on_lead_group_id'
     t.index %w[parish_id], name: 'index_initiatives_on_parish_id'
     t.index %w[status_id], name: 'index_initiatives_on_status_id'

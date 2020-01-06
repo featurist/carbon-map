@@ -54,7 +54,9 @@ function initialiseMap({ initiatives, center }) {
           </div>`
               : ""
           }
-          <p>${initiative.summary}</p>
+          ${item("What?", initiative.description_what)}
+          ${item("How?", initiative.description_how)}
+          ${item("Further Information", initiative.description)}
           ${item("Group", initiative.group)}
           ${item("Contact Name", initiative.contactName)}
           ${item("Contact Email", initiative.contactEmail)}

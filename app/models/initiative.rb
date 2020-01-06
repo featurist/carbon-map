@@ -18,7 +18,9 @@ class Initiative < ApplicationRecord
   accepts_nested_attributes_for :lead_group
   accepts_nested_attributes_for :websites, allow_destroy: true
   validates :name,
-            :summary,
+            :description_what,
+            :description_how,
+            :description,
             :status,
             :contact_name,
             :contact_email,

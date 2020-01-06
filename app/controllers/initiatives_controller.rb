@@ -146,7 +146,9 @@ class InitiativesController < ApplicationController
     @initiative_params ||=
       params.require(:initiative).permit(
         :name,
-        :summary,
+        :description_what,
+        :description_how,
+        :description,
         :anticipated_carbon_saving,
         :postcode,
         :latitude,

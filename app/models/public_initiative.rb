@@ -3,7 +3,11 @@
 # The publicly available data of an initiative
 class PublicInitiative
   include ActionView::Helpers::DateHelper
-  delegate :name, :summary, to: :@initiative
+  delegate :name,
+           :description_what,
+           :description_how,
+           :description,
+           to: :@initiative
 
   def initialize(initiative)
     @initiative = initiative
@@ -74,10 +78,13 @@ class PublicInitiative
   end
 
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def as_json(_options = {})
     {
       'name': name,
-      'summary': summary,
+      'description_what': description_what,
+      'description_how': description_how,
+      'description': description,
       'group': group,
       'location': location,
       'contactName': contact_name,
@@ -93,6 +100,7 @@ class PublicInitiative
       'href': href
     }
   end
+  # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
 
   private
