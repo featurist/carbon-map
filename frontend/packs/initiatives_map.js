@@ -54,8 +54,8 @@ function initialiseMap({ initiatives, center }) {
           </div>`
               : ""
           }
-          ${item("What?", initiative.description_what)}
-          ${item("How?", initiative.description_how)}
+          ${item("What", initiative.description_what)}
+          ${item("How", initiative.description_how)}
           ${item(
             "Further Information",
             initiative.description_further_information
