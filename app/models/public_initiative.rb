@@ -87,16 +87,16 @@ class PublicInitiative
       'description_further_information': description_further_information,
       'group': group,
       'location': location,
-      'contactName': contact_name,
-      'contactEmail': contact_email,
-      'contactPhone': contact_phone,
+      'contact_name': contact_name,
+      'contact_email': contact_email,
+      'contact_phone': contact_phone,
       'status': status,
       'solutions': solutions,
       'themes': themes,
       'websites': websites,
       'images': images,
       'timestamp': timestamp,
-      'lastUpdated': last_updated,
+      'last_updated': last_updated,
       'href': href
     }
   end

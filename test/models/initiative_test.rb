@@ -8,7 +8,7 @@ class InitiativeTest < ActiveSupport::TestCase
       Initiative.approved.map do |initiative|
         res = JSON.parse(initiative.to_json)
         res.delete('timestamp')
-        res.delete('lastUpdated')
+        res.delete('last_updated')
         res.delete('href')
         res.deep_symbolize_keys!
       end
@@ -72,9 +72,9 @@ class InitiativeTest < ActiveSupport::TestCase
           postcode: 'GL54UB',
           latlng: { lat: 51.749252, lng: -2.283587 }
         },
-        contactName: 'No name',
-        contactEmail: 'info@downtoearthstroud.co.uk',
-        contactPhone: '01453 700011',
+        contact_name: 'No name',
+        contact_email: 'info@downtoearthstroud.co.uk',
+        contact_phone: '01453 700011',
         status: 'Operational',
         solutions: [
           {

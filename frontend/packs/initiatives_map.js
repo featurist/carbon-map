@@ -61,9 +61,9 @@ function initialiseMap({ initiatives, center }) {
             initiative.description_further_information
           )}
           ${item("Group", initiative.group)}
-          ${item("Contact Name", initiative.contactName)}
-          ${item("Contact Email", initiative.contactEmail)}
-          ${item("Contact Phone", initiative.contactPhone)}
+          ${item("Contact Name", initiative.contact_name)}
+          ${item("Contact Email", initiative.contact_email)}
+          ${item("Contact Phone", initiative.contact_phone)}
           ${item("Status", initiative.status)}
           ${initiative.websites
             .map(
@@ -86,7 +86,7 @@ function initialiseMap({ initiatives, center }) {
               return `<p>Solution: ${item.sector}, ${item.theme}, ${item.class}, ${item.solution}</p>`;
             })
             .join("")}
-          <p>Last updated: ${initiative.lastUpdated}</p>
+          <p>Last updated: ${initiative.last_updated}</p>
           <p><a href="${initiative.href}">View full details</a></p>
            `;
 
