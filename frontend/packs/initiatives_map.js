@@ -1,6 +1,7 @@
 import L from "leaflet";
 import "leaflet.markercluster";
 import { GestureHandling } from "leaflet-gesture-handling";
+import http from "httpism";
 
 let carbonExplorer, mappedInitiatives, markers;
 
@@ -27,89 +28,36 @@ function initialiseMap({ initiatives, center }) {
 
   mappedInitiatives = initiatives.map(initiative => {
     var marker = L.marker(initiative.location.latlng);
-    function item(title, value) {
-      if (value) {
-        return `<p>${title}: ${value}</p>`;
-      }
-
-      return "";
-    }
-    const initiativeHtml = `<div class="InitiativeView-title">
-            <h1 class="InitiativeView-titleText"><a href="${initiative.href}">${
-      initiative.name
-    }</a></h1>
-            <button class="InitiativeView-close">X</button>
-          </div>
-          ${
-            initiative.images.length
-              ? `
-          <div class="Initiative-images_scroller">
-            <div class="Initiative-images">
-            ${initiative.images
-              .map(imageUrl => {
-                return `<img src=${imageUrl}" />`;
-              })
-              .join("")}
-            </div>
-          </div>`
-              : ""
-          }
-          ${item("What", initiative.description_what)}
-          ${item("How", initiative.description_how)}
-          ${item(
-            "Further Information",
-            initiative.description_further_information
-          )}
-          ${item("Group", initiative.group)}
-          ${item("Contact Name", initiative.contact_name)}
-          ${item("Contact Email", initiative.contact_email)}
-          ${item("Contact Phone", initiative.contact_phone)}
-          ${item("Status", initiative.status)}
-          ${initiative.websites
-            .map(
-              website =>
-                `<p>Website: <a target="_blank" href="${website}">${website}</a></p>`
-            )
-            .join("")}
-          ${
-            initiative.email
-              ? `<p>Email: <a href="mailto:${initiative.email}">${initiative.email}</a></p>`
-              : ""
-          }
-          ${initiative.themes
-            .map(item => {
-              return `<p>Theme: ${item.sector}, ${item.theme}</p>`;
-            })
-            .join("")}
-          ${initiative.solutions
-            .map(item => {
-              return `<p>Solution: ${item.sector}, ${item.theme}, ${item.class}, ${item.solution}</p>`;
-            })
-            .join("")}
-          <p>Last updated: ${initiative.last_updated}</p>
-          <p><a href="${initiative.href}">View full details</a></p>
-           `;
+    const initiativeHref = initiative.href;
 
     marker.on("click", e => {
-      const initiative = document.createElement("section");
-      initiative.className = "InitiativeView";
-      initiative.innerHTML = initiativeHtml;
-      const initiativeContainer = document.querySelector(".Explore-initiative");
-      while (initiativeContainer.firstChild) {
-        initiativeContainer.removeChild(initiativeContainer.firstChild);
-      }
-      explorePanel.classList.add("Explore-panel_initiative_visible");
-      initiativeContainer.appendChild(initiative);
-      initiative
-        .querySelector(".InitiativeView-close")
-        .addEventListener("click", () => {
-          initiativeContainer.removeChild(initiative);
-          explorePanel.classList.remove("Explore-panel_initiative_visible");
-          carbonExplorer.invalidateSize();
-        });
+      http
+        .get(initiativeHref, {
+          headers: { "content-type": "text/html", accept: "text/html" }
+        })
+        .then(initiativeHtml => {
+          const initiative = document.createElement("section");
+          initiative.className = "InitiativeView";
+          initiative.innerHTML = initiativeHtml;
+          const initiativeContainer = document.querySelector(
+            ".Explore-initiative"
+          );
+          while (initiativeContainer.firstChild) {
+            initiativeContainer.removeChild(initiativeContainer.firstChild);
+          }
+          explorePanel.classList.add("Explore-panel_initiative_visible");
+          initiativeContainer.appendChild(initiative);
+          initiative
+            .querySelector(".InitiativeView-close")
+            .addEventListener("click", () => {
+              initiativeContainer.removeChild(initiative);
+              explorePanel.classList.remove("Explore-panel_initiative_visible");
+              carbonExplorer.invalidateSize();
+            });
 
-      carbonExplorer.invalidateSize();
-      carbonExplorer.panTo(e.latlng);
+          carbonExplorer.invalidateSize();
+          carbonExplorer.panTo(e.latlng);
+        });
     });
 
     markers.addLayer(marker);

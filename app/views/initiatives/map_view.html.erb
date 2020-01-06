@@ -7,8 +7,9 @@
   @initiative.name
 ] %>
 
-<div class="PageHeader">
-  <h1 class="PageHeader-heading"><%=@initiative.name%></h1>
+<div class="InitiativeView-title">
+  <h1 class="InitiativeView-titleText"><%=link_to(@initiative.name, @inititative)%></h1>
+  <button class="InitiativeView-close">X</button>
 </div>
 
 <div class="Initiative">

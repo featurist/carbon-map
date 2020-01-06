@@ -14,6 +14,7 @@ class InitiativesController < ApplicationController
     @parish = @initiative.parish
     @ward = @parish.ward
     @district = @ward.district
+    render layout: false, template: 'initiatives/map_view' if request.xhr?
   end
 
   def new

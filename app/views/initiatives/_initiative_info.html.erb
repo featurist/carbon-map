@@ -1,0 +1,42 @@
+
+<p>Status: <%=initiative.status_name%></p>
+<h2>Description</h2>
+<p>What: <%=initiative.description_what%></p>
+<p>How: <%=initiative.description_how%></p>
+<p>Further Information: <%=initiative.description_further_information%></p>
+<div class="Initiative-images_scroller">
+  <div class="Initiative-images">
+  <% initiative.images.each do |image|%>
+    <%= image_tag image.variant(resize_to_limit: [200, 200]) %>
+  <% end %>
+  </div>
+</div>
+<h2>Impact</h2>
+<p>Anticipated Carbon Saving: <%=initiative.anticipated_carbon_saving%></p>
+<h2>Solutions</h2>
+<% initiative.themes.each do |theme| %>
+  <p>Theme: <%=theme.name%></p>
+<% end %>
+<% initiative.solutions.each do |solution| %>
+  <p>Solution: <%=solution.name%></p>
+<% end %>
+<h2>Contacts</h2>
+<p>Lead Group: <%=initiative.lead_group_name%></p>
+<% if initiative.consent_to_share? %>
+  <p>Contact Name: <%=initiative.contact_name%></p>
+  <p>Contact Email: <%=initiative.contact_email%></p>
+  <p>Contact Phone: <%=initiative.contact_phone%></p>
+<% end %>
+<p>Partner Groups Role: <%=initiative.partner_groups_role%></p>
+<h2>Websites</h2>
+<% initiative.websites.each do |website| %>
+  <%=link_to website.website, website.website, target: '_blank' %>
+<% end %>
+<h2>Location</h2>
+<p>Postcode: <%=initiative.postcode%></p>
+<p>Location: <%=initiative.location%></p>
+<p>Latitude: <%=initiative.latitude%></p>
+<p>Longitude: <%=initiative.longitude%></p>
+<h2>Metadata</h2>
+<p>Created: <%=time_tag initiative.created_at%></p>
+<p>Updated: <%=time_tag initiative.updated_at%></p>
