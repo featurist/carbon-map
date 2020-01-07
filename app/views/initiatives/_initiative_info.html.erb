@@ -28,6 +28,9 @@
   <p>Contact Phone: <%=initiative.contact_phone%></p>
 <% end %>
 <p>Partner Groups Role: <%=initiative.partner_groups_role%></p>
+<% if initiative.related_initiatives? %>
+  <p>Related Initiatives: <%=initiative.related_initiatives%></p>
+<% end %>
 <h2>Websites</h2>
 <% initiative.websites.each do |website| %>
   <%=link_to website.website, website.website, target: '_blank' %>

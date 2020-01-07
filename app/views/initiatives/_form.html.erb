@@ -126,6 +126,11 @@
     <%= f.text_field :partner_groups_role %>
   <% end %>
 
+  <%= f.form_field :related_initiatives do %>
+    <%= f.label :related_initiatives %>
+    <%= f.text_area :related_initiatives, placeholder: 'Enter the names of any related initiatives here' %>
+  <% end %>
+
   <h2>Solutions</h2>
 
   <%= f.form_field :solution, required: true do %>
