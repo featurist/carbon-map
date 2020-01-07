@@ -44,7 +44,9 @@
 
   <%= f.form_field :anticipated_carbon_saving do %>
     <%= f.label :anticipated_carbon_saving %>
-    <%= f.number_field :anticipated_carbon_saving %>
+    <div>
+      <%= f.number_field :anticipated_carbon_saving %> <span><%=carbon_units%></span>
+    </div>
   <% end %>
 
   <%= f.form_field :status_id, required: true do %>
