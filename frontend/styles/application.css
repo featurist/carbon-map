@@ -9,6 +9,7 @@
 @import "./components/breadcrumb";
 @import "./components/button";
 @import "./components/collection-item";
+@import "./components/container";
 @import "./components/content";
 @import "./components/explore";
 @import "./components/header";

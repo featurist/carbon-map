@@ -1,8 +1,8 @@
 .Header {
   border-bottom: 1px solid lightgray;
   flex: none;
-  margin-bottom: 30px;
   padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .Header-logo {

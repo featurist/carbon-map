@@ -1,0 +1,11 @@
+.Container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (--bp-tablet-landscape) {
+
+  .Container {
+    max-width: 1080px;
+  }
+}
