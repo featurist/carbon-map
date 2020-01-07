@@ -15,6 +15,14 @@ module ApplicationHelper
     '/admin'
   end
 
+  def format_carbon_saving(value)
+    "#{number_with_delimiter(value, delimiter: ',')} #{carbon_units}"
+  end
+
+  def carbon_units
+    'kgCO2e/yr'
+  end
+
   private
 
   def add_object_link_js(where, html)
