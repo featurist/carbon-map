@@ -12,7 +12,7 @@
   </div>
 </div>
 <h2>Impact</h2>
-<p>Anticipated Carbon Saving: <%=initiative.anticipated_carbon_saving%></p>
+<p>Anticipated Carbon Saving: <%=format_carbon_saving(initiative.anticipated_carbon_saving)%></p>
 <h2>Solutions</h2>
 <% initiative.themes.each do |theme| %>
   <p>Theme: <%=theme.name%></p>
