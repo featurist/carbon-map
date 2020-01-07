@@ -1,13 +1,15 @@
 .Explore {
   background-color: $snow;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  position: relative;
 }
 
 .Explore-navigation {
+  bottom: 0;
   display: flex;
   flex-wrap: wrap;
+  position: absolute;
+  width: 100%;
 }
 
 .Explore-navigation a {
