@@ -3,14 +3,9 @@
 class ApplicationController < ActionController::Base
   default_form_builder SuitFormBuilder
   before_action :store_user_location!, if: :storable_location?
-  before_action :authenticate_user!, if: :requires_authentication
+  before_action :authenticate_user!
 
   private
-
-  def requires_authentication
-    ![root_path, about_path, contact_path].include?(request.path) &&
-      !request.path.start_with?(districts_path)
-  end
 
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? &&

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class WardsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show]
+
   def show
     @ward = Ward.find(params['id'])
     initiatives =
