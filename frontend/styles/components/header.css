@@ -15,8 +15,7 @@
 }
 
 .Header-content {
-  display: inline-block;
-  flex: max-content;
+  flex-grow: 1;
   margin-left: 15px;
 }
 
