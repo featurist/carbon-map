@@ -8,7 +8,7 @@ import mobileCheck from "./mobileCheck";
 let carbonExplorer, mappedInitiatives, markers;
 L.Control.Breadcrumb = L.Control.extend({
   onAdd: function() {
-    var div = L.DomUtil.create("div");
+    const div = L.DomUtil.create("div");
     div.style.clear = "none";
     div.classList.add("Explore-header");
 
@@ -101,7 +101,11 @@ function initialiseMap({ initiatives, center }) {
 
   carbonExplorer.fitBounds(group.getBounds());
   const sidebar = L.control.sidebar("sidebar").addTo(carbonExplorer);
-  L.control.breadcrumb({ position: "topleft" }).addTo(carbonExplorer);
+
+  if (document.querySelector(".Breadcrumb")) {
+    console.log("add bread");
+    L.control.breadcrumb({ position: "topleft" }).addTo(carbonExplorer);
+  }
 
   if (!mobileCheck()) {
     openPaneIfPresent(sidebar, "wards");
