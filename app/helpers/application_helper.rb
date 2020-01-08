@@ -23,6 +23,12 @@ module ApplicationHelper
     'kgCO2e/yr'
   end
 
+  def inline_icon(name)
+    # rubocop:disable Rails/OutputSafety
+    File.readlines("frontend/icons/#{name}.svg").join('').html_safe
+    # rubocop:enable Rails/OutputSafety
+  end
+
   private
 
   def add_object_link_js(where, html)

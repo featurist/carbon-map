@@ -2,16 +2,45 @@ import L from "leaflet";
 import "leaflet.markercluster";
 import { GestureHandling } from "leaflet-gesture-handling";
 import http from "httpism";
+import "sidebar-v2/js/leaflet-sidebar";
+import mobileCheck from "./mobileCheck";
 
 let carbonExplorer, mappedInitiatives, markers;
+L.Control.Breadcrumb = L.Control.extend({
+  onAdd: function() {
+    const div = L.DomUtil.create("div");
+    div.style.clear = "none";
+    div.classList.add("Explore-header");
+
+    div.appendChild(document.querySelector(".Breadcrumb"));
+
+    return div;
+  },
+
+  onRemove: function() {
+    // Nothing to do here
+  }
+});
+
+L.control.breadcrumb = function(opts) {
+  return new L.Control.Breadcrumb(opts);
+};
 
 function initialiseMap({ initiatives, center }) {
   L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
   carbonExplorer = L.map("explore", {
     gestureHandling: true,
     center: center,
-    zoom: 13
+    zoom: 13,
+    zoomControl: false
   });
+
+  L.control
+    .zoom({
+      position: "topright"
+    })
+    .addTo(carbonExplorer);
+
   L.tileLayer(
     "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
     {
@@ -71,6 +100,26 @@ function initialiseMap({ initiatives, center }) {
   const group = new L.featureGroup(mappedInitiatives.map(x => x.marker));
 
   carbonExplorer.fitBounds(group.getBounds());
+  const sidebar = L.control.sidebar("sidebar").addTo(carbonExplorer);
+
+  if (document.querySelector(".Breadcrumb")) {
+    console.log("add bread");
+    L.control.breadcrumb({ position: "topleft" }).addTo(carbonExplorer);
+  }
+
+  if (!mobileCheck()) {
+    openPaneIfPresent(sidebar, "wards");
+    openPaneIfPresent(sidebar, "parishes");
+    openPaneIfPresent(sidebar, "initiatives");
+  }
+
+  setTimeout(() => carbonExplorer.invalidateSize(true), 100);
+}
+
+function openPaneIfPresent(sidebar, pane) {
+  if (sidebar._panes.find(p => p.id === pane)) {
+    sidebar.open(pane);
+  }
 }
 
 window.exploreMap = {

@@ -1,19 +1,23 @@
 <%= render 'partials/breadcrumb', items: [
-  link_to('Home', root_path),
-  link_to('Districts', districts_path),
+  link_to('All', root_path),
   link_to(@district.name, @district),
   @ward.name
 ] %>
 
-<div class="PageHeader">
-  <h1 class="PageHeader-heading"><%=@ward.name%></h1>
-</div>
-
-<%= render 'partials/map', map_data: @map_data, sectors: @sectors %>
-
-<h2>Parishes</h2>
-<ul>
+<%= render 'partials/map', map_data: @map_data, sectors: @sectors, tabs: [
+  {
+    id: 'parishes',
+    title: 'Parishes',
+    icon: 'map-marker',
+  }
+] do %>
+  <div class="sidebar-pane Explore-navigation" id="parishes">
+    <h1 class="sidebar-header">Parishes</h1>
   <% @ward.parishes.each do |parish| %>
-    <li><%=link_to parish.name, parish%></li>
+    <%=link_to parish.name, parish%>
+    <% unless @ward.parishes.last == parish %>
+      <hr />
+    <% end %>
   <% end %>
-</ul>
+  </div>
+<% end %>

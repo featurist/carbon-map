@@ -1,21 +1,25 @@
 <%= render 'partials/breadcrumb', items: [
-  link_to('Home', root_path),
-  link_to('Districts', districts_path),
+  link_to('All', root_path),
   link_to(@district.name, @district),
   link_to(@ward.name, @ward),
   @parish.name
 ] %>
 
-<div class="PageHeader">
-  <h1 class="PageHeader-heading"><%=@parish.name%></h1>
-</div>
-
-<%= render 'partials/map', map_data: @map_data, sectors: @sectors %>
-
-<h2>Initiatives</h2>
-<ul>
+<%= render 'partials/map', map_data: @map_data, sectors: @sectors, tabs: [
+  {
+    id: 'initiatives',
+    title: 'Initiatives',
+    icon: 'lightbulb',
+  }
+] do %>
+  <div class="sidebar-pane Explore-navigation" id="initiatives">
+    <h1 class="sidebar-header">Initiatives</h1>
   <% @parish.initiatives.each do |initiative| %>
-    <li><%=link_to initiative.name, initiative%></li>
+    <%=link_to initiative.name, initiative%>
+    <% unless @parish.initiatives.last == initiative %>
+      <hr />
+    <% end %>
   <% end %>
-</ul>
+  </div>
+<% end %>
 

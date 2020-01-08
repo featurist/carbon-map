@@ -10,5 +10,6 @@ class HomeController < ApplicationController
     initiatives = Initiative.all
     @map_data = MapData.new(initiatives)
     @sectors = Sector.all
+    @districts = District.all
   end
 end

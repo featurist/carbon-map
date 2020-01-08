@@ -13,12 +13,34 @@ end %>
 
 <a name="explore"></a>
 <div class="Explore-panel">
-  <div class="Explore-map" id="explore"></div>
+  <div id="sidebar" class="sidebar collapsed">
+    <!-- Nav tabs -->
+    <div class="sidebar-tabs">
+      <ul role="tablist">
+        <li><a href="#filters" role="tab"><%=inline_icon('filter')%></i></a></li>
+        <% if local_assigns[:tabs].present? %>
+          <% tabs.each do |tab| %>
+            <li><a href="#<%=tab[:id]%>" role="tab"><%=inline_icon(tab[:icon])%></i></a></li>
+          <% end %>
+        <%end %>
+      </ul>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="sidebar-content">
+      <div class="sidebar-pane Explore-navigation" id="filters">
+        <h1 class="sidebar-header">Filters<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+
+        <a class="Explore-navigation-selected" onclick="exploreMap.select(this); exploreMap.showAll()">All</a>
+        <% @sectors.each do |sector| %>
+          <hr />
+          <a onclick="exploreMap.select(this); exploreMap.filter('sector', '<%=sector.name%>')"><%=sector.name%></a>
+        <% end %>
+      </div>
+
+      <%= yield %>
+    </div>
+  </div>
+  <div class="Explore-map sidebar-map" id="explore"></div>
   <div class="Explore-initiative"></div>
 </div>
-<nav class="Explore-navigation">
-  <a class="Explore-navigation-selected" onclick="exploreMap.select(this); exploreMap.showAll()">All</a>
-  <% @sectors.each do |sector| %>
-    <a onclick="exploreMap.select(this); exploreMap.filter('sector', '<%=sector.name%>')"><%=sector.name%></a>
-  <% end %>
-</nav>

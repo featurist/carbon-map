@@ -1,1 +1,17 @@
-<%= render 'partials/map', map_data: @map_data, sectors: @sectors %>
+<%= render 'partials/map', map_data: @map_data, sectors: @sectors, tabs: [
+  {
+    id: 'district',
+    title: 'Districts',
+    icon: 'map-marker',
+  }
+] do %>
+  <div class="sidebar-pane Explore-navigation" id="district">
+    <h1 class="sidebar-header">Districts</h1>
+  <% @districts.each do |district| %>
+    <%=link_to district.name, district%>
+    <% unless @districts.last == district %>
+      <hr />
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
