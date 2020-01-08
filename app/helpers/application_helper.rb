@@ -23,6 +23,10 @@ module ApplicationHelper
     'kgCO2e/yr'
   end
 
+  def inline_icon(name)
+    File.readlines("frontend/icons/#{name}.svg").join('').html_safe
+  end
+
   private
 
   def add_object_link_js(where, html)

@@ -2,6 +2,7 @@ import L from "leaflet";
 import "leaflet.markercluster";
 import { GestureHandling } from "leaflet-gesture-handling";
 import http from "httpism";
+import "sidebar-v2/js/leaflet-sidebar";
 
 let carbonExplorer, mappedInitiatives, markers;
 
@@ -71,6 +72,7 @@ function initialiseMap({ initiatives, center }) {
   const group = new L.featureGroup(mappedInitiatives.map(x => x.marker));
 
   carbonExplorer.fitBounds(group.getBounds());
+  L.control.sidebar("sidebar").addTo(carbonExplorer);
 }
 
 window.exploreMap = {
