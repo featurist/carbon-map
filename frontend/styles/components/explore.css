@@ -1,10 +1,13 @@
 .Explore {
   background-color: $snow;
+  display: flex;
+  flex-direction: column;
   height: calc(100vh - 145px); /* Viewport height minus header height */
   position: relative;
 }
 
 .Explore-navigation {
+  background-color: #fff;
   bottom: 0;
   display: flex;
   flex-wrap: wrap;
