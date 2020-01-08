@@ -1,6 +1,6 @@
 .Explore {
   background-color: $snow;
-  height: 100%;
+  height: calc(100vh - 145px); /* Viewport height minus header height */
   position: relative;
 }
 
