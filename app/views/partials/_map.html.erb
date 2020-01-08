@@ -18,24 +18,16 @@ end %>
     <div class="sidebar-tabs">
       <ul role="tablist">
         <li><a href="#filters" role="tab"><%=inline_icon('filter')%></i></a></li>
-        <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
-        <li><a href="https://github.com/Turbo87/sidebar-v2" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
-      </ul>
-
-      <ul role="tablist">
-        <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+        <% if local_assigns[:tabs].present? %>
+          <% tabs.each do |tab| %>
+            <li><a href="#<%=tab[:id]%>" role="tab"><%=inline_icon(tab[:icon])%></i></a></li>
+          <% end %>
+        <%end %>
       </ul>
     </div>
 
     <!-- Tab panes -->
     <div class="sidebar-content">
-      <div class="sidebar-pane" id="home">
-        <h1 class="sidebar-header">
-          sidebar-v2
-          <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
-        </h1>
-      </div>
-
       <div class="sidebar-pane Explore-navigation" id="filters">
         <h1 class="sidebar-header">Filters<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 
@@ -45,6 +37,8 @@ end %>
           <a onclick="exploreMap.select(this); exploreMap.filter('sector', '<%=sector.name%>')"><%=sector.name%></a>
         <% end %>
       </div>
+
+      <%= yield %>
     </div>
   </div>
   <div class="Explore-map sidebar-map" id="explore"></div>

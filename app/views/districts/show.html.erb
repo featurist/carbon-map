@@ -4,15 +4,20 @@
   @district.name
 ] %>
 
-<div class="PageHeader">
-  <h1 class="PageHeader-heading"><%=@district.name%></h1>
-</div>
-
-<%= render 'partials/map', map_data: @map_data, sectors: @sectors %>
-
-<h2>Wards</h2>
-<ul>
+<%= render 'partials/map', map_data: @map_data, sectors: @sectors, tabs: [
+  {
+    id: 'wards',
+    title: 'Wards',
+    icon: 'map-marker',
+  }
+] do %>
+  <div class="sidebar-pane Explore-navigation" id="wards">
+    <h1 class="sidebar-header">Wards</h1>
   <% @district.wards.each do |ward| %>
-    <li><%=link_to ward.name, ward%></li>
+    <%=link_to ward.name, ward%>
+    <% unless @district.wards.last == ward %>
+      <hr />
+    <% end %>
   <% end %>
-</ul>
+  </div>
+<% end %>

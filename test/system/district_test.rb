@@ -7,6 +7,6 @@ class DistrictTest < ApplicationSystemTestCase
     visit districts_url
     click_link 'Stroud'
 
-    assert_heading 'Stroud'
+    assert_text 'Districts > Stroud'
   end
 end

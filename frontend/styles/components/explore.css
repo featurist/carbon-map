@@ -6,10 +6,15 @@
   position: relative;
 }
 
+.Explore-header {
+  background-color: rgb(255, 255, 255, 0.7);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  margin-right: 50px;
+  padding: 10px;
+}
+
 .Explore-navigation {
   bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
   width: 100%;
   z-index: 2;
 }
