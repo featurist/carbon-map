@@ -1,17 +1,10 @@
 .Content {
   border: 1px solid lightgray;
+  margin-bottom: 30px;
+  margin-top: 30px;
   padding: 20px;
 }
 
 .Content p {
   margin-bottom: 15px;
-}
-
-@media (--bp-tablet) {
-
-  .Content {
-    display: block;
-    margin: 0 auto;
-    width: 75%;
-  }
 }

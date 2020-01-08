@@ -2,12 +2,18 @@
   background-color: $snow;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 145px); /* Viewport height minus header height */
+  position: relative;
 }
 
 .Explore-navigation {
+  background-color: #fff;
+  bottom: 0;
   display: flex;
   flex-wrap: wrap;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
 }
 
 .Explore-navigation a {
@@ -15,7 +21,6 @@
   color: white;
   cursor: pointer;
   flex: 1;
-  margin-bottom: 2px;
   margin-right: 2px;
   padding: 3px;
   text-align: center;
@@ -47,6 +52,7 @@
   display: flex;
   height: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .Explore-initiative {

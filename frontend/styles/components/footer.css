@@ -1,6 +1,10 @@
 .Footer {
+  background-color: #efefef;
   flex: none;
+}
+
+.Footer-copyright {
   font-size: 14px;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
 }
