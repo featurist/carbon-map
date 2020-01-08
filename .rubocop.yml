@@ -39,6 +39,9 @@ Rails/BulkChangeTable:
   Exclude:
     - db/migrate/*
 
+Rails/RakeEnvironment:
+  Enabled: false
+
 Metrics/MethodLength:
   Exclude:
     - db/migrate/*
