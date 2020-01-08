@@ -24,7 +24,9 @@ module ApplicationHelper
   end
 
   def inline_icon(name)
+    # rubocop:disable Rails/OutputSafety
     File.readlines("frontend/icons/#{name}.svg").join('').html_safe
+    # rubocop:enable Rails/OutputSafety
   end
 
   private
