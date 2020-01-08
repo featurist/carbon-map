@@ -69,7 +69,10 @@ class LocationPicker {
       return;
     }
     debounce(async () => {
-      const { status, result } = await http.get(
+      const {
+        status,
+        result
+      } = await http.get(
         `https://api.postcodes.io/postcodes/${this.postcodeElement.value}`,
         { exceptions: false }
       );
