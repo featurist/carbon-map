@@ -8,13 +8,16 @@ georgie:
   email: georgie@test.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   role: consumer
+  confirmed_at: <%=Time.now%>
 
 brian:
   email: brian@test.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   role: consumer
+  confirmed_at: <%=Time.now%>
 
 al_pacino:
   email: al@test.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   role: admin
+  confirmed_at: <%=Time.now%>
