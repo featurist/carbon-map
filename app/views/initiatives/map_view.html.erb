@@ -1,12 +1,3 @@
-<%= render 'partials/breadcrumb', items: [
-  link_to('Home', root_path),
-  link_to('Districts', districts_path),
-  link_to(@district.name, @district),
-  link_to(@ward.name, @ward),
-  link_to(@parish.name, @parish),
-  @initiative.name
-] %>
-
 <div class="InitiativeView-title">
   <h1 class="InitiativeView-titleText"><%=link_to(@initiative.name, @inititative)%></h1>
   <button class="InitiativeView-close">X</button>
