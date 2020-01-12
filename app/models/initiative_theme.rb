@@ -6,6 +6,6 @@ class InitiativeTheme < ApplicationRecord
 
   def name
     sector = theme.sector
-    "#{sector.name}, #{theme.name}"
+    "#{sector.name} > #{theme.name}"
   end
 end
