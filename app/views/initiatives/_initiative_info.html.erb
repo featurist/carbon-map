@@ -48,6 +48,10 @@
     <% content_for :page_javascript do %>
       <script type="text/json" id="map_data_json"><%=@map_data.to_json.html_safe%></script>
       <%= javascript_packs_with_chunks_tag 'initiative_map', 'data-turbolinks-track': 'reload' %>
+      <% content_for :page_head do %>
+        <meta name="turbolinks-visit-control" content="reload">
+      <% end %>
+
     <% end %>
     <div class="Explore-map" id="initiative_location"></div>
   </div>
