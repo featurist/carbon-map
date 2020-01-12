@@ -17,12 +17,13 @@ end %>
     <!-- Nav tabs -->
     <div class="sidebar-tabs">
       <ul role="tablist">
-        <li><a href="#filters" role="tab"><%=inline_icon('filter')%></i></a></li>
+        <li><a href="#filters" role="tab"><%=inline_icon('filter')%></a></li>
         <% if local_assigns[:tabs].present? %>
           <% tabs.each do |tab| %>
-            <li><a href="#<%=tab[:id]%>" role="tab"><%=inline_icon(tab[:icon])%></i></a></li>
+            <li><a href="#<%=tab[:id]%>" role="tab"><%=inline_icon(tab[:icon])%></a></li>
           <% end %>
         <%end %>
+        <li class="InitiativeSidebar-icon"><a href="#initiative" role="tab"><%=inline_icon(:lightbulb)%></a></li>
       </ul>
     </div>
 
@@ -39,6 +40,8 @@ end %>
       </div>
 
       <%= yield %>
+
+      <div class="sidebar-pane" id="initiative"></div>
     </div>
   </div>
   <div class="Explore-map sidebar-map" id="explore"></div>
