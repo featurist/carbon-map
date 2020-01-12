@@ -53,7 +53,6 @@ function initialiseMap({ initiatives, center }) {
   ).addTo(carbonExplorer);
 
   markers = L.markerClusterGroup();
-  const explorePanel = document.querySelector(".Explore-panel");
 
   mappedInitiatives = initiatives.map(initiative => {
     var marker = L.marker(initiative.location.latlng);
@@ -65,25 +64,10 @@ function initialiseMap({ initiatives, center }) {
           headers: { "content-type": "text/html", accept: "text/html" }
         })
         .then(initiativeHtml => {
-          const initiative = document.createElement("section");
-          initiative.className = "InitiativeView";
-          initiative.innerHTML = initiativeHtml;
-          const initiativeContainer = document.querySelector(
-            ".Explore-initiative"
-          );
-          while (initiativeContainer.firstChild) {
-            initiativeContainer.removeChild(initiativeContainer.firstChild);
-          }
-          explorePanel.classList.add("Explore-panel_initiative_visible");
-          initiativeContainer.appendChild(initiative);
-          initiative
-            .querySelector(".InitiativeView-close")
-            .addEventListener("click", () => {
-              initiativeContainer.removeChild(initiative);
-              explorePanel.classList.remove("Explore-panel_initiative_visible");
-              carbonExplorer.invalidateSize();
-            });
-
+          document.querySelector("#initiative").innerHTML = initiativeHtml;
+          document.querySelector(".InitiativeSidebar-icon").style.display =
+            "inherit";
+          sidebar.open("initiative");
           carbonExplorer.invalidateSize();
           carbonExplorer.panTo(e.latlng);
         });

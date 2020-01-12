@@ -15,6 +15,7 @@ class InitiativesController < ApplicationController
     @parish = @initiative.parish
     @ward = @parish.ward
     @district = @ward.district
+    @map_data = MapData.new([@initiative])
     render layout: false, template: 'initiatives/map_view' if request.xhr?
   end
 
