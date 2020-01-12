@@ -39,11 +39,20 @@
 <% initiative.websites.each do |website| %>
   <%=link_to website.website, website.website, target: '_blank' %>
 <% end %>
-<h2>Location</h2>
-<p>Postcode: <%=initiative.postcode%></p>
-<p>Location: <%=initiative.location%></p>
-<p>Latitude: <%=initiative.latitude%></p>
-<p>Longitude: <%=initiative.longitude%></p>
-<h2>Metadata</h2>
+
+<% if local_assigns[:show_map] && show_map %>
+  <h2>Location</h2>
+  <p>Postcode: <%=initiative.postcode%></p>
+  <p>Locality: <%=initiative.location%></p>
+  <div class="Explore">
+    <% content_for :page_javascript do %>
+      <script type="text/json" id="map_data_json"><%=@map_data.to_json.html_safe%></script>
+      <%= javascript_packs_with_chunks_tag 'initiative_map', 'data-turbolinks-track': 'reload' %>
+    <% end %>
+    <div class="Explore-map" id="initiative_location"></div>
+  </div>
+<% end %>
+
+<h2>Timestamps</h2>
 <p>Created: <%=time_tag initiative.created_at%></p>
 <p>Updated: <%=time_tag initiative.updated_at%></p>
