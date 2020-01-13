@@ -106,7 +106,7 @@
   <% end %>
 
 
-  <h2>Groups</h2>
+  <h2 class="u-mb">Groups</h2>
 
   <%= f.form_field :lead_group_id do %>
     <%= f.label :lead_group_id %>
@@ -133,7 +133,7 @@
     <%= f.text_area :related_initiatives, placeholder: 'Enter the names of any related initiatives here' %>
   <% end %>
 
-  <h2>Solutions</h2>
+  <h2 class="u-mb">Solutions</h2>
 
   <%= f.form_field :solution, required: true do %>
     <input type="hidden" id="initial_themes" value="<%=themes_as_json(initiative)%>">
@@ -141,7 +141,7 @@
     <div id="solution_picker"></div>
   <% end %>
 
-  <h2>Notes</h2>
+  <h2 class="u-mb">Notes</h2>
 
   <%= f.form_field :administrative_notes do %>
     <%= f.label :administrative_notes %>
