@@ -69,14 +69,14 @@
       </header>
 
       <% if notice || alert %>
-        <section class="Alerts">
+        <div class="Alerts">
           <% if notice %>
           <p class="Alert Alert--info"><%= notice %></p>
           <% end %>
           <% if alert %>
             <p class="Alert Alert--danger"><%= alert %></p>
           <% end %>
-        </section>
+        </div>
       <% end %>
 
       <% content_class = yield :content_class %>
@@ -96,12 +96,12 @@
 
       <footer class="Footer">
         <div class="Container">
-          <section class="sponsors">
+          <div class="sponsors">
             <h2>Sponsors</h2>
             <div class="sponsors-logos">
               <a class="sponsors-logo" href="https://featurist.co.uk" target="_blank"><img src="<%=asset_pack_path("media/logos/featurist.svg")%>"></a>
             </div>
-          </section>
+          </div>
           <p class="Footer-copyright">&copy; Carbon Map <time datetime="<%= Date.current.year %>"><%= Date.current.year %></time></p>
         </div>
       </footer>

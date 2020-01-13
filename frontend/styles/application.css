@@ -1,9 +1,4 @@
-
-@import "normalize.css";
-@import "leaflet.markercluster/dist/MarkerCluster.css";
-@import "leaflet.markercluster/dist/MarkerCluster.Default.css";
-@import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
-@import "sidebar-v2/css/leaflet-sidebar.css";
+@import "suitcss-base";
 @import "./base/variables";
 @import "./base/base";
 @import "./components/alert";
@@ -23,3 +18,10 @@
 @import "./components/nav";
 @import "./components/page_header";
 @import "./components/sponsors";
+@import "leaflet.markercluster/dist/MarkerCluster.css";
+@import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+@import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
+@import "sidebar-v2/css/leaflet-sidebar.css";
+@import "suitcss-utils-display";
+@import "suitcss-utils-text";
+@import "./base/utilities";

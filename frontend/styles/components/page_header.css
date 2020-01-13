@@ -1,7 +1,12 @@
 .PageHeader {
   align-items: center;
+  border-bottom: 3px solid #ff9700;
   display: flex;
   justify-content: space-between;
+}
+
+.PageHeader-heading {
+  padding-bottom: 10px;
 }
 
 .PageHeader-action {

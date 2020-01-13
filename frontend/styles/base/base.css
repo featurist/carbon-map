@@ -1,4 +1,10 @@
+/*
+ * Extends SUIT CSS base
+ * https://github.com/suitcss/base
+ */
+
 @font-face {
+  font-display: fallback;
   font-family: "fira_sansregular";
   font-style: normal;
   font-weight: normal;
@@ -9,24 +15,16 @@
 }
 
 html {
-  box-sizing: border-box;
   height: 100%;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
 }
 
 body {
+  background-color: #fff;
   color: #4c4c4c;
-  font-family: "fira_sansregular";
+  font-family: "fira_sansregular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1em;
   height: 100%;
   line-height: 1.5;
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -43,32 +41,6 @@ h3 {
 
 h4 {
   font-size: 0.75em;
-}
-
-section {
-  margin-bottom: 10px;
-  padding: 5px;
-}
-
-a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-p {
-  margin: 0;
-}
-
-.u-hidden {
-  display: none;
-}
-
-ul {
-  padding-left: 10px;
-}
-
-li {
-  list-style-type: none;
 }
 
 input[type=text],

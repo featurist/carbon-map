@@ -1,11 +1,8 @@
 .Container {
   margin-left: auto;
   margin-right: auto;
-}
 
-@media (--bp-tablet-landscape) {
-
-  .Container {
+  @media (--bp-tablet-landscape) {
     max-width: 1180px;
   }
 }
