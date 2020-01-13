@@ -12,9 +12,6 @@ AllCops:
     - "vendor/**/*"
     - "bin/bundle"
 
-Documentation:
-  Enabled: false
-
 Performance:
   Exclude:
     - "**/test/**/*"
@@ -23,24 +20,21 @@ Lint/RedundantCopDisableDirective:
   Exclude:
     - "**/*.*"
 
-Metrics/LineLength:
+Rails/RakeEnvironment:
+  Enabled: false
+
+Layout/LineLength:
   Max: 120
   Exclude:
     - config/**/*
     - db/**
 
 Style/Documentation:
-  Exclude:
-    - db/**/*
-    - app/controllers/**/*
-    - test/**/*
+  Enabled: false
 
 Rails/BulkChangeTable:
   Exclude:
     - db/migrate/*
-
-Rails/RakeEnvironment:
-  Enabled: false
 
 Metrics/MethodLength:
   Exclude:

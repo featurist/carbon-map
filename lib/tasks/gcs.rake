@@ -25,9 +25,9 @@ namespace :gcs do
   end
 
   task :staging do
-    # rubocop:disable Metrics/LineLength
+    # rubocop:disable Layout/LineLength
     `heroku config:set GOOGLE_APPLICATION_CREDENTIALS="$(< config/secrets/google-carbon-map-staging.json)" -a carbon-map`
-    # rubocop:enable Metrics/LineLength
+    # rubocop:enable Layout/LineLength
     update_cors('https://carbon-map.herokuapp.com', 'carbon-map-staging')
   end
 
