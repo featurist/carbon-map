@@ -1,9 +1,18 @@
 # frozen_string_literal: true
 
 class InitiativeWebsiteTest < ActiveSupport::TestCase
-  test 'creating a website with http at the start adds it for you' do
-    site = InitiativeWebsite.new(website: 'www.something.com')
-    assert_equal 'https://www.something.com', site.website
+  test 'creating a website without http causes it to be invalid' do
+    initiative = Initiative.new
+    site = InitiativeWebsite.new(website: 'www.something.com', initiative: initiative)
+    assert_not site.valid?
+  end
+
+  test 'creating a website with http causes it to be invalid' do
+    initiative = Initiative.new
+    site1 = InitiativeWebsite.new(website: 'http://www.something.com', initiative: initiative)
+    site2 = InitiativeWebsite.new(website: 'https://www.something.com', initiative: initiative)
+    assert site1.valid?
+    assert site2.valid?
   end
 
   test 'is instagram' do

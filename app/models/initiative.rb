@@ -2,6 +2,7 @@
 
 require 'uk_postcode'
 
+# rubocop:disable Metrics/ClassLength
 class Initiative < ApplicationRecord
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
@@ -17,6 +18,7 @@ class Initiative < ApplicationRecord
   accepts_nested_attributes_for :themes
   accepts_nested_attributes_for :lead_group
   accepts_nested_attributes_for :websites, allow_destroy: true
+  accepts_nested_attributes_for :websites, allow_destroy: true, reject_if: :website_empty?
   validates :name,
             :description_what,
             :description_how,
@@ -30,6 +32,10 @@ class Initiative < ApplicationRecord
 
   validate :at_least_one_solution_or_theme
   validate :validate_postcode
+
+  def website_empty?(attributes)
+    attributes['website'].blank?
+  end
 
   def validate_postcode
     ukpc = UKPostcode.parse(postcode)
@@ -123,3 +129,4 @@ class Initiative < ApplicationRecord
   end
   # rubocop:enable Metrics/MethodLength
 end
+# rubocop:enable Metrics/ClassLength

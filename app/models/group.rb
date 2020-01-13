@@ -8,13 +8,17 @@ class Group < ApplicationRecord
            foreign_key: 'lead_group_id',
            dependent: :destroy,
            inverse_of: :lead_group
-  accepts_nested_attributes_for :websites, allow_destroy: true
+  accepts_nested_attributes_for :websites, allow_destroy: true, reject_if: :website_empty?
   validates :name,
             :abbreviation,
             :contact_name,
             :contact_email,
             :contact_phone,
             presence: true
+
+  def website_empty?(attributes)
+    attributes['website'].blank?
+  end
 
   def empty?
     attributes.each { |_, value| return false if value.present? }

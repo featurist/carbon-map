@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
 module Website
-  def website=(value)
-    value = value.strip
-    value = 'https://' + value unless value.start_with? 'http'
-
-    self[:website] = value
-  end
-
   def instagram?
     website.start_with? 'https://www.instagram.com'
   end
