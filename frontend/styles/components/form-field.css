@@ -60,10 +60,7 @@ textarea.FormField-input {
 }
 
 .field_with_errors input {
-  border: 2px solid rgb(246, 220, 222);
-  border-radius: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  border-color: rgb(246, 220, 222);
 }
 
 .FormField [type=checkbox] {
