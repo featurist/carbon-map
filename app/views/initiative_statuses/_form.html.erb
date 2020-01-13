@@ -1,4 +1,4 @@
-<%= form_with(model: initiative_status, local: true, html: {class: 'FormField-form'}) do |f| %>
+<%= form_with(model: initiative_status, local: true, html: {class: 'Form'}) do |f| %>
   <% if initiative_status.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(initiative_status.errors.count, "error") %> prohibited this initiative_status from being saved:</h2>
