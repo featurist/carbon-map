@@ -1,3 +1,11 @@
+<% if initiative.websites.any? %>
+  <div class="u-mb">
+    <% initiative.websites.each do |website| %>
+      <%= link_to inline_icon(website.icon), website.website, target: '_blank', class: 'Initiative-website' %>
+    <% end %>
+  </div>
+<% end %>
+
 <h2 class="u-mb">Description</h2>
 <div class="u-mb">
   <p>What: <%=initiative.description_what%></p>
@@ -45,17 +53,6 @@
     <p>Related Initiatives: <%=initiative.related_initiatives%></p>
   <% end %>
 </div>
-
-<% if initiative.websites.any? %>
-  <h2 class="u-mb">Websites</h2>
-  <div class="u-mb">
-    <ul class="u-listBulleted">
-      <% initiative.websites.each do |website| %>
-        <li><%=link_to website.website, website.website, target: '_blank' %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 
 <% if local_assigns[:show_map] && show_map %>
   <h2 class="u-mb">Location</h2>

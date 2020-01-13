@@ -3,7 +3,7 @@
 class InitiativeWebsiteTest < ActiveSupport::TestCase
   test 'creating a website with http at the start adds it for you' do
     site = InitiativeWebsite.new(website: 'www.something.com')
-    assert_equal 'http://www.something.com', site.website
+    assert_equal 'https://www.something.com', site.website
   end
 
   test 'is instagram' do

@@ -23,4 +23,13 @@ module Website
   def youtube?
     website.start_with? 'https://www.youtube.com'
   end
+
+  def icon
+    return :instagram if instagram?
+    return :facebook if facebook?
+    return :twitter if twitter?
+    return :youtube if youtube?
+
+    :link
+  end
 end
