@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+}
+
+thead {
+  border-bottom: 2px solid lightgray;
+
+  th {
+    font-weight: bold;
+  }
+}
+
+tbody {
+
+  tr {
+    border-bottom: 1px solid lightgray;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}
+
+th,
+td {
+  font-weight: normal;
+  padding: 8px;
+  text-align: left;
+}
