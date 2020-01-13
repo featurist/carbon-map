@@ -16,18 +16,6 @@
  * Modifiers
  */
 
-.Button--primary {
-  background: linear-gradient(to bottom, #00dde9 5%, #06c1c7 100%);
-  background-color: #00dde9;
-  border: 1px solid #1c9296;
-  box-shadow: inset 0 1px 0 0 #20dae0;
-
-  &:hover {
-    background: linear-gradient(to bottom, #06c1c7 5%, #00dde9 100%);
-    background-color: #06c1c7;
-  }
-}
-
 .Button--success {
   background: linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
   background-color: #74ad5a;
