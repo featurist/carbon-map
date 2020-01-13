@@ -1,10 +1,14 @@
-<%= render 'partials/breadcrumb', items: [
-  link_to('Admin', admin_path),
-  'Group Types'
-] %>
+<% title 'Group Types' %>
 
-<div class="PageHeader">
-  <h1 class="PageHeader-heading">Group Types</h1>
+<div class="u-mbL">
+  <%= render 'partials/breadcrumb', items: [
+    link_to('Admin', admin_path),
+    title
+  ] %>
+</div>
+
+<div class="PageHeader u-mbL">
+  <h1 class="PageHeader-heading"><%= title %></h1>
   <%= link_to 'New Group Type', new_group_type_path, class: 'Button Button--success' %>
 </div>
 
