@@ -71,13 +71,24 @@
 
   <h2 class="u-mb">Website & Social Media</h2>
   <div id="websites" class="CollectionItem-container">
-    <%= f.fields_for :websites do |website_form| %>
-      <%= render 'partials/initiative_website', f: website_form %>
-    <% end %>
+    <table>
+      <thead>
+        <tr>
+          <th>Website</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= f.fields_for :websites do |website_form| %>
+          <%= render 'partials/website_fields_row', f: website_form %>
+        <% end %>
+      </tbody>
+    </table>
   </div>
   <div class="FormField">
     <%= f.fields_for :websites, InitiativeWebsite.new do |website_form| %>
-    <%= add_object_link 'Add website', 'websites', :partial => 'partials/initiative_website', :locals => { :f => website_form } %>
+      <%= add_object_link 'Add website', :partial => 'partials/website_fields_row', :locals => { :f => website_form } %>
     <% end %>
   </div>
 
@@ -106,7 +117,7 @@
   <% end %>
 
 
-  <h2>Groups</h2>
+  <h2 class="u-mb">Groups</h2>
 
   <%= f.form_field :lead_group_id do %>
     <%= f.label :lead_group_id %>
@@ -119,7 +130,7 @@
 
   <%= f.fields_for :lead_group do |group_fields| %>
     <div id="initiative_lead_group_new" class="<%=new_group_selected?(initiative) ? '' : 'u-hidden' %> Initiative-lead_group">
-      <%=render 'groups/form_fields', group: Group.new, f: group_fields %>
+      <%=render 'groups/form_fields', group: Group.new, group_types: @group_types, f: group_fields %>
     </div>
   <% end %>
 
@@ -133,7 +144,7 @@
     <%= f.text_area :related_initiatives, placeholder: 'Enter the names of any related initiatives here' %>
   <% end %>
 
-  <h2>Solutions</h2>
+  <h2 class="u-mb">Solutions</h2>
 
   <%= f.form_field :solution, required: true do %>
     <input type="hidden" id="initial_themes" value="<%=themes_as_json(initiative)%>">
@@ -141,7 +152,7 @@
     <div id="solution_picker"></div>
   <% end %>
 
-  <h2>Notes</h2>
+  <h2 class="u-mb">Notes</h2>
 
   <%= f.form_field :administrative_notes do %>
     <%= f.label :administrative_notes %>
@@ -149,6 +160,6 @@
   <% end %>
 
   <div class="FormField-actions">
-    <%= f.submit %>
+    <%= f.submit class: 'Button Button--success Button--large' %>
   </div>
 <% end %>

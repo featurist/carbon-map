@@ -1,11 +1,15 @@
-<%= render 'partials/breadcrumb', items: [
-  link_to('Admin', admin_path),
-  'Initiative Statuses'
-] %>
+<% title 'Initiative Statuses' %>
 
-<div class="PageHeader">
-  <h1 class="PageHeader-heading">Initiative Statuses</h1>
-  <%= link_to 'New Initiative Status', new_initiative_status_path , class: 'PageHeader-action'%>
+<div class="u-mbL">
+  <%= render 'partials/breadcrumb', items: [
+    link_to('Admin', admin_path),
+    title
+  ] %>
+</div>
+
+<div class="PageHeader u-mbL">
+  <h1 class="PageHeader-heading"><%= title %></h1>
+  <%= link_to 'New Initiative Status', new_initiative_status_path , class: 'Button Button--success'%>
 </div>
 
 <table>

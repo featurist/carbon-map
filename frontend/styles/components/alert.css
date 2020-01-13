@@ -1,18 +1,9 @@
-.Alerts {
-  display: flex;
-}
-
 .Alert {
   padding: 5px;
-  width: 100%;
-}
 
-.Alert ul {
-  padding-left: 15px;
-}
-
-.Alert li {
-  font-weight: bold;
+  @media (--bp-mobile) {
+    padding: 10px;
+  }
 }
 
 .Alert--danger {
@@ -23,11 +14,4 @@
 .Alert--info {
   background-color: rgb(156, 209, 255);
   color: rgb(15, 55, 89);
-}
-
-@media (--bp-mobile) {
-
-  .Alert {
-    padding: 10px;
-  }
 }

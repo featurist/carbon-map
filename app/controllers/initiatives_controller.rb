@@ -62,6 +62,12 @@ class InitiativesController < ApplicationController
 
   private
 
+  def set_group_types
+    @group_types = GroupType.all.order(name: :asc).map do |group|
+      [group.name, group.id]
+    end
+  end
+
   def clear_solutions_and_themes
     @initiative.themes.clear
     @initiative.solutions.clear
@@ -72,6 +78,7 @@ class InitiativesController < ApplicationController
   end
 
   def set_edit_data
+    set_group_types
     @groups = current_user.groups.all.map { |group| [group.name, group.id] }
 
     @initiative_statuses =

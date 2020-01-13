@@ -5,10 +5,10 @@ module ApplicationHelper
     current_user&.role == 'admin'
   end
 
-  def add_object_link(name, where, render_options)
+  def add_object_link(name, render_options)
     html = render(render_options)
 
-    link_to name, '#', onclick: add_object_link_js(where, html)
+    link_to name, '#', onclick: add_object_link_js(html), class: 'Button Button--primary'
   end
 
   def admin_path
@@ -31,12 +31,9 @@ module ApplicationHelper
 
   private
 
-  def add_object_link_js(where, html)
-    "
-      const index = document.querySelectorAll('.CollectionItem-partial').length
-document.getElementById('#{
-      where
-    }').insertAdjacentHTML('beforeend', `#{
+  def add_object_link_js(html)
+    "const index = document.querySelectorAll('#websites tr').length
+    document.querySelector('#websites tbody').insertAdjacentHTML('beforeend', `#{
       html
     }`.replace(/(\[\\d*\])/g, `${index}`));return false"
   end

@@ -358,7 +358,7 @@ class SolutionPicker {
   renderChosenSolutions() {
     if (this.themes.length + this.solutions.length === 0) {
       return (
-        <ul class="AddInitiativeSolution-solutions">
+        <ul class="AddInitiativeSolution-solutions u-mb">
           <li>Please select a solution</li>
         </ul>
       );

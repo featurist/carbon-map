@@ -1,4 +1,5 @@
 @import "suitcss-base";
+@import "suitcss-components-button";
 @import "suitcss-components-form-field";
 @import "./base/variables";
 @import "./base/base";
@@ -23,6 +24,7 @@
 @import "./components/nav";
 @import "./components/page_header";
 @import "./components/sponsors";
+@import "./components/table";
 @import "suitcss-utils-display";
 @import "suitcss-utils-text";
 @import "./base/utilities";

@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= f.form_field :website do %>
+      <%= f.label :website, class: 'u-hiddenVisually' %>
+      <%= f.text_field :website, placeholder: 'e.g. https://twitter.com/carbon-map, https://facebook.com/carbon-map' %>
+    <% end %>
+  </td>
+  <td>
+    <%= f.form_field :_destroy, class_names: 'CollectionItem-destroy' do %>
+      <%= f.label :_destroy, 'Delete', class: 'u-hiddenVisually' %>
+      <%= f.check_box :_destroy, {}, true, false %>
+    <% end %>
+  </td>
+</tr>

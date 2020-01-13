@@ -1,9 +1,8 @@
 <%= form_with(model: initiative_status, local: true, html: {class: 'Form'}) do |f| %>
   <% if initiative_status.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation u-mb">
       <h2><%= pluralize(initiative_status.errors.count, "error") %> prohibited this initiative_status from being saved:</h2>
-
-      <ul>
+      <ul class="u-listBulleted">
         <% initiative_status.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -22,6 +21,6 @@
   <% end %>
 
   <div class="FormField-actions">
-    <%= f.submit %>
+    <%= f.submit class: 'Button Button--success Button--large' %>
   </div>
 <% end %>

@@ -8,15 +8,31 @@
   <%= f.text_field :abbreviation %>
 <% end %>
 
+<%= f.form_field :types, required: true do %>
+  <%= f.label :types, 'Group Types' %>
+  <%= f.select :types, options_for_select(group_types, group.types.map(&:group_type).map(&:id)), {}, size: group_types.size, multiple: true %>
+<% end %>
+
 <h2>Websites & Social Media</h2>
 <div id="websites" class="CollectionItem-container">
-  <%= f.fields_for :websites do |website_form| %>
-    <%= render 'partials/group_website', f: website_form%>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Website</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= f.fields_for :websites do |website_form| %>
+        <%= render 'partials/website_fields_row', f: website_form %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 <div class="FormField">
   <%= f.fields_for :websites, GroupWebsite.new do |website_form| %>
-    <%= add_object_link 'Add website', 'websites', :partial => 'partials/group_website', :locals => { :f => website_form } %>
+    <%= add_object_link 'Add website', :partial => 'partials/website_fields_row', :locals => { :f => website_form } %>
   <% end %>
 </div>
 
@@ -42,5 +58,3 @@
     <span>Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?</span>
   <%end%>
 <% end %>
-
-insert group type check boxes here

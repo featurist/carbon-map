@@ -1,4 +1,8 @@
-<h1>Tags</h1>
+<% title 'Tags' %>
+
+<div class="PageHeader u-mbL">
+  <h1 class="PageHeader-heading"><%= title %></h1>
+</div>
 
 <table>
   <thead>
@@ -19,7 +23,5 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
 
 <%= link_to 'New Tag', new_tag_path %>
