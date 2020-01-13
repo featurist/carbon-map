@@ -15,17 +15,8 @@ class SuitFormBuilder < ActionView::Helpers::FormBuilder
     # rubocop:enable HelperInstanceVariable
   end
 
-  def label(method, options_or_text = {})
-    if options_or_text.class == String
-      text = options_or_text
-      options = {}
-    else
-      options = options_or_text
-      text = options_or_text[:text]
-    end
-    css_classes = %w[FormField-label]
-    css_classes << options[:class_name]
-    super(method, text, options.reverse_merge(class: css_classes))
+  def label(method, text = nil, options = {})
+    super(method, text, options.reverse_merge(class: 'FormField-label'))
   end
 
   def text_field(attribute, options = {})
