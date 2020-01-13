@@ -7,7 +7,7 @@
 
 <div class="PageHeader u-mbL">
   <h1 class="PageHeader-heading">Initiatives</h1>
-  <%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false, class: 'PageHeader-action' %>
+  <%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false, class: 'Button Button--success' %>
 </div>
 
 <table>
@@ -26,7 +26,7 @@
         <td><%= initiative.name %></td>
         <td><%= initiative.location %></td>
         <td><%= initiative.status_name %></td>
-        <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false, class: 'Button' %></td>
+        <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false, class: 'Button Button--primary' %></td>
       </tr>
     <% end %>
   </tbody>

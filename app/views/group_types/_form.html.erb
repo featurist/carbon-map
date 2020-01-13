@@ -1,9 +1,8 @@
 <%= form_with(model: group_type, local: true, html: {class: 'Form'}) do |f| %>
   <% if group_type.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation u-mb">
       <h2><%= pluralize(group_type.errors.count, "error") %> prohibited this group_type from being saved:</h2>
-
-      <ul>
+      <ul class="u-listBulleted">
         <% group_type.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -17,6 +16,6 @@
   <% end %>
 
   <div class="FormField-actions">
-    <%= f.submit %>
+    <%= f.submit class: 'Button Button--success Button--large' %>
   </div>
 <% end %>

@@ -1,9 +1,8 @@
 <%= form_with(model: tag, local: true) do |form| %>
   <% if tag.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation u-mb">
       <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
-
-      <ul>
+      <ul class="u-listBulleted">
         <% tag.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>

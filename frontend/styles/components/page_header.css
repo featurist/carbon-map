@@ -8,28 +8,3 @@
 .PageHeader-heading {
   padding-bottom: 10px;
 }
-
-.PageHeader-action {
-  background: linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
-  background-color: #74ad5a;
-  border: 1px solid #3b6e22;
-  box-shadow: inset 0 1px 0 0 #9acc85;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Arial;
-  font-size: 13px;
-  font-weight: bold;
-  padding: 6px 12px;
-  text-decoration: none;
-}
-
-.PageHeader-action:hover {
-  background: linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
-  background-color: #68a54b;
-}
-
-.PageHeader-action:active {
-  position: relative;
-  top: 1px;
-}

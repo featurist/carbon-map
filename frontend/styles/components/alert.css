@@ -6,14 +6,6 @@
   }
 }
 
-.Alert ul {
-  padding-left: 15px;
-}
-
-.Alert li {
-  font-weight: bold;
-}
-
 .Alert--danger {
   background-color: rgb(246, 220, 222);
   color: rgb(146, 40, 48);

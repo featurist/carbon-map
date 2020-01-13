@@ -3,7 +3,7 @@
     <p class="u-mb">
       <%= 'Error'.pluralize(resource.errors.count) %>:
     </p>
-    <ul>
+    <ul class="u-listBulleted">
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>

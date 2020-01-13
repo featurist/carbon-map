@@ -8,7 +8,7 @@ module ApplicationHelper
   def add_object_link(name, where, render_options)
     html = render(render_options)
 
-    link_to name, '#', onclick: add_object_link_js(where, html)
+    link_to name, '#', onclick: add_object_link_js(where, html), class: 'Button Button--primary'
   end
 
   def admin_path
