@@ -141,6 +141,13 @@
     <div id="solution_picker"></div>
   <% end %>
 
+  <h2>Notes</h2>
+
+  <%= f.form_field :administrative_notes do %>
+    <%= f.label :administrative_notes %>
+    <%= f.text_area :administrative_notes %>
+  <% end %>
+
   <div class="FormField-actions">
     <%= f.submit %>
   </div>

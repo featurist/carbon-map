@@ -164,6 +164,7 @@ class InitiativesController < ApplicationController
         :status_id,
         :consent_to_share,
         :related_initiatives,
+        :administrative_notes,
         themes_attributes: %i[theme_id],
         solutions_attributes: %i[
           solution_id

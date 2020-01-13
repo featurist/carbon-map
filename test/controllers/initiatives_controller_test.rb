@@ -32,12 +32,14 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
       VCR.use_cassette('valid_postcode') do
         post initiatives_url, params: create_params(@initiative, images: images)
       end
-      assert_equal 1, Initiative.last.images.size
     end
-    websites = Initiative.last.websites
+    initiative = Initiative.last
+    websites = initiative.websites
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
+    assert_equal 1, initiative.images.size
+    assert_equal 'initial notes', initiative.administrative_notes
 
     assert_redirected_to edit_initiative_path(Initiative.last)
   end
@@ -127,6 +129,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
+    assert_equal 'updated notes', @initiative.administrative_notes
     assert_redirected_to edit_initiative_path(@initiative)
   end
 
@@ -154,6 +157,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         postcode: 'GL54UB',
         consent_to_share: true,
         solutions_attributes: solutions,
+        administrative_notes: 'initial notes',
         websites_attributes: [
           { website: 'http://one' },
           { website: 'http://two' }
@@ -181,6 +185,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         images: images,
         consent_to_share: true,
         solutions_attributes: solutions,
+        administrative_notes: 'updated notes',
         websites_attributes: [
           { website: 'http://one' },
           { website: 'http://two' }
