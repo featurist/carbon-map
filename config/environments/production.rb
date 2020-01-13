@@ -64,7 +64,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = {
-    host: 'carbonneutral2030.co.uk', port: 80
+    host: 'carbon-map.herokuapp.com', port: 80
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
