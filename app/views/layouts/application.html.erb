@@ -68,19 +68,9 @@
         </div>
       </header>
 
-      <% if notice || alert %>
-        <div class="Alerts">
-          <% if notice %>
-          <p class="Alert Alert--info"><%= notice %></p>
-          <% end %>
-          <% if alert %>
-            <p class="Alert Alert--danger"><%= alert %></p>
-          <% end %>
-        </div>
-      <% end %>
-
       <% content_class = yield :content_class %>
       <main class="App-content">
+        <%= render 'partials/flash' %>
         <% if content_class.size > 0 %>
           <div class="<%= content_class %>">
             <%= yield %>

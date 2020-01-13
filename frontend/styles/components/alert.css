@@ -1,10 +1,9 @@
-.Alerts {
-  display: flex;
-}
-
 .Alert {
   padding: 5px;
-  width: 100%;
+
+  @media (--bp-mobile) {
+    padding: 10px;
+  }
 }
 
 .Alert ul {
@@ -23,11 +22,4 @@
 .Alert--info {
   background-color: rgb(156, 209, 255);
   color: rgb(15, 55, 89);
-}
-
-@media (--bp-mobile) {
-
-  .Alert {
-    padding: 10px;
-  }
 }
