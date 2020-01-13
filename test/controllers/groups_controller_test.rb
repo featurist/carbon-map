@@ -27,6 +27,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
                contact_name: 'test contact',
                contact_phone: 'test phone',
                consent_to_share: true,
+               types: %w[2 4],
                websites_attributes: [
                  { website: 'http://one' },
                  { website: 'http://two' }
@@ -35,10 +36,13 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    websites = Group.last.websites.sort_by(&:website)
+    group = Group.last
+    websites = group.websites.sort_by(&:website)
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
+    assert_equal GroupType.find(2), group.types[0].group_type
+    assert_equal GroupType.find(4), group.types[1].group_type
 
     assert_redirected_to edit_group_path(Group.last)
   end
@@ -63,6 +67,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
               contact_email: 'update contact',
               contact_name: 'update name',
               contact_phone: 'update phone',
+              types: %w[2 4],
               websites_attributes: [
                 { website: 'http://one', id: group.websites[0].id },
                 { website: 'http://two' }
@@ -73,6 +78,8 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, websites.size
     assert_equal 'http://one', websites[0].website
     assert_equal 'http://two', websites[1].website
+    assert_equal GroupType.find(2), group.types[0].group_type
+    assert_equal GroupType.find(4), group.types[1].group_type
     assert_redirected_to edit_group_path(group)
   end
 end

@@ -53,6 +53,7 @@ Metrics/BlockLength:
     - config/environments/*.rb
     - config/routes.rb
     - lib/tasks/*.rake
+    - test/**/*.rb
 
 Metrics/AbcSize:
   Exclude:

@@ -119,7 +119,7 @@
 
   <%= f.fields_for :lead_group do |group_fields| %>
     <div id="initiative_lead_group_new" class="<%=new_group_selected?(initiative) ? '' : 'u-hidden' %> Initiative-lead_group">
-      <%=render 'groups/form_fields', group: Group.new, f: group_fields %>
+      <%=render 'groups/form_fields', group: Group.new, group_types: @group_types, f: group_fields %>
     </div>
   <% end %>
 

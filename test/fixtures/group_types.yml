@@ -1,7 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: type one
 
 two:
+  id: 2
   name: type two
+
+three:
+  id: 3
+  name: type three
+
+four:
+  id: 4
+  name: type four

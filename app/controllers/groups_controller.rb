@@ -2,6 +2,7 @@
 
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[edit update]
+  before_action :set_group_types, only: %i[new edit create update]
 
   def index
     @groups = current_user.groups.all
@@ -15,7 +16,9 @@ class GroupsController < ApplicationController
   def edit; end
 
   def create
-    @group = current_user.groups.new(group_params)
+    @group = current_user.groups.new
+    attach_types(@group, group_params)
+    @group.assign_attributes(group_params)
 
     if @group.save
       redirect_to edit_group_path(@group),
@@ -26,6 +29,7 @@ class GroupsController < ApplicationController
   end
 
   def update
+    attach_types(@group, group_params)
     if @group.update(group_params)
       redirect_to edit_group_path(@group),
                   notice: 'Group was successfully updated.'
@@ -40,8 +44,24 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def set_group_types
+    @group_types = GroupType.all.order(name: :asc).map do |group|
+      [group.name, group.id]
+    end
+  end
+
+  def attach_types(group, group_params)
+    types = group_params.delete(:types).reject(&:empty?)
+    group.types.clear
+
+    types.each do |group_type_id|
+      group.types << GroupGroupType.new(group_type: GroupType.find(group_type_id))
+    end
+  end
+
+  # rubocop:disable Metrics/MethodLength
   def group_params
-    params.require(:group).permit(
+    @group_params ||= params.require(:group).permit(
       :name,
       :abbreviation,
       :opening_hours,
@@ -49,7 +69,9 @@ class GroupsController < ApplicationController
       :contact_email,
       :contact_phone,
       :consent_to_share,
+      types: [],
       websites_attributes: %i[website id _destroy]
     )
   end
+  # rubocop:enable Metrics/MethodLength
 end
