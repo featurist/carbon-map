@@ -8,6 +8,11 @@
   <%= f.text_field :abbreviation %>
 <% end %>
 
+<%= f.form_field :types, required: true do %>
+  <%= f.label :types, 'Group Types' %>
+  <%= f.select :types, options_for_select(group_types, group.types.map(&:group_type).map(&:id)), {}, size: group_types.size, multiple: true %>
+<% end %>
+
 <h2>Websites & Social Media</h2>
 <div id="websites" class="CollectionItem-container">
   <%= f.fields_for :websites do |website_form| %>
@@ -42,5 +47,3 @@
     <span>Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?</span>
   <%end%>
 <% end %>
-
-insert group type check boxes here

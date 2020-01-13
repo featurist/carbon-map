@@ -1,7 +1,7 @@
 <%= form_with(model: group, local: true, html: {class: 'FormField-form'}) do |f| %>
   <%= render 'partials/form_errors', resource: group %>
 
-  <%= render 'groups/form_fields', f: f %>
+  <%= render 'groups/form_fields', f: f, group: group, group_types: group_types %>
 
   <div class="FormField-actions">
     <%= f.submit %>

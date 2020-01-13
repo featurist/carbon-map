@@ -1,1 +1,5 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+down_to_earth_group_one:
+  group: down_to_earth_stroud
+  group_type_id: 1
