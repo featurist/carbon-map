@@ -1,13 +1,15 @@
+<% title 'New Initiative' %>
+
 <div class="u-mbL">
   <%= render 'partials/breadcrumb', items: [
     link_to('Home', root_path),
     link_to('Initiatives', initiatives_path),
-    'New Initiative'
+    title
   ] %>
 </div>
 
 <div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading">New Initiative</h1>
+  <h1 class="PageHeader-heading"><%= title %></h1>
 </div>
 
 <%= render 'form', initiative: @initiative, groups: @groups, initiative_statuses: @initiative_statuses, taxonomy_hierarchy_json: @taxonomy_hierarchy_json %>

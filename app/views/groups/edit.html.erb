@@ -1,3 +1,5 @@
+<% title 'Editing Group' %>
+
 <div class="u-mbL">
   <%= render 'partials/breadcrumb', items: [
     link_to('Home', root_path),
@@ -7,7 +9,7 @@
 </div>
 
 <div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading">Editing Group</h1>
+  <h1 class="PageHeader-heading"><%= title %></h1>
 </div>
 
 <%= render 'form', group: @group, group_types: @group_types %>
