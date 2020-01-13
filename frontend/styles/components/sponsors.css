@@ -1,3 +1,7 @@
+.sponsors {
+  padding-top: 20px;
+}
+
 .sponsors-logos {
   display: flex;
   justify-content: space-evenly;

@@ -1,6 +1,8 @@
 module.exports = {
   plugins: [
     require("postcss-import"),
+    require("postcss-nested"),
+    require("postcss-size"),
     require("postcss-simple-vars"),
     require("postcss-custom-media"),
     require("postcss-flexbugs-fixes"),

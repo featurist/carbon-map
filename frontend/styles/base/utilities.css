@@ -1,0 +1,22 @@
+/*
+ * Extends SUIT CSS utilities: display, text
+ * https://github.com/suitcss/utils-display
+ * https://github.com/suitcss/utils-text
+ */
+
+.u-mb {
+  margin-bottom: $space-base !important;
+}
+
+.u-mbL {
+  margin-bottom: $space-large !important;
+}
+
+.u-textMuted {
+  color: #76767a !important;
+}
+
+.u-listBulleted {
+  list-style: disc !important;
+  padding-left: 20px !important;
+}

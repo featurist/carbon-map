@@ -9,6 +9,11 @@ $bp-tablet-width: 756px;
 $bp-tablet-landscape-width: 1024px;
 $bp-desktop-width: 1260px;
 
+$color-text: #4c4c4c;
+
+$space-base: 15px;
+$space-large: 30px;
+
 @custom-media --bp-mobile (min-width: $bp-mobile-width);
 @custom-media --bp-tablet (min-width: $bp-tablet-width);
 @custom-media --bp-tablet-landscape (min-width: $bp-tablet-landscape-width);

@@ -1,15 +1,13 @@
-
-<p>
-  Status: <%=initiative.status_name%><br />
+<h2 class="u-mb">Description</h2>
+<div class="u-mb">
+  <p>What: <%=initiative.description_what%></p>
+  <p>How: <%=initiative.description_how%></p>
   <% if initiative.anticipated_carbon_saving.present? %>
-  Saving: <%=format_carbon_saving(initiative.anticipated_carbon_saving)%>
+    <p>Saving: <%=format_carbon_saving(initiative.anticipated_carbon_saving)%></p>
   <% end %>
-</p>
+  <p>Further Information: <%=initiative.description_further_information%></p>
+</div>
 
-<h2>Description</h2>
-<p>What: <%=initiative.description_what%></p>
-<p>How: <%=initiative.description_how%></p>
-<p>Further Information: <%=initiative.description_further_information%></p>
 <div class="Initiative-images_scroller">
   <div class="Initiative-images">
   <% initiative.images.each do |image|%>
@@ -17,46 +15,67 @@
   <% end %>
   </div>
 </div>
-<h2>Solutions</h2>
-<% initiative.themes.each do |theme| %>
-  <p>Theme: <%=theme.name%></p>
-<% end %>
-<% initiative.solutions.each do |solution| %>
-  <p>Solution: <%=solution.name%></p>
-<% end %>
-<h2>Contacts</h2>
-<p>Lead Group: <%=initiative.lead_group_name%></p>
-<% if initiative.consent_to_share? %>
-  <p>Contact Name: <%=initiative.contact_name%></p>
-  <p>Contact Email: <%=initiative.contact_email%></p>
-  <p>Contact Phone: <%=initiative.contact_phone%></p>
-<% end %>
-<p>Partner Groups Role: <%=initiative.partner_groups_role%></p>
-<% if initiative.related_initiatives? %>
-  <p>Related Initiatives: <%=initiative.related_initiatives%></p>
-<% end %>
-<h2>Websites</h2>
-<% initiative.websites.each do |website| %>
-  <%=link_to website.website, website.website, target: '_blank' %>
+
+<h2 class="u-mb">Solutions</h2>
+<div class="u-mb">
+  <ul class="u-listBulleted">
+    <% initiative.themes.each do |theme| %>
+      <li>Theme: <%=theme.name%></li>
+    <% end %>
+  </ul>
+  <% if initiative.solutions.any? %>
+    <ul class="u-listBulleted">
+      <% initiative.solutions.each do |solution| %>
+        <li>Solution: <%=solution.name%></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<h2 class="u-mb">Contacts</h2>
+<div class="u-mb">
+  <p>Lead Group: <%=initiative.lead_group_name%></p>
+  <% if initiative.consent_to_share? %>
+    <p>Contact Name: <%=initiative.contact_name%></p>
+    <p>Contact Email: <%=initiative.contact_email%></p>
+    <p>Contact Phone: <%=initiative.contact_phone%></p>
+  <% end %>
+  <p>Partner Groups Role: <%=initiative.partner_groups_role%></p>
+  <% if initiative.related_initiatives? %>
+    <p>Related Initiatives: <%=initiative.related_initiatives%></p>
+  <% end %>
+</div>
+
+<% if initiative.websites.any? %>
+  <h2 class="u-mb">Websites</h2>
+  <div class="u-mb">
+    <ul class="u-listBulleted">
+      <% initiative.websites.each do |website| %>
+        <li><%=link_to website.website, website.website, target: '_blank' %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <% if local_assigns[:show_map] && show_map %>
-  <h2>Location</h2>
-  <p>Postcode: <%=initiative.postcode%></p>
-  <p>Locality: <%=initiative.location%></p>
-  <div class="Explore">
+  <h2 class="u-mb">Location</h2>
+  <div class="u-mb">
+    <p>Postcode: <%=initiative.postcode%></p>
+    <p>Locality: <%=initiative.location%></p>
+  </div>
+  <div class="Explore u-mb">
     <% content_for :page_javascript do %>
       <script type="text/json" id="map_data_json"><%=@map_data.to_json.html_safe%></script>
       <%= javascript_packs_with_chunks_tag 'initiative_map', 'data-turbolinks-track': 'reload' %>
       <% content_for :page_head do %>
         <meta name="turbolinks-visit-control" content="reload">
       <% end %>
-
     <% end %>
     <div class="Explore-map" id="initiative_location"></div>
   </div>
 <% end %>
 
-<h2>Timestamps</h2>
-<p>Created: <%=time_tag initiative.created_at%></p>
-<p>Updated: <%=time_tag initiative.updated_at%></p>
+<div class="u-textMuted">
+  <p>Initiative Created: <%=time_tag initiative.created_at%></p>
+  <p>Last Updated: <%=time_tag initiative.updated_at%></p>
+</div>

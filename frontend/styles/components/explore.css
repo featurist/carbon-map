@@ -20,6 +20,7 @@
 }
 
 .Explore-navigation a {
+  color: #000;
   cursor: pointer;
   display: block;
   margin-bottom: 2px;
@@ -139,5 +140,9 @@
 
 .sidebar-header {
   background-color: transparent;
-  color: black;
+  color: #000;
+
+  a {
+    color: inherit;
+  }
 }

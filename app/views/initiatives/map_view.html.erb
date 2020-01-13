@@ -1,8 +1,12 @@
-<div class="InitiativeView-title">
+<div class="InitiativeView-title u-mb">
   <h1 class="InitiativeView-titleText sidebar-header"><%=link_to(@initiative.name, @inititative)%></h1>
 </div>
 
 <div class="Initiative">
+  <div class="u-mb">
+    <p>Status: <%=@initiative.status_name%></p>
+    <p>Saving: <%=format_carbon_saving(@initiative.anticipated_carbon_saving)%></p>
+  </div>
   <%=render 'initiative_info', initiative: @initiative%>
 </div>
 
