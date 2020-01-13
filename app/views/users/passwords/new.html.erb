@@ -1,4 +1,8 @@
-<h2>Forgot your password?</h2>
+<% title 'Forgot your password?' %>
+
+<div class="PageHeader u-mbL">
+  <h1 class="PageHeader-heading"><%= title %></h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -8,7 +12,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="actions">
+  <div class="actions u-mbL">
     <%= f.submit "Send me reset password instructions", class: 'Button Button--success Button--large' %>
   </div>
 <% end %>

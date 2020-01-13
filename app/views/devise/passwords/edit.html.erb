@@ -1,4 +1,8 @@
-<h2>Change your password</h2>
+<% title 'Change your password' %>
+
+<div class="PageHeader u-mbL">
+  <h1 class="PageHeader-heading"><%= title %></h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -17,7 +21,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
+  <div class="actions u-mbL">
     <%= f.submit "Change my password", class: 'Button Button--success Button--large' %>
   </div>
 <% end %>

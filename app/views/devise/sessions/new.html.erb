@@ -1,4 +1,8 @@
-<h2>Log in</h2>
+<% title 'Log in' %>
+
+<div class="PageHeader u-mbL">
+  <h1 class="PageHeader-heading"><%= title %></h1>
+</div>
 
 <%= form_with(model: resource, url: user_session_url, local: true, html: {class: 'Form'}) do |f| %>
   <%= f.form_field :email do %>
@@ -18,7 +22,7 @@
     <% end %>
   <% end %>
 
-  <div class="FormField-actions">
+  <div class="FormField-actions u-mbL">
     <%= f.submit 'Log in', class: 'Button Button--success Button--large' %>
   </div>
 <% end %>
