@@ -1,6 +1,6 @@
 .PageHeader {
   align-items: center;
-  border-bottom: 3px solid $color-orange;
+  border-bottom: 2px solid $color-orange;
   display: flex;
   justify-content: space-between;
 }
