@@ -37,7 +37,7 @@ class SuitFormBuilder < ActionView::Helpers::FormBuilder
   def text_area(attribute, options = {})
     super(
       attribute,
-      options.reverse_merge(class: 'FormField-input u-smallMinHeight')
+      options.reverse_merge(class: 'FormField-input')
     )
   end
 

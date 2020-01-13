@@ -35,7 +35,7 @@
 
 .Explore-navigation a.Explore-navigation-selected {
   background-color: transparent;
-  color: #ff9700;
+  color: $color-orange;
   font-weight: bold;
 }
 
@@ -124,7 +124,7 @@
 .sidebar-tabs > li.active,
 .sidebar-tabs > ul > li.active {
   background-color: transparent;
-  color: #ff9700;
+  color: $color-orange;
 }
 
 .sidebar-tabs svg {

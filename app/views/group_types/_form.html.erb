@@ -1,4 +1,4 @@
-<%= form_with(model: group_type, local: true, html: {class: 'FormField-form'}) do |f| %>
+<%= form_with(model: group_type, local: true, html: {class: 'Form'}) do |f| %>
   <% if group_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(group_type.errors.count, "error") %> prohibited this group_type from being saved:</h2>

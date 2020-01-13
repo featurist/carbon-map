@@ -9,7 +9,7 @@
   <meta name="turbolinks-visit-control" content="reload">
 <% end %>
 
-<%= form_with(model: initiative, local: true, html: {class: 'FormField-form'}) do |f| %>
+<%= form_with(model: initiative, local: true, html: {class: 'Form'}) do |f| %>
   <%= render 'partials/form_errors', resource: initiative %>
 
   <%= f.form_field :name, required: true do %>
@@ -54,7 +54,7 @@
     <%= f.select :status_id, initiative_statuses %>
   <% end %>
 
-  <h2>Location</h2>
+  <h2 class="u-mb">Location</h2>
 
   <%= f.form_field :postcode do %>
     <%= f.label :postcode %>
@@ -64,12 +64,12 @@
   <label class="FormField">
     <%= f.hidden_field :latitude %>
     <%= f.hidden_field :longitude %>
-    <p>Drag the marker to the location of the initiative</p>
-    <div class="InitiativeLocationPicker" id="location">
+    <p class="u-mb">Drag the marker to the location of the initiative</p>
+    <div class="InitiativeLocationPicker u-mbL" id="location">
     </div>
   </label>
 
-  <h2>Website & Social Media</h2>
+  <h2 class="u-mb">Website & Social Media</h2>
   <div id="websites" class="CollectionItem-container">
     <%= f.fields_for :websites do |website_form| %>
       <%= render 'partials/initiative_website', f: website_form %>
@@ -81,7 +81,7 @@
     <% end %>
   </div>
 
-  <h2>Contact</h2>
+  <h2 class="u-mb">Contact</h2>
 
   <%= f.form_field :contact_name, required: true do %>
     <%= f.label :contact_name %>

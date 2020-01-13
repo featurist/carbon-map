@@ -1,23 +1,52 @@
+/*
+ * Extends SUIT CSS components: form-field
+ * https://github.com/simonsmith/suitcss-components-form-field
+ */
+
+:root {
+  --FormField-input-color: $color-text;
+  --FormField-input-borderColor: lightgray;
+  --FormField-borderColorFocus: $color-orange;
+  --FormField-input-borderWidth: 1px;
+  --FormField-input-padding: 10px;
+}
+
+.Form {
+}
+
 .FormField {
+  margin-bottom: $space-base;
 }
 
-.FormField-form {
-  display: flex;
-  flex-wrap: wrap;
+.FormField-label {
+  display: block;
 }
 
-.FormField-form h2 {
-  flex-basis: 100%;
-  margin-bottom: 5px;
+.FormField-input {
+  background-clip: padding-box;
+
+  &[type="date"] {
+    appearance: none;
+  }
+
+  &:not([type="checkbox"]):not([type="radio"]) {
+    height: var(--FormField-height);
+  }
+
+  &:focus {
+    border-color: var(--FormField-borderColorFocus);
+    box-shadow: var(--FormField-boxShadow);
+    outline: none;
+  }
 }
 
-.FormField {
-  display: flex;
-  flex-basis: 100%;
-  flex-direction: column;
-  flex-grow: 1;
-  margin: 2px;
+/* stylelint-disable plugin/selector-bem-pattern */
+
+textarea.FormField-input {
+  min-height: 100px;
 }
+
+/* stylelint-enable */
 
 .field_with_errors {
   display: flex;

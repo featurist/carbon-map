@@ -1,5 +1,5 @@
 .Nav {
-  background-color: #ff9700;
+  background-color: $color-orange;
   color: #fff;
   display: flex;
   height: 43px;
@@ -26,7 +26,7 @@
 }
 
 .Nav a::active {
-  color: #ff9700;
+  color: $color-orange;
 }
 
 .Nav-main a::before {
@@ -53,7 +53,7 @@
 }
 
 .Nav.Nav-open .Nav-flyover {
-  background-color: #ff9700;
+  background-color: $color-orange;
   display: block;
   padding: 10px;
   position: absolute;

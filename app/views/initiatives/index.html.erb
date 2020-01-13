@@ -1,10 +1,11 @@
-<%= render 'partials/breadcrumb', items: [
-  link_to('Home', root_path),
-  'Initiatives'
-] %>
+<div class="u-mbL">
+  <%= render 'partials/breadcrumb', items: [
+    link_to('Home', root_path),
+    'Initiatives'
+  ] %>
+</div>
 
-
-<div class="PageHeader">
+<div class="PageHeader u-mbL">
   <h1 class="PageHeader-heading">Initiatives</h1>
   <%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false, class: 'PageHeader-action' %>
 </div>
