@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'active_support/core_ext/string/inflections'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -35,7 +37,7 @@ admin.save!(validate: false)
 
 solutions = CSV.read('./import/taxonomy.csv', headers: true)
 solutions.each do |line|
-  sector = Sector.find_or_create_by(name: line['sector'])
+  sector = Sector.find_or_create_by(name: line['sector'].titleize)
   theme = Theme.find_or_create_by(name: line['theme'], sector: sector)
   solution_class = SolutionClass.find_or_create_by(name: line['class'], theme: theme)
   solution = Solution.find_or_create_by(name: line['solution'], created_by: admin, status: 200)

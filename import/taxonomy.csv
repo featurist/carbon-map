@@ -1,196 +1,220 @@
-"idx","sector","theme","class","solution"
-6,"Buildings & Their Environment","Building Development","Construction","Green Roofs"
-4,"Buildings & Their Environment","Building Development","Construction","Net Zero Buildings"
-5,"Buildings & Their Environment","Building Development","Construction","PassivHaus"
-7,"Buildings & Their Environment","Building Development","Construction","Pedestrianisation"
-9,"Buildings & Their Environment","Building Development","Smart Building","Building Automation"
-11,"Buildings & Their Environment","Building Development","Smart Building","Smart Glass"
-10,"Buildings & Their Environment","Building Development","Smart Building","Smart Thermostat / Meter"
-39,"Buildings & Their Environment","Building Environment","Vehicle Access","Site EV Charging"
-34,"Buildings & Their Environment","Building Environment","Water (Urban)","Greywater Applications"
-32,"Buildings & Their Environment","Building Environment","Water (Urban)","Reduced Water Use"
-37,"Buildings & Their Environment","Building Environment","Water (Urban)","Urban Flood Management"
-33,"Buildings & Their Environment","Building Environment","Water (Urban)","Water Capture"
-36,"Buildings & Their Environment","Building Environment","Water (Urban)","Water Fountains"
-35,"Buildings & Their Environment","Building Environment","Water (Urban)","Water Refill Schemes"
-21,"Buildings & Their Environment","Building Performance","Heating","Air-Source Heat Pump (ASHP)"
-20,"Buildings & Their Environment","Building Performance","Heating","District Heating"
-22,"Buildings & Their Environment","Building Performance","Heating","Ground-Source Heat Pump (GSHP)"
-23,"Buildings & Their Environment","Building Performance","Heating","Hydrogen-Cell Heating"
-18,"Buildings & Their Environment","Building Performance","Insulation","Double Glazing"
-17,"Buildings & Their Environment","Building Performance","Insulation","Draft Exclusion"
-16,"Buildings & Their Environment","Building Performance","Insulation","Floor Insulation"
-14,"Buildings & Their Environment","Building Performance","Insulation","Loft Insulation"
-15,"Buildings & Their Environment","Building Performance","Insulation","Wall Insulation"
-25,"Buildings & Their Environment","Building Performance","Lighting","LED Lighting (Household)"
-26,"Buildings & Their Environment","Building Performance","Lighting","LED Lighting (Public)"
-28,"Buildings & Their Environment","Building Performance","Retrofitting","House Surveying"
-29,"Buildings & Their Environment","Building Performance","Retrofitting","Retrofitting Service"
-64,"Energy","Electricity Generation","Bio-energy","Biomethane generation"
-63,"Energy","Electricity Generation","Bio-energy","Energy crops"
-59,"Energy","Electricity Generation","Geothermal","Binary Cycle Geothermal"
-60,"Energy","Electricity Generation","Geothermal","Dry Steam Geothermal"
-61,"Energy","Electricity Generation","Geothermal","Flash Steam Geothermal"
-54,"Energy","Electricity Generation","Micro Hydro","Archimedean Screw"
-55,"Energy","Electricity Generation","Micro Hydro","Crossflow Turbine"
-56,"Energy","Electricity Generation","Micro Hydro","Kaplan Turbine"
-57,"Energy","Electricity Generation","Micro Hydro","Pelton & Turgo Turbines"
-44,"Energy","Electricity Generation","Solar PV","Rooftop Solar PV"
-45,"Energy","Electricity Generation","Solar PV","Solar PV Farms"
-51,"Energy","Electricity Generation","Tidal & Wave","Tidal Lagoon"
-52,"Energy","Electricity Generation","Tidal & Wave","Wave Power"
-47,"Energy","Electricity Generation","Wind","Micro Wind"
-48,"Energy","Electricity Generation","Wind","Wind Turbines (Offshore)"
-49,"Energy","Electricity Generation","Wind","Wind Turbines (Onshore)"
-67,"Energy","Energy Distribution","Electricity Grid","Grid Flexibility"
-68,"Energy","Energy Distribution","Electricity Grid","Microgrids"
-72,"Energy","Energy Distribution","Gas Network","Synth-Ammonia Network"
-71,"Energy","Energy Distribution","Gas Network","Synth-Hydrogen Network"
-70,"Energy","Energy Distribution","Gas Network","Synth-Methane Network"
-79,"Energy","Energy Storage","Battery Storage","Distributed Battery Storage"
-78,"Energy","Energy Storage","Battery Storage","Domestic Battery Storage"
-80,"Energy","Energy Storage","Battery Storage","Utility Scale Battery Storage"
-84,"Energy","Energy Storage","Chemical Storage","Synth-Ammonia Storage"
-83,"Energy","Energy Storage","Chemical Storage","Synth-Hydrogen Storage"
-82,"Energy","Energy Storage","Chemical Storage","Synth-Methane Storage"
-76,"Energy","Energy Storage","Gravitational Energy","Hydraulic Rock Storage"
-75,"Energy","Energy Storage","Gravitational Energy","Pumped Storage"
-92,"Energy","Thermal Energy Generation","Combined Heat & Power (CHP)","Distributed CHP"
-91,"Energy","Thermal Energy Generation","Combined Heat & Power (CHP)","Site-Based CHP"
-88,"Energy","Thermal Energy Generation","Solar Thermal","Community Solar Thermal"
-89,"Energy","Thermal Energy Generation","Solar Thermal","Industrial Solar Thermal"
-87,"Energy","Thermal Energy Generation","Solar Thermal","Rooftop Solar Thermal"
-96,"Food","Agriculture & Land ","Farm Management","Farmland Irrigation"
-97,"Food","Agriculture & Land ","Farm Management","Farmland Restoration"
-103,"Food","Agriculture & Land ","Grassland","Managed Grazing"
-99,"Food","Agriculture & Land ","Soil Improvement","Conservation Agriculture"
-100,"Food","Agriculture & Land ","Soil Improvement","Nutrient Management"
-101,"Food","Agriculture & Land ","Soil Improvement","Regenerative Agriculture"
-128,"Food","Community Food","Community Food Distribution","Foodbank"
-126,"Food","Community Food","Community Food Distribution","Local Market"
-127,"Food","Community Food","Community Food Distribution","Produce Sharing"
-130,"Food","Community Food","Community Food Preparation","Community Kitchen"
-131,"Food","Community Food","Community Food Preparation","Prepared Food Products"
-120,"Food","Community Food","Community Gardens","Edible Open Garden"
-122,"Food","Community Food","Community Gardens","Permaculture"
-123,"Food","Community Food","Community Gardens","Silvopasture"
-124,"Food","Community Food","Community Gardens","Tree Intercropping"
-121,"Food","Community Food","Community Gardens","Urban Food Growing"
-117,"Food","Diet & Cooking","Diet & Cooking Education","Vegan Courses"
-116,"Food","Diet & Cooking","Diet & Cooking Education","Vegetarian Courses"
-106,"Food","Diet & Cooking","Green Food Suppliers & Outlets","Green Fruit & Veg"
-107,"Food","Diet & Cooking","Green Food Suppliers & Outlets","Organic Dairy"
-109,"Food","Diet & Cooking","Green Food Suppliers & Outlets","Organic Other Foodstuff"
-108,"Food","Diet & Cooking","Green Food Suppliers & Outlets","Vegan Foodstuff"
-114,"Food","Diet & Cooking","Green Hospitality","Low Carbon Cooking Solutions"
-113,"Food","Diet & Cooking","Green Hospitality","Other Green Hospitality"
-112,"Food","Diet & Cooking","Green Hospitality","Vegan Hospitality"
-111,"Food","Diet & Cooking","Green Hospitality","Vegetarian Hospitality"
-134,"Food","Food Waste","Food Waste Reduce","Food Boxes"
-138,"Food","Food Waste","Food Waste Reuse","Biochar"
-136,"Food","Food Waste","Food Waste Reuse","Composting"
-137,"Food","Food Waste","Food Waste Reuse","Food Waste Collection"
-222,"Materials","Low Carbon Materials","Alternative Materials","Alternative Cement"
-223,"Materials","Low Carbon Materials","Alternative Materials","Bioplastic"
-224,"Materials","Low Carbon Materials","Alternative Materials","Plastic Alternative Containers & Wrapping"
-225,"Materials","Low Carbon Materials","Alternative Materials","Steel Beam Replacement"
-228,"Materials","Low Carbon Materials","Traditional Materials","Clay Render"
-230,"Materials","Low Carbon Materials","Traditional Materials","Hempcrete"
-227,"Materials","Low Carbon Materials","Traditional Materials","Lime Mortar"
-231,"Materials","Low Carbon Materials","Traditional Materials","Straw/ Hemp/ Mud "
-229,"Materials","Low Carbon Materials","Traditional Materials","Wood Products"
-234,"Materials","Preventative Measures","F-gas Release Avoidance","Refrigerant Management"
-200,"Nature, Conservation & Environment","Environmental Conservation","Forests & Woodland","Afforestation"
-201,"Nature, Conservation & Environment","Environmental Conservation","Forests & Woodland","Hedgerow Restoration"
-199,"Nature, Conservation & Environment","Environmental Conservation","Forests & Woodland","Reforestation"
-198,"Nature, Conservation & Environment","Environmental Conservation","Forests & Woodland","Woodland Management"
-204,"Nature, Conservation & Environment","Environmental Conservation","Wetlands","Coastal Wetland"
-203,"Nature, Conservation & Environment","Environmental Conservation","Wetlands","Peatland"
-208,"Nature, Conservation & Environment","Species Conservation","Habitat Conservation","Insect Habitats"
-207,"Nature, Conservation & Environment","Species Conservation","Habitat Conservation","Plant Habitats"
-209,"Nature, Conservation & Environment","Species Conservation","Habitat Conservation","Vertebrate Habitats"
-211,"Nature, Conservation & Environment","Species Conservation","Transforming Habitats","Connecting Habitats"
-212,"Nature, Conservation & Environment","Species Conservation","Transforming Habitats","Rewilding"
-216,"Nature, Conservation & Environment","Weather Impact Management","Flooding","Flood Management"
-215,"Nature, Conservation & Environment","Weather Impact Management","Flooding","Rural Sustainable Drainage (RSuDS)"
-218,"Nature, Conservation & Environment","Weather Impact Management","Heatwave","Heatwave Resilience"
-146,"Stakeholder","Engagement","Events","Conferences"
-147,"Stakeholder","Engagement","Events","Festivals"
-148,"Stakeholder","Engagement","Events","Gatherings"
-149,"Stakeholder","Engagement","Events","Talks"
-142,"Stakeholder","Engagement","Processes","Deliberative Process"
-144,"Stakeholder","Engagement","Processes","Local Group Forum"
-143,"Stakeholder","Engagement","Processes","Workshop"
-152,"Stakeholder","Engagement","Surveying & Mapping","Business Questionnaire"
-153,"Stakeholder","Engagement","Surveying & Mapping","Group / Initiative Questionnaire"
-151,"Stakeholder","Engagement","Surveying & Mapping","Initiatives Mapping"
-154,"Stakeholder","Engagement","Surveying & Mapping","Public Surveying"
-190,"Stakeholder","Funding","Banking & Markets","Debentures"
-189,"Stakeholder","Funding","Banking & Markets","Loans"
-185,"Stakeholder","Funding","Community Funding","Community Shares"
-186,"Stakeholder","Funding","Community Funding","Crowd Funding"
-187,"Stakeholder","Funding","Community Funding","Pro bono"
-193,"Stakeholder","Funding","Public ","Donation Appeals"
-194,"Stakeholder","Funding","Public ","Fundraising Events"
-192,"Stakeholder","Funding","Public ","Grants"
-178,"Stakeholder","Local Government","Planning","Carbon Neutral Planning"
-179,"Stakeholder","Local Government","Planning","Climate Emergency Plan"
-181,"Stakeholder","Local Government","Planning","Local Planning"
-182,"Stakeholder","Local Government","Planning","Local Transport Planning"
-180,"Stakeholder","Local Government","Planning","Neighbourhood Planning"
-170,"Stakeholder","Local Government","Policy","Declarations & Resolutions"
-171,"Stakeholder","Local Government","Policy","Environmental Policies"
-172,"Stakeholder","Local Government","Policy","Low Carbon Development Policies"
-174,"Stakeholder","Local Government","Strategies","Carbon Neutral Strategy"
-176,"Stakeholder","Local Government","Strategies","Resilience Strategy"
-175,"Stakeholder","Local Government","Strategies","Sustainable Energy Strategy"
-157,"Stakeholder","Services ","Advisory Service","Experts Network"
-158,"Stakeholder","Services ","Advisory Service","Facilitation Service"
-159,"Stakeholder","Services ","Advisory Service","Feasibility Service"
-161,"Stakeholder","Services ","Advisory Service","Knowledge Transfer"
-160,"Stakeholder","Services ","Advisory Service","Project Review Service"
-164,"Stakeholder","Services ","Communication Service","Case Studies"
-163,"Stakeholder","Services ","Communication Service","Good Practice Guides"
-165,"Stakeholder","Services ","Communication Service","Leaflets, Posters & Handouts"
-166,"Stakeholder","Services ","Communication Service","Learning Content"
-167,"Stakeholder","Services ","Communication Service","Publications"
-262,"Transport","Greening Heavy Transport","Goods Road Transport","Hydrogen-Cell Trucks"
-261,"Transport","Greening Heavy Transport","Goods Road Transport","Warehousing"
-268,"Transport","Greening Heavy Transport","Low Carbon Air Transport","VariaLift Airship"
-264,"Transport","Greening Heavy Transport","Rail Transport","Train Electrification"
-266,"Transport","Greening Heavy Transport","Shipping & Waterways","Canal Barge"
-254,"Transport","Greening Vehicle Use","Buses, Trams & Light Railway","Bus Services"
-255,"Transport","Greening Vehicle Use","Buses, Trams & Light Railway","Community Buses"
-256,"Transport","Greening Vehicle Use","Buses, Trams & Light Railway","EV Buses"
-258,"Transport","Greening Vehicle Use","Buses, Trams & Light Railway","Hydrogen-Cell Buses"
-257,"Transport","Greening Vehicle Use","Buses, Trams & Light Railway","Trams & Light Railway "
-250,"Transport","Greening Vehicle Use","Cars","Car Club"
-251,"Transport","Greening Vehicle Use","Cars","Electric Vehicles"
-252,"Transport","Greening Vehicle Use","Cars","EV Charging"
-249,"Transport","Greening Vehicle Use","Cars","Lift Sharing"
-244,"Transport","Reduced Vehicle Use","Bikes","Bike Conversion (electric)"
-245,"Transport","Reduced Vehicle Use","Bikes","Bike Parking"
-246,"Transport","Reduced Vehicle Use","Bikes","Bike Tracks"
-243,"Transport","Reduced Vehicle Use","Bikes","Electric Bikes"
-238,"Transport","Reduced Vehicle Use","Remote Working ","Local Work Spaces"
-239,"Transport","Reduced Vehicle Use","Remote Working ","Video-conferencing"
-241,"Transport","Reduced Vehicle Use","Walking","Walking Paths"
-272,"Waste","Waste Avoidance","Reduce","Clothes Sharing"
-273,"Waste","Waste Avoidance","Reduce","Food Boxes"
-275,"Waste","Waste Avoidance","Reduce","Other Sharing Solutions"
-274,"Waste","Waste Avoidance","Reduce","Tool / Equipment Sharing "
-281,"Waste","Waste Avoidance","Repairing","Make Do & Mend "
-282,"Waste","Waste Avoidance","Repairing","Other Repairing Solutions"
-280,"Waste","Waste Avoidance","Repairing","Repair Cafe"
-278,"Waste","Waste Avoidance","Reuse or Rehome","Clothing Bank"
-277,"Waste","Waste Avoidance","Reuse or Rehome","Furniture Bank"
-285,"Waste","Waste Processing","Recycling","Battery Recycling"
-286,"Waste","Waste Processing","Recycling","Building Materials Recycling"
-287,"Waste","Waste Processing","Recycling","Council Recycling Bank"
-288,"Waste","Waste Processing","Recycling","Electrical/ Electronic Recycling"
-289,"Waste","Waste Processing","Recycling","Food Recycling"
-291,"Waste","Waste Processing","Recycling","Paper Recycling"
-290,"Waste","Waste Processing","Recycling","Plastic Recycling "
-292,"Waste","Waste Processing","Recycling","White Goods Recycling"
-294,"Waste","Waste Processing","Rot","Community Composting"
-295,"Waste","Waste Processing","Rot","Community Wormery"
+﻿idx,sector,theme,class,solution
+1,BUILDINGS & THEIR ENVIRONMENT,Building Development,Construction,Net Zero Buildings
+2,BUILDINGS & THEIR ENVIRONMENT,Building Development,Construction,PassivHaus
+3,BUILDINGS & THEIR ENVIRONMENT,Building Development,Construction,Green Roofs
+4,BUILDINGS & THEIR ENVIRONMENT,Building Development,Construction,Pedestrianisation
+5,BUILDINGS & THEIR ENVIRONMENT,Building Development,Smart Building,Building Automation
+6,BUILDINGS & THEIR ENVIRONMENT,Building Development,Smart Building,Smart Thermostat / Meter
+7,BUILDINGS & THEIR ENVIRONMENT,Building Development,Smart Building,Smart Glass
+8,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Insulation,Loft Insulation
+9,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Insulation,Wall Insulation
+10,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Insulation,Floor Insulation
+11,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Insulation,Draft Exclusion
+12,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Insulation,Double Glazing
+13,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Heating,District Heating
+14,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Heating,Underfloor Heating
+15,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Heating,Air-Source Heat Pump (ASHP)
+16,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Heating,Ground-Source Heat Pump (GSHP)
+17,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Heating,Hydrogen-Cell Heating
+18,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Lighting,LED Lighting (Household)
+19,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Lighting,LED Lighting (Public)
+20,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Retrofitting,House Surveying
+21,BUILDINGS & THEIR ENVIRONMENT,Building Performance,Retrofitting,Retrofitting Service
+22,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Water (Urban),Reduced Water Use
+23,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Water (Urban),Water Capture
+24,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Water (Urban),Greywater Applications
+25,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Water (Urban),Water Refill Schemes
+26,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Water (Urban),Water Fountains
+27,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Water (Urban),Urban Flood Management
+28,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Vehicle Access,Site EV Charging
+29,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Vehicle Pollution,Air Quality Monitoring
+30,BUILDINGS & THEIR ENVIRONMENT,Building Environment,Vehicle Pollution,Air Quality Improvement
+31,ENERGY PRODUCTION,Electricity Generation,Solar PV,Rooftop Solar PV
+32,ENERGY PRODUCTION,Electricity Generation,Solar PV,Solar PV Farms
+33,ENERGY PRODUCTION,Electricity Generation,Wind,Micro Wind
+34,ENERGY PRODUCTION,Electricity Generation,Wind,Wind Turbines (Offshore)
+35,ENERGY PRODUCTION,Electricity Generation,Wind,Wind Turbines (Onshore)
+36,ENERGY PRODUCTION,Electricity Generation,Tidal & Wave,Tidal Lagoon
+37,ENERGY PRODUCTION,Electricity Generation,Tidal & Wave,Wave Power
+38,ENERGY PRODUCTION,Electricity Generation,Micro Hydro,Archimedean Screw
+39,ENERGY PRODUCTION,Electricity Generation,Micro Hydro,Crossflow Turbine
+40,ENERGY PRODUCTION,Electricity Generation,Micro Hydro,Kaplan Turbine
+41,ENERGY PRODUCTION,Electricity Generation,Micro Hydro,Pelton & Turgo Turbines
+42,ENERGY PRODUCTION,Electricity Generation,Geothermal,Binary Cycle Geothermal
+43,ENERGY PRODUCTION,Electricity Generation,Geothermal,Dry Steam Geothermal
+44,ENERGY PRODUCTION,Electricity Generation,Geothermal,Flash Steam Geothermal
+45,ENERGY PRODUCTION,Electricity Generation,Bio-energy,Energy crops
+46,ENERGY PRODUCTION,Electricity Generation,Bio-energy,Biomethane generation
+47,ENERGY PRODUCTION,Energy Distribution,Electricity Grid,Grid Flexibility
+48,ENERGY PRODUCTION,Energy Distribution,Electricity Grid,Micro-Grid
+49,ENERGY PRODUCTION,Energy Distribution,Gas Network,Synth-Methane Network
+50,ENERGY PRODUCTION,Energy Distribution,Gas Network,Synth-Hydrogen Network
+51,ENERGY PRODUCTION,Energy Distribution,Gas Network,Synth-Ammonia Network
+52,ENERGY PRODUCTION,Energy Storage,Gravitational Energy,Pumped Storage
+53,ENERGY PRODUCTION,Energy Storage,Gravitational Energy,Hydraulic Rock Storage
+54,ENERGY PRODUCTION,Energy Storage,Battery Storage,Domestic Battery Storage
+55,ENERGY PRODUCTION,Energy Storage,Battery Storage,Distributed Battery Storage
+56,ENERGY PRODUCTION,Energy Storage,Battery Storage,Utility Scale Battery Storage
+57,ENERGY PRODUCTION,Energy Storage,Chemical Storage,Synth-Methane Storage
+58,ENERGY PRODUCTION,Energy Storage,Chemical Storage,Synth-Hydrogen Storage
+59,ENERGY PRODUCTION,Energy Storage,Chemical Storage,Synth-Ammonia Storage
+60,ENERGY PRODUCTION,Thermal Energy Generation,Solar Thermal,Rooftop Solar Thermal
+61,ENERGY PRODUCTION,Thermal Energy Generation,Solar Thermal,Community Solar Thermal
+62,ENERGY PRODUCTION,Thermal Energy Generation,Solar Thermal,Industrial Solar Thermal
+63,ENERGY PRODUCTION,Thermal Energy Generation,Combined Heat & Power (CHP),Site-Based CHP
+64,ENERGY PRODUCTION,Thermal Energy Generation,Combined Heat & Power (CHP),Distributed CHP
+65,FOOD & AGRICULTURE,Agriculture & Land ,Farm Management,Farmland Irrigation
+66,FOOD & AGRICULTURE,Agriculture & Land ,Farm Management,Farmland Restoration
+67,FOOD & AGRICULTURE,Agriculture & Land ,Soil Improvement,Conservation Agriculture
+68,FOOD & AGRICULTURE,Agriculture & Land ,Soil Improvement,Nutrient Management
+69,FOOD & AGRICULTURE,Agriculture & Land ,Soil Improvement,Regenerative Agriculture
+70,FOOD & AGRICULTURE,Agriculture & Land ,Grassland,Managed Grazing
+71,FOOD & AGRICULTURE,Diet & Cooking,Green Food Suppliers & Outlets,Green Fruit & Veg
+72,FOOD & AGRICULTURE,Diet & Cooking,Green Food Suppliers & Outlets,Organic Dairy
+73,FOOD & AGRICULTURE,Diet & Cooking,Green Food Suppliers & Outlets,Low-carbon Dairy
+74,FOOD & AGRICULTURE,Diet & Cooking,Green Food Suppliers & Outlets,Plant-based Foodstuff
+75,FOOD & AGRICULTURE,Diet & Cooking,Green Food Suppliers & Outlets,Organic Other Foodstuff
+76,FOOD & AGRICULTURE,Diet & Cooking,Green Hospitality,Vegetarian Hospitality
+77,FOOD & AGRICULTURE,Diet & Cooking,Green Hospitality,Plant-based Hospitality
+78,FOOD & AGRICULTURE,Diet & Cooking,Green Hospitality,Other Green Hospitality
+79,FOOD & AGRICULTURE,Diet & Cooking,Green Hospitality,Low Carbon Cooking Solutions
+80,FOOD & AGRICULTURE,Diet & Cooking,Diet & Cooking Education,Vegetarian Courses
+81,FOOD & AGRICULTURE,Diet & Cooking,Diet & Cooking Education,Vegan or Plant-based Courses
+82,FOOD & AGRICULTURE,Community Food,Community Gardens,Edible Open Garden
+83,FOOD & AGRICULTURE,Community Food,Community Gardens,Urban Food Growing
+84,FOOD & AGRICULTURE,Community Food,Community Gardens,Permaculture
+85,FOOD & AGRICULTURE,Community Food,Community Gardens,Silvopasture
+86,FOOD & AGRICULTURE,Community Food,Community Gardens,Tree Intercropping
+87,FOOD & AGRICULTURE,Community Food,Community Food Distribution,Local Market
+88,FOOD & AGRICULTURE,Community Food,Community Food Distribution,Produce Sharing
+89,FOOD & AGRICULTURE,Community Food,Community Food Distribution,Foodbank
+90,FOOD & AGRICULTURE,Community Food,Community Food Preparation,Community Kitchen
+91,FOOD & AGRICULTURE,Community Food,Community Food Preparation,Prepared Food Products
+92,FOOD & AGRICULTURE,Food Waste,Food Waste Reduce,Food Boxes
+93,FOOD & AGRICULTURE,Food Waste,Food Waste Reuse,Composting
+94,FOOD & AGRICULTURE,Food Waste,Food Waste Reuse,Food Waste Collection
+95,FOOD & AGRICULTURE,Food Waste,Food Waste Reuse,Biochar
+96,INFLUENCE,Engagement,Communications & Media,Exhibitions
+97,INFLUENCE,Engagement,Communications & Media,Leaflets & Posters
+98,INFLUENCE,Engagement,Communications & Media,Local Magazine Articles
+99,INFLUENCE,Engagement,Communications & Media,Newsletters
+100,INFLUENCE,Engagement,Communications & Media,Press Releases
+101,INFLUENCE,Engagement,Communications & Media,Videos
+102,INFLUENCE,Engagement,Communications & Media,Websites
+103,INFLUENCE,Engagement,Information Gathering,Mapping
+104,INFLUENCE,Engagement,Information Gathering,Focus Groups
+105,INFLUENCE,Engagement,Information Gathering,Pledge Commitments
+106,INFLUENCE,Engagement,Information Gathering,Questionnaires
+107,INFLUENCE,Engagement,Information Gathering,Surveys
+108,INFLUENCE,Engagement,Information Gathering,Conferences & Workshops
+109,INFLUENCE,Engagement,Consultation,Consultation Documents
+110,INFLUENCE,Engagement,Consultation,Consultation Events
+111,INFLUENCE,Engagement,Consultation,On-line Consultation
+112,INFLUENCE,Engagement,Participation,Campaigns
+113,INFLUENCE,Engagement,Participation,Social Media
+114,INFLUENCE,Engagement,Participation,Deliberative Events
+115,INFLUENCE,Engagement,Participation,Local Group Forum
+116,INFLUENCE,Engagement,Participation,Stakeholder Dialogue Processes
+117,INFLUENCE,Engagement,Collaboration,Partnership
+118,INFLUENCE,Engagement,Collaboration,Advisory Panels
+119,INFLUENCE,Engagement,Collaboration,Joint Action Groups
+120,INFLUENCE,Engagement,Delegated Authority,Delegated Decision-Making
+121,INFLUENCE,Engagement,Delegated Authority,Referenda
+122,INFLUENCE,Behaviour Change,Householder Change ,Householder Survey 
+123,INFLUENCE,Behaviour Change,Householder Change ,Householder Information Campaign
+124,INFLUENCE,Behaviour Change,Householder Change ,Householder Service
+125,INFLUENCE,Behaviour Change,Institutional Change,Institutional Survey
+126,INFLUENCE,Behaviour Change,Institutional Change,Institutional Information Campaign
+127,INFLUENCE,Behaviour Change,Institutional Change,Institutional Service
+128,ENABLE,Advice & Guidance,Guidance Material,Case Studies
+129,ENABLE,Advice & Guidance,Guidance Material,Good Practice Guides
+130,ENABLE,Advice & Guidance,Project Support,Evaluation
+131,ENABLE,Advice & Guidance,Project Support,Event Facilitation
+132,ENABLE,Advice & Guidance,Project Support,Mentored Support
+133,ENABLE,Advice & Guidance,Project Support,Project Feasibility
+134,ENABLE,Advice & Guidance,Project Support,Technical Advice
+135,ENABLE,Funding,Community & Public Funding,Community Shares
+136,ENABLE,Funding,Community & Public Funding,Crowd Funding
+137,ENABLE,Funding,Community & Public Funding,Donation Appeals
+138,ENABLE,Funding,Community & Public Funding,Fundraising Events
+139,ENABLE,Funding,Community & Public Funding,Grants
+140,ENABLE,Funding,Commercial Funding,Green Loans
+141,ENABLE,Funding,Commercial Funding,Green Bonds & Debentures
+142,ENABLE,"Policies, Strategies & Plans",Policies,Declarations & Resolutions
+143,ENABLE,"Policies, Strategies & Plans",Policies,AONB Policy
+144,ENABLE,"Policies, Strategies & Plans",Policies,Low Carbon Policies
+145,ENABLE,"Policies, Strategies & Plans",Strategies,CN2030 Strategy
+146,ENABLE,"Policies, Strategies & Plans",Strategies,Gloucestershire Sustainable Energy Strategy
+147,ENABLE,"Policies, Strategies & Plans",Strategies,Local Industrial Strategy
+148,ENABLE,"Policies, Strategies & Plans",Strategies,Resilience Strategies
+149,ENABLE,"Policies, Strategies & Plans",Plans,CN2030 plan of action
+150,ENABLE,"Policies, Strategies & Plans",Plans,Local climate emergency plans
+151,ENABLE,"Policies, Strategies & Plans",Plans,Local Transport Plan
+152,ENABLE,"Policies, Strategies & Plans",Plans,Neighbourhood Development Plans
+153,ENABLE,"Policies, Strategies & Plans",Plans,SDC Local Plan
+154,"NATURE, CONSERVATION & ENVIRONMENT",Environmental Conservation,Forests & Woodland,Afforestation
+155,"NATURE, CONSERVATION & ENVIRONMENT",Environmental Conservation,Forests & Woodland,Community Tree Planting
+156,"NATURE, CONSERVATION & ENVIRONMENT",Environmental Conservation,Forests & Woodland,Hedgerow Restoration
+157,"NATURE, CONSERVATION & ENVIRONMENT",Environmental Conservation,Forests & Woodland,Reforestation
+158,"NATURE, CONSERVATION & ENVIRONMENT",Environmental Conservation,Forests & Woodland,Woodland Management
+159,"NATURE, CONSERVATION & ENVIRONMENT",Environmental Conservation,Wetlands,Peatland
+160,"NATURE, CONSERVATION & ENVIRONMENT",Environmental Conservation,Wetlands,Coastal Wetland
+161,"NATURE, CONSERVATION & ENVIRONMENT",Species Conservation,Habitat Conservation,Plant Habitats
+162,"NATURE, CONSERVATION & ENVIRONMENT",Species Conservation,Habitat Conservation,Insect Habitats
+163,"NATURE, CONSERVATION & ENVIRONMENT",Species Conservation,Habitat Conservation,Vertebrate Habitats
+164,"NATURE, CONSERVATION & ENVIRONMENT",Species Conservation,Transforming Habitats,Connecting Habitats
+165,"NATURE, CONSERVATION & ENVIRONMENT",Species Conservation,Transforming Habitats,Rewilding
+166,"NATURE, CONSERVATION & ENVIRONMENT",Weather Impact Management,Flooding,Rural Sustainable Drainage (RSuDS)
+167,"NATURE, CONSERVATION & ENVIRONMENT",Weather Impact Management,Flooding,Flood Management
+168,"NATURE, CONSERVATION & ENVIRONMENT",Weather Impact Management,Heatwave,Heatwave Resilience
+169,MATERIALS,Low Carbon Materials,Alternative Materials,Alternative Cement
+170,MATERIALS,Low Carbon Materials,Alternative Materials,Bioplastic
+171,MATERIALS,Low Carbon Materials,Alternative Materials,Plastic Alternative Containers & Wrapping
+172,MATERIALS,Low Carbon Materials,Alternative Materials,Steel Beam Replacement
+173,MATERIALS,Low Carbon Materials,Traditional Materials,Lime Mortar
+174,MATERIALS,Low Carbon Materials,Traditional Materials,Clay Render
+175,MATERIALS,Low Carbon Materials,Traditional Materials,Wood Products
+176,MATERIALS,Low Carbon Materials,Traditional Materials,Hempcrete
+177,MATERIALS,Low Carbon Materials,Traditional Materials,Straw/ Hemp/ Mud 
+178,MATERIALS,Preventative Measures,F-gas Release Avoidance,Refrigerant Management
+179,MOBILITY & TRANSPORT,Reduced Vehicle Use,Remote Working ,Local Work Spaces
+180,MOBILITY & TRANSPORT,Reduced Vehicle Use,Remote Working ,Video-conferencing
+181,MOBILITY & TRANSPORT,Reduced Vehicle Use,Walking,Walking Paths
+182,MOBILITY & TRANSPORT,Reduced Vehicle Use,Bikes,Electric Bikes
+183,MOBILITY & TRANSPORT,Reduced Vehicle Use,Bikes,Bike Conversion (electric)
+184,MOBILITY & TRANSPORT,Reduced Vehicle Use,Bikes,Bike Parking
+185,MOBILITY & TRANSPORT,Reduced Vehicle Use,Bikes,Bike Tracks
+186,MOBILITY & TRANSPORT,Greening Vehicle Use,Cars,Lift Sharing
+187,MOBILITY & TRANSPORT,Greening Vehicle Use,Cars,Car Club
+188,MOBILITY & TRANSPORT,Greening Vehicle Use,Cars,Electric Vehicles
+189,MOBILITY & TRANSPORT,Greening Vehicle Use,Cars,EV Charging
+190,MOBILITY & TRANSPORT,Greening Vehicle Use,Cars,Hydrogen Vehicles
+191,MOBILITY & TRANSPORT,Greening Vehicle Use,"Buses, Trams & Light Railway",Bus Services
+192,MOBILITY & TRANSPORT,Greening Vehicle Use,"Buses, Trams & Light Railway",Community Buses
+193,MOBILITY & TRANSPORT,Greening Vehicle Use,"Buses, Trams & Light Railway",EV Buses
+194,MOBILITY & TRANSPORT,Greening Vehicle Use,"Buses, Trams & Light Railway",Trams & Light Railway 
+195,MOBILITY & TRANSPORT,Greening Vehicle Use,"Buses, Trams & Light Railway",Hydrogen-Cell Buses
+196,MOBILITY & TRANSPORT,Greening Heavy Transport,Goods Road Transport,Warehousing
+197,MOBILITY & TRANSPORT,Greening Heavy Transport,Goods Road Transport,Hydrogen-Cell Trucks
+198,MOBILITY & TRANSPORT,Greening Heavy Transport,Rail Transport,Train Electrification
+199,MOBILITY & TRANSPORT,Greening Heavy Transport,Shipping & Waterways,Canal Barge
+200,MOBILITY & TRANSPORT,Greening Heavy Transport,Low Carbon Air Transport,VariaLift Airship
+201,WASTE,Waste Avoidance,Reduce,Clothes Sharing
+202,WASTE,Waste Avoidance,Reduce,Food Boxes
+203,WASTE,Waste Avoidance,Reduce,Tool / Equipment Sharing 
+204,WASTE,Waste Avoidance,Reduce,Other Sharing Solutions
+205,WASTE,Waste Avoidance,Reuse or Rehome,Furniture Bank
+206,WASTE,Waste Avoidance,Reuse or Rehome,Clothing Bank
+207,WASTE,Waste Avoidance,Repairing,Repair Cafe
+208,WASTE,Waste Avoidance,Repairing,Make Do & Mend 
+209,WASTE,Waste Avoidance,Repairing,Other Repairing Solutions
+210,WASTE,Waste Processing,Recycling,Battery Recycling
+211,WASTE,Waste Processing,Recycling,Building Materials Recycling
+212,WASTE,Waste Processing,Recycling,Council Recycling Bank
+213,WASTE,Waste Processing,Recycling,Electrical/ Electronic Recycling
+214,WASTE,Waste Processing,Recycling,Food Recycling
+215,WASTE,Waste Processing,Recycling,Plastic Recycling 
+216,WASTE,Waste Processing,Recycling,Paper Recycling
+217,WASTE,Waste Processing,Recycling,White Goods Recycling
+218,WASTE,Waste Processing,Rot,Community Composting
+219,WASTE,Waste Processing,Rot,Community Wormery
