@@ -1,10 +1,12 @@
-<%= render 'partials/breadcrumb', items: [
-  link_to('Home', root_path),
-  link_to(@district.name, @district),
-  link_to(@ward.name, @ward),
-  link_to(@parish.name, @parish),
-  @initiative.name
-] %>
+<div class="u-mbL">
+  <%= render 'partials/breadcrumb', items: [
+    link_to('Home', root_path),
+    link_to(@district.name, @district),
+    link_to(@ward.name, @ward),
+    link_to(@parish.name, @parish),
+    @initiative.name
+  ] %>
+</div>
 
 <div class="PageHeader u-mbL">
   <h1 class="PageHeader-heading"><%=@initiative.name%></h1>
