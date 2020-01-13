@@ -14,7 +14,7 @@
 <% end %>
 
 <h2>Websites & Social Media</h2>
-<div id="websites" class="CollectionItem-container">
+<div id="group_websites" class="CollectionItem-container">
   <table>
     <thead>
       <tr>
@@ -32,7 +32,7 @@
 </div>
 <div class="FormField">
   <%= f.fields_for :websites, GroupWebsite.new do |website_form| %>
-    <%= add_object_link 'Add website', :partial => 'partials/website_fields_row', :locals => { :f => website_form } %>
+    <%= add_object_link 'Add website', 'group_websites', :partial => 'partials/website_fields_row', :locals => { :f => website_form } %>
   <% end %>
 </div>
 

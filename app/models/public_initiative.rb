@@ -66,7 +66,7 @@ class PublicInitiative
   end
 
   def websites
-    @initiative.websites.map(&:website)
+    @initiative.websites.map(&:url)
   end
 
   def last_updated

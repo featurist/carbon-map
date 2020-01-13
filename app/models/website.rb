@@ -2,19 +2,19 @@
 
 module Website
   def instagram?
-    website.start_with? 'https://www.instagram.com'
+    url.start_with? 'https://www.instagram.com'
   end
 
   def facebook?
-    website.start_with? 'https://www.facebook.com'
+    url.start_with? 'https://www.facebook.com'
   end
 
   def twitter?
-    website.start_with? 'https://twitter.com'
+    url.start_with? 'https://twitter.com'
   end
 
   def youtube?
-    website.start_with? 'https://www.youtube.com'
+    url.start_with? 'https://www.youtube.com'
   end
 
   def icon

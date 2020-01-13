@@ -1,7 +1,7 @@
 <% if initiative.websites.any? %>
   <div class="u-mb">
     <% initiative.websites.each do |website| %>
-      <%= link_to inline_icon(website.icon), website.website, target: '_blank' %>
+      <%= link_to inline_icon(website.icon), website.url, target: '_blank' %>
     <% end %>
   </div>
 <% end %>

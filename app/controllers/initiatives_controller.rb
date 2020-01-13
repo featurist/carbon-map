@@ -179,7 +179,7 @@ class InitiativesController < ApplicationController
           proposed_solution
         ],
         images: [],
-        websites_attributes: %i[website id _destroy],
+        websites_attributes: %i[url id _destroy],
         lead_group_attributes: %i[
           name
           abbreviation

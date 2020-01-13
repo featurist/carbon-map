@@ -29,18 +29,18 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
                consent_to_share: true,
                types: %w[2 4],
                websites_attributes: [
-                 { website: 'http://one' },
-                 { website: 'http://two' }
+                 { url: 'http://one' },
+                 { url: 'http://two' }
                ]
              }
            }
     end
 
     group = Group.last
-    websites = group.websites.sort_by(&:website)
+    websites = group.websites.sort_by(&:url)
     assert_equal 2, websites.size
-    assert_equal 'http://one', websites[0].website
-    assert_equal 'http://two', websites[1].website
+    assert_equal 'http://one', websites[0].url
+    assert_equal 'http://two', websites[1].url
     assert_equal GroupType.find(2), group.types[0].group_type
     assert_equal GroupType.find(4), group.types[1].group_type
 
@@ -57,7 +57,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :georgie
     group = groups(:down_to_earth_stroud)
     group.websites.delete_all
-    group.websites.create! website: 'http://one'
+    group.websites.create! url: 'http://one'
 
     patch group_url(group),
           params: {
@@ -69,15 +69,15 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
               contact_phone: 'update phone',
               types: %w[2 4],
               websites_attributes: [
-                { website: 'http://one', id: group.websites[0].id },
-                { website: 'http://two' }
+                { url: 'http://one', id: group.websites[0].id },
+                { url: 'http://two' }
               ]
             }
           }
-    websites = group.reload.websites.sort_by(&:website)
+    websites = group.reload.websites.sort_by(&:url)
     assert_equal 2, websites.size
-    assert_equal 'http://one', websites[0].website
-    assert_equal 'http://two', websites[1].website
+    assert_equal 'http://one', websites[0].url
+    assert_equal 'http://two', websites[1].url
     assert_equal GroupType.find(2), group.types[0].group_type
     assert_equal GroupType.find(4), group.types[1].group_type
     assert_redirected_to edit_group_path(group)

@@ -17,7 +17,7 @@ class Group < ApplicationRecord
             presence: true
 
   def website_empty?(attributes)
-    attributes['website'].blank?
+    attributes['url'].blank?
   end
 
   def empty?

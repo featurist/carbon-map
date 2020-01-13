@@ -36,8 +36,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     initiative = Initiative.last
     websites = initiative.websites
     assert_equal 2, websites.size
-    assert_equal 'http://one', websites[0].website
-    assert_equal 'http://two', websites[1].website
+    assert_equal 'http://one', websites[0].url
+    assert_equal 'http://two', websites[1].url
     assert_equal 1, initiative.images.size
     assert_equal 'initial notes', initiative.administrative_notes
 
@@ -127,8 +127,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, @initiative.reload.images.size
     websites = @initiative.websites
     assert_equal 2, websites.size
-    assert_equal 'http://one', websites[0].website
-    assert_equal 'http://two', websites[1].website
+    assert_equal 'http://one', websites[0].url
+    assert_equal 'http://two', websites[1].url
     assert_equal 'updated notes', @initiative.administrative_notes
     assert_redirected_to edit_initiative_path(@initiative)
   end
@@ -159,8 +159,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         solutions_attributes: solutions,
         administrative_notes: 'initial notes',
         websites_attributes: [
-          { website: 'http://one' },
-          { website: 'http://two' }
+          { url: 'http://one' },
+          { url: 'http://two' }
         ]
       }
     }
@@ -187,8 +187,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         solutions_attributes: solutions,
         administrative_notes: 'updated notes',
         websites_attributes: [
-          { website: 'http://one' },
-          { website: 'http://two' }
+          { url: 'http://one' },
+          { url: 'http://two' }
         ]
       }
     }

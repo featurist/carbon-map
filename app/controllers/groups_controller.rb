@@ -70,7 +70,7 @@ class GroupsController < ApplicationController
       :contact_phone,
       :consent_to_share,
       types: [],
-      websites_attributes: %i[website id _destroy]
+      websites_attributes: %i[url id _destroy]
     )
   end
   # rubocop:enable Metrics/MethodLength

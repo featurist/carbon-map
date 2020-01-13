@@ -34,7 +34,7 @@ class Initiative < ApplicationRecord
   validate :validate_postcode
 
   def website_empty?(attributes)
-    attributes['website'].blank?
+    attributes['url'].blank?
   end
 
   def validate_postcode
