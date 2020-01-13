@@ -5,6 +5,7 @@
 @import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
 @import "sidebar-v2/css/leaflet-sidebar.css";
 @import "./base/variables";
+@import "./base/base";
 @import "./components/alert";
 @import "./components/app";
 @import "./components/breadcrumb";
@@ -22,79 +23,3 @@
 @import "./components/nav";
 @import "./components/page_header";
 @import "./components/sponsors";
-
-@font-face {
-  font-family: "fira_sansregular";
-  font-style: normal;
-  font-weight: normal;
-  src:
-    url("../fonts/firasans-regular-webfont.woff2") format("woff2"),
-    url("../fonts/firasans-regular-webfont.woff") format("woff"),
-    url("../fonts/firasans-regular-webfont.svg#fira_sansregular") format("svg");
-}
-
-html {
-  box-sizing: border-box;
-  height: 100%;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  color: #4c4c4c;
-  font-family: "fira_sansregular";
-  font-size: 1em;
-  height: 100%;
-  line-height: 1.5;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  font-size: 1.5em;
-}
-
-section {
-  margin-bottom: 10px;
-  padding: 5px;
-}
-
-a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-p {
-  margin: 0;
-}
-
-.u-hidden {
-  display: none;
-}
-
-ul {
-  padding-left: 10px;
-}
-
-li {
-  list-style-type: none;
-}
-
-input[type=text],
-input[type=url],
-input[type=email],
-input[type=password],
-input[type=number],
-input[type=tel] {
-  font-size: 17px;
-  height: 40px;
-  line-height: 40px;
-}
-
-input[type=checkbox] {
-  margin: 5px;
-}
