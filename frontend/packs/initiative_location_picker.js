@@ -80,6 +80,10 @@ class LocationPicker {
       //this.refresh()
       if (status === 200) {
         this.markerAt([result.latitude, result.longitude]);
+        document.querySelector('[name="initiative[latitude]"]').value =
+          result.latitude;
+        document.querySelector('[name="initiative[longitude]"]').value =
+          result.longitude;
       }
     }, 1000)();
   }
