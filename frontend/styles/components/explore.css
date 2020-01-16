@@ -141,6 +141,7 @@
 .sidebar-header {
   background-color: transparent;
   color: #000;
+  height: auto;
 
   a {
     color: inherit;
