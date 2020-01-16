@@ -8,6 +8,10 @@
   margin-bottom: $space-base !important;
 }
 
+.u-mbS {
+  margin-bottom: $space-small !important;
+}
+
 .u-mbL {
   margin-bottom: $space-large !important;
 }

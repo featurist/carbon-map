@@ -13,6 +13,7 @@ $color-text: #4c4c4c;
 $color-orange: #ff9700;
 
 $space-base: 15px;
+$space-small: 5px;
 $space-large: 30px;
 
 @custom-media --bp-mobile (min-width: $bp-mobile-width);
