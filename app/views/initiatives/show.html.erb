@@ -1,4 +1,20 @@
+<%
+set_meta_tags og: {
+  type:     'website',
+  url:      request.url,
+  image:    @initiative.images.map do |image|
+    {
+      _: variant_url(image.variant(resize_to_limit: [200, 200])),
+      width: 200,
+      height: 200,
+    }
+  end
+}
+%>
+
+
 <% title @initiative.name %>
+<% description @initiative.description_what %>
 
 <div class="u-mbL">
   <%= render 'partials/breadcrumb', items: [

@@ -29,6 +29,13 @@ module ApplicationHelper
     # rubocop:enable Rails/OutputSafety
   end
 
+  def variant_url(variant)
+    Rails.application.routes.url_helpers.rails_representation_url(
+      variant,
+      Rails.application.config.action_mailer.default_url_options
+    )
+  end
+
   private
 
   def add_object_link_js(id, html)

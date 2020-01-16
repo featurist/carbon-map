@@ -12,6 +12,7 @@ class InitiativesController < ApplicationController
 
   def show
     @initiative = Initiative.find(params['id'])
+    @page_description = @initiative.description_what
     @parish = @initiative.parish
     @ward = @parish.ward
     @district = @ward.district

@@ -1,7 +1,15 @@
 <!DOCTYPE html>
+<%
+set_meta_tags og: {
+  title:    title || 'Carbon Neutral Map',
+  description: @page_description || 'Connecting low carbon initiatives across Stroud District',
+  type:     'website',
+  url:      request.url
+}
+%>
 <html>
   <head>
-    <%= display_meta_tags site: 'Carbon Neutral 2030', charset: 'utf-8', reverse: true %>
+    <%= display_meta_tags site: 'Carbon Neutral Map', charset: 'utf-8', reverse: true %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
