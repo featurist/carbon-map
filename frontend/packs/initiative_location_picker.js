@@ -3,6 +3,7 @@ import { GestureHandling } from "leaflet-gesture-handling";
 import mobileCheck from "./mobileCheck";
 import debounce from "./debounce";
 import http from "httpism";
+import { postcodeValidator } from "postcode-validator";
 
 class LocationPicker {
   constructor() {
@@ -11,7 +12,13 @@ class LocationPicker {
     const lng = document.querySelector('[name="initiative[longitude]"]').value;
 
     this.postcodeElement = document.getElementById("initiative_postcode");
-    this.postcodeElement.addEventListener("change", () =>
+    this.postcodeUpdatingElement = document.getElementById(
+      "initiative_postcode_updating"
+    );
+    this.postcodeErrorElement = document.getElementById(
+      "initiative_postcode_error_message"
+    );
+    this.postcodeElement.addEventListener("input", () =>
       this.lookupPostcodeCoordinates()
     );
     const location = { lat, lng };
@@ -68,7 +75,16 @@ class LocationPicker {
     if (!this.isDefaultLocation()) {
       return;
     }
+    if (postcodeValidator(this.postcodeElement.value, "UK")) {
+      this.postcodeElement.classList.remove("field_with_errors");
+      this.postcodeErrorElement.classList.add("u-hidden");
+    } else {
+      this.postcodeElement.classList.add("field_with_errors");
+      this.postcodeErrorElement.classList.remove("u-hidden");
+      return;
+    }
     debounce(async () => {
+      this.postcodeUpdatingElement.classList.remove("u-hidden");
       const {
         status,
         result
@@ -76,8 +92,8 @@ class LocationPicker {
         `https://api.postcodes.io/postcodes/${this.postcodeElement.value}`,
         { exceptions: false }
       );
+      this.postcodeUpdatingElement.classList.add("u-hidden");
       this.invalidPostcode = status !== 200;
-      //this.refresh()
       if (status === 200) {
         this.markerAt([result.latitude, result.longitude]);
         document.querySelector('[name="initiative[latitude]"]').value =

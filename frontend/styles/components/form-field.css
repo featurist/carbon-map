@@ -2,6 +2,7 @@
  * Extends SUIT CSS components: form-field
  * https://github.com/simonsmith/suitcss-components-form-field
  */
+$error_color: rgb(146, 40, 48);
 
 :root {
   --FormField-input-color: $color-text;
@@ -49,14 +50,11 @@ textarea.FormField-input {
 /* stylelint-enable */
 
 .field_with_errors {
+  color: $error_color;
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
   flex-grow: 1;
-}
-
-.field_with_errors {
-  color: rgb(146, 40, 48);
 }
 
 .field_with_errors input {
@@ -80,4 +78,31 @@ textarea.FormField-input {
 .FormField--required label::after {
   color: rgb(146, 40, 48);
   content: " *";
+}
+
+.FormFieldOverlay {
+  position: relative;
+}
+
+.FormFieldOverlay-content {
+  margin: 10px;
+  margin-right: 15px;
+  position: absolute;
+  right: 0;
+}
+
+.FormFieldOverlay-error {
+  color: $error_color;
+}
+
+.FormFieldOverlay-blink {
+  animation: blinker 1.5s linear infinite;
+  color: green;
+}
+
+@keyframes blinker {
+
+  50% {
+    opacity: 0;
+  }
 }

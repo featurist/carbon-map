@@ -58,7 +58,11 @@
 
   <%= f.form_field :postcode do %>
     <%= f.label :postcode %>
-    <%= f.text_field :postcode %>
+    <div class="FormFieldOverlay">
+      <span id="initiative_postcode_error_message" class="FormFieldOverlay-content FormFieldOverlay-error u-hidden">Invalid postcode</span>
+      <span id="initiative_postcode_updating" class="FormFieldOverlay-content FormFieldOverlay-blink u-hidden">Updating</span>
+      <%= f.text_field :postcode %>
+    </div>
   <% end %>
 
   <label class="FormField">
