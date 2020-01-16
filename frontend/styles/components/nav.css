@@ -2,8 +2,9 @@
   background-color: $color-orange;
   color: #fff;
   display: flex;
-  height: 43px;
+  flex-direction: column;
   padding: 7px;
+  width: 100%;
 }
 
 .Nav a {
@@ -29,14 +30,33 @@
   color: $color-orange;
 }
 
-.Nav-main a::before {
-  content: "\22c5";
+.Header-contentMobile {
+  display: flex;
+  flex: 1;
+}
+
+.Header-contentDesktop {
+  display: none;
+  flex-grow: 1;
+  margin-left: 15px;
 }
 
 .Nav-main,
 .Nav-supplementary {
-  display: none;
   flex: 1;
+}
+
+.Nav-main a {
+  display: flex;
+}
+
+.Nav-main svg {
+  height: 18px;
+  width: 18px;
+}
+
+.Nav-main span {
+  padding-left: 10px;
 }
 
 .Nav-supplementary {
@@ -48,25 +68,6 @@
   margin: 0 10px;
 }
 
-.Nav-flyover {
-  display: none;
-}
-
-.Nav.Nav-open .Nav-flyover {
-  background-color: $color-orange;
-  display: block;
-  padding: 10px;
-  position: absolute;
-  right: 0;
-  top: 34px;
-  z-index: 10000;
-}
-
-.Nav-flyover a {
-  display: block;
-  text-align: left;
-}
-
 @media (--bp-tablet-landscape) {
 
   .Nav-supplementary,
@@ -76,5 +77,18 @@
 
   .Nav-supplementary a::before {
     content: " ";
+  }
+
+  .Nav {
+    flex-direction: row;
+    height: 43px;
+  }
+
+  .Header-contentMobile {
+    display: none;
+  }
+
+  .Header-contentDesktop {
+    display: block;
   }
 }

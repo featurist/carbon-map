@@ -6,6 +6,9 @@
 }
 
 .Header-logo {
+  flex: 1;
+  padding: 15px;
+  text-align: center;
   vertical-align: top;
 }
 
@@ -21,4 +24,17 @@
 
 .Header-strapline {
   margin: 0 5px;
+}
+
+@media (--bp-tablet-landscape) {
+
+  .Header-logo {
+    flex: none;
+    padding: 0;
+  }
+
+  .Header-logo img {
+    height: 100px;
+    width: 100px;
+  }
 }

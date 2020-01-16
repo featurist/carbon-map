@@ -2,7 +2,7 @@
   background-color: $snow;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 145px); /* Viewport height minus header height */
+  height: calc(100vh - 275px); /* Viewport height minus header height */
   position: relative;
 }
 
@@ -145,5 +145,12 @@
 
   a {
     color: inherit;
+  }
+}
+
+@media (--bp-tablet-landscape) {
+
+  .Explore {
+    height: calc(100vh - 152px); /* Viewport height minus header height */
   }
 }
