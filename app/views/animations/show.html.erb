@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= display_meta_tags site: 'Carbon Neutral Map', charset: 'utf-8', reverse: true %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/leaflet/leaflet.css" />
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <script type="text/json" id="map_data_json"><%=@map_data.to_json.html_safe%></script>
+    <%= javascript_packs_with_chunks_tag 'animation_map', 'data-turbolinks-track': 'reload' %>
+    <meta name="turbolinks-visit-control" content="reload">
+  </head>
+
+  <body>
+    <% title 'Animation' %>
+    <div class="Explore Explore-animation u-mb">
+      <div class="Explore-map" id="animation_map"></div>
+    </div>
+  </body>
+</html>

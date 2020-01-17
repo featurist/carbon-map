@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resource :animation, only: %i[show]
   resource :about, only: %i[show]
   resource :contact, only: %i[show]
   resources :districts, only: %i[index show]
