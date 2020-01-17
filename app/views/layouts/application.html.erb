@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <%
+  set_meta_tags og: {image: []} unless @meta_tags && @meta_tags.meta_tags['og']
+@meta_tags.meta_tags['og']['image'] = @meta_tags.meta_tags['og']['image'] || []
+@meta_tags.meta_tags['og']['image'].push(og_logo)
+
 set_meta_tags og: {
   title:    title || 'Carbon Neutral Map',
   description: @page_description || 'Connecting low carbon initiatives across Stroud District',
   type:     'website',
-  url:      request.url,
-  images:   [
-    {
-      _: asset_pack_url("media/images/logo.png"),
-      width: 200,
-      height: 200,
-    }
-  ]
+  url:      request.url
 }
 %>
 <html>

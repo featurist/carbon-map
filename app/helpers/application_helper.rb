@@ -36,6 +36,14 @@ module ApplicationHelper
     )
   end
 
+  def og_logo
+    {
+      _: asset_pack_url('media/images/logo.png'),
+      width: 200,
+      height: 200
+    }
+  end
+
   private
 
   def add_object_link_js(id, html)
