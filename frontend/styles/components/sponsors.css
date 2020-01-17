@@ -2,6 +2,11 @@
   padding-top: 20px;
 }
 
+.sponsors-heading {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .sponsors-logos {
   display: flex;
   justify-content: space-evenly;
