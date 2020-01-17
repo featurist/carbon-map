@@ -79,7 +79,7 @@
       <thead>
         <tr>
           <th>Website</th>
-          <th>Delete</th>
+          <th>Action</th>
         </tr>
       </thead>
 
@@ -114,12 +114,8 @@
   <% end %>
 
   <%= f.form_field :consent_to_share do %>
-    <%= f.label :consent_to_share, class_name: 'FormField-checkbox' do %>
-      <%= f.check_box :consent_to_share %>
-      <span>Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?</span>
-    <%end%>
+    <%= f.check_box :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?' %>
   <% end %>
-
 
   <h2 class="u-mb">Groups</h2>
 

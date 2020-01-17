@@ -32,6 +32,19 @@ class SuitFormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
+  def check_box(attribute, options = {}, checked_value = '1', unchecked_value = '0')
+    if options.is_a?(String)
+      label_text = options
+      options = {}
+    end
+    label(attribute, class: 'FormField-check FormField-check--checkbox') do
+      super(attribute, options.reverse_merge(class: 'FormField-checkInput'), checked_value, unchecked_value) +
+        # rubocop:disable HelperInstanceVariable
+        @template.content_tag(:span, label_text, class: 'FormField-checkLabel')
+      # rubocop:enable HelperInstanceVariable
+    end
+  end
+
   def number_field(attribute, options = {})
     super(attribute, options.reverse_merge(class: 'FormField-input'))
   end
