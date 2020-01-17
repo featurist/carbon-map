@@ -2,7 +2,7 @@
 
 module InitiativesHelper
   def themes_as_json(initiative)
-    theme_map = initiative.themes.map { |theme| { theme_id: theme.id } }
+    theme_map = initiative.themes.map { |initiative_theme| { theme_id: initiative_theme.theme.id } }
 
     theme_map.to_json
   end
