@@ -31,24 +31,38 @@ set_meta_tags og: {
             <%=link_to image_tag(asset_pack_path("media/images/logo.svg")), root_path, class: 'Header-logo' %>
             <div class="Header-contentMobile">
               <nav class="Nav">
-                  <%= link_to 'Add a project', new_initiative_path %>
-                  <%= link_to('About', about_path)%>
-                  <%= link_to('Contact', contact_path)%>
-                  <% unless user_signed_in? %>
-                    <%= link_to 'Sign in', new_user_session_path %>
-                    <%= link_to 'Sign up', new_user_registration_path %>
-                  <% end %>
-                  <% if user_signed_in? %>
-                    <%= link_to('Initiatives', initiatives_path) %>
-                    <%= link_to('Groups', groups_path) %>
-                  <% end %>
-                  <% if user_is_admin? %>
-                    <%= link_to('Group Types', group_types_path) %>
-                    <%= link_to('Initiative Statuses', initiative_statuses_path) %>
-                  <% end %>
-                  <% if user_signed_in? %>
-                    <%= link_to 'Sign out', destroy_user_session_path %>
-                  <% end %>
+                <a class="Nav-burger" onclick="document.querySelector('.Nav').classList.add('Nav-open')"><svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                    <path fill="#ffffff" id="svg_1" d="m4,10l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2zm24,4l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2zm0,8l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2z"/>
+                    </g>
+                  </svg></a>
+                  <nav class="Nav-flyover">
+                    <a href="#" onclick="document.querySelector('.Nav').classList.remove('Nav-open');return false;">Close</a>
+                    <hr />
+                    <%= link_to 'Add a project', new_initiative_path %>
+                    <hr />
+                    <%= link_to('About', about_path)%>
+                    <%= link_to('Contact', contact_path)%>
+                    <hr />
+                    <% unless user_signed_in? %>
+                      <%= link_to 'Sign in', new_user_session_path %>
+                      <%= link_to 'Sign up', new_user_registration_path %>
+                      <hr />
+                    <% end %>
+                    <% if user_signed_in? %>
+                      <%= link_to('Initiatives', initiatives_path) %>
+                      <%= link_to('Groups', groups_path) %>
+                      <hr />
+                    <% end %>
+                    <% if user_is_admin? %>
+                      <%= link_to('Group Types', group_types_path) %>
+                      <%= link_to('Initiative Statuses', initiative_statuses_path) %>
+                      <hr />
+                    <% end %>
+                    <% if user_signed_in? %>
+                      <%= link_to 'Sign out', destroy_user_session_path %>
+                    <% end %>
+                  </nav>
               </nav>
             </div>
             <div class="Header-contentDesktop">

@@ -1,8 +1,7 @@
 .Header {
   border-bottom: 1px solid lightgray;
   flex: none;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding: 0;
 }
 
 .Header-logo {
@@ -10,6 +9,11 @@
   padding: 15px;
   text-align: center;
   vertical-align: top;
+}
+
+.Header-logo img {
+  height: 100px;
+  width: 100px;
 }
 
 .Header-main {
@@ -24,17 +28,4 @@
 
 .Header-strapline {
   margin: 0 5px;
-}
-
-@media (--bp-tablet-landscape) {
-
-  .Header-logo {
-    flex: none;
-    padding: 0;
-  }
-
-  .Header-logo img {
-    height: 100px;
-    width: 100px;
-  }
 }
