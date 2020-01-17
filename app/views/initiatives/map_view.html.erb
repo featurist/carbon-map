@@ -5,9 +5,7 @@
 <div class="Initiative">
   <div class="u-mb">
     <p>Status: <%=@initiative.status_name%></p>
-    <% if @initiative.anticipated_carbon_saving.present? && @initiative.anticipated_carbon_saving.positive? %>
-      <p>Saving: <%=format_carbon_saving(@initiative.anticipated_carbon_saving)%></p>
-    <% end %>
+    <p class="u-mbS"><%= initiative_carbon_text(@initiative) %></p>
   </div>
   <%=render 'initiative_info', initiative: @initiative%>
 </div>

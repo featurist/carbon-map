@@ -44,6 +44,17 @@ module ApplicationHelper
     }
   end
 
+  def initiative_carbon_text(initiative)
+    text = 'Carbon Saving not applicable'
+    if initiative.carbon_saving_anticipated?
+      if initiative.carbon_saving_quantified?
+        text = "Direct Carbon Saving: #{format_carbon_saving(initiative.carbon_saving_amount)}</p>"
+      end
+      text = 'Carbon Saving not yet quantified' unless initiative.carbon_saving_quantified?
+    end
+    text
+  end
+
   private
 
   def add_object_link_js(id, html)
