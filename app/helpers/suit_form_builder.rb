@@ -16,7 +16,9 @@ class SuitFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def label(method, text = nil, options = {})
-    super(method, text, options.reverse_merge(class: 'FormField-label'))
+    css_classes = %w[FormField-label]
+    css_classes << options.delete(:class_names)
+    super(method, text, options.reverse_merge(class: css_classes))
   end
 
   def text_field(attribute, options = {})

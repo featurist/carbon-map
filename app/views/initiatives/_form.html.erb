@@ -1,4 +1,5 @@
 <% content_for :page_javascript do %>
+  <%= javascript_packs_with_chunks_tag 'anticipated_carbon_savings', 'data-turbolinks-track': 'reload' %>
   <%= javascript_packs_with_chunks_tag 'initiative_location_picker', 'data-turbolinks-track': 'reload' %>
   <%= javascript_packs_with_chunks_tag 'initiative_solution_picker', 'data-turbolinks-track': 'reload' %>
   <%= javascript_packs_with_chunks_tag 'initiative_toggle_group', 'data-turbolinks-track': 'reload' %>
@@ -42,11 +43,21 @@
     <%= f.file_field :images, multiple: true, direct_upload: true %>
   <% end %>
 
-  <%= f.form_field :anticipated_carbon_saving do %>
-    <%= f.label :anticipated_carbon_saving %>
-    <div>
-      <%= f.number_field :anticipated_carbon_saving %> <span><%=carbon_units%></span>
-    </div>
+
+  <h2 class="u-mb">Carbon Savings</h2>
+  <%= f.form_field :carbon_saving_applicability do %>
+    <%= f.label :carbon_saving_anticipated, nil, class_names: 'FormField-checkbox' do %>
+      <%= f.check_box :carbon_saving_anticipated %>
+      <span>Are there direct carbon savings from this specific initiative?</span>
+    <% end %>
+    <%= f.label :carbon_saving_quantified, nil, class_names: 'FormField-checkbox' + (initiative.carbon_saving_anticipated? ? '' : ' u-hidden') do %>
+      <%= f.check_box :carbon_saving_quantified %>
+      <span>Have you estimated the carbon savings yet?</span>
+    <% end %>
+    <%= f.label :carbon_saving_amount, nil, class_names: (initiative.carbon_saving_quantified? ? '' : 'u-hidden') do %>
+      <span>Anticipated carbon saving</span>
+      <%= f.number_field :carbon_saving_amount, class: 'FormField-input FormField-narrow' %> <span><%=carbon_units%></span>
+    <% end %>
   <% end %>
 
   <%= f.form_field :status_id, required: true do %>

@@ -68,6 +68,54 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'my group', Group.last.name
   end
 
+  test 'create initiative with no anticipated carbon saving' do
+    sign_in_as :georgie
+    assert_difference('Initiative.count') do
+      VCR.use_cassette('valid_postcode') do
+        post initiatives_url, params: create_params(@initiative,
+                                                    carbon_saving_anticipated: false,
+                                                    carbon_saving_quantified: false,
+                                                    carbon_saving_amount: nil)
+      end
+    end
+    initiative = Initiative.last
+    assert_not initiative.carbon_saving_anticipated?
+    assert_not initiative.carbon_saving_quantified?
+    assert_nil initiative.carbon_saving_amount
+  end
+
+  test 'create initiative with unquantified carbon saving' do
+    sign_in_as :georgie
+    assert_difference('Initiative.count') do
+      VCR.use_cassette('valid_postcode') do
+        post initiatives_url, params: create_params(@initiative,
+                                                    carbon_saving_anticipated: true,
+                                                    carbon_saving_quantified: false,
+                                                    carbon_saving_amount: nil)
+      end
+    end
+    initiative = Initiative.last
+    assert initiative.carbon_saving_anticipated?
+    assert_not initiative.carbon_saving_quantified?
+    assert_nil initiative.carbon_saving_amount
+  end
+
+  test 'create initiative with carbon saving' do
+    sign_in_as :georgie
+    assert_difference('Initiative.count') do
+      VCR.use_cassette('valid_postcode') do
+        post initiatives_url, params: create_params(@initiative,
+                                                    carbon_saving_anticipated: true,
+                                                    carbon_saving_quantified: true,
+                                                    carbon_saving_amount: 200)
+      end
+    end
+    initiative = Initiative.last
+    assert initiative.carbon_saving_anticipated?
+    assert initiative.carbon_saving_quantified?
+    assert_equal 200, initiative.carbon_saving_amount
+  end
+
   test 'create initiative with solution' do
     sign_in_as :georgie
     solution_class = SolutionSolutionClass.last.solution_class
@@ -136,11 +184,15 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   private
 
   # rubocop:disable Metrics/MethodLength
-  def create_params(initiative, lead_group: nil, images: nil, solutions: nil)
+  # rubocop:disable Metrics/ParameterLists
+  def create_params(initiative, lead_group: nil, images: nil, solutions: nil,
+                    carbon_saving_anticipated: false, carbon_saving_quantified: false, carbon_saving_amount: nil)
     solutions ||= default_solutions
     {
       initiative: {
-        anticipated_carbon_saving: initiative.anticipated_carbon_saving,
+        carbon_saving_anticipated: carbon_saving_anticipated,
+        carbon_saving_quantified: carbon_saving_quantified,
+        carbon_saving_amount: carbon_saving_amount,
         contact_email: initiative.contact_email,
         contact_name: initiative.contact_name,
         contact_phone: initiative.contact_phone,
@@ -166,11 +218,14 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
-  def update_params(initiative, images: nil, solutions: nil)
+  def update_params(initiative, images: nil, solutions: nil,
+                    carbon_saving_anticipated: false, carbon_saving_quantified: false, carbon_saving_amount: nil)
     solutions ||= default_solutions
     {
       initiative: {
-        anticipated_carbon_saving: initiative.anticipated_carbon_saving,
+        carbon_saving_anticipated: carbon_saving_anticipated,
+        carbon_saving_quantified: carbon_saving_quantified,
+        carbon_saving_amount: carbon_saving_amount,
         contact_email: initiative.contact_email,
         contact_name: initiative.contact_name,
         contact_phone: initiative.contact_phone,
@@ -193,6 +248,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
       }
     }
   end
+  # rubocop:enable Metrics/ParameterLists
   # rubocop:enable Metrics/MethodLength
 
   def default_solutions

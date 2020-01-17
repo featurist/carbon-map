@@ -80,6 +80,11 @@ textarea.FormField-input {
   content: " *";
 }
 
+.FormField-narrow {
+  display: inline-block;
+  width: 100px;
+}
+
 .FormFieldOverlay {
   position: relative;
 }
