@@ -44,11 +44,14 @@ function initialiseMap({ initiatives, center }) {
   const markers = L.markerClusterGroup();
   animation_map.addLayer(markers);
   const markerList = [];
+  const totalInitiatives = initiatives.length;
 
   const addInitiative = () => {
     const initiative = initiatives.shift();
     if (initiative) {
-      document.getElementById("initiative_title").innerHTML = initiative.name;
+      document.getElementById("initiative_title").innerHTML = `${
+        initiative.name
+      } (${totalInitiatives - initiatives.length}/${totalInitiatives})`;
       var marker = L.marker(initiative.location.latlng);
       markers.addLayer(marker);
       markerList.push(marker);
