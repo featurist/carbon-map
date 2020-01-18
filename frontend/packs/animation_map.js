@@ -59,7 +59,7 @@ function initialiseMap({ initiatives, center }) {
       const group = new L.featureGroup(markerList);
       animation_map.fitBounds(group.getBounds());
 
-      setTimeout(addInitiative, 1000);
+      setTimeout(addInitiative, 3000);
     } else {
       setTimeout(() => {
         window.location.reload();
