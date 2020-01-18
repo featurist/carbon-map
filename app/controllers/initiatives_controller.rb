@@ -29,9 +29,11 @@ class InitiativesController < ApplicationController
 
   def edit; end
 
+  # rubocop:disable Metrics/MethodLength
   def create
     create_proposed_solutions
     @initiative = Initiative.new(initiative_params)
+    @initiative.owner = current_user
     find_or_create_group
     @initiative.update_location_from_postcode
 
@@ -42,6 +44,7 @@ class InitiativesController < ApplicationController
       render :new
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # rubocop:disable Metrics/MethodLength
   def update
