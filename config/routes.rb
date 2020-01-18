@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resource :animation, only: %i[show]
+  root 'home#index'
   resource :about, only: %i[show]
   resource :contact, only: %i[show]
   resources :districts, only: %i[index show]
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     resources :initiative_statuses, only: %i[index new edit create update]
     resources :group_types, only: %i[index new edit create update]
   end
+  resource :animation, only: %i[show]
   devise_for :users, controllers: { confirmations: 'confirmations' }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'home#index'
 end
