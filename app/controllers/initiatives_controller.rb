@@ -80,7 +80,7 @@ class InitiativesController < ApplicationController
 
   def set_edit_data
     set_group_types
-    @groups = current_user.groups.all.map { |group| [group.name, group.id] }
+    @groups = Group.all.map { |group| [group.name, group.id] }
 
     @initiative_statuses =
       InitiativeStatus.all.map do |initiative_status|
@@ -98,7 +98,7 @@ class InitiativesController < ApplicationController
 
   def select_group
     lead_group_id = initiative_params[:lead_group_id]
-    @initiative.lead_group = current_user.groups.find(lead_group_id) if lead_group_id.present?
+    @initiative.lead_group = Group.find(lead_group_id) if lead_group_id.present?
   end
 
   def find_or_create_group
