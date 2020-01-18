@@ -82,6 +82,7 @@ set_meta_tags og: {
                     <%= link_to 'Sign in', new_user_session_path %>
                   <% end %>
                   <% if user_signed_in? %>
+                    <%= current_user.email%>
                     <%= link_to('Initiatives', initiatives_path) %>
                     <%= link_to('Groups', groups_path) %>
                   <% end %>
