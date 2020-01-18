@@ -7,7 +7,7 @@ class InitiativesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
 
   def index
-    @initiatives = current_user.initiatives.all
+    @initiatives = current_user.all_initiatives
   end
 
   def show
