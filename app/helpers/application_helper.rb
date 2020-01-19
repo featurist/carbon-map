@@ -48,7 +48,7 @@ module ApplicationHelper
     text = 'Carbon Saving not applicable'
     if initiative.carbon_saving_anticipated?
       if initiative.carbon_saving_quantified?
-        text = "Direct Carbon Saving: #{format_carbon_saving(initiative.carbon_saving_amount)}</p>"
+        text = "Direct Carbon Saving: #{format_carbon_saving(initiative.carbon_saving_amount)}"
       end
       text = 'Carbon Saving not yet quantified' unless initiative.carbon_saving_quantified?
     end
