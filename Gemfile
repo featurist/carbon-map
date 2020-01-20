@@ -27,6 +27,7 @@ gem 'google-cloud-storage', '~> 1.11', require: false
 gem 'image_processing', '~> 1.2'
 gem 'meta-tags'
 gem 'pg'
+gem 'rollbar'
 gem 'uk_postcode', '~> 2.1.0'
 
 group :development, :test do
