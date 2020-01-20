@@ -83,7 +83,7 @@ class InitiativesController < ApplicationController
 
   def set_edit_data
     set_group_types
-    @groups = Group.all.map { |group| [group.name, group.id] }
+    @groups = Group.all.order(name: :asc).map { |group| [group.name, group.id] }
 
     @initiative_statuses =
       InitiativeStatus.all.map do |initiative_status|
