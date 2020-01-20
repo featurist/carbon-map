@@ -7,7 +7,7 @@ class InitiativesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
 
   def index
-    @initiatives = current_user.initiatives.all
+    @initiatives = current_user.all_initiatives
   end
 
   def show
@@ -29,9 +29,11 @@ class InitiativesController < ApplicationController
 
   def edit; end
 
+  # rubocop:disable Metrics/MethodLength
   def create
     create_proposed_solutions
     @initiative = Initiative.new(initiative_params)
+    @initiative.owner = current_user
     find_or_create_group
     @initiative.update_location_from_postcode
 
@@ -42,6 +44,7 @@ class InitiativesController < ApplicationController
       render :new
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # rubocop:disable Metrics/MethodLength
   def update
@@ -80,7 +83,7 @@ class InitiativesController < ApplicationController
 
   def set_edit_data
     set_group_types
-    @groups = current_user.groups.all.map { |group| [group.name, group.id] }
+    @groups = Group.all.map { |group| [group.name, group.id] }
 
     @initiative_statuses =
       InitiativeStatus.all.map do |initiative_status|
@@ -98,7 +101,7 @@ class InitiativesController < ApplicationController
 
   def select_group
     lead_group_id = initiative_params[:lead_group_id]
-    @initiative.lead_group = current_user.groups.find(lead_group_id) if lead_group_id.present?
+    @initiative.lead_group = Group.find(lead_group_id) if lead_group_id.present?
   end
 
   def find_or_create_group

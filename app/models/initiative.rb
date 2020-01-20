@@ -4,6 +4,7 @@ require 'uk_postcode'
 
 # rubocop:disable Metrics/ClassLength
 class Initiative < ApplicationRecord
+  belongs_to :owner, class_name: 'User'
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
   belongs_to :parish
