@@ -1,6 +1,6 @@
 # Carbon Neutral Map
 
-This is the source code for the [Carbon Netural Map](https://carbonneutralmap.org) website.
+This is the source code for the [Carbon Netural Map](https://carbonneutralmap.org.uk) website.
 
 ## Getting Started
 
