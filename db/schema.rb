@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 2020_01_18_113424) do
     t.string "administrative_notes"
     t.boolean "carbon_saving_anticipated", default: false, null: false
     t.boolean "carbon_saving_quantified", default: false, null: false
+    t.boolean "draft", default: false, null: false
     t.bigint "owner_id"
     t.index ["lead_group_id"], name: "index_initiatives_on_lead_group_id"
     t.index ["owner_id"], name: "index_initiatives_on_owner_id"

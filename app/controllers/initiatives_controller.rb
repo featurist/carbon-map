@@ -4,10 +4,15 @@
 class InitiativesController < ApplicationController
   before_action :set_initiative, only: %i[edit update]
   before_action :set_edit_data, only: %i[edit new create update]
-  skip_before_action :authenticate_user!, only: %i[show]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  helper_method :can_edit?
+
+  def can_edit?(initiative)
+    initiative.owner == current_user
+  end
 
   def index
-    @initiatives = current_user.all_initiatives
+    @initiatives = Initiative.all
   end
 
   def show

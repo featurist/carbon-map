@@ -18,17 +18,23 @@
       <th>Name</th>
       <th>Location</th>
       <th>Status</th>
+      <th>Last Updated</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @initiatives.each do |initiative| %>
-      <tr>
-        <td><%= initiative.name %></td>
+      <tr class="Initiative">
+        <td><%= link_to initiative.name, initiative_path(initiative) %></td>
         <td><%= initiative.location %></td>
         <td><%= initiative.status_name %></td>
-        <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false, class: 'Button Button--success' %></td>
+        <td><%= initiative.updated_at.strftime '%d/%m/%y %H:%M' %></td>
+        <% if can_edit? initiative %>
+          <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false, class: 'Button Button--success', data: {content: 'edit-initiative'} %></td>
+        <% else %>
+          <td></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
