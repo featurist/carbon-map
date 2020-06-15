@@ -40,6 +40,7 @@ set_meta_tags og: {
                     <a href="#" onclick="document.querySelector('.Nav').classList.remove('Nav-open');return false;">Close</a>
                     <hr />
                     <%= link_to 'Add a project', new_initiative_path %>
+                    <%= link_to 'Initiatives', initiatives_path %>
                     <hr />
                     <%= link_to('About', about_path)%>
                     <%= link_to('Contact', contact_path)%>
@@ -70,6 +71,7 @@ set_meta_tags og: {
                 &nbsp;
                 <span class="Nav-main">
                   <%=link_to inline_icon('circle') + '<span>Add a project</span>'.html_safe, new_initiative_path %>
+                  <%=link_to inline_icon('circle') + '<span>Initiatives</span>'.html_safe, initiatives_path %>
                 </span>
                 <span class="Nav-supplementary">
                   <%= link_to('About', about_path)%>

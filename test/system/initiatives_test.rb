@@ -5,7 +5,6 @@ require 'application_system_test_case'
 class InitiativesTest < ApplicationSystemTestCase
   test 'visiting the index' do
     visit initiatives_url
-    sign_in_as :georgie
     assert_selector 'h1', text: 'Initiatives'
   end
 

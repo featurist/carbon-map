@@ -14,9 +14,5 @@ class User < ApplicationRecord
   has_many :initiatives, foreign_key: 'owner_id', inverse_of: :owner, dependent: :nullify
   has_many :groups_initiatives, through: :groups, source: :initiatives
 
-  def all_initiatives
-    (initiatives + groups_initiatives).uniq
-  end
-
   attribute :role, :string, default: 'consumer'
 end

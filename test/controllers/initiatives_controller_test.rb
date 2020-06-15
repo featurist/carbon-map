@@ -13,9 +13,18 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     Rack::Test::UploadedFile.new('test/fixtures/files/header.jpg', 'image/jpeg')
   end
 
-  test 'should get index' do
+  test 'should get index when anonymous' do
+    get initiatives_url
+    assert_select '.Initiative', count: Initiative.all.size
+    assert_select '*[data-content=edit-initiative]', count: 0
+    assert_response :success
+  end
+
+  test 'should get index when signed in' do
     sign_in_as :georgie
     get initiatives_url
+    assert_select '.Initiative', count: Initiative.all.size
+    assert_select '*[data-content=edit-initiative]', count: Initiative.all.size
     assert_response :success
   end
 
