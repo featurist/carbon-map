@@ -84,6 +84,8 @@ class InitiativesController < ApplicationController
 
   def set_initiative
     @initiative = Initiative.find(params[:id])
+
+    redirect_to initiatives_url unless can_edit?(@initiative)
   end
 
   def set_edit_data

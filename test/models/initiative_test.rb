@@ -12,7 +12,8 @@ class InitiativeTest < ActiveSupport::TestCase
         res.delete('href')
         res.deep_symbolize_keys!
       end
-    assert_equal expected_initiative_attributes, initiatives
+    initiatives_to_compare = initiatives.filter { |initiative| initiative[:name] == 'The Fruit Exchange' }
+    assert_equal expected_initiative_attributes, initiatives_to_compare
   end
 
   test 'display contact info if consent given' do

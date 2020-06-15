@@ -16,9 +16,20 @@ fruit_exchange:
   contact_email: info@downtoearthstroud.co.uk
   status: operational
   consent_to_share: true
-  #"website": "http://www.downtoearthstroud.co.uk/the-fruit-exchange1/",
-  #"status": "implementation",
-  #"sector": "Food",
-  #"theme": "Community food production and Food Waste",
-  #"solution": "Produce sharing",
-  #"notes": "They've mapped companies taking part in sharing the produce!",
+
+brians_initiative:
+  owner: brian
+  postcode: GL54UB
+  parish: stroud_uplands
+  latitude: 51.749253
+  longitude: -2.283586
+  name: Brians CO2 Hub
+  description_what: Store CO2
+  description_how: Using bottles
+  description_further_information: Still working on the details
+  lead_group: down_to_earth_stroud
+  contact_name: No name
+  contact_phone: 01453 55555
+  contact_email: info@example.com
+  status: operational
+  consent_to_share: true

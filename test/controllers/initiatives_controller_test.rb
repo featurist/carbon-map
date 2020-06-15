@@ -21,10 +21,11 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index when signed in' do
+    georgie = users(:georgie)
     sign_in_as :georgie
     get initiatives_url
     assert_select '.Initiative', count: Initiative.all.size
-    assert_select '*[data-content=edit-initiative]', count: Initiative.all.size
+    assert_select '*[data-content=edit-initiative]', count: georgie.initiatives.size
     assert_response :success
   end
 
@@ -171,6 +172,20 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :georgie
     get edit_initiative_url(@initiative)
     assert_response :success
+  end
+
+  test 'cannot GET edit for an initiative you do not own' do
+    initiative = initiatives(:brians_initiative)
+    sign_in_as :georgie
+    get edit_initiative_url(initiative)
+    assert_redirected_to initiatives_url
+  end
+
+  test 'cannot PATCH edit for an initiative you do not own' do
+    initiative = initiatives(:brians_initiative)
+    sign_in_as :georgie
+    patch initiative_url(initiative), params: update_params(initiative)
+    assert_redirected_to initiatives_url
   end
 
   test 'should update initiative' do
