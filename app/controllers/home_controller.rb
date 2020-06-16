@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 
   def index
     @initiatives_json = Initiative.approved.to_json
-    initiatives = Initiative.all
+    initiatives = Initiative.published
     @map_data = MapData.new(initiatives)
     @sectors = Sector.all
     @districts = District.all

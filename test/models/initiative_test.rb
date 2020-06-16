@@ -3,6 +3,10 @@
 require 'test_helper'
 
 class InitiativeTest < ActiveSupport::TestCase
+  test 'new initiative defaults to draft' do
+    assert_equal 'draft', Initiative.new.publication_status
+  end
+
   test 'approved json' do
     initiatives =
       Initiative.approved.map do |initiative|

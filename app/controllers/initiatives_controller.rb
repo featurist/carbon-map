@@ -12,7 +12,8 @@ class InitiativesController < ApplicationController
   end
 
   def index
-    @initiatives = Initiative.all
+    current_users_initiatives = current_user&.initiatives || []
+    @initiatives = (Initiative.published + current_users_initiatives).uniq.sort_by(&:name)
   end
 
   def show
@@ -182,6 +183,7 @@ class InitiativesController < ApplicationController
         :contact_phone,
         :partner_groups_role,
         :status_id,
+        :publication_status,
         :consent_to_share,
         :related_initiatives,
         :administrative_notes,

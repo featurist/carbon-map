@@ -170,6 +170,11 @@
     <%= f.text_area :administrative_notes %>
   <% end %>
 
+  <%= f.form_field :publication_status, required: true do %>
+    <%= f.label :publication_status, 'Publication Status' %>
+    <%= f.select :publication_status, publication_statuses %>
+  <% end %>
+
   <div class="FormField-actions">
     <%= f.submit class: 'Button Button--success Button--large' %>
   </div>

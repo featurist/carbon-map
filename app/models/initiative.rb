@@ -4,17 +4,26 @@ require 'uk_postcode'
 
 # rubocop:disable Metrics/ClassLength
 class Initiative < ApplicationRecord
+  after_initialize :set_default_location
+  after_initialize :set_default_publication_status
+
   belongs_to :owner, class_name: 'User'
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
   belongs_to :parish
+
   delegate :name, prefix: true, to: :status
   delegate :name, prefix: true, to: :lead_group
-  after_initialize :set_default_location
+  delegate :ward, to: :parish
+  delegate :district, to: :ward
+  delegate :county, to: :district
+  delegate :region, to: :county
+
   has_many :solutions, class_name: 'InitiativeSolution', dependent: :destroy
   has_many :themes, class_name: 'InitiativeTheme', dependent: :destroy
   has_many_attached :images
   has_many :websites, class_name: 'InitiativeWebsite', dependent: :destroy
+
   accepts_nested_attributes_for :solutions
   accepts_nested_attributes_for :themes
   accepts_nested_attributes_for :lead_group
@@ -29,14 +38,13 @@ class Initiative < ApplicationRecord
             :contact_email,
             :contact_phone,
             :lead_group,
+            :publication_status,
             presence: true
 
   validate :at_least_one_solution_or_theme
   validate :validate_postcode
 
-  def website_empty?(attributes)
-    attributes['url'].blank?
-  end
+  enum publication_status: { draft: 'draft', published: 'published', archived: 'archived', rejected: 'rejected' }
 
   def validate_postcode
     ukpc = UKPostcode.parse(postcode)
@@ -49,11 +57,6 @@ class Initiative < ApplicationRecord
 
   def at_least_one_solution_or_theme
     errors.add(:solution, 'at least one equired') if solutions.empty? && themes.empty?
-  end
-
-  def set_default_location
-    self.latitude ||= 51.742
-    self.longitude ||= -2.222
   end
 
   def public_attributes
@@ -98,14 +101,6 @@ class Initiative < ApplicationRecord
     PublicInitiative.new(self)
   end
 
-  delegate :ward, to: :parish
-
-  delegate :district, to: :ward
-
-  delegate :county, to: :district
-
-  delegate :region, to: :county
-
   def location
     return unless parish
 
@@ -129,5 +124,20 @@ class Initiative < ApplicationRecord
     }
   end
   # rubocop:enable Metrics/MethodLength
+
+  private
+
+  def set_default_location
+    self.latitude ||= 51.742
+    self.longitude ||= -2.222
+  end
+
+  def set_default_publication_status
+    self.publication_status = 'draft' if publication_status.blank?
+  end
+
+  def website_empty?(attributes)
+    attributes['url'].blank?
+  end
 end
 # rubocop:enable Metrics/ClassLength
