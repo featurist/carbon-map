@@ -66,9 +66,11 @@
 
 @media (--bp-mobile) {
 
-  .Explore,
+  .Explore {
+  }
+
   .Explore-panel {
-    height: 100vh;
+    height: 400px;
   }
 }
 
@@ -168,4 +170,29 @@
   a {
     color: inherit;
   }
+}
+
+.Explore-background {
+  background-color: $color-blue;
+  padding-bottom: 3px;
+  padding-top: 12px;
+}
+
+.Explore-tabs {
+  display: flex;
+  margin: 0 12px;
+}
+
+.Explore-tab {
+  display: inline-block;
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.Explore-tab_selected {
+  background-color: #fff;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }

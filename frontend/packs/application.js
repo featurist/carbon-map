@@ -10,4 +10,5 @@ require("../styles/application.css");
 
 require.context("../images", true);
 require.context("../logos", true);
+require.context("../icons", true);
 require.context("../fonts", true);
