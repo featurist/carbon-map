@@ -65,6 +65,16 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_initiative_path(Initiative.last)
   end
 
+  test 'archived initiative cannot be edited' do
+    @initiative.update!(publication_status: 'archived')
+
+    sign_in_as :georgie
+    patch initiative_url(@initiative),
+          params: update_params(@initiative)
+
+    assert_redirected_to initiatives_path
+  end
+
   test 'create initiative and lead group' do
     sign_in_as :georgie
     lead_group = {

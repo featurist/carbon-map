@@ -53,6 +53,11 @@ class InitiativesController < ApplicationController
 
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   def update
+    if @initiative.publication_status == 'archived'
+      redirect_to initiatives_path, notice: "'#{@initiative.name}' has been archived and cannot be edited"
+      return
+    end
+
     clear_solutions_and_themes && create_proposed_solutions
     images = initiative_params.delete 'images'
     find_or_create_group
