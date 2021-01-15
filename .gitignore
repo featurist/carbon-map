@@ -38,3 +38,5 @@ yarn-debug.log*
 
 # these images are copied in at install time
 /public/leaflet
+*.dump
+.envrc
