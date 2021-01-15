@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_18_113424) do
+ActiveRecord::Schema.define(version: 2020_06_16_193415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,12 +127,12 @@ ActiveRecord::Schema.define(version: 2020_01_18_113424) do
     t.string "name"
     t.string "description_further_information"
     t.integer "carbon_saving_amount"
-    t.bigint "lead_group_id", null: false
+    t.bigint "lead_group_id"
     t.string "contact_name"
     t.string "contact_email"
     t.string "contact_phone"
     t.string "partner_groups_role"
-    t.bigint "status_id", null: false
+    t.bigint "status_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
@@ -146,11 +146,12 @@ ActiveRecord::Schema.define(version: 2020_01_18_113424) do
     t.string "administrative_notes"
     t.boolean "carbon_saving_anticipated", default: false, null: false
     t.boolean "carbon_saving_quantified", default: false, null: false
-    t.boolean "draft", default: false, null: false
     t.bigint "owner_id"
+    t.string "publication_status"
     t.index ["lead_group_id"], name: "index_initiatives_on_lead_group_id"
     t.index ["owner_id"], name: "index_initiatives_on_owner_id"
     t.index ["parish_id"], name: "index_initiatives_on_parish_id"
+    t.index ["publication_status"], name: "index_initiatives_on_publication_status"
     t.index ["status_id"], name: "index_initiatives_on_status_id"
   end
 

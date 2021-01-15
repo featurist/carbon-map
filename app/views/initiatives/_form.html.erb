@@ -170,6 +170,13 @@
     <%= f.text_area :administrative_notes %>
   <% end %>
 
+  <% if publication_statuses.map {|s| s[1]}.include?(initiative.publication_status) %>
+    <%= f.form_field :publication_status, required: true do %>
+      <%= f.label :publication_status, 'Publication Status' %>
+      <%= f.select :publication_status, publication_statuses %>
+    <% end %>
+  <% end %>
+
   <div class="FormField-actions">
     <%= f.submit class: 'Button Button--success Button--large' %>
   </div>

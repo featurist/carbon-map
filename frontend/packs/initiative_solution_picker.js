@@ -97,8 +97,8 @@ class SolutionPicker {
                 class="AddInitiativeResults-item"
                 onclick={() => this.addSolution(solution)}
               >
-                {solution.sector} > {solution.theme} > {solution.class} >{" "}
-                {solution.solution}
+                {solution.sector} &gt; {solution.theme} &gt; {solution.class}{" "}
+                &gt; {solution.solution}
               </li>
             );
           })}
@@ -125,7 +125,7 @@ class SolutionPicker {
     function renderSector() {
       if (self.navigation.sector) {
         return [
-          <span>&nbsp;>&nbsp;</span>,
+          <span>&nbsp;&gt;&nbsp;</span>,
           <span
             onclick={() => self.navigate({ sector: self.navigation.sector })}
           >
@@ -137,7 +137,7 @@ class SolutionPicker {
     function renderTheme() {
       if (self.navigation.theme) {
         return [
-          <span>&nbsp;>&nbsp;</span>,
+          <span>&nbsp;gt;&nbsp;</span>,
           <span onclick={() => self.navigate({ theme: self.navigation.theme })}>
             {self.navigation.theme.name}
           </span>
@@ -147,7 +147,7 @@ class SolutionPicker {
     function renderSolutionClass() {
       if (self.navigation.solutionClass) {
         return [
-          <span>&nbsp;>&nbsp;</span>,
+          <span>&nbsp;&gt;&nbsp;</span>,
           <span
             onclick={() =>
               self.navigate({ solutionClass: self.navigation.solutionClass })
@@ -369,7 +369,7 @@ class SolutionPicker {
             return (
               <li class="Solution-item">
                 <span class="Solution-itemDescription">
-                  {theme.sector} > {theme.name}
+                  {theme.sector} &gt; {theme.name}
                 </span>
                 <img
                   src={closeCircle}
@@ -388,8 +388,8 @@ class SolutionPicker {
             return (
               <li class="Solution-item">
                 <span class="Solution-itemDescription">
-                  {solution.sector} > {solution.theme} > {solution.class} >{" "}
-                  {solution.solution}
+                  {solution.sector} &gt; {solution.theme} &gt; {solution.class}{" "}
+                  &gt; {solution.solution}
                 </span>
                 <img
                   src={closeCircle}

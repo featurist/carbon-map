@@ -16,6 +16,7 @@ fruit_exchange:
   contact_email: info@downtoearthstroud.co.uk
   status: operational
   consent_to_share: true
+  publication_status: published
 
 brians_initiative:
   owner: brian
@@ -33,3 +34,4 @@ brians_initiative:
   contact_email: info@example.com
   status: operational
   consent_to_share: true
+  publication_status: published

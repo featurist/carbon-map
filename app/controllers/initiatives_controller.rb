@@ -8,11 +8,16 @@ class InitiativesController < ApplicationController
   helper_method :can_edit?
 
   def can_edit?(initiative)
-    initiative.owner == current_user
+    initiative.owner == current_user || current_user&.role == 'admin'
   end
 
   def index
-    @initiatives = Initiative.all
+    current_users_initiatives = current_user&.initiatives || []
+    @initiatives = if current_user&.role == 'admin'
+                     Initiative.all.sort_by(&:name)
+                   else
+                     (Initiative.published + current_users_initiatives).uniq.sort_by(&:name)
+                   end
   end
 
   def show
@@ -37,12 +42,11 @@ class InitiativesController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def create
     create_proposed_solutions
-    @initiative = Initiative.new(initiative_params)
-    @initiative.owner = current_user
+    @initiative = Initiative.new(initiative_params.merge(owner: current_user))
     find_or_create_group
     @initiative.update_location_from_postcode
 
-    if @initiative.save
+    if @initiative.save(validate: @initiative.publication_status != 'draft')
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully created.'
     else
@@ -51,15 +55,23 @@ class InitiativesController < ApplicationController
   end
   # rubocop:enable Metrics/MethodLength
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
   def update
+    publication_status = @initiative.publication_status
+    if publication_status == 'archived'
+      redirect_to initiatives_path, notice: "'#{@initiative.name}' has been archived and cannot be edited"
+      return
+    end
+
+    initiative_params.delete(:publication_status) if publication_status == 'rejected' && current_user.role != 'admin'
+
     clear_solutions_and_themes && create_proposed_solutions
     images = initiative_params.delete 'images'
     find_or_create_group
     @initiative.assign_attributes initiative_params
     @initiative.update_location_from_postcode
 
-    if @initiative.save
+    if @initiative.save(validate: publication_status != 'draft')
       @initiative.images.attach images if images
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully updated.'
@@ -67,7 +79,7 @@ class InitiativesController < ApplicationController
       render :edit
     end
   end
-  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
   private
 
@@ -182,6 +194,7 @@ class InitiativesController < ApplicationController
         :contact_phone,
         :partner_groups_role,
         :status_id,
+        :publication_status,
         :consent_to_share,
         :related_initiatives,
         :administrative_notes,
