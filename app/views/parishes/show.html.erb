@@ -14,12 +14,12 @@
 ] do %>
   <div class="sidebar-pane Explore-navigation" id="initiatives">
     <h1 class="sidebar-header">Initiatives</h1>
-  <% @parish.initiatives.each do |initiative| %>
-    <%=link_to initiative.name, initiative%>
-    <% unless @parish.initiatives.last == initiative %>
-      <hr />
-    <% end %>
+    <% initiatives = @parish.initiatives.published %>
+    <% initiatives.each do |initiative| %>
+      <%=link_to initiative.name, initiative%>
+      <% unless initiatives.last == initiative %>
+        <hr />
+      <% end %>
   <% end %>
   </div>
 <% end %>
-

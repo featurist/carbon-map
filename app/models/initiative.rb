@@ -96,7 +96,7 @@ class Initiative < ApplicationRecord
   end
 
   def self.approved
-    Initiative.all.map(&:to_public_initiative)
+    Initiative.published.map(&:to_public_initiative)
   end
 
   def to_public_initiative
