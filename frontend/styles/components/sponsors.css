@@ -4,31 +4,41 @@
 
 .sponsors-heading {
   margin-bottom: 10px;
-  text-align: center;
 }
 
 .sponsors-logos {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+
+  img {
+    height: 40px;
+    mix-blend-mode: lighten;
+  }
+}
+
+.sponsors-group {
+  display: flex;
+  flex-direction: column;
 }
 
 .sponsors-logo {
   align-items: center;
   flex: 1;
-  flex-direction: column;
-  height: 75px;
   margin: 10px;
-  width: 200px;
+  text-align: center;
 }
 
 @media (--bp-mobile) {
 
+  .sponsors-logo {
+    margin: 20px;
+  }
+
   .sponsors-logos {
-    align-items: stretch;
     flex-direction: row;
   }
 
-  .sponsors-logo {
-    max-width: 200px;
+  .sponsors-group {
+    flex-direction: row;
   }
 }

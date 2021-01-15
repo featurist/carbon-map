@@ -132,13 +132,39 @@ set_meta_tags og: {
 
       <footer class="Footer">
         <div class="Container">
-          <div class="sponsors">
-            <h2 class="sponsors-heading">Sponsors</h2>
-            <div class="sponsors-logos">
-              <a class="sponsors-logo" href="https://featurist.co.uk" target="_blank"><img src="<%=asset_pack_path("media/logos/featurist.svg")%>"></a>
+          <div class="Footer-main">
+            <div class="Footer-contact">
+              <p>Carbon Neutral Map</p>
+              <a href="mailto:support@carbonneutralmap.org.uk">support@carbonneutralmap.org.uk</a>
+              <div class="Footer-copyright">&copy; Transition Stroud <time datetime="<%= Date.current.year %>"><%= Date.current.year %></time></div>
+            </div>
+
+            <div class="Footer-links">
+              <div class="Footer-internal_links">
+                <%= link_to 'Privacy policy', '/privacy' %>
+                <%= link_to 'Get in touch', '/contact' %>
+              </div>
+
+              <div class="Footer-social">
+                <a href="https://facebook.com/carbon-neutral-map"><%=inline_icon 'facebook' %></a>
+                <a href="https://twitter.com/carbon-neutral-map"><%=inline_icon 'twitter' %></a>
+              </div>
             </div>
           </div>
-          <p class="Footer-copyright">&copy; Carbon Map <time datetime="<%= Date.current.year %>"><%= Date.current.year %></time></p>
+
+          <div class="sponsors">
+            <h2 class="sponsors-heading">Supported by</h2>
+            <div class="sponsors-logos">
+              <div class="sponsors-group">
+                <a class="sponsors-logo" href="https://featurist.co.uk" target="_blank"><img src="<%=asset_pack_path("media/logos/featurist.svg")%>"></a>
+                <a class="sponsors-logo" href="https://transitionstroud.org" target="_blank"><img src="<%=asset_pack_path("media/logos/transition-stroud.png")%>"></a>
+              </div>
+              <div class="sponsors-group">
+                <a class="sponsors-logo" href="https://transitionnetwork.org" target="_blank"><img src="<%=asset_pack_path("media/logos/transition-network.png")%>"></a>
+                <a class="sponsors-logo" href="https://www.tnlcommunityfund.org.uk" target="_blank"><img src="<%=asset_pack_path("media/logos/community-fund.png")%>"></a>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
 
