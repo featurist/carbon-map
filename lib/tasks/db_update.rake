@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 namespace :db_update do
   task :production do
     app_name = ENV['CARBON_MAP_APP_NAME']
