@@ -54,6 +54,17 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_initiative_path(Initiative.last)
   end
 
+  test 'create draft initiative' do
+    sign_in_as :georgie
+    assert_difference('Initiative.count') do
+      post initiatives_url, params: { initiative: { name: 'draft init', publication_status: 'draft' } }
+    end
+    initiative = Initiative.last
+    assert_equal 'draft init', initiative.name
+
+    assert_redirected_to edit_initiative_path(Initiative.last)
+  end
+
   test 'create initiative and lead group' do
     sign_in_as :georgie
     lead_group = {

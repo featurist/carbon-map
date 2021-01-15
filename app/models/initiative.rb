@@ -68,6 +68,8 @@ class Initiative < ApplicationRecord
   end
 
   def fetch_location
+    return unless postcode
+
     postcodes_url = "https://api.postcodes.io/postcodes/#{postcode.delete(' ')}"
     json_response = Net::HTTP.get(URI(postcodes_url))
     JSON.parse(json_response)['result']

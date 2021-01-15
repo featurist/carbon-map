@@ -10,5 +10,8 @@ class AddPublicationStatusToInitiative < ActiveRecord::Migration[6.0]
         ActiveRecord::Base.connection.execute("update initiatives set publication_status = 'published'")
       end
     end
+
+    change_column_null :initiatives, :lead_group_id, true
+    change_column_null :initiatives, :status_id, true
   end
 end

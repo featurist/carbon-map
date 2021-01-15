@@ -38,12 +38,11 @@ class InitiativesController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def create
     create_proposed_solutions
-    @initiative = Initiative.new(initiative_params)
-    @initiative.owner = current_user
+    @initiative = Initiative.new(initiative_params.merge(owner: current_user))
     find_or_create_group
     @initiative.update_location_from_postcode
 
-    if @initiative.save
+    if @initiative.save(validate: @initiative.publication_status != 'draft')
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully created.'
     else
@@ -52,7 +51,7 @@ class InitiativesController < ApplicationController
   end
   # rubocop:enable Metrics/MethodLength
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   def update
     clear_solutions_and_themes && create_proposed_solutions
     images = initiative_params.delete 'images'
@@ -60,7 +59,7 @@ class InitiativesController < ApplicationController
     @initiative.assign_attributes initiative_params
     @initiative.update_location_from_postcode
 
-    if @initiative.save
+    if @initiative.save(validate: @initiative.publication_status != 'draft')
       @initiative.images.attach images if images
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully updated.'
@@ -68,7 +67,7 @@ class InitiativesController < ApplicationController
       render :edit
     end
   end
-  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
   private
 

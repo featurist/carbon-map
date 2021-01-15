@@ -127,12 +127,12 @@ ActiveRecord::Schema.define(version: 2020_06_16_193415) do
     t.string "name"
     t.string "description_further_information"
     t.integer "carbon_saving_amount"
-    t.bigint "lead_group_id", null: false
+    t.bigint "lead_group_id"
     t.string "contact_name"
     t.string "contact_email"
     t.string "contact_phone"
     t.string "partner_groups_role"
-    t.bigint "status_id", null: false
+    t.bigint "status_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
