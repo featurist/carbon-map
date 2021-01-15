@@ -1,14 +1,13 @@
 .Nav {
-  background-color: $color-orange;
-  color: #fff;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: right;
+  margin-right: 20px;
   padding: 7px;
   width: 100%;
 }
 
 .Nav a {
-  color: #fff;
   font-size: 1.1em;
   font-weight: 600;
   line-height: 1.8em;
@@ -16,6 +15,13 @@
   margin-right: 5px;
   text-align: center;
   text-decoration: none;
+}
+
+@media (--bp-mobile) {
+
+  .Nav a {
+    margin-right: 33px;
+  }
 }
 
 .Nav a::before {
@@ -30,8 +36,14 @@
   color: $color-orange;
 }
 
+.Nav-secondary {
+  display: flex;
+  flex-grow: 1;
+  justify-content: right;
+  margin-top: -12px;
+}
+
 .Header-contentMobile {
-  background-color: $color-orange;
   display: flex;
   flex: 1;
   position: relative;
@@ -81,7 +93,7 @@
 }
 
 .Nav.Nav-open .Nav-flyover {
-  background-color: $color-orange;
+  background-color: #fff;
   display: block;
   padding: 10px;
   position: absolute;
@@ -118,4 +130,24 @@
   .Header-contentDesktop {
     display: block;
   }
+}
+
+.Nav .SignIn-link {
+  margin-right: 15px;
+}
+
+@media (--bp-tablet-landscape) {
+
+  .Nav .SignIn-link {
+    border: solid 1px #999;
+    border-radius: 3px;
+    padding: 10px;
+    position: absolute;
+  }
+}
+
+.SignIn-icon {
+  height: 30px;
+  vertical-align: middle;
+  width: 30px;
 }

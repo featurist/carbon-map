@@ -31,9 +31,15 @@ set_meta_tags og: {
             <%=link_to image_tag(asset_pack_path("media/images/logo.svg")), root_path, class: 'Header-logo' %>
             <div class="Header-contentMobile">
               <nav class="Nav">
+                <%= link_to new_user_session_path, class: 'SignIn-link' do %>
+                  <svg class="SignIn-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+                  </svg>
+                  Sign in
+                <% end %>
                 <a class="Nav-burger" onclick="document.querySelector('.Nav').classList.add('Nav-open')"><svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
                     <g>
-                    <path fill="#ffffff" id="svg_1" d="m4,10l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2zm24,4l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2zm0,8l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2z"/>
+                    <path fill="#000" id="svg_1" d="m4,10l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2zm24,4l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2zm0,8l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2z"/>
                     </g>
                   </svg></a>
                   <nav class="Nav-flyover">
@@ -68,17 +74,22 @@ set_meta_tags og: {
             </div>
             <div class="Header-contentDesktop">
               <nav class="Nav">
-                &nbsp;
-                <span class="Nav-main">
-                  <%=link_to inline_icon('circle') + '<span>Add a project</span>'.html_safe, new_initiative_path %>
-                  <%=link_to inline_icon('circle') + '<span>Initiatives</span>'.html_safe, initiatives_path %>
-                </span>
-                <span class="Nav-supplementary">
-                  <%= link_to('About', about_path)%>
-                  <%= link_to('Contact', contact_path)%>
-                </span>
+                <%= link_to('Home', root_path)%>
+                <%= link_to('About us', about_path)%>
+                <%= link_to('FAQs', '/faq')%>
+                <%= link_to('Get in touch', contact_path)%>
+
+
+                <div class="Nav-secondary">
+                  <%= link_to new_user_session_path, class: 'SignIn-link' do %>
+                    <svg class="SignIn-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+                    </svg>
+                    Sign in
+                  <% end %>
+                </div>
               </nav>
-              <nav>
+              <nav style="display:none;">
                 <span class="Nav-supplementary">
                   <% unless user_signed_in? %>
                     <%= link_to 'Sign in', new_user_session_path %>
@@ -99,7 +110,6 @@ set_meta_tags og: {
               </nav>
             </div>
           </div>
-          <p class="Header-strapline">Connecting low carbon initiatives across Stroud District</p>
         </div>
       </header>
 

@@ -1,5 +1,4 @@
 .Header {
-  border-bottom: 1px solid lightgray;
   flex: none;
   padding: 0;
 }
@@ -11,8 +10,8 @@
 }
 
 .Header-logo img {
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
 }
 
 .Header-main {
@@ -23,9 +22,4 @@
 .Header-content {
   flex-grow: 1;
   margin-left: 15px;
-}
-
-.Header-strapline {
-  margin: 0 5px;
-  padding-bottom: 10px;
 }

@@ -1,3 +1,8 @@
+<div class="Explore-strapline">
+  <p class="u-mb">We share community-based projects that work towards a Carbon Neutral Stroud District by 2030 and connect groups organising them.</p>
+  <p class="u-mb">Share knowledge. Enable Change</p>
+</div>
+
 <%= render 'partials/map', map_data: @map_data, sectors: @sectors, tabs: [
   {
     id: 'district',
@@ -5,13 +10,13 @@
     icon: 'map-marker',
   }
 ] do %>
-  <div class="sidebar-pane Explore-navigation" id="district">
-    <h1 class="sidebar-header">Districts</h1>
+<div class="sidebar-pane Explore-navigation" id="district">
+  <h1 class="sidebar-header">Districts</h1>
   <% @districts.each do |district| %>
     <%=link_to district.name, district%>
     <% unless @districts.last == district %>
       <hr />
     <% end %>
   <% end %>
-  </div>
+</div>
 <% end %>
