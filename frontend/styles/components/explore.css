@@ -2,7 +2,6 @@
   background-color: $snow;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 152px); /* Viewport height minus header height */
   position: relative;
 }
 
@@ -57,13 +56,6 @@
   flex: 1;
 }
 
-.Explore-strapline {
-  font-size: 18px;
-  margin: 0 20px;
-  padding-bottom: 10px;
-  text-align: center;
-}
-
 .Explore-panel {
   display: flex;
   height: 100vh;
@@ -74,14 +66,9 @@
 
 @media (--bp-mobile) {
 
+  .Explore,
   .Explore-panel {
-    height: 100%;
-  }
-
-  .Explore-strapline {
-    font-size: 24px;
-    margin: 20px auto;
-    max-width: 770px;
+    height: 100vh;
   }
 }
 

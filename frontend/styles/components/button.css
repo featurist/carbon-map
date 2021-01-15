@@ -1,10 +1,11 @@
 .Button {
-  color: #fff;
+  background-color: $color-blue;
+  border: solid 1px $color-blue;
+  border-radius: 3px;
   cursor: pointer;
   font-family: Arial;
-  font-size: 13px;
-  font-weight: bold;
-  padding: 6px 12px;
+  font-size: 14px;
+  padding: 12px 24px;
 
   &:active {
     position: relative;
@@ -31,4 +32,32 @@
 .Button--large {
   font-size: 16px;
   padding: 12px 24px;
+}
+
+.ButtonInput {
+  background-color: white;
+  display: flex;
+  position: relative;
+
+  input[type=search] {
+    border: 1px solid rgba(102, 102, 102, 0.3);
+    border-radius: 3px 0 0 3px;
+    border-right-style: hidden;
+    flex: 1;
+    font-size: 14px;
+    height: 46px;
+    padding: 13px;
+    width: 100%;
+  }
+
+  .Button {
+    border: 1px solid rgba(102, 102, 102, 0.3);
+    border-left-style: hidden;
+    border-radius: 0 3px 3px 0;
+    display: inline;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+  }
 }

@@ -16,6 +16,10 @@
   margin-bottom: $space-large !important;
 }
 
+.u-mr {
+  margin-right: 12px;
+}
+
 .u-textMuted {
   color: #76767a !important;
 }

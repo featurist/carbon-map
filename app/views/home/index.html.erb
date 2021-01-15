@@ -1,8 +1,54 @@
-<div class="Explore-strapline">
+<div class="Home-strapline">
   <p class="u-mb">We share community-based projects that work towards a Carbon Neutral Stroud District by 2030 and connect groups organising them.</p>
   <p class="u-mb">Share knowledge. Enable Change</p>
 </div>
 
+<div class="Home-add_or_search">
+  <span class="Home-add_initiative">
+  <%= link_to new_initiative_path, class: 'Button' do %>
+    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" class="u-mr">
+      <g fill="none" fill-rule="evenodd">
+        <g fill="#000">
+          <g>
+            <path d="M30.77 18l-.001 4.23H35v2.54l-4.231-.001V29h-2.538l-.001-4.231H24v-2.538l4.23-.001V18h2.54z" transform="translate(-285 -302) translate(261 284)"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+    <span>Add a project</span>
+  <% end %>
+  </span>
+
+  <span class="Home-search_or">Or</span>
+
+  <span class="Home-search">
+    <form action="/search" method="GET">
+      <div class="ButtonInput">
+        <input type="search" name="q" placeholder="Search for a project" />
+        <button type="submit" class="Button">
+          <span class="u-mr">Go</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
+              <g fill="none" fill-rule="evenodd" stroke-linecap="round">
+                  <g stroke="#000">
+                      <g>
+                          <g>
+                              <g>
+                                  <g>
+                                      <path d="M0.333 0.333L5.667 5.667" transform="translate(-608 -326) translate(133 308) translate(423) matrix(-1 0 0 1 58 18) matrix(0 -1 -1 0 6 11.333)"/>
+                                      <path d="M5.667 0.333L11 5.667" transform="translate(-608 -326) translate(133 308) translate(423) matrix(-1 0 0 1 58 18) matrix(0 -1 -1 0 6 11.333) matrix(-1 0 0 1 16.667 0)"/>
+                                  </g>
+                              </g>
+                          </g>
+                      </g>
+                  </g>
+              </g>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </span>
+</div>
 <%= render 'partials/map', map_data: @map_data, sectors: @sectors, tabs: [
   {
     id: 'district',
