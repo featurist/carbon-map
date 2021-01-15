@@ -75,6 +75,18 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to initiatives_path
   end
 
+  test 'pubication status ignored on rejected initiative' do
+    @initiative.update!(publication_status: 'rejected')
+
+    sign_in_as :georgie
+    VCR.use_cassette('valid_postcode') do
+      patch initiative_url(@initiative),
+            params: update_params(@initiative, publication_status: 'published')
+    end
+
+    assert_equal 'rejected', @initiative.reload.publication_status
+  end
+
   test 'create initiative and lead group' do
     sign_in_as :georgie
     lead_group = {
@@ -264,7 +276,8 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def update_params(initiative, images: nil, solutions: nil,
-                    carbon_saving_anticipated: false, carbon_saving_quantified: false, carbon_saving_amount: nil)
+                    carbon_saving_anticipated: false, carbon_saving_quantified: false,
+                    carbon_saving_amount: nil, publication_status: nil)
     solutions ||= default_solutions
     {
       initiative: {
@@ -284,6 +297,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
         description_how: initiative.description_how,
         images: images,
         consent_to_share: true,
+        publication_status: publication_status || initiative.publication_status,
         solutions_attributes: solutions,
         administrative_notes: 'updated notes',
         websites_attributes: [

@@ -7,3 +7,7 @@
 .Initiative-website {
   text-decoration: none;
 }
+
+.Initiative-rejected {
+  opacity: 0.5;
+}

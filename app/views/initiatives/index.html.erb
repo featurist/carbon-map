@@ -25,7 +25,7 @@
 
   <tbody>
     <% @initiatives.each do |initiative| %>
-      <tr class="Initiative">
+      <tr class="Initiative Initiative-<%=initiative.publication_status%>">
         <td><%= link_to initiative.name, initiative_path(initiative) %></td>
         <td><%= initiative.location %></td>
         <td><%= initiative.status_name %></td>

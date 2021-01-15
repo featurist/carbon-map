@@ -8,12 +8,16 @@ class InitiativesController < ApplicationController
   helper_method :can_edit?
 
   def can_edit?(initiative)
-    initiative.owner == current_user
+    initiative.owner == current_user || current_user&.role == 'admin'
   end
 
   def index
     current_users_initiatives = current_user&.initiatives || []
-    @initiatives = (Initiative.published + current_users_initiatives).uniq.sort_by(&:name)
+    @initiatives = if current_user&.role == 'admin'
+                     Initiative.all.sort_by(&:name)
+                   else
+                     (Initiative.published + current_users_initiatives).uniq.sort_by(&:name)
+                   end
   end
 
   def show
@@ -51,12 +55,15 @@ class InitiativesController < ApplicationController
   end
   # rubocop:enable Metrics/MethodLength
 
-  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
   def update
-    if @initiative.publication_status == 'archived'
+    publication_status = @initiative.publication_status
+    if publication_status == 'archived'
       redirect_to initiatives_path, notice: "'#{@initiative.name}' has been archived and cannot be edited"
       return
     end
+
+    initiative_params.delete(:publication_status) if publication_status == 'rejected' && current_user.role != 'admin'
 
     clear_solutions_and_themes && create_proposed_solutions
     images = initiative_params.delete 'images'
@@ -64,7 +71,7 @@ class InitiativesController < ApplicationController
     @initiative.assign_attributes initiative_params
     @initiative.update_location_from_postcode
 
-    if @initiative.save(validate: @initiative.publication_status != 'draft')
+    if @initiative.save(validate: publication_status != 'draft')
       @initiative.images.attach images if images
       redirect_to edit_initiative_path(@initiative),
                   notice: 'Initiative was successfully updated.'
@@ -72,7 +79,7 @@ class InitiativesController < ApplicationController
       render :edit
     end
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
   private
 
