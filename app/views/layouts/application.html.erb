@@ -21,6 +21,8 @@ set_meta_tags og: {
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= yield :page_head %>
+
+    <script async defer data-domain="carbonneutralmap.org.uk" src="https://plausible.io/js/plausible.js"></script>
   </head>
 
   <body>
