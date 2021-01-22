@@ -58,3 +58,17 @@
   </div>
 <% end %>
 </div>
+
+<div class="RecentlyAdded">
+  <span class="RecentlyAdded-title">Recently added projects</span>
+  <span class="RecentlyAdded-subtitle">Find a project that interests you, compare notes with organisers or get involved</span>
+
+  <div class="RecentlyAdded-projects">
+    <% @recently_added.each do |project| %>
+      <a class="RecentlyAdded-project" href="<%=initiative_path(project)%>">
+        <span class="RecentlyAdded-project_title"><span class="RecentlyAdded-project_title_snippet"><%=project.name.truncate(40, seperator: ' ')%></span></span>
+        <span class="RecentlyAdded-project_description"><span class="RecentlyAdded-project_description_snippet"><%=project.description_what.truncate(50, separator: ' ')%></span></span>
+      </a>
+    <% end %>
+  </div>
+</div>

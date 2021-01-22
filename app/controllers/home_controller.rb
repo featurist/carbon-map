@@ -11,5 +11,7 @@ class HomeController < ApplicationController
     @map_data = MapData.new(initiatives)
     @sectors = Sector.all
     @districts = District.all
+
+    @recently_added = Initiative.published.order(created_at: :desc).take(4)
   end
 end
