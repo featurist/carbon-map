@@ -2,6 +2,7 @@
   background-color: $snow;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 152px);
   position: relative;
 }
 
