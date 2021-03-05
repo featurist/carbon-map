@@ -96,8 +96,8 @@ class InitiativesController < ApplicationController
   end
 
   def clear_solutions_and_themes
-    @initiative.themes.clear
-    @initiative.solutions.clear
+    @initiative.themes.clear if params[:themes_attributes]
+    @initiative.solutions.clear if params[:solutions_attributes]
   end
 
   def set_initiative

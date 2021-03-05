@@ -238,6 +238,24 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to initiative_path(@initiative)
   end
 
+  test 'update without themese and solutions retains previous values' do
+    sign_in_as :georgie
+    expected_themes = @initiative.themes.map(&:id)
+    expected_solutions = @initiative.solutions.map(&:id)
+    params = update_params(@initiative)
+    params[:initiative][:solutions_attributes] = nil
+    params[:initiative][:themes_attributes] = nil
+
+    VCR.use_cassette('valid_postcode') do
+      patch initiative_url(@initiative), params: params
+    end
+
+    @initiative.reload
+
+    assert_equal expected_themes, @initiative.themes.map(&:id)
+    assert_equal expected_solutions, @initiative.solutions.map(&:id)
+  end
+
   private
 
   # rubocop:disable Metrics/MethodLength
