@@ -11,3 +11,7 @@
 .Initiative-rejected {
   opacity: 0.5;
 }
+
+.Initiative-status {
+  text-align: right;
+}
