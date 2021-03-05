@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :districts, only: %i[index show]
   resources :wards, only: %i[show]
   resources :parishes, only: %i[show]
-  resources :initiatives, only: %i[index show new edit create update]
+  resources :initiatives, only: %i[index show edit create update new]
+  get '/initiatives/:id/edit/:step' => 'initiatives#edit', as: 'edit_initiative_step'
   resources :groups, only: %i[index new edit create update]
   resources :tags
   scope '/admin' do

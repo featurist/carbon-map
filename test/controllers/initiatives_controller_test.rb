@@ -51,7 +51,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 1, initiative.images.size
     assert_equal 'initial notes', initiative.administrative_notes
 
-    assert_redirected_to edit_initiative_path(Initiative.last)
+    assert_redirected_to edit_initiative_step_path(Initiative.last, step: 2)
   end
 
   test 'create draft initiative' do
@@ -62,7 +62,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     initiative = Initiative.last
     assert_equal 'draft init', initiative.name
 
-    assert_redirected_to edit_initiative_path(Initiative.last)
+    assert_redirected_to edit_initiative_step_path(Initiative.last, step: 2)
   end
 
   test 'archived initiative cannot be edited' do
@@ -106,7 +106,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
-    assert_redirected_to edit_initiative_path(Initiative.last)
+    assert_redirected_to edit_initiative_step_path(Initiative.last, step: 2)
     assert_equal 'group contact', Group.last.contact_name
     assert_equal 'my group', Group.last.name
   end
@@ -235,7 +235,7 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'http://one', websites[0].url
     assert_equal 'http://two', websites[1].url
     assert_equal 'updated notes', @initiative.administrative_notes
-    assert_redirected_to edit_initiative_path(@initiative)
+    assert_redirected_to initiative_path(@initiative)
   end
 
   private

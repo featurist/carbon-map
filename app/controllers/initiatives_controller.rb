@@ -24,8 +24,8 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.find(params['id'])
     @page_description = @initiative.description_what
     @parish = @initiative.parish
-    @ward = @parish.ward
-    @district = @ward.district
+    @ward = @parish&.ward
+    @district = @ward&.district
     @map_data = MapData.new([@initiative])
     render layout: false, template: 'initiatives/map_view' if request.xhr?
   end
@@ -35,9 +35,12 @@ class InitiativesController < ApplicationController
     @initiative.lead_group = Group.new
     @initiative.lead_group.websites << GroupWebsite.new
     @initiative.websites << InitiativeWebsite.new
+    @current_initiative_step = (params[:step] || 1).to_i
   end
 
-  def edit; end
+  def edit
+    @current_initiative_step = (params[:step] || 1).to_i
+  end
 
   # rubocop:disable Metrics/MethodLength
   def create
@@ -47,8 +50,7 @@ class InitiativesController < ApplicationController
     @initiative.update_location_from_postcode
 
     if @initiative.save(validate: @initiative.publication_status != 'draft')
-      redirect_to edit_initiative_path(@initiative),
-                  notice: 'Initiative was successfully created.'
+      redirect_to edit_initiative_step_path(@initiative, step: 2)
     else
       render :new
     end
@@ -73,8 +75,12 @@ class InitiativesController < ApplicationController
 
     if @initiative.save(validate: publication_status != 'draft')
       @initiative.images.attach images if images
-      redirect_to edit_initiative_path(@initiative),
-                  notice: 'Initiative was successfully updated.'
+      if (params[:step] || '').empty?
+        redirect_to initiative_path(@initiative),
+                    notice: 'Initiative was successfully updated.'
+      else
+        redirect_to edit_initiative_step_path(@initiative, step: params[:step])
+      end
     else
       render :edit
     end

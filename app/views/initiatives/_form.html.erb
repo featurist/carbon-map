@@ -13,171 +13,178 @@
 <%= form_with(model: initiative, local: true, html: {class: 'Form'}) do |f| %>
   <%= render 'partials/form_errors', resource: initiative %>
 
-  <%= f.form_field :name, required: true do %>
-    <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true %>
-  <% end %>
-
-  <%= f.form_field :description_what, required: true do %>
-    <%= f.label :description_what, 'What' %>
-    <%= f.text_area :description_what, placeholder: 'Description of Principal Deliverables' %>
-  <% end %>
-
-  <%= f.form_field :description_how, required: true do %>
-    <%= f.label :description_how, 'How' %>
-    <%= f.text_area :description_how, placeholder: 'Delivery Approach' %>
-  <% end %>
-
-  <%= f.form_field :description_further_information, required: true do %>
-    <%= f.label :description_further_information, 'Further Information' %>
-    <%= f.text_area :description_further_information, placeholder: 'Further Information about the project' %>
-  <% end %>
-
-  <%= f.form_field :images do %>
-    <%= f.label :images %>
-    <div>
-    <% initiative.images.each do |image|%>
-      <%= image_tag image.variant(resize_to_limit: [200, 200]) %>
+  <%= initiative_step 1, @current_initiative_step, title: "Describe your project, even if it's just getting started", next_text: "where it's based" do %>
+    <%= f.form_field :name, required: true do %>
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
     <% end %>
-    </div>
-    <%= f.file_field :images, multiple: true, direct_upload: true %>
-  <% end %>
 
-
-  <h2 class="u-mb">Carbon Savings</h2>
-  <%= f.form_field :carbon_saving_applicability do %>
-    <%= f.label :carbon_saving_anticipated, nil, class_names: 'FormField-checkbox' do %>
-      <%= f.check_box :carbon_saving_anticipated %>
-      <span>Are there direct carbon savings from this specific initiative?</span>
+    <%= f.form_field :status_id, required: true do %>
+      <%= f.label :status_id, 'Status' %>
+      <%= f.select :status_id, initiative_statuses %>
     <% end %>
-    <%= f.label :carbon_saving_quantified, nil, class_names: 'FormField-checkbox' + (initiative.carbon_saving_anticipated? ? '' : ' u-hidden') do %>
-      <%= f.check_box :carbon_saving_quantified %>
-      <span>Have you estimated the carbon savings yet?</span>
+
+    <%= f.form_field :description_what, required: true do %>
+      <%= f.label :description_what, 'What' %>
+      <%= f.text_area :description_what, placeholder: 'Description of Principal Deliverables' %>
     <% end %>
-    <%= f.label :carbon_saving_amount, nil, class_names: (initiative.carbon_saving_quantified? ? '' : 'u-hidden') do %>
-      <span>Anticipated carbon saving</span>
-      <%= f.number_field :carbon_saving_amount, class: 'FormField-input FormField-narrow' %> <span><%=carbon_units%></span>
+
+    <%= f.form_field :description_how, required: true do %>
+      <%= f.label :description_how, 'How' %>
+      <%= f.text_area :description_how, placeholder: 'Delivery Approach' %>
     <% end %>
-  <% end %>
 
-  <%= f.form_field :status_id, required: true do %>
-    <%= f.label :status_id, 'Status' %>
-    <%= f.select :status_id, initiative_statuses %>
-  <% end %>
+    <%= f.form_field :description_further_information, required: true do %>
+      <%= f.label :description_further_information, 'Further Information' %>
+      <%= f.text_area :description_further_information, placeholder: 'Further Information about the project' %>
+    <% end %>
 
-  <h2 class="u-mb">Location</h2>
-
-  <%= f.form_field :postcode do %>
-    <%= f.label :postcode %>
-    <div class="FormFieldOverlay">
-      <span id="initiative_postcode_error_message" class="FormFieldOverlay-content FormFieldOverlay-error u-hidden">Invalid postcode</span>
-      <span id="initiative_postcode_updating" class="FormFieldOverlay-content FormFieldOverlay-blink u-hidden">Updating</span>
-      <%= f.text_field :postcode %>
-    </div>
-  <% end %>
-
-  <label class="FormField">
-    <%= f.hidden_field :latitude %>
-    <%= f.hidden_field :longitude %>
-    <p class="u-mb">Drag the marker to the location of the initiative</p>
-    <div class="InitiativeLocationPicker u-mbL" id="location">
-    </div>
-  </label>
-
-  <h2 class="u-mb">Website & Social Media</h2>
-  <div id="initiative_websites" class="CollectionItem-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Website</th>
-          <th>Delete?</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <%= f.fields_for :websites do |website_form| %>
-          <%= render 'partials/website_fields_row', f: website_form %>
+    <%= f.form_field :images do %>
+      <%= f.label :images %>
+      <div>
+        <% initiative.images.each do |image|%>
+          <%= image_tag image.variant(resize_to_limit: [200, 200]) %>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="FormField">
-    <%= f.fields_for :websites, InitiativeWebsite.new do |website_form| %>
-      <%= add_object_link 'Add website', 'initiative_websites', :partial => 'partials/website_fields_row', :locals => { :f => website_form } %>
-    <% end %>
-  </div>
-
-  <h2 class="u-mb">Contact</h2>
-
-  <%= f.form_field :contact_name, required: true do %>
-    <%= f.label :contact_name %>
-    <%= f.text_field :contact_name %>
-  <% end %>
-
-  <%= f.form_field :contact_email, required: true do %>
-    <%= f.label :contact_email %>
-    <%= f.text_field :contact_email %>
-  <% end %>
-
-  <%= f.form_field :contact_phone, required: true do %>
-    <%= f.label :contact_phone %>
-    <%= f.text_field :contact_phone %>
-  <% end %>
-
-  <%= f.form_field :consent_to_share do %>
-    <%= f.check_box :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?' %>
-  <% end %>
-
-  <h2 class="u-mb">Groups</h2>
-
-  <%= f.form_field :lead_group_id do %>
-    <%= f.label :lead_group_id %>
-    <%= f.select :lead_group_id do %>
-      <option value="">Please select a group</option>
-      <%=options_for_select(groups, initiative.lead_group.id) %>
-      <option value="new" <%=new_group_selected?(initiative) ? 'selected' : '' %>>Create New</option>
+      </div>
+      <%= f.file_field :images, multiple: true, direct_upload: true %>
     <% end %>
   <% end %>
 
-  <%= f.fields_for :lead_group do |group_fields| %>
-    <div id="initiative_lead_group_new" class="<%=new_group_selected?(initiative) ? '' : 'u-hidden' %> Initiative-lead_group">
-      <%=render 'groups/form_fields', group: Group.new, group_types: @group_types, f: group_fields %>
+    <%= initiative_step 2, @current_initiative_step, title: 'Where is your project based?', next_text: 'carbon emissions impact' do %>
+    <h2 class="u-mb">Location</h2>
+
+    <%= f.form_field :postcode do %>
+      <%= f.label :postcode %>
+      <div class="FormFieldOverlay">
+        <span id="initiative_postcode_error_message" class="FormFieldOverlay-content FormFieldOverlay-error u-hidden">Invalid postcode</span>
+        <span id="initiative_postcode_updating" class="FormFieldOverlay-content FormFieldOverlay-blink u-hidden">Updating</span>
+        <%= f.text_field :postcode %>
+      </div>
+    <% end %>
+
+    <label class="FormField">
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
+      <p class="u-mb">Drag the marker to the location of the initiative</p>
+      <div class="InitiativeLocationPicker u-mbL" id="location">
+      </div>
+    </label>
+  <% end %>
+
+  <%= initiative_step 3, @current_initiative_step, title: "Your project's likely carbon emissions impact", next_text: 'contact details' do %>
+    <h2 class="u-mb">Carbon Savings</h2>
+    <%= f.form_field :carbon_saving_applicability do %>
+      <%= f.label :carbon_saving_anticipated, nil, class_names: 'FormField-checkbox' do %>
+        <%= f.check_box :carbon_saving_anticipated %>
+        <span>Are there direct carbon savings from this specific initiative?</span>
+      <% end %>
+      <%= f.label :carbon_saving_quantified, nil, class_names: 'FormField-checkbox' + (initiative.carbon_saving_anticipated? ? '' : ' u-hidden') do %>
+        <%= f.check_box :carbon_saving_quantified %>
+        <span>Have you estimated the carbon savings yet?</span>
+      <% end %>
+      <%= f.label :carbon_saving_amount, nil, class_names: (initiative.carbon_saving_quantified? ? '' : 'u-hidden') do %>
+        <span>Anticipated carbon saving</span>
+        <%= f.number_field :carbon_saving_amount, class: 'FormField-input FormField-narrow' %> <span><%=carbon_units%></span>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= initiative_step 4, @current_initiative_step, title: 'Who can we/others contact about your project?', next_text: 'climate group details' do %>
+    <h2 class="u-mb">Website & Social Media</h2>
+    <div id="initiative_websites" class="CollectionItem-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Website</th>
+            <th>Delete?</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= f.fields_for :websites do |website_form| %>
+            <%= render 'partials/website_fields_row', f: website_form %>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
+    <div class="FormField">
+      <%= f.fields_for :websites, InitiativeWebsite.new do |website_form| %>
+        <%= add_object_link 'Add website', 'initiative_websites', :partial => 'partials/website_fields_row', :locals => { :f => website_form } %>
+      <% end %>
+    </div>
 
-  <%= f.form_field :partner_groups_role do %>
-    <%= f.label :partner_groups_role %>
-    <%= f.text_field :partner_groups_role %>
-  <% end %>
+    <h2 class="u-mb">Contact</h2>
 
-  <%= f.form_field :related_initiatives do %>
-    <%= f.label :related_initiatives %>
-    <%= f.text_area :related_initiatives, placeholder: 'Enter the names of any related initiatives here' %>
-  <% end %>
+    <%= f.form_field :contact_name, required: true do %>
+      <%= f.label :contact_name %>
+      <%= f.text_field :contact_name %>
+    <% end %>
 
-  <h2 class="u-mb">Solutions</h2>
+    <%= f.form_field :contact_email, required: true do %>
+      <%= f.label :contact_email %>
+      <%= f.text_field :contact_email %>
+    <% end %>
 
-  <%= f.form_field :solution, required: true do %>
-    <input type="hidden" id="initial_themes" value="<%=themes_as_json(initiative)%>">
-    <input type="hidden" id="initial_solutions" value="<%=solutions_as_json(initiative)%>">
-    <div id="solution_picker"></div>
-  <% end %>
+    <%= f.form_field :contact_phone, required: true do %>
+      <%= f.label :contact_phone %>
+      <%= f.text_field :contact_phone %>
+    <% end %>
 
-  <h2 class="u-mb">Notes</h2>
-
-  <%= f.form_field :administrative_notes do %>
-    <%= f.label :administrative_notes %>
-    <%= f.text_area :administrative_notes %>
-  <% end %>
-
-  <% if publication_statuses.map {|s| s[1]}.include?(initiative.publication_status) %>
-    <%= f.form_field :publication_status, required: true do %>
-      <%= f.label :publication_status, 'Publication Status' %>
-      <%= f.select :publication_status, publication_statuses %>
+    <%= f.form_field :consent_to_share do %>
+      <%= f.check_box :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?' %>
     <% end %>
   <% end %>
 
-  <div class="FormField-actions">
-    <%= f.submit class: 'Button Button--success Button--large' %>
-  </div>
+  <%= initiative_step 5, @current_initiative_step, title: 'Help us understand how you got going', next_text: 'project sector and notes' do %>
+    <h2 class="u-mb">Groups</h2>
+
+    <%= f.form_field :lead_group_id do %>
+      <%= f.label :lead_group_id %>
+      <%= f.select :lead_group_id do %>
+        <option value="">Please select a group</option>
+        <%=options_for_select(groups, initiative.lead_group&.id) %>
+        <option value="new" <%=new_group_selected?(initiative) ? 'selected' : '' %>>Create New</option>
+      <% end %>
+    <% end %>
+
+    <%= f.fields_for :lead_group do |group_fields| %>
+      <div id="initiative_lead_group_new" class="<%=new_group_selected?(initiative) ? '' : 'u-hidden' %> Initiative-lead_group">
+        <%=render 'groups/form_fields', group: Group.new, group_types: @group_types, f: group_fields %>
+      </div>
+    <% end %>
+
+    <%= f.form_field :partner_groups_role do %>
+      <%= f.label :partner_groups_role %>
+      <%= f.text_field :partner_groups_role %>
+    <% end %>
+
+    <%= f.form_field :related_initiatives do %>
+      <%= f.label :related_initiatives %>
+      <%= f.text_area :related_initiatives, placeholder: 'Enter the names of any related initiatives here' %>
+    <% end %>
+  <% end %>
+
+  <%= initiative_step 6, @current_initiative_step, title: 'Help others find your project', next_text: 'Finish and publish' do %>
+    <h2 class="u-mb">Solutions</h2>
+
+    <%= f.form_field :solution, required: true do %>
+      <input type="hidden" id="initial_themes" value="<%=themes_as_json(initiative)%>">
+      <input type="hidden" id="initial_solutions" value="<%=solutions_as_json(initiative)%>">
+      <div id="solution_picker"></div>
+    <% end %>
+
+    <h2 class="u-mb">Notes</h2>
+
+    <%= f.form_field :administrative_notes do %>
+      <%= f.label :administrative_notes %>
+      <%= f.text_area :administrative_notes %>
+    <% end %>
+
+    <% if publication_statuses.map {|s| s[1]}.include?(initiative.publication_status) %>
+      <%= f.form_field :publication_status, required: true do %>
+        <%= f.label :publication_status, 'Publication Status' %>
+        <%= f.select :publication_status, publication_statuses %>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>

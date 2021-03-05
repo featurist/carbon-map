@@ -19,9 +19,6 @@ set_meta_tags og: {
 <div class="u-mbL">
   <%= render 'partials/breadcrumb', items: [
     link_to('Home', root_path),
-    link_to(@district.name, @district),
-    link_to(@ward.name, @ward),
-    link_to(@parish.name, @parish),
     title
   ] %>
 </div>
@@ -32,5 +29,5 @@ set_meta_tags og: {
 </div>
 
 <div class="Initiative">
-  <%=render 'initiative_info', initiative: @initiative, show_map: true%>
+  <%=render 'initiative_info', initiative: @initiative, show_map: !@initiative.postcode.empty? %>
 </div>

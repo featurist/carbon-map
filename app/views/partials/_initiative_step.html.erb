@@ -1,0 +1,13 @@
+<%
+  previous_step = @current_initiative_step == 1 ? 0 : @current_initiative_step - 1
+  next_step = @current_initiative_step == 6 ? '' : @current_initiative_step + 1
+%>
+<div class="PageHeader u-mbL">
+  <h1 class="PageHeader-heading">Step <%=current%> of 6: <%= title %></h1>
+</div>
+
+<%= yield %>
+<div class="FormField-actions">
+  <%= button_tag('back', class: 'Button-back', name: 'step', value: previous_step) if previous_step.positive? %>
+  <%= button_tag(next_text, class: 'Button Button--success Button--large', name: 'step', value: next_step) %>
+</div>
