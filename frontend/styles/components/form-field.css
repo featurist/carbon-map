@@ -71,6 +71,8 @@ textarea.FormField-input {
 }
 
 .FormField-actions {
+  display: flex;
+  justify-content: space-between;
   margin-top: 30px;
   text-align: center;
 }

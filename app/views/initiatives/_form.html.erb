@@ -11,9 +11,8 @@
 <% end %>
 
 <%= form_with(model: initiative, local: true, html: {class: 'Form'}) do |f| %>
-  <%= render 'partials/form_errors', resource: initiative %>
 
-  <%= initiative_step 1, @current_initiative_step, title: "Describe your project, even if it's just getting started", next_text: "where it's based" do %>
+  <%= initiative_step 1, @current_initiative_step, title: "Describe your project, even if it's just getting started", next_text: "Next: where it's based" do %>
     <%= f.form_field :name, required: true do %>
       <%= f.label :name %>
       <%= f.text_field :name, autofocus: true %>
@@ -50,7 +49,7 @@
     <% end %>
   <% end %>
 
-    <%= initiative_step 2, @current_initiative_step, title: 'Where is your project based?', next_text: 'carbon emissions impact' do %>
+    <%= initiative_step 2, @current_initiative_step, title: 'Where is your project based?', next_text: 'Next: carbon emissions impact' do %>
     <h2 class="u-mb">Location</h2>
 
     <%= f.form_field :postcode do %>
@@ -71,7 +70,7 @@
     </label>
   <% end %>
 
-  <%= initiative_step 3, @current_initiative_step, title: "Your project's likely carbon emissions impact", next_text: 'contact details' do %>
+  <%= initiative_step 3, @current_initiative_step, title: "Your project's likely carbon emissions impact", next_text: 'Next: contact details' do %>
     <h2 class="u-mb">Carbon Savings</h2>
     <%= f.form_field :carbon_saving_applicability do %>
       <%= f.label :carbon_saving_anticipated, nil, class_names: 'FormField-checkbox' do %>
@@ -89,7 +88,28 @@
     <% end %>
   <% end %>
 
-  <%= initiative_step 4, @current_initiative_step, title: 'Who can we/others contact about your project?', next_text: 'climate group details' do %>
+  <%= initiative_step 4, @current_initiative_step, title: 'Who can we/others contact about your project?', next_text: 'Next: climate group details' do %>
+    <h2 class="u-mb">Contact</h2>
+
+    <%= f.form_field :contact_name, required: true do %>
+      <%= f.label :contact_name %>
+      <%= f.text_field :contact_name %>
+    <% end %>
+
+    <%= f.form_field :contact_email, required: true do %>
+      <%= f.label :contact_email %>
+      <%= f.text_field :contact_email %>
+    <% end %>
+
+    <%= f.form_field :contact_phone, required: true do %>
+      <%= f.label :contact_phone %>
+      <%= f.text_field :contact_phone %>
+    <% end %>
+
+    <%= f.form_field :consent_to_share do %>
+      <%= f.check_box :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?' %>
+    <% end %>
+
     <h2 class="u-mb">Website & Social Media</h2>
     <div id="initiative_websites" class="CollectionItem-container">
       <table>
@@ -112,30 +132,9 @@
         <%= add_object_link 'Add website', 'initiative_websites', :partial => 'partials/website_fields_row', :locals => { :f => website_form } %>
       <% end %>
     </div>
-
-    <h2 class="u-mb">Contact</h2>
-
-    <%= f.form_field :contact_name, required: true do %>
-      <%= f.label :contact_name %>
-      <%= f.text_field :contact_name %>
-    <% end %>
-
-    <%= f.form_field :contact_email, required: true do %>
-      <%= f.label :contact_email %>
-      <%= f.text_field :contact_email %>
-    <% end %>
-
-    <%= f.form_field :contact_phone, required: true do %>
-      <%= f.label :contact_phone %>
-      <%= f.text_field :contact_phone %>
-    <% end %>
-
-    <%= f.form_field :consent_to_share do %>
-      <%= f.check_box :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?' %>
-    <% end %>
   <% end %>
 
-  <%= initiative_step 5, @current_initiative_step, title: 'Help us understand how you got going', next_text: 'project sector and notes' do %>
+  <%= initiative_step 5, @current_initiative_step, title: 'Help us understand how you got going', next_text: 'Next: project sector and notes' do %>
     <h2 class="u-mb">Groups</h2>
 
     <%= f.form_field :lead_group_id do %>

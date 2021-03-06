@@ -1,16 +1,11 @@
 <% title 'Initiatives' %>
 
-<div class="u-mbL">
-  <%= render 'partials/breadcrumb', items: [
-    link_to('Home', root_path),
-    title
-  ] %>
-</div>
+<% breadcrumb [
+  link_to('Home', root_path),
+  title
+] %>
 
-<div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading"><%= title %></h1>
-  <%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false, class: 'Button Button--success' %>
-</div>
+<%= link_to 'New Initiative', new_initiative_path, "data-turbolinks": false, class: 'Button Button--success' %>
 
 <table>
   <thead>

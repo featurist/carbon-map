@@ -1,8 +1,8 @@
 <% title 'About' %>
-
-<div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading"><%= title %></h1>
-</div>
+<% breadcrumb [
+  link_to('Home', root_path),
+  title
+] %>
 
 <p class="u-mb">The Initiative Map is a community maintained platform to connect groups engaged in initiatives working towards a Carbon Neutral Stroud District by 2030.</p>
 

@@ -4,6 +4,7 @@ require 'json'
 
 class HomeController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
+  layout 'home'
 
   def index
     @initiatives_json = Initiative.approved.to_json

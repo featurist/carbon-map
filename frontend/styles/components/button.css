@@ -23,7 +23,7 @@
 
 .Button--large {
   font-size: 16px;
-  padding: 12px 24px;
+  padding: 16px 30px;
 }
 
 .ButtonInput {
@@ -51,5 +51,26 @@
     right: 0;
     text-align: center;
     top: 0;
+  }
+}
+
+.Button--link {
+  cursor: pointer;
+}
+
+.Button--next {
+  cursor: pointer;
+
+  span {
+    margin-right: 10px;
+  }
+}
+
+.Button--back {
+  cursor: pointer;
+
+  span {
+    margin-left: 10px;
+    text-decoration: underline;
   }
 }

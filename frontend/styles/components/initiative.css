@@ -1,3 +1,15 @@
+.Initiative-introduction {
+  margin-bottom: 25px;
+}
+
+.Initiative-step {
+  border: 1px solid #d4d4d4;
+  margin: 0 auto;
+  margin-top: 25px;
+  max-width: 510px;
+  padding: 30px;
+}
+
 .Initiative-lead_group {
   border: 3px solid lightgray;
   margin-top: 20px;

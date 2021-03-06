@@ -2,12 +2,21 @@
   previous_step = @current_initiative_step == 1 ? 0 : @current_initiative_step - 1
   next_step = @current_initiative_step == 6 ? '' : @current_initiative_step + 1
 %>
-<div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading">Step <%=current%> of 6: <%= title %></h1>
-</div>
+<h3>Step <%=current%> of 6: <%= title %></h3>
 
-<%= yield %>
-<div class="FormField-actions">
-  <%= button_tag('back', class: 'Button-back', name: 'step', value: previous_step) if previous_step.positive? %>
-  <%= button_tag(next_text, class: 'Button Button--success Button--large', name: 'step', value: next_step) %>
+<div class="Initiative-step">
+  <%= render 'partials/form_errors', resource: @initiative %>
+  <%= yield %>
+  <div class="FormField-actions">
+    <% if previous_step.positive? %>
+      <%= button_tag(class: 'Button--back', name: 'step', value: previous_step) do %>
+        <img src="<%=asset_pack_path("media/icons/left_arrow.svg")%>"><span>Back</span>
+      <% end %>
+    <% else %>
+      <div></div>
+    <% end %>
+    <%= button_tag(class: 'Button Button--success Button--large Button--next', name: 'step', value: next_step) do %>
+      <span><%= next_text %></span><img src="<%=asset_pack_path("media/icons/right_arrow.svg")%>">
+    <% end %>
+  </div>
 </div>

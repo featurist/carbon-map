@@ -8,7 +8,7 @@ module ApplicationHelper
   def add_object_link(name, id, render_options)
     html = render(render_options)
 
-    link_to name, '#', onclick: add_object_link_js(id, html), class: 'Button Button--success'
+    link_to name, '#', onclick: add_object_link_js(id, html), class: 'Button--link'
   end
 
   def admin_path
@@ -54,6 +54,12 @@ module ApplicationHelper
     end
     text
   end
+
+  # rubocop:disable Rails/HelperInstanceVariable
+  def breadcrumb(items)
+    @breadcrumb_items = items
+  end
+  # rubocop:enable Rails/HelperInstanceVariable
 
   private
 

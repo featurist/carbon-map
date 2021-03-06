@@ -1,15 +1,13 @@
-<% title 'New Initiative' %>
+<% title 'Add a community-based project' %>
 
-<div class="u-mbL">
-  <%= render 'partials/breadcrumb', items: [
-    link_to('Home', root_path),
-    link_to('Initiatives', initiatives_path),
-    title
-  ] %>
-</div>
+<% breadcrumb [
+  link_to('Home', root_path),
+  link_to('Initiatives', initiatives_path),
+  title
+] %>
 
-<div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading"><%= title %></h1>
+<div class="Initiative-introduction">
+  Adding your project to the site will take you around two minutes and will give your project much greater visibility to residents, councillors and climate-related organisations. You can edit your project details at any point by selecting ‘edit’ in the list-view of all projects.
 </div>
 
 <%= render 'form', initiative: @initiative, groups: @groups, initiative_statuses: @initiative_statuses, taxonomy_hierarchy_json: @taxonomy_hierarchy_json %>

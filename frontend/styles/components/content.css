@@ -2,5 +2,12 @@
   border: 1px solid lightgray;
   margin-bottom: 30px;
   margin-top: 30px;
-  padding: 20px 30px;
+}
+
+.Content-container {
+  background-color: white;
+  margin: 0 auto;
+  margin-top: -50px;
+  max-width: 770px;
+  padding: 35px 80px 25px 80px;
 }

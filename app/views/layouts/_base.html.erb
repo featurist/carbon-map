@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<%
+  set_meta_tags og: {image: []} unless @meta_tags && @meta_tags.meta_tags['og']
+@meta_tags.meta_tags['og']['image'] = @meta_tags.meta_tags['og']['image'] || []
+@meta_tags.meta_tags['og']['image'].push(og_logo)
+
+set_meta_tags og: {
+  title:    title || 'Carbon Neutral Map',
+  description: @page_description || 'Connecting low carbon initiatives across Stroud District',
+  type:     'website',
+  url:      request.url
+}
+%>
+<html>
+  <head>
+    <%= display_meta_tags site: 'Carbon Neutral Map', charset: 'utf-8', reverse: true %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/leaflet/leaflet.css" />
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= yield :page_head %>
+
+    <script async defer data-domain="carbonneutralmap.org.uk" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body>
+    <div class="App">
+      <header class="Header">
+        <div class="Container">
+          <div class="Header-main">
+            <%=link_to image_tag(asset_pack_path("media/images/logo.svg")), root_path, class: 'Header-logo' %>
+            <div class="Header-contentMobile">
+              <nav class="Nav">
+                <% if user_signed_in? %>
+                  <%= link_to '/', class: 'SignIn-link' do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="SignIn-icon" width="24" height="24" viewBox="0 0 24 24">
+                      <g fill="none" fill-rule="evenodd">
+                      <g fill="#202020"><g><g><g><path d="M32 33c-3.123 0-5.914-1.441-7.749-3.69.259-.588.783-.995 1.867-1.246 2.244-.518 4.459-.981 3.393-2.945C26.356 19.299 28.612 16 32 16c3.322 0 5.634 3.177 2.489 9.119-1.035 1.952 1.1 2.416 3.393 2.945 1.082.25 1.61.655 1.871 1.241C37.917 31.558 35.125 33 32 33m0-22c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12" transform="translate(-863 -55) translate(44 5) translate(155 39) translate(644)"/></g></g></g></g></g>
+                    </svg>
+                    <%= current_user.email.slice(/(.*)@/).chomp('@')%>
+                  <% end %>
+                <% else %>
+                  <%= link_to new_user_session_path, class: 'SignIn-link' do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="SignIn-icon" width="24" height="24" viewBox="0 0 24 24">
+                      <g fill="none" fill-rule="evenodd">
+                      <g fill="#202020"><g><g><g><path d="M32 33c-3.123 0-5.914-1.441-7.749-3.69.259-.588.783-.995 1.867-1.246 2.244-.518 4.459-.981 3.393-2.945C26.356 19.299 28.612 16 32 16c3.322 0 5.634 3.177 2.489 9.119-1.035 1.952 1.1 2.416 3.393 2.945 1.082.25 1.61.655 1.871 1.241C37.917 31.558 35.125 33 32 33m0-22c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12" transform="translate(-863 -55) translate(44 5) translate(155 39) translate(644)"/></g></g></g></g></g>
+                    </svg>
+                    Sign in
+                  <% end %>
+                <% end %>
+                <a class="Nav-burger" onclick="document.querySelector('.Nav').classList.add('Nav-open')"><svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                    <path fill="#000" id="svg_1" d="m4,10l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2zm24,4l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2zm0,8l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2z"/>
+                    </g>
+                  </svg></a>
+                  <nav class="Nav-flyover">
+                    <a href="#" onclick="document.querySelector('.Nav').classList.remove('Nav-open');return false;">Close</a>
+                    <hr />
+                    <%= link_to 'Add a project', new_initiative_path %>
+                    <%= link_to 'Initiatives', initiatives_path %>
+                    <hr />
+                    <%= link_to('About', about_path)%>
+                    <%= link_to('Contact', contact_path)%>
+                    <hr />
+                    <% unless user_signed_in? %>
+                      <%= link_to 'Sign in', new_user_session_path %>
+                      <%= link_to 'Sign up', new_user_registration_path %>
+                      <hr />
+                    <% end %>
+                    <% if user_signed_in? %>
+                      <%= link_to('Initiatives', initiatives_path) %>
+                      <%= link_to('Groups', groups_path) %>
+                      <hr />
+                    <% end %>
+                    <% if user_is_admin? %>
+                      <%= link_to('Group Types', group_types_path) %>
+                      <%= link_to('Initiative Statuses', initiative_statuses_path) %>
+                      <hr />
+                    <% end %>
+                    <% if user_signed_in? %>
+                      <%= link_to 'Sign out', destroy_user_session_path %>
+                    <% end %>
+                  </nav>
+              </nav>
+            </div>
+            <div class="Header-contentDesktop">
+              <nav class="Nav">
+                <%= link_to('Home', root_path)%>
+                <%= link_to('About us', about_path)%>
+                <%= link_to('FAQs', '/faq')%>
+                <%= link_to('Get in touch', contact_path)%>
+
+                <% if user_signed_in? %>
+                  <%= link_to('Initiatives', initiatives_path) %>
+                  <%= link_to('Groups', groups_path) %>
+                <% end %>
+                <% if user_is_admin? && false %>
+                  <%= link_to('Group Types', group_types_path) %>
+                  <%= link_to('Initiative Statuses', initiative_statuses_path) %>
+                <% end %>
+
+
+                <div class="Nav-secondary">
+                  <% if user_signed_in? %>
+                    <%= link_to '/', class: 'SignIn-link' do %>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="SignIn-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <g fill="none" fill-rule="evenodd">
+                        <g fill="#202020"><g><g><g><path d="M32 33c-3.123 0-5.914-1.441-7.749-3.69.259-.588.783-.995 1.867-1.246 2.244-.518 4.459-.981 3.393-2.945C26.356 19.299 28.612 16 32 16c3.322 0 5.634 3.177 2.489 9.119-1.035 1.952 1.1 2.416 3.393 2.945 1.082.25 1.61.655 1.871 1.241C37.917 31.558 35.125 33 32 33m0-22c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12" transform="translate(-863 -55) translate(44 5) translate(155 39) translate(644)"/></g></g></g></g></g>
+                      </svg>
+                      <%= current_user.email.slice(/(.*)@/).chomp('@')%>
+                    <% end %>
+                  <% else %>
+                    <%= link_to new_user_session_path, class: 'SignIn-link' do %>
+                      <svg class="SignIn-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+                      </svg>
+                      Sign in
+                    <% end %>
+                  <% end %>
+                </div>
+              </nav>
+              <nav style="display:none;">
+                <span class="Nav-supplementary">
+                  <% unless user_signed_in? %>
+                    <%= link_to 'Sign in', new_user_session_path %>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <%= current_user.email%>
+                    <%= link_to('Initiatives', initiatives_path) %>
+                    <%= link_to('Groups', groups_path) %>
+                  <% end %>
+                  <% if user_is_admin? %>
+                    <%= link_to('Group Types', group_types_path) %>
+                    <%= link_to('Initiative Statuses', initiative_statuses_path) %>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <%= link_to 'Sign out', destroy_user_session_path %>
+                  <% end %>
+                </span>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <% content_class = yield :content_class %>
+      <main class="App-content">
+        <%= render 'partials/flash' %>
+        <% if content_class.size > 0 %>
+          <div class="<%= content_class %>">
+            <%= yield :body %>
+          </div>
+        <% else %>
+          <div class="Container">
+            <div class="Content">
+              <%= yield :body %>
+            </div>
+          </div>
+        <% end %>
+      </main>
+
+      <footer class="Footer">
+        <div class="Container">
+          <div class="Footer-main">
+            <div class="Footer-contact">
+              <p>Carbon Neutral Map</p>
+              <a href="mailto:support@carbonneutralmap.org.uk">support@carbonneutralmap.org.uk</a>
+              <div class="Footer-copyright">&copy; Transition Stroud <time datetime="<%= Date.current.year %>"><%= Date.current.year %></time></div>
+            </div>
+
+            <div class="Footer-links">
+              <div class="Footer-internal_links">
+                <%= link_to 'Privacy policy', '/privacy' %>
+                <%= link_to 'Get in touch', '/contact' %>
+              </div>
+
+              <div class="Footer-social">
+                <a href="https://facebook.com/carbon-neutral-map"><%=inline_icon 'facebook' %></a>
+                <a href="https://twitter.com/carbon-neutral-map"><%=inline_icon 'twitter' %></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="sponsors">
+            <h2 class="sponsors-heading">Supported by</h2>
+            <div class="sponsors-logos">
+              <div class="sponsors-group">
+                <a class="sponsors-logo" href="https://featurist.co.uk" target="_blank"><img src="<%=asset_pack_path("media/logos/featurist.svg")%>"></a>
+                <a class="sponsors-logo" href="https://transitionstroud.org" target="_blank"><img src="<%=asset_pack_path("media/logos/transition-stroud.png")%>"></a>
+              </div>
+              <div class="sponsors-group">
+                <a class="sponsors-logo" href="https://transitionnetwork.org" target="_blank"><img src="<%=asset_pack_path("media/logos/transition-network.png")%>"></a>
+                <a class="sponsors-logo" href="https://www.tnlcommunityfund.org.uk" target="_blank"><img src="<%=asset_pack_path("media/logos/community-fund.png")%>"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <%= yield :page_javascript %>
+  </body>
+</html>

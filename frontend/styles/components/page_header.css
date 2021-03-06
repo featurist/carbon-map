@@ -1,10 +1,15 @@
 .PageHeader {
   align-items: center;
-  border-bottom: 2px solid $color-orange;
   display: flex;
   justify-content: space-between;
 }
 
+.PageHeader-container {
+  background: linear-gradient(#fff, #00dee9);
+  padding: 30px 30px;
+}
+
 .PageHeader-heading {
+  margin: 0 auto;
   padding-bottom: 10px;
 }

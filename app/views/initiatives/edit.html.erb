@@ -1,11 +1,8 @@
 <% title "Edit #{@initiative.name} Initiative" %>
-
-<div class="u-mbL">
-  <%= render 'partials/breadcrumb', items: [
-    link_to('Home', root_path),
-    link_to('Initiatives', initiatives_path),
-    title
-  ] %>
-</div>
+<% breadcrumb [
+  link_to('Home', root_path),
+  link_to('Initiatives', initiatives_path),
+  title
+] %>
 
 <%= render 'form', initiative: @initiative, groups: @groups, initiative_statuses: @initiative_statuses, taxonomy_hierarchy_json: @taxonomy_hierarchy_json %>
