@@ -22,7 +22,9 @@ set_meta_tags og: {
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= yield :page_head %>
 
-    <script async defer data-domain="carbonneutralmap.org.uk" src="https://plausible.io/js/plausible.js"></script>
+    <% if ENV['RAILS_ENV'] == 'production' %>
+      <script async defer data-domain="carbonneutralmap.org.uk" src="https://plausible.io/js/plausible.js"></script>
+    <% end %>
   </head>
 
   <body>
