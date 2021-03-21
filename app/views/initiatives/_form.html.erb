@@ -1,10 +1,3 @@
-<% content_for :page_javascript do %>
-  <%= javascript_packs_with_chunks_tag 'anticipated_carbon_savings', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_packs_with_chunks_tag 'initiative_location_picker', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_packs_with_chunks_tag 'initiative_solution_picker', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_packs_with_chunks_tag 'initiative_toggle_group', 'data-turbolinks-track': 'reload' %>
-  <script type="text/json" id="taxonomy_hierarchy_json"><%=taxonomy_hierarchy_json.html_safe%></script>
-<% end %>
 
 <% content_for :page_head do %>
   <meta name="turbolinks-visit-control" content="reload">
@@ -49,7 +42,10 @@
     <% end %>
   <% end %>
 
-    <%= initiative_step 2, @current_initiative_step, title: 'Where is your project based?', next_text: 'Next: carbon emissions impact' do %>
+  <%= initiative_step 2, @current_initiative_step, title: 'Where is your project based?', next_text: 'Next: carbon emissions impact' do %>
+    <% content_for :page_javascript do %>
+      <%= javascript_packs_with_chunks_tag 'initiative_location_picker', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <h2 class="u-mb">Location</h2>
 
     <%= f.form_field :postcode do %>
@@ -71,6 +67,9 @@
   <% end %>
 
   <%= initiative_step 3, @current_initiative_step, title: "Your project's likely carbon emissions impact", next_text: 'Next: contact details' do %>
+    <% content_for :page_javascript do %>
+      <%= javascript_packs_with_chunks_tag 'anticipated_carbon_savings', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <h2 class="u-mb">Carbon Savings</h2>
     <%= f.form_field :carbon_saving_applicability do %>
       <%= f.label :carbon_saving_anticipated, nil, class_names: 'FormField-checkbox' do %>
@@ -135,6 +134,9 @@
   <% end %>
 
   <%= initiative_step 5, @current_initiative_step, title: 'Help us understand how you got going', next_text: 'Next: project sector and notes' do %>
+    <% content_for :page_javascript do %>
+      <%= javascript_packs_with_chunks_tag 'initiative_toggle_group', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <h2 class="u-mb">Groups</h2>
 
     <%= f.form_field :lead_group_id do %>
@@ -164,6 +166,10 @@
   <% end %>
 
   <%= initiative_step 6, @current_initiative_step, title: 'Help others find your project', next_text: 'Finish and publish' do %>
+    <% content_for :page_javascript do %>
+      <%= javascript_packs_with_chunks_tag 'initiative_solution_picker', 'data-turbolinks-track': 'reload' %>
+      <script type="text/json" id="taxonomy_hierarchy_json"><%=taxonomy_hierarchy_json.html_safe%></script>
+    <% end %>
     <h2 class="u-mb">Solutions</h2>
 
     <%= f.form_field :solution, required: true do %>
