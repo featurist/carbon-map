@@ -44,8 +44,8 @@ class InitiativesController < ApplicationController
 
   # rubocop:disable Metrics/MethodLength
   def create
-    create_proposed_solutions
     @initiative = Initiative.new(initiative_params.merge(owner: current_user))
+    add_solutions(@initiative)
     find_or_create_group
     @initiative.update_location_from_postcode
 
@@ -67,7 +67,7 @@ class InitiativesController < ApplicationController
 
     initiative_params.delete(:publication_status) if publication_status == 'rejected' && current_user.role != 'admin'
 
-    clear_solutions_and_themes && create_proposed_solutions
+    update_solutions(@initiative)
     images = initiative_params.delete 'images'
     find_or_create_group
     @initiative.assign_attributes initiative_params
@@ -95,9 +95,29 @@ class InitiativesController < ApplicationController
     end
   end
 
+  def solutions_params
+    (params[:initiative][:solutions] || []).filter(&:present?)
+  end
+
   def clear_solutions_and_themes
     @initiative.themes.clear if params[:themes_attributes]
     @initiative.solutions.clear if params[:solutions_attributes]
+  end
+
+  def add_solutions(initiative)
+    solutions_params.each do |line|
+      solution_id, solution_class_id = line.split(',').map(&:to_i)
+      solution = Solution.find(solution_id)
+      solution_class = SolutionClass.find(solution_class_id)
+
+      initiative.solutions.build(solution: solution, solution_class: solution_class)
+    end
+  end
+
+  def update_solutions(initiative)
+    initiative.solutions.each(&:destroy!) && initiative.solutions.clear unless solutions_params.empty?
+
+    add_solutions(initiative)
   end
 
   def set_initiative
@@ -204,12 +224,6 @@ class InitiativesController < ApplicationController
         :consent_to_share,
         :related_initiatives,
         :administrative_notes,
-        themes_attributes: %i[theme_id],
-        solutions_attributes: %i[
-          solution_id
-          solution_class_id
-          proposed_solution
-        ],
         images: [],
         websites_attributes: %i[url id _destroy],
         lead_group_attributes: %i[

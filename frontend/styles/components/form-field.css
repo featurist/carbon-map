@@ -23,7 +23,9 @@ $error_color: rgb(146, 40, 48);
   display: block;
 }
 
-.FormField-input {
+.FormField-input,
+.autocomplete__hint,
+.autocomplete__input {
   background-clip: padding-box;
 
   &[type="date"] {

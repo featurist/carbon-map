@@ -172,11 +172,29 @@
     <% end %>
     <h2 class="u-mb">Solutions</h2>
 
-    <%= f.form_field :solution, required: true do %>
-      <input type="hidden" id="initial_themes" value="<%=themes_as_json(initiative)%>">
-      <input type="hidden" id="initial_solutions" value="<%=solutions_as_json(initiative)%>">
-      <div id="solution_picker"></div>
+    <%= f.form_field :solution do %>
+      <%= f.label 'What categories does your project relate to?' %>
+      <input class="FormField-input" type="text" id="solution_search" />
+      <%= f.hidden_field :solution_attributes %>
+
+      <div id="solution_results_container" class="u-hidden">
+        <div class="SolutionSearchResultHeading"><span>Please check the categories your project relates to</span><button id="close_solution_results"><%=inline_icon('close')%></button></div>
+        <div id="solution_search_results" class="SolutionSearchResults">
+        </div>
+      </div>
     <% end %>
+
+    <h2>Chosen Solutions</h2>
+    <div class="ChosenSolutions">
+      <ul id="chosenSolutions">
+      <% initiative.solutions.each do |solution| %>
+        <li class="ChosenSolution">
+          <input type="hidden" name="initiative[solutions][]" value="<%=solution.solution.id%>,<%=solution.solution_class.id%>" data-name="<%=solution.name%>" />
+          <%=solution.name%>
+        </li>
+      <% end %>
+      </ul>
+    </div>
 
     <h2 class="u-mb">Notes</h2>
 

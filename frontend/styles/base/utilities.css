@@ -28,3 +28,7 @@
   list-style: disc !important;
   padding-left: 20px !important;
 }
+
+.u-hidden {
+  display: none;
+}
