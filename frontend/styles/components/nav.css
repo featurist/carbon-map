@@ -1,4 +1,5 @@
-.Nav {
+.Nav,
+.Nav-flyover {
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -7,7 +8,8 @@
   width: 100%;
 }
 
-.Nav a {
+.Nav a,
+.Nav-flyover a {
   font-size: 1.1em;
   font-weight: 600;
   line-height: 1.8em;
@@ -24,7 +26,8 @@
   }
 }
 
-.Nav a::before {
+.Nav a::before,
+.Nav-flyover a::before {
   font-size: 3em;
   font-weight: 900;
   line-height: 0.55em;
@@ -32,7 +35,8 @@
   vertical-align: middle;
 }
 
-.Nav a::active {
+.Nav a::active,
+.Nav-flyover a::active {
   color: $color-orange;
 }
 
@@ -43,7 +47,7 @@
   margin-top: -12px;
 }
 
-.Header-contentMobile {
+.Header-content {
   display: flex;
   flex: 1;
   position: relative;
@@ -84,6 +88,7 @@
 
 .Nav-burger {
   align-self: flex-end;
+  cursor: pointer;
   height: 32px;
   width: 32px;
 }
@@ -92,19 +97,23 @@
   display: none;
 }
 
-.Nav.Nav-open .Nav-flyover {
+header.Nav-open .Nav-flyover {
   background-color: #fff;
+  border: 1px solid #d4d4d4;
   display: block;
   padding: 10px;
-  position: absolute;
-  right: 0;
+  position: relative;
   width: 100%;
-  z-index: 10000;
-}
 
-.Nav-flyover a {
-  display: block;
-  text-align: left;
+  a {
+    border-bottom: 1px solid #d4d4d4;
+    display: block;
+    text-align: left;
+  }
+
+  > a:last-child {
+    border-bottom: 0;
+  }
 }
 
 @media (--bp-tablet-landscape) {
@@ -123,26 +132,36 @@
     height: 43px;
   }
 
-  .Header-contentMobile {
-    display: none;
-  }
-
-  .Header-contentDesktop {
-    display: block;
+  header.Nav-open .Nav-flyover {
+    position: absolute;
+    right: 0;
+    top: 90px;
+    width: 250px;
+    z-index: 10000;
   }
 }
 
 .Nav .SignIn-link {
+  cursor: pointer;
   margin-right: 15px;
+}
+
+.Nav-desktop {
+  display: none;
 }
 
 @media (--bp-tablet-landscape) {
 
-  .Nav .SignIn-link {
-    border: solid 1px #999;
-    border-radius: 3px;
-    padding: 10px;
-    position: absolute;
+  .Nav-burger {
+    display: none;
+  }
+
+  .Nav-mobile {
+    display: none;
+  }
+
+  .Nav-desktop {
+    display: block;
   }
 }
 
