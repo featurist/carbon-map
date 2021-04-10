@@ -2,7 +2,6 @@
   background-color: $snow;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 152px);
   position: relative;
 }
 
@@ -55,6 +54,7 @@
 
 .Explore-map {
   flex: 1;
+  height: 100vh;
 }
 
 .Explore-panel {
@@ -71,6 +71,10 @@
   }
 
   .Explore-panel {
+    height: 400px;
+  }
+
+  .Explore-map {
     height: 400px;
   }
 }
