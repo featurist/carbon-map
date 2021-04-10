@@ -1,16 +1,10 @@
 <% title 'Groups' %>
+<% breadcrumb [
+  link_to('Home', root_path),
+  title
+] %>
 
-<div class="u-mbL">
-  <%= render 'partials/breadcrumb', items: [
-    link_to('Home', root_path),
-    'Groups'
-  ] %>
-</div>
-
-<div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading"><%= title %></h1>
-  <%= link_to 'New Group', new_group_path, class: 'Button Button--success' %>
-</div>
+<%= link_to 'New Group', new_group_path, class: 'Button Button--success' %>
 
 <table>
   <thead>

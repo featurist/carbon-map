@@ -181,15 +181,20 @@
 
 .Explore-tabs {
   display: flex;
-  margin: 0 12px;
+  justify-content: center;
 }
 
 .Explore-tab {
   display: inline-block;
   flex: 1;
+  max-width: 400px;
   padding: 10px;
   text-align: center;
   text-decoration: none;
+
+  img {
+    vertical-align: middle;
+  }
 }
 
 .Explore-tab_selected {
