@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: right;
-  margin-right: 20px;
+  margin-right: 5px;
   padding: 7px;
   width: 100%;
 }
@@ -143,7 +143,7 @@ header.Nav-open .Nav-flyover {
 
 .Nav .SignIn-link {
   cursor: pointer;
-  margin-right: 15px;
+  margin-right: 5px;
 }
 
 .Nav-desktop {
@@ -151,6 +151,10 @@ header.Nav-open .Nav-flyover {
 }
 
 @media (--bp-tablet-landscape) {
+
+  .Nav {
+    margin-right: 20px;
+  }
 
   .Nav-burger {
     display: none;
