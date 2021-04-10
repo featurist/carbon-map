@@ -1,8 +1,9 @@
 <% title 'Resend unlock instructions' %>
 
-<div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading"><%= title %></h1>
-</div>
+<% breadcrumb [
+  link_to('Home', root_path),
+  title
+] %>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

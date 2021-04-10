@@ -1,8 +1,9 @@
 <% title 'Log in' %>
 
-<div class="PageHeader u-mbL">
-  <h1 class="PageHeader-heading"><%= title %></h1>
-</div>
+<% breadcrumb [
+  link_to('Home', root_path),
+  title
+] %>
 
 <%= form_with(model: resource, url: user_session_url, local: true, html: {class: 'Form'}) do |f| %>
   <%= f.form_field :email do %>
