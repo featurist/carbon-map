@@ -20,6 +20,9 @@
 }
 
 .RecentlyAdded-projects {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
 }
 
 .RecentlyAdded-project {
