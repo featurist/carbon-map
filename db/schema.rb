@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_193415) do
+ActiveRecord::Schema.define(version: 2021_04_16_121821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,9 +145,9 @@ ActiveRecord::Schema.define(version: 2020_06_16_193415) do
     t.string "related_initiatives"
     t.string "administrative_notes"
     t.boolean "carbon_saving_anticipated", default: false, null: false
-    t.boolean "carbon_saving_quantified", default: false, null: false
     t.bigint "owner_id"
     t.string "publication_status"
+    t.string "carbon_saving_strategy"
     t.index ["lead_group_id"], name: "index_initiatives_on_lead_group_id"
     t.index ["owner_id"], name: "index_initiatives_on_owner_id"
     t.index ["parish_id"], name: "index_initiatives_on_parish_id"

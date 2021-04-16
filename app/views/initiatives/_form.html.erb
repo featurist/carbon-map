@@ -64,21 +64,31 @@
   <%= initiative_step 3, @current_initiative_step, title: "Your project's likely carbon emissions impact", next_text: 'Next: contact details' do %>
     <% content_for :page_javascript do %>
       <%= javascript_packs_with_chunks_tag 'anticipated_carbon_savings', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_packs_with_chunks_tag 'help', 'data-turbolinks-track': 'reload' %>
     <% end %>
     <h2 class="u-mb">Carbon Savings</h2>
     <%= f.form_field :carbon_saving_applicability do %>
       <%= f.label :carbon_saving_anticipated, nil, class_names: 'FormField-checkbox' do %>
         <%= f.check_box :carbon_saving_anticipated %>
-        <span>Are there direct carbon savings from this specific initiative?</span>
+        <span>There are, or will be, direct carbon savings from this project</span>
       <% end %>
-      <%= f.label :carbon_saving_quantified, nil, class_names: 'FormField-checkbox' + (initiative.carbon_saving_anticipated? ? '' : ' u-hidden') do %>
-        <%= f.check_box :carbon_saving_quantified %>
-        <span>Have you estimated the carbon savings yet?</span>
+
+      <%= f.label :carbon_saving_strategy, nil, class_names: (initiative.carbon_saving_anticipated? ? 'u-mtL' : 'u-mtL u-hidden') do %>
+        <%= f.label :carbon_saving_strategy, 'How will carbon emissions be saved by your project?' %>
+        <%= f.text_area :carbon_saving_strategy, placeholder: "For example: 'By repairing an item rather than replacing it, carbon savings will be made in landfill and manufacture'" %>
       <% end %>
-      <%= f.label :carbon_saving_amount, nil, class_names: (initiative.carbon_saving_quantified? ? '' : 'u-hidden') do %>
-        <span>Anticipated carbon saving</span>
+
+      <%= f.label :carbon_saving_amount, nil, class_names: (initiative.carbon_saving_anticipated? ? 'u-mtL' : 'u-mtL u-hidden') do %>
+        <div class="u-mbS">If there are likely to be carbon savings, can you anticipate what the carbon savings might be?</div>
         <%= f.number_field :carbon_saving_amount, class: 'FormField-input FormField-narrow' %> <span><%=carbon_units%></span>
       <% end %>
+
+      <div class="Help u-mtL">
+        <a class="Help-title"><svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M1,21H23L12,2" />
+          </svg>Help with 'kgCO2e/yr'</a>
+        <p class="Help-details">Some detailed information</p>
+      </div>
     <% end %>
   <% end %>
 

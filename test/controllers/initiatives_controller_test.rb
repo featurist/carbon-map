@@ -117,7 +117,6 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
       VCR.use_cassette('valid_postcode') do
         post initiatives_url, params: create_params(@initiative,
                                                     carbon_saving_anticipated: false,
-                                                    carbon_saving_quantified: false,
                                                     carbon_saving_amount: nil)
       end
     end
@@ -133,7 +132,6 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
       VCR.use_cassette('valid_postcode') do
         post initiatives_url, params: create_params(@initiative,
                                                     carbon_saving_anticipated: true,
-                                                    carbon_saving_quantified: false,
                                                     carbon_saving_amount: nil)
       end
     end
@@ -149,7 +147,6 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
       VCR.use_cassette('valid_postcode') do
         post initiatives_url, params: create_params(@initiative,
                                                     carbon_saving_anticipated: true,
-                                                    carbon_saving_quantified: true,
                                                     carbon_saving_amount: 200)
       end
     end
@@ -283,12 +280,11 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/ParameterLists
   def create_params(initiative, lead_group: nil, images: nil, solutions: nil,
-                    carbon_saving_anticipated: false, carbon_saving_quantified: false, carbon_saving_amount: nil)
+                    carbon_saving_anticipated: false, carbon_saving_amount: nil)
     solutions ||= default_solutions
     {
       initiative: {
         carbon_saving_anticipated: carbon_saving_anticipated,
-        carbon_saving_quantified: carbon_saving_quantified,
         carbon_saving_amount: carbon_saving_amount,
         contact_email: initiative.contact_email,
         contact_name: initiative.contact_name,
@@ -316,13 +312,13 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def update_params(initiative, images: nil, solutions: nil,
-                    carbon_saving_anticipated: false, carbon_saving_quantified: false,
+                    carbon_saving_anticipated: false,
                     carbon_saving_amount: nil, publication_status: nil)
     solutions ||= default_solutions
     {
       initiative: {
         carbon_saving_anticipated: carbon_saving_anticipated,
-        carbon_saving_quantified: carbon_saving_quantified,
+        carbon_saving_strategy: 'save carbon',
         carbon_saving_amount: carbon_saving_amount,
         contact_email: initiative.contact_email,
         contact_name: initiative.contact_name,

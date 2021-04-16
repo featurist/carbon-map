@@ -1,0 +1,33 @@
+.Help {
+  position: relative;
+
+  svg {
+    height: 12px;
+    margin-right: 5px;
+    transform: rotate(-30deg);
+    width: 12px;
+  }
+}
+
+.Help--open {
+
+  svg {
+    transform: rotate(-60deg);
+  }
+
+  .Help-details {
+    border-left: 5px solid #eee;
+    display: block;
+    padding: 15px;
+    padding-left: 10px;
+  }
+}
+
+.Help-title {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.Help-details {
+  display: none;
+}

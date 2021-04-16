@@ -127,6 +127,10 @@ class Initiative < ApplicationRecord
   end
   # rubocop:enable Metrics/MethodLength
 
+  def carbon_saving_quantified?
+    carbon_saving_amount&.positive?
+  end
+
   private
 
   def set_default_location

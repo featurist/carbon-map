@@ -209,7 +209,7 @@ class InitiativesController < ApplicationController
         :description_how,
         :description_further_information,
         :carbon_saving_anticipated,
-        :carbon_saving_quantified,
+        :carbon_saving_strategy,
         :carbon_saving_amount,
         :postcode,
         :latitude,
