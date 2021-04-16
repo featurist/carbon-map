@@ -40,3 +40,7 @@
 .u-hidden {
   display: none;
 }
+
+.u-textAlignRight {
+  text-align: right;
+}

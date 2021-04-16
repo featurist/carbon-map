@@ -19,8 +19,13 @@
     <% else %>
       <div></div>
     <% end %>
-    <%= button_tag(class: 'Button Button--success Button--large Button--next', name: 'step', value: next_step) do %>
-      <span><%= next_text %></span><img src="<%=asset_pack_path("media/icons/right_arrow.svg")%>">
-    <% end %>
+    <div class="u-textAlignRight">
+      <%= button_tag(class: 'Button Button--success Button--large Button--next', name: 'step', value: next_step) do %>
+        <span><%= next_text %></span><img src="<%=asset_pack_path("media/icons/right_arrow.svg")%>">
+      <% end %>
+      <% if next_suffix_text %>
+        <div class="Hint u-mtS"><%=next_suffix_text%></div>
+      <% end %>
+    </div>
   </div>
 </div>

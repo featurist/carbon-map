@@ -172,7 +172,7 @@
     <% end %>
   <% end %>
 
-  <%= initiative_step 6, @current_initiative_step, title: 'Help others find your project', next_text: 'Finish and publish' do %>
+  <%= initiative_step 6, @current_initiative_step, title: 'Help others find your project', next_text: 'Finish and publish', next_suffix_text: '(You can edit later if you need to)' do %>
     <% content_for :page_javascript do %>
       <%= javascript_packs_with_chunks_tag 'initiative_solution_picker', 'data-turbolinks-track': 'reload' %>
       <script type="text/json" id="taxonomy_hierarchy_json"><%=taxonomy_hierarchy_json.html_safe%></script>
