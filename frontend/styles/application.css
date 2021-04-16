@@ -17,6 +17,7 @@
 @import "./components/explore";
 @import "./components/header";
 @import "./components/help";
+@import "./components/hint";
 @import "./components/initiative";
 @import "./components/footer";
 @import "./components/form-field";

@@ -144,10 +144,10 @@
     <% content_for :page_javascript do %>
       <%= javascript_packs_with_chunks_tag 'initiative_toggle_group', 'data-turbolinks-track': 'reload' %>
     <% end %>
-    <h2 class="u-mb">Groups</h2>
 
     <%= f.form_field :lead_group_id do %>
-      <%= f.label :lead_group_id %>
+      <%= f.label :lead_group_id, 'Select' %>
+      <div class="Hint">You can create a new one if your group isn’t listed</div>
       <%= f.select :lead_group_id do %>
         <option value="">Please select a group</option>
         <%=options_for_select(groups, initiative.lead_group&.id) %>
@@ -161,14 +161,14 @@
       </div>
     <% end %>
 
-    <%= f.form_field :partner_groups_role do %>
-      <%= f.label :partner_groups_role %>
-      <%= f.text_field :partner_groups_role %>
+    <%= f.form_field :specialist_advice do %>
+      <%= f.label :specialist_advice, 'Have you had any specialist advice on this project?' %>
+      <%= f.text_area :specialist_advice, placeholder: "For example: 'Stroud Valleys Project provided saplings and advice on tree planting'" %>
     <% end %>
 
     <%= f.form_field :related_initiatives do %>
-      <%= f.label :related_initiatives %>
-      <%= f.text_area :related_initiatives, placeholder: 'Enter the names of any related initiatives here' %>
+      <%= f.label :related_initiatives, 'Have you collaborated with other local projects to get going?' %>
+      <%= f.text_area :related_initiatives, placeholder: 'Enter the details of any related initiative' %>
     <% end %>
   <% end %>
 
@@ -177,7 +177,6 @@
       <%= javascript_packs_with_chunks_tag 'initiative_solution_picker', 'data-turbolinks-track': 'reload' %>
       <script type="text/json" id="taxonomy_hierarchy_json"><%=taxonomy_hierarchy_json.html_safe%></script>
     <% end %>
-    <h2 class="u-mb">Solutions</h2>
 
     <%= f.form_field :solution do %>
       <%= f.label 'What categories does your project relate to?' %>

@@ -223,6 +223,7 @@ class InitiativesController < ApplicationController
         :publication_status,
         :consent_to_share_email,
         :consent_to_share_phone,
+        :specialist_advice,
         :related_initiatives,
         :administrative_notes,
         images: [],
