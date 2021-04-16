@@ -5,34 +5,29 @@
 
 <%= form_with(model: initiative, local: true, html: {class: 'Form'}) do |f| %>
 
-  <%= initiative_step 1, @current_initiative_step, title: "Describe your project, even if it's just getting started", next_text: "Next: where it's based" do %>
+  <%= initiative_step 1, @current_initiative_step, title: "Describe your project, even if it's just getting started", next_text: "Next: where it's based", intro_text: "Adding your project to the site will take you around two minutes and will give your project much greater visibility to residents, councillors and climate-related organisations. You can edit your project details at any point by selecting ‘edit’ in the list-view of all projects." do %>
     <%= f.form_field :name, required: true do %>
-      <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true %>
+      <%= f.label :name, 'Give your project a name' %>
+      <%= f.text_field :name, autofocus: true, placeholder: 'Project Name' %>
     <% end %>
 
     <%= f.form_field :status_id, required: true do %>
-      <%= f.label :status_id, 'Status' %>
-      <%= f.select :status_id, initiative_statuses %>
+      <%= f.label :status_id, 'How far has your project progressed?' %>
+      <%= f.select :status_id, initiative_statuses, prompt: 'Select' %>
     <% end %>
 
     <%= f.form_field :description_what, required: true do %>
-      <%= f.label :description_what, 'What' %>
-      <%= f.text_area :description_what, placeholder: 'Description of Principal Deliverables' %>
+      <%= f.label :description_what, 'What does/will your project deliver?' %>
+      <%= f.text_area :description_what, placeholder: 'For example: ‘Repair cafés encouraging people to fix things rather than throw them away.’' %>
     <% end %>
 
     <%= f.form_field :description_how, required: true do %>
-      <%= f.label :description_how, 'How' %>
-      <%= f.text_area :description_how, placeholder: 'Delivery Approach' %>
-    <% end %>
-
-    <%= f.form_field :description_further_information, required: true do %>
-      <%= f.label :description_further_information, 'Further Information' %>
-      <%= f.text_area :description_further_information, placeholder: 'Further Information about the project' %>
+      <%= f.label :description_how, 'How does/will your project contribute to acheiving carbon neutrality?' %>
+      <%= f.text_area :description_how, placeholder: 'Residents can check their item against a list of fixable  things before dropping it off at a repair cafe. A volunteer will repair the item over an appropriate length of time and arrange for owner to pick it up again.' %>
     <% end %>
 
     <%= f.form_field :images do %>
-      <%= f.label :images %>
+      <%= f.label :images, 'Add an image (optional)' %>
       <div>
         <% initiative.images.each do |image|%>
           <%= image_tag image.variant(resize_to_limit: [200, 200]) %>
@@ -46,21 +41,21 @@
     <% content_for :page_javascript do %>
       <%= javascript_packs_with_chunks_tag 'initiative_location_picker', 'data-turbolinks-track': 'reload' %>
     <% end %>
-    <h2 class="u-mb">Location</h2>
-
-    <%= f.form_field :postcode do %>
-      <%= f.label :postcode %>
+    <%= f.form_field :postcode, class_names: 'u-mbL' do %>
+      <%= f.label :postcode, 'Enter a postcode' %>
       <div class="FormFieldOverlay">
         <span id="initiative_postcode_error_message" class="FormFieldOverlay-content FormFieldOverlay-error u-hidden">Invalid postcode</span>
         <span id="initiative_postcode_updating" class="FormFieldOverlay-content FormFieldOverlay-blink u-hidden">Updating</span>
-        <%= f.text_field :postcode %>
+        <%= f.text_field :postcode, placeholder: 'Postcode' %>
       </div>
     <% end %>
 
-    <label class="FormField">
+    <div class="Circle">OR</div>
+
+    <label class="FormField u-mtL">
       <%= f.hidden_field :latitude %>
       <%= f.hidden_field :longitude %>
-      <p class="u-mb">Drag the marker to the location of the initiative</p>
+      <p class="u-mb">...drag the marker to the correct place on the map</p>
       <div class="InitiativeLocationPicker u-mbL" id="location">
       </div>
     </label>
@@ -198,10 +193,15 @@
 
     <h2 class="u-mb">Notes</h2>
 
-    <%= f.form_field :administrative_notes do %>
-      <%= f.label :administrative_notes %>
-      <%= f.text_area :administrative_notes %>
+    <%= f.form_field :description_further_information, required: true do %>
+      <%= f.label :description_further_information, "Anything else you'd like to tell the public? (optional)" %>
+      <%= f.text_area :description_further_information, placeholder: 'Further notes about your project' %>
     <% end %>
+
+    <%# <%= f.form_field :administrative_notes do %1> %>
+    <%#   <%= f.label :administrative_notes %1> %>
+    <%#   <%= f.text_area :administrative_notes %1> %>
+    <%# <% end %1> %>
 
     <% if publication_statuses.map {|s| s[1]}.include?(initiative.publication_status) %>
       <%= f.form_field :publication_status, required: true do %>

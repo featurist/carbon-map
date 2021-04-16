@@ -2,6 +2,10 @@
   previous_step = @current_initiative_step == 1 ? 0 : @current_initiative_step - 1
   next_step = @current_initiative_step == 6 ? '' : @current_initiative_step + 1
 %>
+<% if intro_text %>
+  <div class="u-mbL"><%=intro_text%></div>
+<% end %>
+
 <h3>Step <%=current%> of 6: <%= title %></h3>
 
 <div class="Initiative-step">

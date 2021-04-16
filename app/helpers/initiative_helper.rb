@@ -6,9 +6,16 @@ module InitiativeHelper
       !initiative.lead_group.empty?
   end
 
-  def initiative_step(number, current, title:, next_text:, &block)
+  # rubocop:disable Metrics/ParameterLists
+  def initiative_step(number, current, title:, next_text:, intro_text: nil, &block)
     return unless current == number
 
-    render('partials/initiative_step', title: title, current: current, next_text: next_text, step: number, &block)
+    render('partials/initiative_step',
+           title: title,
+           current: current,
+           next_text: next_text,
+           intro_text: intro_text,
+           step: number, &block)
   end
+  # rubocop:enable Metrics/ParameterLists
 end
