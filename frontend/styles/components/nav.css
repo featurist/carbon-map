@@ -2,7 +2,7 @@
 .Nav-flyover {
   display: flex;
   flex-direction: row;
-  justify-content: right;
+  justify-content: flex-end;
   margin-right: 5px;
   padding: 7px;
   width: 100%;
@@ -43,7 +43,7 @@
 .Nav-secondary {
   display: flex;
   flex-grow: 1;
-  justify-content: right;
+  justify-content: flex-end;
   margin-top: -12px;
 }
 
