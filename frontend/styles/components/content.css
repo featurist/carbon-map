@@ -9,7 +9,7 @@
   padding: 35px 10px 25px 10px;
 }
 
-@media (--bp-mobile) {
+@media (--bp-tablet) {
 
   .Content-container {
     padding: 35px 80px 25px 80px;

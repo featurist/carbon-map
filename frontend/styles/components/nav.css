@@ -4,7 +4,6 @@
   flex-direction: row;
   justify-content: flex-end;
   margin-right: 5px;
-  padding: 7px;
   width: 100%;
 }
 
@@ -12,18 +11,10 @@
 .Nav-flyover a {
   font-size: 1.1em;
   font-weight: 600;
-  line-height: 1.8em;
   margin-left: 5px;
   margin-right: 5px;
   text-align: center;
   text-decoration: none;
-}
-
-@media (--bp-mobile) {
-
-  .Nav a {
-    margin-right: 33px;
-  }
 }
 
 .Nav a::before,
@@ -101,18 +92,65 @@ header.Nav-open .Nav-flyover {
   background-color: #fff;
   border: 1px solid #d4d4d4;
   display: block;
-  padding: 10px;
   position: relative;
   width: 100%;
 
   a {
     border-bottom: 1px solid #d4d4d4;
     display: block;
+    padding: 15px;
     text-align: left;
   }
 
   > a:last-child {
     border-bottom: 0;
+  }
+}
+
+.Nav .SignIn-link {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.Nav-desktop {
+  display: none;
+}
+
+.SignIn-icon {
+  height: 30px;
+  vertical-align: middle;
+  width: 30px;
+}
+
+@media (--bp-mobile) {
+
+  .Nav a {
+    margin-right: 33px;
+  }
+}
+
+@media (--bp-tablet) {
+
+  .Nav {
+    flex-direction: row;
+    height: 43px;
+    margin-right: 20px;
+
+    a {
+      margin-right: 12px;
+    }
+  }
+
+  .Nav-burger {
+    display: none;
+  }
+
+  .Nav-mobile {
+    display: none;
+  }
+
+  .Nav-desktop {
+    display: block;
   }
 }
 
@@ -130,47 +168,26 @@ header.Nav-open .Nav-flyover {
   .Nav {
     flex-direction: row;
     height: 43px;
+
+    a {
+      margin-right: 24px;
+    }
   }
 
   header.Nav-open .Nav-flyover {
+    padding: 10px;
     position: absolute;
     right: 0;
     top: 90px;
     width: 250px;
     z-index: 10000;
+
+    a {
+      line-height: 1.8em;
+    }
   }
-}
-
-.Nav .SignIn-link {
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-.Nav-desktop {
-  display: none;
-}
-
-@media (--bp-tablet-landscape) {
 
   .Nav {
     margin-right: 20px;
   }
-
-  .Nav-burger {
-    display: none;
-  }
-
-  .Nav-mobile {
-    display: none;
-  }
-
-  .Nav-desktop {
-    display: block;
-  }
-}
-
-.SignIn-icon {
-  height: 30px;
-  vertical-align: middle;
-  width: 30px;
 }
