@@ -1,7 +1,12 @@
-<% title "Edit #{@initiative.name} Initiative" %>
+<%
+if @initiative.draft?
+  title 'Add a community based project'
+else
+  title "Edit #{@initiative.name} Initiative"
+end
+%>
 <% breadcrumb [
   link_to('Home', root_path),
-  link_to('Initiatives', initiatives_path),
   title
 ] %>
 
