@@ -10,7 +10,7 @@
 .Nav a,
 .Nav-flyover a {
   font-size: 1.1em;
-  font-weight: 600;
+  font-weight: 400;
   margin-left: 5px;
   margin-right: 5px;
   text-align: center;
@@ -20,7 +20,6 @@
 .Nav a::before,
 .Nav-flyover a::before {
   font-size: 3em;
-  font-weight: 900;
   line-height: 0.55em;
   margin: 0;
   vertical-align: middle;
