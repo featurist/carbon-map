@@ -180,7 +180,8 @@
 
     <%= f.form_field :solution do %>
       <%= f.label 'What categories does your project relate to?' %>
-      <input class="FormField-input" type="text" id="solution_search" />
+      <div class="Hint">Start typing to see options eg: ‘tree planting’</div>
+      <input class="FormField-input" type="text" id="solution_search" placeholder="Start typing a category here" />
       <%= f.hidden_field :solution_attributes %>
 
       <div id="solution_results_container" class="u-hidden">
@@ -190,19 +191,14 @@
       </div>
     <% end %>
 
-    <h2>Chosen Solutions</h2>
-    <div class="ChosenSolutions">
-      <ul id="chosenSolutions">
+    <ul id="chosenSolutions" class="ChosenSolutions u-mbL <%= initiative.solutions.empty? ? 'u-hidden' : '' %>">
       <% initiative.solutions.each do |solution| %>
         <li class="ChosenSolution">
           <input type="hidden" name="initiative[solutions][]" value="<%=solution.solution.id%>,<%=solution.solution_class.id%>" data-name="<%=solution.name%>" />
           <%=solution.name%>
         </li>
       <% end %>
-      </ul>
-    </div>
-
-    <h2 class="u-mb">Notes</h2>
+    </ul>
 
     <%= f.form_field :description_further_information, required: true do %>
       <%= f.label :description_further_information, "Anything else you'd like to tell the public? (optional)" %>

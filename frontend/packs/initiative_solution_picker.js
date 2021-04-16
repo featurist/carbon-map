@@ -39,9 +39,13 @@ window.addEventListener("load", () => {
       });
     }
   );
-  console.log(selectedSolutions);
 
   function renderSelected() {
+    if (selectedSolutions.size > 0) {
+      chosenSolutions.classList.remove("u-hidden");
+    } else {
+      chosenSolutions.classList.add("u-hidden");
+    }
     chosenSolutions.innerHTML = Array.from(selectedSolutions)
       .map(solution => {
         return `
