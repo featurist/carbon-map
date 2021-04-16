@@ -41,9 +41,11 @@
 <h2 class="u-mb">Contacts</h2>
 <div class="u-mb">
   <p>Lead Group: <%=initiative.lead_group_name%></p>
-  <% if initiative.consent_to_share? %>
-    <p>Contact Name: <%=initiative.contact_name%></p>
+  <p>Contact Name: <%=initiative.contact_name%></p>
+  <% if initiative.consent_to_share_email? %>
     <p>Contact Email: <%=initiative.contact_email%></p>
+  <% end %>
+  <% if initiative.consent_to_share_phone? %>
     <p>Contact Phone: <%=initiative.contact_phone%></p>
   <% end %>
   <p>Partner Groups Role: <%=initiative.partner_groups_role%></p>

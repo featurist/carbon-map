@@ -93,25 +93,27 @@
   <% end %>
 
   <%= initiative_step 4, @current_initiative_step, title: 'Who can we/others contact about your project?', next_text: 'Next: climate group details' do %>
-    <h2 class="u-mb">Contact</h2>
-
     <%= f.form_field :contact_name, required: true do %>
-      <%= f.label :contact_name %>
-      <%= f.text_field :contact_name %>
+      <%= f.label :contact_name, 'Who is best to talk to about this project?' %>
+      <%= f.text_field :contact_name, placeholder: 'Contact Name' %>
     <% end %>
 
     <%= f.form_field :contact_email, required: true do %>
-      <%= f.label :contact_email %>
-      <%= f.text_field :contact_email %>
+      <%= f.label :contact_email, 'Email address to contact about this project' %>
+      <%= f.text_field :contact_email, placeholder: 'Email address' %>
     <% end %>
 
-    <%= f.form_field :contact_phone, required: true do %>
-      <%= f.label :contact_phone %>
+    <%= f.form_field :consent_to_share_email do %>
+      <%= f.check_box :consent_to_share_email, 'Make this email address public. (Please ensure you have permission to share it first)' %>
+    <% end %>
+
+    <%= f.form_field :contact_phone, required: false do %>
+      <%= f.label :contact_phone, 'Phone number to contact about this project (optional)' %>
       <%= f.text_field :contact_phone %>
     <% end %>
 
-    <%= f.form_field :consent_to_share do %>
-      <%= f.check_box :consent_to_share, 'Are you willing to share the information provided publicly, and have you gained permission to do so from anyone referenced?' %>
+    <%= f.form_field :consent_to_share_phone do %>
+      <%= f.check_box :consent_to_share_phone, 'Make this phone number public. (Please ensure you have permission to share it first)' %>
     <% end %>
 
     <h2 class="u-mb">Website & Social Media</h2>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_121821) do
+ActiveRecord::Schema.define(version: 2021_04_16_134738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_121821) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
-    t.boolean "consent_to_share", default: false, null: false
+    t.boolean "consent_to_share_email", default: false, null: false
     t.string "postcode"
     t.bigint "parish_id"
     t.string "description_what"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_121821) do
     t.bigint "owner_id"
     t.string "publication_status"
     t.string "carbon_saving_strategy"
+    t.boolean "consent_to_share_phone"
     t.index ["lead_group_id"], name: "index_initiatives_on_lead_group_id"
     t.index ["owner_id"], name: "index_initiatives_on_owner_id"
     t.index ["parish_id"], name: "index_initiatives_on_parish_id"

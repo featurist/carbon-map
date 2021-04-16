@@ -15,7 +15,8 @@ fruit_exchange:
   contact_phone: 01453 700011
   contact_email: info@downtoearthstroud.co.uk
   status: operational
-  consent_to_share: true
+  consent_to_share_phone: true
+  consent_to_share_email: true
   publication_status: published
 
 brians_initiative:
@@ -33,5 +34,6 @@ brians_initiative:
   contact_phone: 01453 55555
   contact_email: info@example.com
   status: operational
-  consent_to_share: true
+  consent_to_share_phone: true
+  consent_to_share_email: true
   publication_status: published

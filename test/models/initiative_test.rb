@@ -26,7 +26,8 @@ class InitiativeTest < ActiveSupport::TestCase
         contact_name: 'so and so',
         contact_email: 'so@test.com',
         contact_phone: '1234',
-        consent_to_share: true
+        consent_to_share_email: true,
+        consent_to_share_phone: true
       )
 
     public_attributes = initiative.public_attributes
@@ -41,11 +42,12 @@ class InitiativeTest < ActiveSupport::TestCase
         contact_name: 'so and so',
         contact_email: 'so@test.com',
         contact_phone: '1234',
-        consent_to_share: false
+        consent_to_share_email: false,
+        consent_to_share_phone: false
       )
 
     public_attributes = initiative.public_attributes
-    assert_nil public_attributes['contact_name']
+    assert_equal 'so and so', public_attributes['contact_name']
     assert_nil public_attributes['contact_email']
     assert_nil public_attributes['contact_phone']
   end

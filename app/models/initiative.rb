@@ -60,11 +60,10 @@ class Initiative < ApplicationRecord
   end
 
   def public_attributes
-    if consent_to_share
-      attributes
-    else
-      attributes.except('contact_name', 'contact_email', 'contact_phone')
-    end
+    share = { 'contact_name' => attributes['contact_name'] }
+    share['contact_email'] = attributes['contact_email'] if consent_to_share_email
+    share['contact_phone'] = attributes['contact_phone'] if consent_to_share_phone
+    share
   end
 
   def fetch_location
