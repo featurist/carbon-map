@@ -76,10 +76,10 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   ActionMailer::Base.smtp_settings = {
-    address: 'smtp.sendgrid.net',
+    address: ENV['SMTP_SERVER'],
     port: 587,
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
+    user_name: ENV['SMTP_USERNAME'],
+    password: ENV['SMTP_PASSWORD'],
     domain: 'carbonneutralmap.org.uk',
     authentication: :plain,
     enable_starttls_auto: true
