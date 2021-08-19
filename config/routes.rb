@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   root 'home#index'
   resource :about, only: %i[show]
+  resource :faq, only: %i[show]
+  resource :privacy, only: %i[show]
   resource :contact, only: %i[show]
   resources :districts, only: %i[index show]
   resources :wards, only: %i[show]
