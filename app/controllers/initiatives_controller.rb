@@ -5,11 +5,6 @@ class InitiativesController < ApplicationController
   before_action :set_initiative, only: %i[edit update]
   before_action :set_edit_data, only: %i[edit new create update]
   skip_before_action :authenticate_user!, only: %i[index show]
-  helper_method :can_edit?
-
-  def can_edit?(initiative)
-    initiative.owner == current_user || current_user&.role == 'admin'
-  end
 
   def index
     current_users_initiatives = current_user&.initiatives || []
@@ -123,7 +118,7 @@ class InitiativesController < ApplicationController
   def set_initiative
     @initiative = Initiative.find(params[:id])
 
-    redirect_to initiatives_url unless can_edit?(@initiative)
+    redirect_to initiatives_url unless can_edit_initiative?(@initiative)
   end
 
   def set_edit_data

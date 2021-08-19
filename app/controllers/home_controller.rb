@@ -14,5 +14,16 @@ class HomeController < ApplicationController
     @districts = District.all
 
     @recently_added = Initiative.published.order(created_at: :desc).take(4)
+
+    show_initiatives
+  end
+
+  def show_initiatives
+    current_users_initiatives = current_user&.initiatives || []
+    @initiatives = if current_user&.role == 'admin'
+                     Initiative.all.sort_by(&:name)
+                   else
+                     (Initiative.published + current_users_initiatives).uniq.sort_by(&:name)
+                   end
   end
 end

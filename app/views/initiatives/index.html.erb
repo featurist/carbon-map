@@ -25,7 +25,7 @@
         <td><%= initiative.location %></td>
         <td><%= initiative.status_name %></td>
         <td><%= initiative.updated_at.strftime '%d/%m/%y %H:%M' %></td>
-        <% if can_edit? initiative %>
+        <% if can_edit_initiative? initiative %>
           <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false, class: 'Button Button--success', data: {content: 'edit-initiative'} %></td>
         <% else %>
           <td></td>

@@ -27,7 +27,7 @@ set_meta_tags og: {
   <h1 class="PageHeader-heading"><%= title %></h1>
   <div class="Initiative-status">
     <p>Status: <%=@initiative.status_name%></p>
-    <% if can_edit? @initiative %>
+    <% if can_edit_initiative? @initiative %>
       <%= link_to 'Edit', edit_initiative_path(@initiative), "data-turbolinks": false, data: {content: 'edit-initiative'} %>
     <% end %>
   </div>

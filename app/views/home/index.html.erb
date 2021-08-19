@@ -1,3 +1,4 @@
+<%= javascript_packs_with_chunks_tag 'explore_tabs', 'data-turbolinks-track': 'reload' %>
 <div class="Home-strapline">
   <p class="u-mb">We share community-based projects that work towards a Carbon Neutral Stroud District by 2030 and connect groups organising them.</p>
   <p class="u-mb">Share knowledge. Enable Change</p>
@@ -30,33 +31,65 @@
 <div class="Explore-background">
   <div class="Container">
     <div class="Explore-tabs">
-      <a href="#" class="Explore-tab Explore-tab_selected">
+      <a href="/#map" class="Explore-tab Explore-tab_selected" data-content="explore">
         <img src="<%=asset_pack_path("media/icons/map-marker.svg")%>">
         <span> View projects<wbr> on a map</span>
       </a>
-      <a href="/initiatives" class="Explore-tab">
+      <a href="/initiatives" class="Explore-tab" data-content="initiatives">
         <img src="<%=asset_pack_path("media/icons/list.svg")%>">
         <span>View projects<wbr> in a list</span>
       </a>
     </div>
   </div>
-  <%= render 'partials/map', map_data: @map_data, sectors: @sectors, tabs: [
-    {
-      id: 'district',
-      title: 'Districts',
-      icon: 'map-marker',
-    }
-  ] do %>
-  <div class="sidebar-pane Explore-navigation" id="district">
-    <h1 class="sidebar-header">Districts</h1>
-    <% @districts.each do |district| %>
-      <%=link_to district.name, district%>
-      <% unless @districts.last == district %>
-        <hr />
+  <div class="Tab Explore-tab_displayed" data-content="explore-tab">
+    <%= render 'partials/map', map_data: @map_data, sectors: @sectors, tabs: [
+      {
+        id: 'district',
+        title: 'Districts',
+        icon: 'map-marker',
+      }
+    ] do %>
+    <div class="sidebar-pane Explore-navigation" id="district">
+      <h1 class="sidebar-header">Districts</h1>
+      <% @districts.each do |district| %>
+        <%=link_to district.name, district%>
+        <% unless @districts.last == district %>
+          <hr />
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+  <% end %>
   </div>
-<% end %>
+
+  <div class="Tab Explore-initiatives" data-content="initiatives-tab">
+    <table class="Explore-initiatives_content">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Last Updated</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @initiatives.each do |initiative| %>
+          <tr class="Initiative Initiative-<%=initiative.publication_status%>">
+            <td><%= link_to initiative.name, initiative_path(initiative) %></td>
+            <td><%= initiative.location %></td>
+            <td><%= initiative.status_name %></td>
+            <td><%= initiative.updated_at.strftime '%d/%m/%y %H:%M' %></td>
+            <% if can_edit_initiative? initiative %>
+              <td><%= link_to 'Edit', edit_initiative_path(initiative), "data-turbolinks": false, class: 'Button Button--success', data: {content: 'edit-initiative'} %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="RecentlyAdded">

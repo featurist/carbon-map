@@ -61,6 +61,10 @@ module ApplicationHelper
   end
   # rubocop:enable Rails/HelperInstanceVariable
 
+  def can_edit_initiative?(initiative)
+    initiative.owner == current_user || current_user&.role == 'admin'
+  end
+
   private
 
   def add_object_link_js(id, html)

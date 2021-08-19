@@ -5,6 +5,14 @@
   position: relative;
 }
 
+.Tab {
+  display: none;
+}
+
+.Explore-tab_displayed {
+  display: block;
+}
+
 .Explore-animation {
   height: 100vh;
 }
@@ -205,4 +213,14 @@
   background-color: #fff;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+}
+
+.Explore-initiatives {
+  background-color: white;
+  padding: 10px;
+}
+
+.Explore-initiatives_content {
+  margin: 0 auto;
+  width: 800px;
 }
