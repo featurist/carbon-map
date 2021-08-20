@@ -3,7 +3,8 @@
 # The publicly available data of an initiative
 class PublicInitiative
   include ActionView::Helpers::DateHelper
-  delegate :name,
+  delegate :id,
+           :name,
            :description_what,
            :description_how,
            :description_further_information,
@@ -70,7 +71,7 @@ class PublicInitiative
   end
 
   def last_updated
-    time_ago_in_words(timestamp) + ' ago'
+    "#{time_ago_in_words(timestamp)} ago"
   end
 
   def href
@@ -81,6 +82,7 @@ class PublicInitiative
   # rubocop:disable Metrics/AbcSize
   def as_json(_options = {})
     {
+      'id': id,
       'name': name,
       'description_what': description_what,
       'description_how': description_how,

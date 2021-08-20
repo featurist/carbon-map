@@ -10,9 +10,9 @@ class SuitFormBuilder < ActionView::Helpers::FormBuilder
     css_classes << 'FormField--required' if required
     css_classes << 'is-error' if field_errors.any?
     css_classes << options[:class_names]
-    # rubocop:disable HelperInstanceVariable
-    @template.content_tag :div, class: css_classes, &block
-    # rubocop:enable HelperInstanceVariable
+    # rubocop:disable Rails/HelperInstanceVariable
+    @template.tag.div(class: css_classes, &block)
+    # rubocop:enable Rails/HelperInstanceVariable
   end
 
   def label(method, text = nil, options = {})
@@ -41,9 +41,9 @@ class SuitFormBuilder < ActionView::Helpers::FormBuilder
     end
     label(attribute, class: 'FormField-check FormField-check--checkbox') do
       super(attribute, options.reverse_merge(class: 'FormField-checkInput'), checked_value, unchecked_value) +
-        # rubocop:disable HelperInstanceVariable
-        @template.content_tag(:span, label_text, class: 'FormField-checkLabel')
-      # rubocop:enable HelperInstanceVariable
+        # rubocop:disable Rails/HelperInstanceVariable
+        @template.tag.span(label_text, class: 'FormField-checkLabel')
+      # rubocop:enable Rails/HelperInstanceVariable
     end
   end
 
