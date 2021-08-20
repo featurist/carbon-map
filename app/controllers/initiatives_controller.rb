@@ -70,6 +70,7 @@ class InitiativesController < ApplicationController
     @initiative.assign_attributes initiative_params
     @initiative.update_location_from_postcode
 
+    @initiative.remove_empty_websites
     if @initiative.save(validate: publication_status != 'draft')
       @initiative.images.attach images if images
       if (params[:step] || '').empty?
@@ -119,6 +120,7 @@ class InitiativesController < ApplicationController
 
   def set_initiative
     @initiative = Initiative.find(params[:id])
+    @initiative.websites << InitiativeWebsite.new if @initiative.websites.empty?
 
     redirect_to initiatives_url unless can_edit_initiative?(@initiative)
   end

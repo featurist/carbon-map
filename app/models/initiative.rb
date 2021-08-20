@@ -130,6 +130,10 @@ class Initiative < ApplicationRecord
     carbon_saving_amount&.positive?
   end
 
+  def remove_empty_websites
+    websites.delete(websites.select { |website| website.url.blank? })
+  end
+
   private
 
   def set_default_location

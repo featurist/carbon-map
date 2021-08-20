@@ -117,28 +117,18 @@
       <%= f.check_box :consent_to_share_phone, 'Make this phone number public. (Please ensure you have permission to share it first)' %>
     <% end %>
 
-    <h2 class="u-mb">Website & Social Media</h2>
+    <%= f.label :website, 'Website(s) or social media links for further project info' %>
     <div id="initiative_websites" class="CollectionItem-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Website</th>
-            <th>Delete?</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <%= f.fields_for :websites do |website_form| %>
-            <%= render 'partials/website_fields_row', f: website_form %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="FormField">
-      <%= f.fields_for :websites, InitiativeWebsite.new do |website_form| %>
-        <%= add_object_link 'Add website', 'initiative_websites', :partial => 'partials/website_fields_row', :locals => { :f => website_form } %>
+      <%= f.fields_for :websites do |website_form| %>
+        <%= website_form.form_field :url do %>
+          <%= website_form.text_field :url, placeholder: 'eg: https://twitter.com/carbon-map' %>
+        <% end %>
       <% end %>
+      <%= javascript_packs_with_chunks_tag 'initiative_websites', 'data-turbolinks-track': 'reload' %>
     </div>
+    <a href="#" data-content="add_initiative_website">
+      <span>Add another</span><img src="<%=asset_pack_path("media/icons/right_arrow.svg")%>">
+    </a>
   <% end %>
 
   <%= initiative_step 5, @current_initiative_step, title: 'Help us understand how you got going', next_text: 'Next: project sector and notes' do %>
