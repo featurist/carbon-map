@@ -2,6 +2,8 @@
 
 # rubocop:disable Metrics/ClassLength
 class InitiativesController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_initiative, only: %i[edit update]
   before_action :set_edit_data, only: %i[edit new create update]
   skip_before_action :authenticate_user!, only: %i[index show]
