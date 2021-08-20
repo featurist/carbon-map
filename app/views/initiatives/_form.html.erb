@@ -100,7 +100,7 @@
 
     <%= f.form_field :contact_email, required: true do %>
       <%= f.label :contact_email, 'Email address to contact about this project' %>
-      <div class="Hint">Find out how we use your email address - <%= link_to 'Privacy Policy', :privacy%></div>
+      <div class="Hint">Find out <%= link_to 'how we use your email address', :privacy%></div>
       <%= f.text_field :contact_email, placeholder: 'Email address' %>
     <% end %>
 
