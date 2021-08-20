@@ -37,6 +37,7 @@ class InitiativesController < ApplicationController
 
   def edit
     @current_initiative_step = (params[:step] || 1).to_i
+    @initiative.websites << InitiativeWebsite.new if @initiative.websites.empty?
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -44,7 +45,6 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.new(initiative_params.merge(owner: current_user))
     add_solutions(@initiative)
     find_or_create_group
-    @initiative.update_location_from_postcode
 
     if @initiative.save(validate: @initiative.publication_status != 'draft')
       redirect_to edit_initiative_step_path(@initiative, step: 2)
@@ -70,8 +70,7 @@ class InitiativesController < ApplicationController
     @initiative.assign_attributes initiative_params
     @initiative.update_location_from_postcode
 
-    @initiative.remove_empty_websites
-    if @initiative.save(validate: publication_status != 'draft')
+    if @initiative.save(validate: @initiative.publication_status != 'draft')
       @initiative.images.attach images if images
       if (params[:step] || '').empty?
         redirect_to initiative_path(@initiative),
@@ -80,6 +79,7 @@ class InitiativesController < ApplicationController
         redirect_to edit_initiative_step_path(@initiative, step: params[:step])
       end
     else
+      @current_initiative_step = params[:step].blank? ? 1 : params[:step].to_i - 1
       render :edit
     end
   end
@@ -120,7 +120,6 @@ class InitiativesController < ApplicationController
 
   def set_initiative
     @initiative = Initiative.find(params[:id])
-    @initiative.websites << InitiativeWebsite.new if @initiative.websites.empty?
 
     redirect_to initiatives_url unless can_edit_initiative?(@initiative)
   end

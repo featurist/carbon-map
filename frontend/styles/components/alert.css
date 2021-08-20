@@ -1,14 +1,17 @@
 .Alert {
+  margin: 0 auto;
   margin-bottom: 10px;
+  max-width: 800px;
   padding: 15px;
+  text-align: center;
 }
 
 .Alert--danger {
-  background-color: rgb(246, 220, 222);
+  background-color: rgba(246, 220, 222, 0.6);
   color: rgb(146, 40, 48);
 }
 
 .Alert--info {
-  background-color: rgb(156, 209, 255);
+  background-color: rgba(0, 222, 233, 0.2);
   color: rgb(15, 55, 89);
 }
