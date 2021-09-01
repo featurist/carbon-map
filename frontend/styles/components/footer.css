@@ -16,6 +16,8 @@
 }
 
 .Footer-copyright {
+  flex: 1;
+  margin-bottom: 10px;
 }
 
 .Footer-contact {
@@ -28,7 +30,6 @@
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
-  margin: 24px 0;
 }
 
 .Footer-internal_links {
@@ -40,7 +41,7 @@
   margin-left: 10px;
 }
 
-@media (--bp-mobile) {
+@media (--bp-desktop) {
 
   .Footer-main {
     flex-direction: row;

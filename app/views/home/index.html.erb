@@ -1,4 +1,4 @@
-<%= javascript_packs_with_chunks_tag 'explore_tabs', 'data-turbolinks-track': 'reload' %>
+<%= javascript_packs_with_chunks_tag 'home', 'data-turbolinks-track': 'reload' %>
 <div class="Home-strapline">
   <p class="u-mb">We share community-based projects that work towards a Carbon Neutral Stroud District by 2030 and connect groups organising them.</p>
   <p class="u-mb">Share knowledge. Enable Change</p>
@@ -16,13 +16,9 @@
   <span class="Home-search_or">Or</span>
 
   <span class="Home-search">
-    <form action="/search" method="GET">
+    <form id="search">
       <div class="ButtonInput">
         <input type="search" name="q" placeholder="Search for a project" />
-        <button type="submit" class="Button">
-          <span class="u-mr">Go</span>
-          <img src="<%=asset_pack_path("media/icons/right_arrow.svg")%>">
-        </button>
       </div>
     </form>
   </span>
@@ -75,7 +71,7 @@
 
       <tbody>
         <% @initiatives.each do |initiative| %>
-          <tr class="Initiative Initiative-<%=initiative.publication_status%>">
+          <tr class="Initiative Initiative-<%=initiative.publication_status%>" data-content="initiative_<%=initiative.id %>">
             <td><%= link_to initiative.name, initiative_path(initiative) %></td>
             <td><%= initiative.location %></td>
             <td><%= initiative.status_name %></td>

@@ -64,6 +64,7 @@ class InitiativeTest < ActiveSupport::TestCase
   def expected_initiative_attributes
     [
       {
+        id: Initiative.first.id,
         name: 'The Fruit Exchange',
         description_what: 'Connecting people with surplus food',
         description_how: 'Bringing food to the people',

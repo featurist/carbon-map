@@ -28,7 +28,7 @@
   text-align: center;
 }
 
-@media (--bp-mobile) {
+@media (--bp-desktop) {
 
   .sponsors-logo {
     margin: 20px;

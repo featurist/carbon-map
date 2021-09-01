@@ -6,18 +6,19 @@ require 'uk_postcode'
 class Initiative < ApplicationRecord
   after_initialize :set_default_location
   after_initialize :set_default_publication_status
+  before_save :remove_empty_websites
 
   belongs_to :owner, class_name: 'User'
   belongs_to :lead_group, class_name: 'Group'
   belongs_to :status, class_name: 'InitiativeStatus'
   belongs_to :parish
 
-  delegate :name, prefix: true, to: :status
-  delegate :name, prefix: true, to: :lead_group
-  delegate :ward, to: :parish
-  delegate :district, to: :ward
-  delegate :county, to: :district
-  delegate :region, to: :county
+  delegate :name, prefix: true, to: :status, allow_nil: true
+  delegate :name, prefix: true, to: :lead_group, allow_nil: true
+  delegate :ward, to: :parish, allow_nil: true
+  delegate :district, to: :ward, allow_nil: true
+  delegate :county, to: :district, allow_nil: true
+  delegate :region, to: :county, allow_nil: true
 
   has_many :solutions, class_name: 'InitiativeSolution', dependent: :destroy
   has_many :themes, class_name: 'InitiativeTheme', dependent: :destroy
@@ -111,11 +112,11 @@ class Initiative < ApplicationRecord
   # rubocop:disable Metrics/MethodLength
   def location_attributes
     {
-      parish: parish.name,
-      ward: ward.name,
-      district: district.name,
-      county: county.name,
-      region: region.name,
+      parish: parish&.name,
+      ward: ward&.name,
+      district: district&.name,
+      county: county&.name,
+      region: region&.name,
       postcode: postcode,
       latlng: {
         # "Down to Earth Stroud, PO Box 427, Stonehouse, Gloucestershire, GL6 1JG",
@@ -128,6 +129,10 @@ class Initiative < ApplicationRecord
 
   def carbon_saving_quantified?
     carbon_saving_amount&.positive?
+  end
+
+  def remove_empty_websites
+    websites.delete(websites.select { |website| website.url.blank? })
   end
 
   private

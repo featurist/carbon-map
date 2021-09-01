@@ -70,3 +70,7 @@ textarea {
   justify-content: center;
   width: 37px;
 }
+
+.u-hidden {
+  display: none;
+}

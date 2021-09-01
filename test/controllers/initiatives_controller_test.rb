@@ -87,6 +87,19 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'rejected', @initiative.reload.publication_status
   end
 
+  test 'cannot publish initiative in an invalid state' do
+    @initiative.update!(publication_status: 'draft')
+    @initiative.name = ''
+
+    sign_in_as :georgie
+    VCR.use_cassette('valid_postcode') do
+      patch initiative_url(@initiative),
+            params: update_params(@initiative, publication_status: 'published')
+    end
+
+    assert_equal 'draft', @initiative.reload.publication_status
+  end
+
   test 'create initiative and lead group' do
     sign_in_as :georgie
     lead_group = {

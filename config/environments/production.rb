@@ -76,10 +76,10 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   ActionMailer::Base.smtp_settings = {
-    address: 'smtp.sendgrid.net',
+    address: ENV['SMTP_SERVER'],
     port: 587,
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
+    user_name: ENV['SMTP_USERNAME'],
+    password: ENV['SMTP_PASSWORD'],
     domain: 'carbonneutralmap.org.uk',
     authentication: :plain,
     enable_starttls_auto: true
@@ -97,7 +97,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
-    logger = ActiveSupport::Logger.new(STDOUT)
+    logger = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
