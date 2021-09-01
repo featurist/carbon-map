@@ -83,11 +83,14 @@
         <%= f.number_field :carbon_saving_amount, class: 'FormField-input FormField-narrow' %> <span><%=carbon_units%></span>
       <% end %>
 
-      <div class="Help u-mtL">
+      <div class="Help u-mtL <%=initiative.carbon_saving_anticipated? ? '' : ' u-hidden'%>" id="carbon-saving-help">
         <a class="Help-title"><svg viewBox="0 0 24 24">
               <path fill="currentColor" d="M1,21H23L12,2" />
           </svg>Help with 'kgCO2e/yr'</a>
-        <p class="Help-details">Some detailed information</p>
+          <div class="Help-details">
+            <p class="u-mb">Any measure that reduces this can be credited by the weight of carbon dioxide emissions avoided in kilograms (written kgCO₂).</p>
+            <p>Other greenhouses gases from human activities (such as methane from burping cows) are expressed in terms of the “equivalent” carbon dioxide emissions they represent (written kgCO₂e).</p>
+          </div>
       </div>
     <% end %>
   <% end %>

@@ -5,6 +5,7 @@ class InitiativesController < ApplicationController
   before_action :set_initiative, only: %i[edit update]
   before_action :set_edit_data, only: %i[edit new create update]
   skip_before_action :authenticate_user!, only: %i[index show]
+  include ApplicationHelper
 
   def index
     current_users_initiatives = current_user&.initiatives || []
