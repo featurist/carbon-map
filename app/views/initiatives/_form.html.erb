@@ -130,7 +130,7 @@
       <%= javascript_packs_with_chunks_tag 'initiative_websites', 'data-turbolinks-track': 'reload' %>
     </div>
     <a href="#" data-content="add_initiative_website">
-      <span>Add another</span><img src="<%=asset_pack_path("media/icons/right_arrow.svg")%>">
+      <span>Add another</span>&nbsp;<img src="<%=asset_pack_path("media/icons/right_arrow.svg")%>">
     </a>
   <% end %>
 
@@ -140,7 +140,7 @@
     <% end %>
 
     <%= f.form_field :lead_group_id do %>
-      <%= f.label :lead_group_id, 'Select' %>
+      <%= f.label :lead_group_id, 'Please select the group leading your project' %>
       <div class="Hint">You can create a new one if your group isn’t listed</div>
       <%= f.select :lead_group_id do %>
         <option value="">Please select a group</option>
