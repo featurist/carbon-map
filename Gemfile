@@ -24,7 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'google-cloud-storage', '~> 1.11', require: false
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'meta-tags'
 gem 'pg'
 gem 'rollbar'
